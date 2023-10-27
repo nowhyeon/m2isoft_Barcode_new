@@ -131,19 +131,19 @@ Public Class frmSetup
 
     End Sub
 
-    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btnReroad.Click, btnDelete.Click, btnInsert.Click
-        If sender Is btnReroad Then
-            Dim sMsg As String = "새로고침 되었습니다.", sMsgTitle As String = "안내"
+    'Private Sub Button_Click(sender As Object, e As EventArgs)
+    '    If sender Is btnReroad Then
+    '        Dim sMsg As String = "새로고침 되었습니다.", sMsgTitle As String = "안내"
 
-            Call PtReroadRoutine()
-            XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf sender Is btnDelete Then
-            GridView.DeleteRow(GridView.FocusedRowHandle)
-        ElseIf sender Is btnInsert Then
-            Call PsInsertRoutine()
-        End If
+    '        Call PtReroadRoutine()
+    '        XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '    ElseIf sender Is btnDelete Then
+    '        GridView.DeleteRow(GridView.FocusedRowHandle)
+    '    ElseIf sender Is btnInsert Then
+    '        Call PsInsertRoutine()
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Function PsInsertRoutine() As Integer
         GridView.AddNewRow()                                       ' 새로운 행을 추가(편집모드로 전환)
@@ -163,7 +163,7 @@ Public Class frmSetup
         Call PtReroadRoutine()
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs)
 
         Dim sReturn As Boolean = False
 

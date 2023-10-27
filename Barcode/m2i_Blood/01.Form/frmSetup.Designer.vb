@@ -19,13 +19,14 @@ Partial Class frmSetup
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim WindowsUIButtonImageOptions9 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions1 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSetup))
-        Dim WindowsUIButtonImageOptions10 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions11 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions12 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions2 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions5 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.btnSave = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
+        Me.btnPanWork = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtTestCd = New DevExpress.XtraEditors.TextEdit()
@@ -49,16 +50,10 @@ Partial Class frmSetup
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.btnDelete = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
-        Me.btnInsert = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
-        Me.btnReroad = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,19 +85,13 @@ Partial Class frmSetup
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.btnSave)
+        Me.LayoutControl1.Controls.Add(Me.btnPanWork)
         Me.LayoutControl1.Controls.Add(Me.GroupControl1)
-        Me.LayoutControl1.Controls.Add(Me.btnDelete)
-        Me.LayoutControl1.Controls.Add(Me.btnInsert)
-        Me.LayoutControl1.Controls.Add(Me.btnReroad)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
@@ -112,22 +101,33 @@ Partial Class frmSetup
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'btnSave
+        'btnPanWork
         '
-        WindowsUIButtonImageOptions9.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions9.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnSave.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, Nothing, -1, False)})
-        Me.btnSave.Location = New System.Drawing.Point(739, 475)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(78, 83)
-        Me.btnSave.TabIndex = 6
-        Me.btnSave.Text = "WindowsUIButtonPanel1"
+        WindowsUIButtonImageOptions1.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions1.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions1.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions2.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions2.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions2.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions3.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions3.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions5.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("행추가", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "add", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("행삭제", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "delete", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("종료", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False)})
+        Me.btnPanWork.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPanWork.Location = New System.Drawing.Point(416, 496)
+        Me.btnPanWork.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPanWork.Name = "btnPanWork"
+        Me.btnPanWork.Size = New System.Drawing.Size(401, 62)
+        Me.btnPanWork.TabIndex = 101
+        Me.btnPanWork.Text = "WindowsUIButtonPanel3"
         '
         'GroupControl1
         '
         Me.GroupControl1.Controls.Add(Me.LayoutControl2)
         Me.GroupControl1.Location = New System.Drawing.Point(12, 12)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(805, 459)
+        Me.GroupControl1.Size = New System.Drawing.Size(805, 480)
         Me.GroupControl1.TabIndex = 4
         Me.GroupControl1.Text = "검사항목 입력 및 수정"
         '
@@ -146,7 +146,7 @@ Partial Class frmSetup
         Me.LayoutControl2.Location = New System.Drawing.Point(2, 27)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
-        Me.LayoutControl2.Size = New System.Drawing.Size(801, 430)
+        Me.LayoutControl2.Size = New System.Drawing.Size(801, 451)
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -163,7 +163,7 @@ Partial Class frmSetup
         Me.gcTestList.Controls.Add(Me.grdTestList)
         Me.gcTestList.Location = New System.Drawing.Point(12, 124)
         Me.gcTestList.Name = "gcTestList"
-        Me.gcTestList.Size = New System.Drawing.Size(777, 294)
+        Me.gcTestList.Size = New System.Drawing.Size(777, 315)
         Me.gcTestList.TabIndex = 1
         Me.gcTestList.Text = "검사항목조회"
         '
@@ -173,7 +173,7 @@ Partial Class frmSetup
         Me.grdTestList.Location = New System.Drawing.Point(2, 27)
         Me.grdTestList.MainView = Me.GridView
         Me.grdTestList.Name = "grdTestList"
-        Me.grdTestList.Size = New System.Drawing.Size(773, 265)
+        Me.grdTestList.Size = New System.Drawing.Size(773, 286)
         Me.grdTestList.TabIndex = 0
         Me.grdTestList.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -247,7 +247,7 @@ Partial Class frmSetup
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem10})
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(801, 430)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(801, 451)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem3
@@ -291,7 +291,7 @@ Partial Class frmSetup
         Me.LayoutControlItem1.Control = Me.gcTestList
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 112)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(781, 298)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(781, 319)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -331,41 +331,11 @@ Partial Class frmSetup
         Me.LayoutControlItem10.Text = "| 바코드분류"
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(112, 18)
         '
-        'btnDelete
-        '
-        WindowsUIButtonImageOptions10.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions10.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnDelete.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("삭제", True, WindowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, Nothing, -1, False)})
-        Me.btnDelete.Location = New System.Drawing.Point(660, 475)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 83)
-        Me.btnDelete.TabIndex = 7
-        Me.btnDelete.Text = "WindowsUIButtonPanel2"
-        '
-        'btnInsert
-        '
-        WindowsUIButtonImageOptions11.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions11.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnInsert.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("행 추가", True, WindowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, Nothing, -1, False)})
-        Me.btnInsert.Location = New System.Drawing.Point(581, 475)
-        Me.btnInsert.Name = "btnInsert"
-        Me.btnInsert.Size = New System.Drawing.Size(75, 83)
-        Me.btnInsert.TabIndex = 7
-        Me.btnInsert.Text = "WindowsUIButtonPanel2"
-        '
-        'btnReroad
-        '
-        WindowsUIButtonImageOptions12.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions12.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnReroad.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("새로고침", True, WindowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, Nothing, -1, False)})
-        Me.btnReroad.Location = New System.Drawing.Point(502, 475)
-        Me.btnReroad.Name = "btnReroad"
-        Me.btnReroad.Size = New System.Drawing.Size(75, 83)
-        Me.btnReroad.TabIndex = 7
-        Me.btnReroad.Text = "WindowsUIButtonPanel2"
-        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.EmptySpaceItem1, Me.LayoutControlItem13, Me.LayoutControlItem14})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem11, Me.EmptySpaceItem2})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(829, 570)
         Me.Root.TextVisible = False
@@ -375,69 +345,26 @@ Partial Class frmSetup
         Me.LayoutControlItem2.Control = Me.GroupControl1
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(809, 463)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(809, 484)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem11
         '
-        Me.LayoutControlItem11.Control = Me.btnSave
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(727, 463)
-        Me.LayoutControlItem11.MaxSize = New System.Drawing.Size(82, 87)
-        Me.LayoutControlItem11.MinSize = New System.Drawing.Size(82, 87)
+        Me.LayoutControlItem11.Control = Me.btnPanWork
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(404, 484)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(82, 87)
-        Me.LayoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(405, 66)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
-        'LayoutControlItem12
+        'EmptySpaceItem2
         '
-        Me.LayoutControlItem12.Control = Me.btnDelete
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(648, 463)
-        Me.LayoutControlItem12.MaxSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem12.MinSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem12.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 463)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(490, 87)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem13
-        '
-        Me.LayoutControlItem13.Control = Me.btnInsert
-        Me.LayoutControlItem13.CustomizationFormText = "LayoutControlItem12"
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(569, 463)
-        Me.LayoutControlItem13.MaxSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem13.MinSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem13.Text = "LayoutControlItem12"
-        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem13.TextVisible = False
-        '
-        'LayoutControlItem14
-        '
-        Me.LayoutControlItem14.Control = Me.btnReroad
-        Me.LayoutControlItem14.CustomizationFormText = "LayoutControlItem12"
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(490, 463)
-        Me.LayoutControlItem14.MaxSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem14.MinSize = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(79, 87)
-        Me.LayoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem14.Text = "LayoutControlItem12"
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem14.TextVisible = False
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 484)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(404, 66)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'frmSetup
         '
@@ -480,18 +407,13 @@ Partial Class frmSetup
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents btnDelete As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
     Friend WithEvents gcTestList As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents btnSave As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtTestCd As DevExpress.XtraEditors.TextEdit
@@ -514,13 +436,9 @@ Partial Class frmSetup
     Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents grdTestList As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents btnInsert As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
-    Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents btnReroad As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
-    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents btnPanWork As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
+    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
 End Class

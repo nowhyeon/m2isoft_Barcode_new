@@ -13,7 +13,7 @@ Public Class frmLogin
 
     Private invalidPswdCount As Integer = 0
 
-    Private Sub cmdLogin_Click(sender As Object, e As EventArgs) Handles cmdLogin.Click
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs)
 
         Dim sMsg As String
 
@@ -46,7 +46,7 @@ Public Class frmLogin
     End Sub
 
 
-    Private Sub txtID_Leave(sender As Object, e As EventArgs) Handles txtID.Leave
+    Private Sub txtID_Leave(sender As Object, e As EventArgs)
 
         Dim sReturn As Boolean = False
 
@@ -55,12 +55,13 @@ Public Class frmLogin
                 gUserID = txtID.Text
 
                 QueryString = String.Empty
-                QueryString &= " SELECT EMP_ID, EMP_NM, PASSWD, POWERS FROM m2i_LAB001" & vbCrLf
+                QueryString &= " SELECT EMP_ID, EMP_NM, PASSWD FROM m2i_LAB001" & vbCrLf
                 QueryString &= "  WHERE EMP_ID = '" & txtID.Text & "'"
 
                 Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
                 If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
 
+                    'lblUsernm.Text = sTable.Rows(0)("USERNM").ToString
                     gUserNM = sTable.Rows(0)("EMP_NM").ToString
                     gUserPASSWD = sTable.Rows(0)("PASSWD").ToString
 
@@ -76,10 +77,22 @@ Public Class frmLogin
 
     End Sub
 
-    Private Sub txtID_KeyDown(sender As Object, e As KeyEventArgs) Handles txtID.KeyDown
+    Private Sub txtID_KeyDown(sender As Object, e As KeyEventArgs) 
         If e.KeyCode = Keys.Enter Then
 
         End If
+
+    End Sub
+
+    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub lblLink_Click(sender As Object, e As EventArgs) Handles lblLink.Click
+        Process.Start("IExplore.exe", "http://m2isoft.com/")
+    End Sub
+
+    Private Sub LabelControl1_Click(sender As Object, e As EventArgs) Handles LabelControl1.Click
 
     End Sub
 End Class
