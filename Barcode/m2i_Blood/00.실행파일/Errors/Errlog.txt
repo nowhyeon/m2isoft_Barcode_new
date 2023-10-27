@@ -1,0 +1,429 @@
+Title      : m2i_IF
+Message    : 없는 장치를 지정했습니다.
+
+StackTrace :    위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+Date/Time  : 2023-06-07 오전 3:25:55
+===========================================================================================
+Title      : m2i_IF
+Message    : 없는 장치를 지정했습니다.
+
+StackTrace :    위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+Date/Time  : 2023-06-07 오전 3:25:57
+===========================================================================================
+Title      : m2i_IF
+Message    : 없는 장치를 지정했습니다.
+
+StackTrace : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+Date/Time  : 2023-06-07 오전 3:28:27
+===========================================================================================
+Title      : m2i_IF
+Message    : 없는 장치를 지정했습니다.
+
+StackTrace : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+Date/Time  : 2023-06-07 오전 3:28:28
+===========================================================================================
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 3:31:41
+===========================================================================================
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 3:31:46
+===========================================================================================
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 3:32:34
+===========================================================================================
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 3:33:38
+===========================================================================================
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 3:34:12
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 없는 장치를 지정했습니다.
+
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-07 오전 10:05:39
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 'COM6' 포트가 없습니다.
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\Admin\Desktop\mIF.NET\mIF.NET\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-08 오후 1:46:37
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 'COM7' 포트가 없습니다.
+[ StackTrace ] : 
+   위치: System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   위치: System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   위치: System.IO.Ports.SerialPort.Open()
+   위치: m2i_IF.Frm_Main.SimpleButton5_Click(Object sender, EventArgs e) 파일 C:\Users\USER\OneDrive\Desktop\mIF.NET\m2i_IF\10.Form\Frm_Main.vb:줄 328
+[ Date/Time  ] : 2023-06-13 오후 11:04:30
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:29:40
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:29:57
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:24
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:26
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:29
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:30
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:36
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:36
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:37
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:38
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:38
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:38
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-22 오후 2:31:39
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:36:05
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:36:06
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:49
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:50
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:50
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:50
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:54
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:55
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:58
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:59
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:59
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:59
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-26 오후 6:48:59
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:46
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:47
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:47
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:47
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:47
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-09-27 오후 2:39:48
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-10-04 오후 3:35:05
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 폼을 만드는 동안 오류가 발생했습니다. 자세한 내용은 Exception.InnerException을 참조하십시오. 오류: 파일이나 어셈블리 'Interop.MSDATASRC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' 또는 여기에 종속되어 있는 파일이나 어셈블리 중 하나를 로드할 수 없습니다. 지정된 파일을 찾을 수 없습니다.
+[ StackTrace ] : 
+   위치: m2i_IF.My.MyProject.MyForms.Create__Instance__[T](T Instance) 파일 :줄 190
+   위치: m2i_IF.My.MyProject.MyForms.get_Frm_Main()
+   위치: m2i_IF.Frm_Login.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_Login.vb:줄 45
+[ Date/Time  ] : 2023-10-04 오후 3:35:06
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다 192.168.0.241:9100
+[ StackTrace ] : 
+   위치: System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   위치: m2i_IF.Frm_LabelPrint.PsPrintRoutine() 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_LabelPrint.vb:줄 40
+[ Date/Time  ] : 2023-10-12 오후 1:19:43
+-------------------------------------------------------------------------------------
+[ Title      ] : m2i_IF
+[ Message    ] : 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다 192.168.0.241:9100
+[ StackTrace ] : 
+   위치: System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   위치: m2i_IF.Frm_LabelPrint.PsPrintRoutine() 파일 C:\Users\ovmvo\OneDrive\Desktop\업무문서\mIF.NET\m2i_IF\10.Form\Frm_LabelPrint.vb:줄 58
+[ Date/Time  ] : 2023-10-12 오후 5:43:17
+-------------------------------------------------------------------------------------
+17:00:31 | HOST > Cobas E411 :
+17:00:31 | Cobas E411 > HOST :1H|\^&|||cobas-e411^1|||||host|RSUPL^BATCH|P|1
+17:00:31 | Cobas E411 > HOST :P|1
+17:00:31 | Cobas E411 > HOST :O|1|PC TM1|31^0^1^^QC^SC|^^^321^1\^^^341^1\^^^351^1\^^^301^1\^^^311^1|||20200709164738||||Q||||1|||||||20200709170920|||F
+17:00:31 | Cobas E411 > HOST :R|1|^^^321/1/not|3.92|ng/ml||N||F|||||E1
+17:00:31 | HOST > Cobas E411 :
+
+QueryString &= "SELECT scrcd, accessfg FROM mstAUTHORITY WHERE grpcd = '" & gUserGroup & "'"
+
+17:01:04 | HOST > Cobas E411 :
+17:01:04 | Cobas E411 > HOST :1H|\^&|||cobas-e411^1|||||host|RSUPL^BATCH|P|1
+17:01:04 | Cobas E411 > HOST :P|1
+17:01:04 | Cobas E411 > HOST :O|1|PC HBSAG2|26^0^26^^QC^SC|^^^900^1|||20200709162556||||Q||||1|||||||20200709164450|||F
+17:01:04 | Cobas E411 > HOST :R|1|^^^900/1/not|1^2.90|COI||N||F|||||E1
+17:01:04 | Cobas E411 > HOST :L|1|N
+17:01:04 | Cobas E411 > HOST :A5
+
+
+17:01:04 | HOST > Cobas E411 :
+17:01:04 | Cobas E411 > HOST :1H|\^&|||cobas-e411^1|||||host|RSUPL^BATCH|P|1
+17:01:04 | Cobas E411 > HOST :P|1
+17:01:04 | Cobas E411 > HOST :O|1|PC HBSAG2|26^0^26^^QC^SC|^^^900^1|||20200709162556||||Q||||1|||||||20200709164450|||F
+17:01:04 | Cobas E411 > HOST :R|1|^^^900/1/not|1^2.90|COI||N||F|||||E1
+17:01:04 | Cobas E411 > HOST :L|1|N
+17:01:04 | Cobas E411 > HOST :A5
+
+QueryString &= "SELECT scrcd, accessfg FROM mstAUTHORITY WHERE grpcd = '" & gUserGroup & "'"
