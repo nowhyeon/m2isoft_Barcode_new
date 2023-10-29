@@ -54,13 +54,13 @@ Public Class frmMain
 
             'Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
-            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
-                                                                            Format(dtpTo.EditValue, "yyyyMMdd"),'종료일
-                                                                            cboReceipt.EditValue,               '접수타입
-                                                                            cboSearchCond.EditValue,            '검색타입
-                                                                            txtSearchWrd.Text)                  '검색어
+            'Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
+            '                                                                Format(dtpTo.EditValue, "yyyyMMdd"),'종료일
+            '                                                                cboReceipt.EditValue,               '접수타입
+            '                                                                cboSearchCond.EditValue,            '검색타입
+            '                                                                txtSearchWrd.Text)                  '검색어
 
-            grdSearchQry.DataSource = sTable
+            'grdSearchQry.DataSource = sTable
 
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -69,7 +69,7 @@ Public Class frmMain
     End Sub
 
     '수진자조회 버튼
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles btnSelect.ButtonClick
+    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs)
 
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
@@ -99,26 +99,26 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dtpFrom.EditValue = Now
-        dtpTo.EditValue = Now
+        'dtpFrom.EditValue = Now
+        'dtpTo.EditValue = Now
 
-        With cboReceipt
-            .Properties.Items.Clear()
-            .Properties.Items.Add("01.접수")
-            .Properties.Items.Add("02.결과")
-        End With
-        With cboPrintYN
-            .Properties.Items.Clear()
-            .Properties.Items.Add("01.출력")
-            .Properties.Items.Add("02.미출력")
-        End With
-        With cboSearchCond
-            .Properties.Items.Clear()
-            .Properties.Items.Add("01.검색조건")
-            .Properties.Items.Add("02.환자명")
-            .Properties.Items.Add("03.차트번호")
-            .Properties.Items.Add("04.검사코드")
-        End With
+        'With cboReceipt
+        '    .Properties.Items.Clear()
+        '    .Properties.Items.Add("01.접수")
+        '    .Properties.Items.Add("02.결과")
+        'End With
+        'With cboPrintYN
+        '    .Properties.Items.Clear()
+        '    .Properties.Items.Add("01.출력")
+        '    .Properties.Items.Add("02.미출력")
+        'End With
+        'With cboSearchCond
+        '    .Properties.Items.Clear()
+        '    .Properties.Items.Add("01.검색조건")
+        '    .Properties.Items.Add("02.환자명")
+        '    .Properties.Items.Add("03.차트번호")
+        '    .Properties.Items.Add("04.검사코드")
+        'End With
     End Sub
 
 End Class
