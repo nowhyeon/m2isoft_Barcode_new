@@ -13,7 +13,7 @@ Public Class frmLogin
 
     Private invalidPswdCount As Integer = 0
 
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs)
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         Dim sMsg As String
 
@@ -41,17 +41,17 @@ Public Class frmLogin
         End Try
     End Sub
 
-    Private Sub Frm_Login_Closed(sender As Object, e As EventArgs) Handles Me.Closed, MyBase.FormClosed
+    Private Sub frmLogin_Closed(sender As Object, e As EventArgs) Handles Me.Closed, MyBase.FormClosed
         Me.DialogResult = DialogResult.Cancel
     End Sub
 
 
-    Private Sub txtID_Leave(sender As Object, e As EventArgs)
+    Private Sub txtID_Leave(sender As Object, e As EventArgs) Handles txtID.Leave
 
         Dim sReturn As Boolean = False
 
         Try
-            If txtID.Text.Length > 0 Then
+            If layoutcontrolitem1.Text.Length > 0 Then
                 gUserID = txtID.Text
 
                 QueryString = String.Empty
@@ -61,7 +61,7 @@ Public Class frmLogin
                 Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
                 If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
 
-                    'lblUsernm.Text = sTable.Rows(0)("USERNM").ToString
+                    lblUser.Text = sTable.Rows(0)("EMP_NM").ToString
                     gUserNM = sTable.Rows(0)("EMP_NM").ToString
                     gUserPASSWD = sTable.Rows(0)("PASSWD").ToString
 
@@ -77,14 +77,10 @@ Public Class frmLogin
 
     End Sub
 
-    Private Sub txtID_KeyDown(sender As Object, e As KeyEventArgs) 
+    Private Sub txtID_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
 
         End If
-
-    End Sub
-
-    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
@@ -92,7 +88,4 @@ Public Class frmLogin
         Process.Start("IExplore.exe", "http://m2isoft.com/")
     End Sub
 
-    Private Sub LabelControl1_Click(sender As Object, e As EventArgs) Handles LabelControl1.Click
-
-    End Sub
 End Class
