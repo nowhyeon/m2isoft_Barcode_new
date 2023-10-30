@@ -45,4 +45,8 @@ Public Class frmMDI
     Private Sub frmMDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Get_TestCode()
     End Sub
+
+    Private Sub frmMDI_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Me.DialogResult = DialogResult.Cancel
+    End Sub
 End Class
