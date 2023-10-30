@@ -50,17 +50,17 @@ Public Class frmMain
     '수진자 조회
     Private Sub PsFindRoutine()
         Try
-            'Dim sWorkLog As String = " Customer List Searching."
+            Dim sWorkLog As String = " Customer List Searching."
 
-            'Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
+            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
-            'Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
-            '                                                                Format(dtpTo.EditValue, "yyyyMMdd"),'종료일
-            '                                                                cboReceipt.EditValue,               '접수타입
-            '                                                                cboSearchCond.EditValue,            '검색타입
-            '                                                                txtSearchWrd.Text)                  '검색어
+            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
+                                                                          Format(dtpTo.EditValue, "yyyyMMdd"),  '종료일
+                                                                          luReceipt.EditValue,                  '접수타입
+                                                                          luSearchCond.EditValue,               '검색타입
+                                                                          txtSearchWrd.Text)                    '검색어
 
-            'grdSearchQry.DataSource = sTable
+            grdSearchQry.DataSource = sTable
 
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -69,7 +69,7 @@ Public Class frmMain
     End Sub
 
     '수진자조회 버튼
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs)
+    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
 
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
@@ -92,15 +92,16 @@ Public Class frmMain
         End With
 
         Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
-                                                                 GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
-                                                                 GridView.GetRowCellValue(sSelectRow, "JUBSU").ToString)
+                                                                             GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
+                                                                             GridView.GetRowCellValue(sSelectRow, "JUBSU").ToString)
 
         grdSelect.DataSource = sTable
+
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'dtpFrom.EditValue = Now
-        'dtpTo.EditValue = Now
+        dtpFrom.EditValue = Now
+        dtpTo.EditValue = Now
 
         'With cboReceipt
         '    .Properties.Items.Clear()
