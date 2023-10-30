@@ -129,6 +129,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="02.Module\mod_m2i.vb" />
+    <Compile Include="02.Module\mod_Message.vb" />
     <Compile Include="03.Class\ClsDatabase.vb" />
     <Compile Include="03.Class\ClsEncryptDecrypt.vb" />
     <Compile Include="03.Class\ClsErrorsAndEvents.vb" />

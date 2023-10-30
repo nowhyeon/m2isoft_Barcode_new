@@ -25,11 +25,11 @@ Partial Class frmLogin
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.lblUser = New System.Windows.Forms.Label()
-        Me.txtUserID = New DevExpress.XtraEditors.TextEdit()
+        Me.txtID = New DevExpress.XtraEditors.TextEdit()
         Me.txtPW = New DevExpress.XtraEditors.TextEdit()
         Me.btnLogin = New DevExpress.XtraEditors.SimpleButton()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.txtID = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.layoutcontrolitem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.layoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.layoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -43,10 +43,10 @@ Partial Class frmLogin
         Me.GroupControl1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.txtUserID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPW.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutcontrolitem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,11 +69,11 @@ Partial Class frmLogin
         'picLogo
         '
         Me.picLogo.EditValue = CType(resources.GetObject("picLogo.EditValue"), Object)
-        Me.picLogo.Location = New System.Drawing.Point(304, 13)
+        Me.picLogo.Location = New System.Drawing.Point(298, 13)
         Me.picLogo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.picLogo.Name = "picLogo"
         Me.picLogo.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.picLogo.Properties.InitialImageOptions.Image = CType(resources.GetObject("PictureEdit1.Properties.InitialImageOptions.Image"), System.Drawing.Image)
+        Me.picLogo.Properties.InitialImageOptions.Image = CType(resources.GetObject("picLogo.Properties.InitialImageOptions.Image"), System.Drawing.Image)
         Me.picLogo.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.Image
         Me.picLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.picLogo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
@@ -86,7 +86,7 @@ Partial Class frmLogin
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
         Me.GroupControl1.AutoSize = True
         Me.GroupControl1.Controls.Add(Me.LayoutControl1)
-        Me.GroupControl1.Location = New System.Drawing.Point(304, 143)
+        Me.GroupControl1.Location = New System.Drawing.Point(298, 143)
         Me.GroupControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(239, 193)
@@ -96,7 +96,7 @@ Partial Class frmLogin
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.lblUser)
-        Me.LayoutControl1.Controls.Add(Me.txtUserID)
+        Me.LayoutControl1.Controls.Add(Me.txtID)
         Me.LayoutControl1.Controls.Add(Me.txtPW)
         Me.LayoutControl1.Controls.Add(Me.btnLogin)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -112,37 +112,37 @@ Partial Class frmLogin
         'lblUser
         '
         Me.lblUser.Font = New System.Drawing.Font("돋움", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUser.Location = New System.Drawing.Point(12, 40)
+        Me.lblUser.Location = New System.Drawing.Point(83, 40)
         Me.lblUser.Name = "lblUser"
-        Me.lblUser.Size = New System.Drawing.Size(211, 51)
+        Me.lblUser.Size = New System.Drawing.Size(140, 51)
         Me.lblUser.TabIndex = 4
         Me.lblUser.Text = "사용자"
         Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'txtUserID
+        'txtID
         '
-        Me.txtUserID.EditValue = ""
-        Me.txtUserID.Location = New System.Drawing.Point(12, 12)
-        Me.txtUserID.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtUserID.Name = "txtUserID"
-        Me.txtUserID.Properties.Appearance.Options.UseTextOptions = True
-        Me.txtUserID.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txtUserID.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.txtUserID.Size = New System.Drawing.Size(211, 24)
-        Me.txtUserID.StyleController = Me.LayoutControl1
-        Me.txtUserID.TabIndex = 0
+        Me.txtID.EditValue = ""
+        Me.txtID.Location = New System.Drawing.Point(83, 12)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtID.Name = "txtID"
+        Me.txtID.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtID.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtID.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.txtID.Size = New System.Drawing.Size(140, 24)
+        Me.txtID.StyleController = Me.LayoutControl1
+        Me.txtID.TabIndex = 0
         '
         'txtPW
         '
         Me.txtPW.EditValue = ""
-        Me.txtPW.Location = New System.Drawing.Point(12, 95)
+        Me.txtPW.Location = New System.Drawing.Point(83, 95)
         Me.txtPW.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtPW.Name = "txtPW"
         Me.txtPW.Properties.Appearance.Options.UseTextOptions = True
         Me.txtPW.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.txtPW.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.txtPW.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPW.Size = New System.Drawing.Size(211, 24)
+        Me.txtPW.Size = New System.Drawing.Size(140, 24)
         Me.txtPW.StyleController = Me.LayoutControl1
         Me.txtPW.TabIndex = 2
         '
@@ -160,21 +160,21 @@ Partial Class frmLogin
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.txtID, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutcontrolitem1, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(235, 162)
         '
-        'txtID
+        'layoutcontrolitem1
         '
-        Me.txtID.Control = Me.txtUserID
-        Me.txtID.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.txtID.CustomizationFormText = "layoutControlItem1"
-        Me.txtID.Location = New System.Drawing.Point(0, 0)
-        Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(215, 28)
-        Me.txtID.TextLocation = DevExpress.Utils.Locations.Left
-        Me.txtID.TextSize = New System.Drawing.Size(0, 0)
-        Me.txtID.TextVisible = False
+        Me.layoutcontrolitem1.Control = Me.txtID
+        Me.layoutcontrolitem1.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.layoutcontrolitem1.CustomizationFormText = "layoutControlItem1"
+        Me.layoutcontrolitem1.Location = New System.Drawing.Point(0, 0)
+        Me.layoutcontrolitem1.Name = "layoutcontrolitem1"
+        Me.layoutcontrolitem1.Size = New System.Drawing.Size(215, 28)
+        Me.layoutcontrolitem1.Text = "| 아이디 "
+        Me.layoutcontrolitem1.TextLocation = DevExpress.Utils.Locations.Left
+        Me.layoutcontrolitem1.TextSize = New System.Drawing.Size(68, 18)
         '
         'layoutControlItem2
         '
@@ -183,9 +183,9 @@ Partial Class frmLogin
         Me.layoutControlItem2.Location = New System.Drawing.Point(0, 83)
         Me.layoutControlItem2.Name = "layoutControlItem2"
         Me.layoutControlItem2.Size = New System.Drawing.Size(215, 28)
+        Me.layoutControlItem2.Text = "| 비밀번호 "
         Me.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left
-        Me.layoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
-        Me.layoutControlItem2.TextVisible = False
+        Me.layoutControlItem2.TextSize = New System.Drawing.Size(68, 18)
         '
         'layoutControlItem4
         '
@@ -204,12 +204,12 @@ Partial Class frmLogin
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 28)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(215, 55)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
+        Me.LayoutControlItem3.Text = "    "
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(68, 18)
         '
         'SeparatorControl2
         '
-        Me.SeparatorControl2.Location = New System.Drawing.Point(302, 105)
+        Me.SeparatorControl2.Location = New System.Drawing.Point(296, 105)
         Me.SeparatorControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.SeparatorControl2.Name = "SeparatorControl2"
         Me.SeparatorControl2.Padding = New System.Windows.Forms.Padding(10, 12, 10, 12)
@@ -218,7 +218,7 @@ Partial Class frmLogin
         '
         'SeparatorControl1
         '
-        Me.SeparatorControl1.Location = New System.Drawing.Point(304, 344)
+        Me.SeparatorControl1.Location = New System.Drawing.Point(298, 344)
         Me.SeparatorControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.SeparatorControl1.Name = "SeparatorControl1"
         Me.SeparatorControl1.Padding = New System.Windows.Forms.Padding(10, 12, 10, 12)
@@ -229,7 +229,7 @@ Partial Class frmLogin
         '
         Me.lblLink.Appearance.ForeColor = System.Drawing.Color.RoyalBlue
         Me.lblLink.Appearance.Options.UseForeColor = True
-        Me.lblLink.Location = New System.Drawing.Point(320, 425)
+        Me.lblLink.Location = New System.Drawing.Point(314, 425)
         Me.lblLink.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lblLink.Name = "lblLink"
         Me.lblLink.Size = New System.Drawing.Size(224, 18)
@@ -240,7 +240,7 @@ Partial Class frmLogin
         '
         Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl1.Appearance.Options.UseForeColor = True
-        Me.LabelControl1.Location = New System.Drawing.Point(373, 399)
+        Me.LabelControl1.Location = New System.Drawing.Point(367, 399)
         Me.LabelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(168, 18)
@@ -251,7 +251,7 @@ Partial Class frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 456)
+        Me.ClientSize = New System.Drawing.Size(549, 456)
         Me.Controls.Add(Me.lblLink)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.SeparatorControl1)
@@ -271,10 +271,10 @@ Partial Class frmLogin
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.txtUserID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPW.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutcontrolitem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -290,11 +290,9 @@ Partial Class frmLogin
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents lblUser As Label
-    Friend WithEvents txtUserID As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtPW As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnLogin As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents txtID As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents layoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents layoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
@@ -302,4 +300,6 @@ Partial Class frmLogin
     Friend WithEvents SeparatorControl1 As DevExpress.XtraEditors.SeparatorControl
     Friend WithEvents lblLink As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtID As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents layoutcontrolitem1 As DevExpress.XtraLayout.LayoutControlItem
 End Class
