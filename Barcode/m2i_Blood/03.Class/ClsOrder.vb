@@ -38,18 +38,17 @@
                                             ) As DataTable
 
         Dim sqldoc As String = String.Empty
-        sqldoc = sqldoc & vbCrLf & " SELECT a.PTNO                                                AS PTID         "
-        sqldoc = sqldoc & vbCrLf & "      , a.SNAME                                               AS PTNM         "
-        sqldoc = sqldoc & vbCrLf & "      , format(CONVERT(DATE,a.ReceiptDate),'yyyyMMdd')        AS REQDATE      "
-        sqldoc = sqldoc & vbCrLf & "      , a.SEX                                                 AS PTSEX        "
-        sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2)  "
-        sqldoc = sqldoc & vbCrLf & "      , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO                              "
-        sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                 AS PTAGE        "
-        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                             AS JUBSU        "
-        sqldoc = sqldoc & vbCrLf & " FROM SLA_LabMaster a, SLA_LabResult b                                        "
-        sqldoc = sqldoc & vbCrLf & " WHERE a.PTNO = b.PTNO                                                                                                 "
-        sqldoc = sqldoc & vbCrLf & " AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "')                                                         "
-        sqldoc = sqldoc & vbCrLf & " AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자                                                                   "
+        sqldoc = sqldoc & vbCrLf & " SELECT a.PTNO                                                                                                  AS PTID "
+        sqldoc = sqldoc & vbCrLf & "      , a.SNAME                                                                                                 AS PTNM "
+        sqldoc = sqldoc & vbCrLf & "      , format(CONVERT(DATE,a.ReceiptDate),'yyyyMMdd')                                                       AS REQDATE "
+        sqldoc = sqldoc & vbCrLf & "      , a.SEX                                                                                                  AS PTSEX "
+        sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2) , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO "
+        sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE "
+        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS JUBSU "
+        sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                "
+        sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                 "
+        sqldoc = sqldoc & vbCrLf & " AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "')                                                          "
+        sqldoc = sqldoc & vbCrLf & " AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자                                                                    "
         sqldoc = sqldoc & vbCrLf & " AND b.ORDERCODE in (" & gTestCode & " )                              -- 검사코드"
         If strRcptType <> "0" Then
             Select Case strRcptType
@@ -70,7 +69,7 @@
         sqldoc = sqldoc & vbCrLf & " ORDER BY REQDATE, SPCNO                                                         "
 
         Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
-
+        Console.Write(sqldoc)
         If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
             Return sTable
         Else

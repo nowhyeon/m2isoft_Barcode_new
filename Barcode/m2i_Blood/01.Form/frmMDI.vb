@@ -21,7 +21,7 @@ Public Class frmMDI
             ' sTable에 없는 검사코드가 있을 때
             If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
                 For Each row As DataRow In sTable.Rows
-                    gTestCode &= "'" & row(0).ToString & "',"
+                    gTestCode &= "'" & row(1).ToString & "',"
                 Next
                 gTestCode = Mid(gTestCode, 1, Len(gTestCode) - 1)
             Else
