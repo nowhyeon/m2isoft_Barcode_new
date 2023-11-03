@@ -30,8 +30,8 @@ Module mod_m2i
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"
 
-    Public gPrintIP As String = "192.168.0.240"
-    Public gPrintIP_ZD As String = "192.168.0.241"
+    Public gPrintIP As String = "192.168.0.241"
+    Public gPrintIP_ZD As String = "172.0.0.101"
 
     Public gPrintPort As Integer = 9100
     Public gPrintTimeOut As Integer = 5000
