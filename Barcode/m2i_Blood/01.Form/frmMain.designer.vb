@@ -700,7 +700,7 @@ Partial Class frmMain
         Me.LayoutControlItem40.Location = New System.Drawing.Point(281, 78)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
         Me.LayoutControlItem40.Size = New System.Drawing.Size(282, 26)
-        Me.LayoutControlItem40.Text = "│ 처방일자 "
+        Me.LayoutControlItem40.Text = "│ 접수일자"
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(80, 15)
         '
         'LayoutControlItem41
@@ -722,7 +722,7 @@ Partial Class frmMain
         Me.LayoutControlItem42.Location = New System.Drawing.Point(281, 104)
         Me.LayoutControlItem42.Name = "LayoutControlItem42"
         Me.LayoutControlItem42.Size = New System.Drawing.Size(282, 26)
-        Me.LayoutControlItem42.Text = "│ 처방일자 "
+        Me.LayoutControlItem42.Text = "│ 처방일자"
         Me.LayoutControlItem42.TextSize = New System.Drawing.Size(80, 15)
         '
         'LayoutControlItem43

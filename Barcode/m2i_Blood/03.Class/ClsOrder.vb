@@ -19,6 +19,11 @@
         End If
         sqldoc = sqldoc & vbCrLf & " and   a.PTNO = '" & strPTID & "'                                         "
         sqldoc = sqldoc & vbCrLf & " and   b.LABNAME in  (" & gTestCode & " )   -- 검사코드                   "
+        sqldoc = sqldoc & vbCrLf & " ORDER BY TESTCODE                                                        "
+
+        Console.Write("------------검사항목조회------------")
+        Console.Write(sqldoc)
+        Console.Write("------------------------------------")
 
         Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
 
@@ -42,18 +47,22 @@
         sqldoc = sqldoc & vbCrLf & "      , a.SNAME                                                                                                 AS PTNM "
         sqldoc = sqldoc & vbCrLf & "      , format(CONVERT(DATE,a.ReceiptDate),'yyyyMMdd')                                                       AS REQDATE "
         sqldoc = sqldoc & vbCrLf & "      , a.SEX                                                                                                  AS PTSEX "
-        sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2) , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO "
+        'sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2) , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO "
+        sqldoc = sqldoc & vbCrLf & "      , RIGHT('000000000000'+CAST(CONCAT(DATEDIFF(day, b.ReceiptDate,format(getdate(),'yyyyMMdd')),a.PTNO)AS VARCHAR(12)),12) As SPCNO "
         sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE "
         sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS JUBSU "
+        sqldoc = sqldoc & vbCrLf & "      , a.SIGNIN                                                                                                        "
+        sqldoc = sqldoc & vbCrLf & "      , b.REMARK                                                                                                        "
+        sqldoc = sqldoc & vbCrLf & "      , a.DeptCode                                                                                                      "
+        sqldoc = sqldoc & vbCrLf & "      , b.RESULTDATE                                                                                                    "
         sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                "
         sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                 "
-        sqldoc = sqldoc & vbCrLf & " AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "')                                                          "
-        sqldoc = sqldoc & vbCrLf & " AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자                                                                    "
-        sqldoc = sqldoc & vbCrLf & " AND b.ORDERCODE in (" & gTestCode & " )                              -- 검사코드"
+        sqldoc = sqldoc & vbCrLf & "    AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "') AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자   "
+        sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in (" & gTestCode & " )                              -- 검사코드"
         If strRcptType <> "0" Then
             Select Case strRcptType
-                Case "2" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 2                             -- 02:결과 "
-                Case "1" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 4                             -- 04:접수 "
+                Case "2" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 2                                -- 02:결과 "
+                Case "1" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 4                                -- 04:접수 "
                 Case Else
             End Select
         End If
@@ -68,8 +77,13 @@
         End If
         sqldoc = sqldoc & vbCrLf & " ORDER BY REQDATE, SPCNO                                                         "
 
-        Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
+        Console.Write("------------수진자조회------------")
         Console.Write(sqldoc)
+        Console.Write("----------------------------------")
+
+        Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
+
+
         If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
             Return sTable
         Else
