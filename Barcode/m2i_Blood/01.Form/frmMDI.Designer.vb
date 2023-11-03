@@ -56,7 +56,7 @@ Partial Class frmMDI
         Me.AccordionControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.AccordionControl1.Name = "AccordionControl1"
         Me.AccordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch
-        Me.AccordionControl1.Size = New System.Drawing.Size(202, 849)
+        Me.AccordionControl1.Size = New System.Drawing.Size(130, 849)
         Me.AccordionControl1.TabIndex = 1
         Me.AccordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu
         '
@@ -150,10 +150,10 @@ Partial Class frmMDI
         'FluentDesignFormContainer1
         '
         Me.FluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(202, 27)
+        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(130, 27)
         Me.FluentDesignFormContainer1.Margin = New System.Windows.Forms.Padding(2)
         Me.FluentDesignFormContainer1.Name = "FluentDesignFormContainer1"
-        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1068, 849)
+        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1140, 849)
         Me.FluentDesignFormContainer1.TabIndex = 0
         '
         'AccordionControlElement5

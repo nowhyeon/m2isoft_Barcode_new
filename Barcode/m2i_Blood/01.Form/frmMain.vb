@@ -32,11 +32,19 @@ Public Class frmMain
         End With
         'GridView, "검사코드", "TESTCD", 15, "D", True, True, "S", 0, False, Nothing, False, False
         GfColumnSet(GridView, "차트번호", "PTID", 30, "L", , True)
-        GfColumnSet(GridView, "이름", "PTNM", 20, "L", , True)
-        GfColumnSet(GridView, "접수일", "REQDATE", 20, "L", , True)
-        GfColumnSet(GridView, "바코드", "SPCNO", 20, "L", , True)
-        GfColumnSet(GridView, "성별", "PTSEX", 20, "L", , True)
-        GfColumnSet(GridView, "나이", "PTAGE", 20, "L", , True)
+        GfColumnSet(GridView, "이름", "PTNM", 15, "L", , True)
+        GfColumnSet(GridView, "접수일", "REQDATE", 30, "L", , True)
+        GfColumnSet(GridView, "바코드", "SPCNO", 30, "L", , True)
+        GfColumnSet(GridView, "성별", "PTSEX", 15, "L", , True)
+        GfColumnSet(GridView, "나이", "PTAGE", 15, "L", , True)
+
+        GfColumnSet(GridView3, "검사이름", "TESTNM", 30, "L", , True)
+        GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
+        GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
+        GfColumnSet(GridView3, "검사약어", "TESTNM_10", 30, "L", , True)
+        GfColumnSet(GridView3, "특이사항", "Remark", 40, "L", , True)
+        GfColumnSet(GridView3, "출력장수", "PrintAdd", 15, "L", , True)
+        GfColumnSet(GridView3, "바코드분류", "BarcodeDivision", 15, "L", , True)
 
         grdSearchQry.Dock = DockStyle.Fill
 
@@ -81,21 +89,46 @@ Public Class frmMain
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
+        Dim TESTCD As String = String.Empty
 
-        With GridView
-            txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()
-            txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()
-            txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()
-            txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()
-            txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()
-            txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()
-        End With
+        Try
+            With GridView
+                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()
+                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()
+                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()
+                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()
+                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()
+                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()
+            End With
 
-        Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
-                                                                             GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
-                                                                             GridView.GetRowCellValue(sSelectRow, "JUBSU").ToString)
+            Dim TestCode As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
+                                                                               GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
+                                                                               GridView.GetRowCellValue(sSelectRow, "JUBSU").ToString)
 
-        grdSelect.DataSource = sTable
+            If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
+                For Each row As DataRow In TestCode.Rows
+                    TESTCD &= "'" & row(0).ToString & "',"
+                Next
+                TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
+            Else
+                Dim sMsg As String = "등록된 검사코드가 없습니다 !", sMsgTitle As String = "검사코드 오류"
+                XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+            QueryString = String.Empty
+            QueryString &= " SELECT TESTNM, WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd, BarcodeDivision " & vbCrLf
+            QueryString &= "   FROM m2i_LAB004                                                                 " & vbCrLf
+            QueryString &= "  WHERE 1 = 1                                                                      " & vbCrLf
+            QueryString &= "    AND TESTCD in (" & TESTCD & ")                                                 " & vbCrLf
+            QueryString &= "  ORDER BY TESTCD                                                                  " & vbCrLf
+
+            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+            grdSelect.DataSource = sTable
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
@@ -103,23 +136,6 @@ Public Class frmMain
         dtpFrom.EditValue = Now
         dtpTo.EditValue = Now
 
-        'With cboReceipt
-        '    .Properties.Items.Clear()
-        '    .Properties.Items.Add("01.접수")
-        '    .Properties.Items.Add("02.결과")
-        'End With
-        'With cboPrintYN
-        '    .Properties.Items.Clear()
-        '    .Properties.Items.Add("01.출력")
-        '    .Properties.Items.Add("02.미출력")
-        'End With
-        'With cboSearchCond
-        '    .Properties.Items.Clear()
-        '    .Properties.Items.Add("01.검색조건")
-        '    .Properties.Items.Add("02.환자명")
-        '    .Properties.Items.Add("03.차트번호")
-        '    .Properties.Items.Add("04.검사코드")
-        'End With
     End Sub
 
 End Class

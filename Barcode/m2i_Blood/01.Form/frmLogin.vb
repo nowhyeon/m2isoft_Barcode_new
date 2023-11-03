@@ -88,4 +88,7 @@ Public Class frmLogin
         Process.Start("IExplore.exe", "http://m2isoft.com/")
     End Sub
 
+    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
