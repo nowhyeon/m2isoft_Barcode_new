@@ -1,7 +1,6 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports DevExpress.XtraBars.Docking2010
+Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid
-Imports DevExpress.XtraBars.Docking2010
 
 Public Class frmSetup
 
@@ -14,6 +13,8 @@ Public Class frmSetup
         InitializeComponent()
 
         ' InitializeComponent() 호출 뒤에 초기화 코드를 추가하세요.
+
+        LookUpSet(lupBloodTube)
 
         Me.StartPosition = FormStartPosition.CenterScreen                             ' 폼이 나올 때 중간에 위치
 
@@ -30,20 +31,21 @@ Public Class frmSetup
         GfColumnSet(GridView, "검사코드", "TESTCD", 15, "D", True, True, "S", 0)
         GfColumnSet(GridView, "검사이름", "TESTNM", 25, "D", True, True, "S", 0)
         GfColumnSet(GridView, "검사약어", "TestNm_10", 5, "D", True, True, "S", 0)
-        GfColumnSet(GridView, "검사분야", "WorkArea", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "채혈용기", "BloodTube", 5, "D", True, True, "S", 0)
+        GfColumnSet(GridView, "WorkArea", "WorkArea", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "바코드 출력 장수", "PrintAdd", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "특이사항", "Remark", 20, "D", True, True, "S", 0)
-        GfColumnSet(GridView, "바코드분류", "BarcodeDivision", 20, "D", True, True, "S", 0)
+        GfColumnSet(GridView, "비고", "Note", 20, "D", True, True, "S", 0)
 
     End Sub
 
     Private Sub frmSetup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Call PtReroadRoutine()
+
     End Sub
 
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles btnPanWork.ButtonClick
-
+    Private Sub btnPanWork_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles btnPanWork.ButtonClick
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
@@ -59,59 +61,74 @@ Public Class frmSetup
     End Sub
 
     Private Sub PtDeleteRoutine()
+
         Dim sReturn As Boolean = False
 
-        QueryString = ""
-        QueryString &= "DELETE FROM m2i_LAB002 WHERE TESTCD = '" & txtTestCd.Text & "' "
+        QueryString = String.Empty
+        QueryString &= "DELETE FROM m2i_LAB004 WHERE TESTCD = '" & txtTestCd.Text & "' "
 
         If QueryString.Length > 0 Then
             sReturn = ClsDb.CfMExecuteQuery(QueryString)
         End If
 
         If sReturn Then
-            XtraMessageBox.Show(_sMsg_Question.sMsgQst_Delete, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Save, MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-            Call PtReroadRoutine()
-            Call PtScreenClear()
+            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_Delete, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Call PtReroadRoutine()
+                Call PtScreenClear()
+            End If
         End If
     End Sub
 
-    Private Sub PtSaveRoutine() ' 검사항목 저장 및 수정 기능(올인원)
+    Private Sub PtSaveRoutine()
         Dim sReturn As Boolean = False
 
         If txtTestCd.Text.Length = 0 Then
             Exit Sub
         End If
 
-        QueryString = ""
-        QueryString &= "SELECT TESTCD FROM m2i_LAB002                           " & vbNewLine
-        QueryString &= " WHERE TESTCD = '" & txtTestCd.Text & "'                " & vbNewLine
+        QueryString = String.Empty
+        QueryString &= "SELECT TESTCD FROM m2i_LAB004 WHERE TESTCD = '" & txtTestCd.Text & "'"
+
         Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
-        If Not IsNothing(sTable) AndAlso sTable.Rows.Count >= 0 Then
-            QueryString = ""
-            QueryString &= "UPDATE m2i_LAB002 SET                                        " & vbNewLine
-            QueryString &= "       TESTNM          = '" & txtTestNm.Text & "',           " & vbNewLine
-            QueryString &= "       TestNm_10       = '" & txtTestNm_10.Text & "',        " & vbNewLine
-            QueryString &= "       WorkArea        = '" & txtWorkArea.Text & "',         " & vbNewLine
-            QueryString &= "       BloodTube       = '" & txtBloodTube.Text & "',        " & vbNewLine
-            QueryString &= "       PrintAdd        = '" & txtPrtCnt.Text & "',           " & vbNewLine
-            QueryString &= "       Remark          = '" & txtRemark.Text & "',           " & vbNewLine
-            QueryString &= "       BarcodeDivision = '" & txtBarcodeDivision.Text & "'  " & vbNewLine
-            QueryString &= " WHERE TESTCD          = '" & txtTestCd.Text & "'"
+        If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+            QueryString = String.Empty
+            QueryString &= "UPDATE [m2i_LAB004] SET                                       " & vbNewLine
+            QueryString &= "       [TESTNM]          = '" & txtTestNm.Text & "',          " & vbNewLine
+            QueryString &= "       [TestNm_10]       = '" & txtTestNm_10.Text & "',       " & vbNewLine
+            QueryString &= "       [BloodTube]       = '" & lupBloodTube.EditValue & "',  " & vbNewLine
+            QueryString &= "       [WorkArea]        = '" & txtWorkArea.Text & "',        " & vbNewLine
+            QueryString &= "       [PrintAdd]        = '" & cboPrtCnt.EditValue & "',     " & vbNewLine
+            QueryString &= "       [Remark]          = '" & txtRemark.Text & "',          " & vbNewLine
+            QueryString &= "       [Note]            = '" & txtNote.Text & "'             " & vbNewLine
+            QueryString &= " WHERE [TESTCD]          = '" & txtTestCd.Text & "'           "
+            Debug.Print(QueryString)
         Else
-            QueryString = ""
-            QueryString &= "INSERT INTO m2i_LAB002 (TESTCD, TESTNM, TestNm_10, WorkArea, BloodTube, PrintAdd, Remark, BarcodeDivision) VALUES ( "
-            QueryString &= "       '" & txtTestCd.Text & "',                             " & vbNewLine
-            QueryString &= "       '" & txtTestNm.Text & "',                             " & vbNewLine
-            QueryString &= "       '" & txtTestNm_10.Text & "',                          " & vbNewLine
-            QueryString &= "       '" & txtWorkArea.Text & "',                           " & vbNewLine
-            QueryString &= "       '" & txtBloodTube.Text & "',                          " & vbNewLine
-            QueryString &= "       '" & txtPrtCnt.Text & "',                             " & vbNewLine
-            QueryString &= "       '" & txtRemark.Text & "',                             " & vbNewLine
-            QueryString &= "       '" & txtBarcodeDivision.Text & "')                    "
-
+            QueryString = String.Empty
+            QueryString &= " INSERT INTO [m2i_LAB004]                                     " & vbNewLine
+            QueryString &= " (                                                            " & vbNewLine
+            QueryString &= "        [TESTCD],                                             " & vbNewLine
+            QueryString &= "        [TESTNM],                                             " & vbNewLine
+            QueryString &= "        [TestNm_10],                                          " & vbNewLine
+            QueryString &= "        [BloodTube],                                          " & vbNewLine
+            QueryString &= "        [WorkArea],                                           " & vbNewLine
+            QueryString &= "        [PrintAdd],                                           " & vbNewLine
+            QueryString &= "        [Remark],                                             " & vbNewLine
+            QueryString &= "        [Note]                                                " & vbNewLine
+            QueryString &= " )                                                            " & vbNewLine
+            QueryString &= " VALUES                                                       " & vbNewLine
+            QueryString &= " (                                                            " & vbNewLine
+            QueryString &= "       '" & txtTestCd.Text & "',                              " & vbNewLine
+            QueryString &= "       '" & txtTestNm.Text & "',                              " & vbNewLine
+            QueryString &= "       '" & txtTestNm_10.Text & "',                           " & vbNewLine
+            QueryString &= "       '" & lupBloodTube.EditValue & "',                      " & vbNewLine
+            QueryString &= "       '" & txtWorkArea.Text & "',                            " & vbNewLine
+            QueryString &= "       '" & cboPrtCnt.EditValue & "',                         " & vbNewLine
+            QueryString &= "       '" & txtRemark.Text & "',                              " & vbNewLine
+            QueryString &= "       '" & txtNote.Text & "'                                 " & vbNewLine
+            QueryString &= " )                                                            " & vbNewLine
+            Debug.Print(QueryString)
         End If
 
         If QueryString.Length > 0 Then
@@ -130,12 +147,9 @@ Public Class frmSetup
 
     Private Sub PtReroadRoutine()
         Try
-            Dim sWorkLog As String = " TestList Searching."
 
-            'Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
-
-            QueryString = ""
-            QueryString &= "SELECT * FROM m2i_LAB002 " & vbNewLine
+            QueryString = String.Empty
+            QueryString &= "SELECT * FROM m2i_LAB004 " & vbNewLine
             QueryString &= " ORDER BY TESTCD         "
 
             grdTestList.DataSource = ClsDb.CfMSelectQuery(QueryString)
@@ -147,15 +161,14 @@ Public Class frmSetup
     End Sub
 
     Private Sub PtScreenClear()
-        txtTestCd.Text = ""
-        txtTestNm.Text = ""
-        txtTestNm_10.Text = ""
-        txtWorkArea.Text = ""
-        txtBloodTube.Text = ""
-        txtPrtCnt.Text = ""
-        txtRemark.Text = ""
-        txtBarcodeDivision.Text = ""
-        txtTestCd.Text = ""
+        txtTestCd.Text = String.Empty
+        txtTestNm.Text = String.Empty
+        txtTestNm_10.Text = String.Empty
+        lupBloodTube.EditValue = String.Empty
+        txtWorkArea.Text = String.Empty
+        cboPrtCnt.EditValue = String.Empty
+        txtRemark.Text = String.Empty
+        txtNote.Text = String.Empty
     End Sub
 
     Private Sub PtScreenClose()
@@ -163,30 +176,95 @@ Public Class frmSetup
         Me.Close()
     End Sub
 
-    Private Sub grdTestList_Click(sender As Object, e As EventArgs) Handles grdTestList.Click
-        Dim sSelectRow As Integer = GridView.FocusedRowHandle
+    'Private Sub grdTestList_Click(sender As Object, e As EventArgs) Handles grdTestList.Click
 
-        If sSelectRow < 0 Then
-            Return
+    '    Dim sSelectRow As Integer = GridView.FocusedRowHandle
+
+    '    If sSelectRow < 0 Then
+    '        Return
+    '    ElseIf sSelectRow >= 0 Then
+    '        With GridView
+    '            txtTestCd.Text = .GetRowCellValue(sSelectRow, "TESTCD").ToString()
+    '            txtTestNm.Text = .GetRowCellValue(sSelectRow, "TESTNM").ToString()
+    '            txtTestNm_10.Text = .GetRowCellValue(sSelectRow, "TestNm_10").ToString()
+    '            If .GetRowCellValue(sSelectRow, "BloodTube").ToString() = "" Then
+    '                lupBloodTube.EditValue = 0
+    '            Else
+    '                lupBloodTube.EditValue = .GetRowCellValue(sSelectRow, "BloodTube").ToString()
+    '            End If
+    '            txtWorkArea.Text = .GetRowCellValue(sSelectRow, "WorkArea").ToString()
+    '            cboPrtCnt.EditValue = .GetRowCellValue(sSelectRow, "PrintAdd").ToString()
+    '            txtRemark.Text = .GetRowCellValue(sSelectRow, "Remark").ToString()
+    '            txtNote.Text = .GetRowCellValue(sSelectRow, "Note").ToString()
+
+    '        End With
+
+    '    End If
+
+    'End Sub
+
+    Private Sub GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles GridView.RowCellClick
+
+        If e.Button = MouseButtons.Left Then ' 왼쪽 마우스 버튼 클릭인 경우에만 처리
+            ' 클릭된 행의 데이터를 가져오기
+            Dim focusedRow As Integer = GridView.FocusedRowHandle
+
+            ' 형식을 Object로 주어 개체 인스턴스 에러 방지
+            Dim TestCD As Object = GridView.GetFocusedRowCellValue("TESTCD")
+            Dim TestNM As Object = GridView.GetFocusedRowCellValue("TESTNM")
+            Dim TestNm_10 As Object = GridView.GetFocusedRowCellValue("TestNm_10")
+            Dim BloodTube As Object = GridView.GetFocusedRowCellValue("BloodTube")
+            Dim WorkArea As Object = GridView.GetFocusedRowCellValue("WorkArea")
+            Dim PrtCnt As Object = GridView.GetFocusedRowCellValue("PrintAdd")
+            Dim Remark As Object = GridView.GetFocusedRowCellValue("Remark")
+            Dim Note As Object = GridView.GetFocusedRowCellValue("Note")
+
+            If focusedRow >= 0 Then
+                '' NullReferenceException 에러 다시 발생 시 이 코드를 사용
+                'If testCd IsNot Nothing Then
+                '    txtTestCd.Text = testCd.ToString()
+                'Else
+                '    txtTestCd.Text = ""
+                'End If
+                txtTestCd.Text = TestCD.ToString()
+                txtTestNm.Text = TestNM.ToString()
+                txtTestNm_10.Text = TestNm_10.ToString()
+                lupBloodTube.EditValue = BloodTube.ToString()
+                txtWorkArea.Text = WorkArea.ToString()
+                cboPrtCnt.EditValue = PrtCnt.ToString()
+                txtRemark.Text = Remark.ToString()
+                txtNote.Text = Note.ToString()
+
+            End If
         End If
 
-        With GridView
-            txtTestCd.Text = .GetRowCellValue(sSelectRow, "TESTCD").ToString()
-            txtTestNm.Text = .GetRowCellValue(sSelectRow, "TESTNM").ToString()
-            txtTestNm_10.Text = .GetRowCellValue(sSelectRow, "TestNm_10").ToString()
-            txtWorkArea.Text = .GetRowCellValue(sSelectRow, "WorkArea").ToString()
-            txtBloodTube.Text = .GetRowCellValue(sSelectRow, "BloodTube").ToString()
-            txtPrtCnt.Text = .GetRowCellValue(sSelectRow, "PrintAdd").ToString()
-            txtRemark.Text = .GetRowCellValue(sSelectRow, "Remark").ToString()
-            txtBarcodeDivision.Text = .GetRowCellValue(sSelectRow, "BarcodeDivision").ToString()
-        End With
     End Sub
 
-    Private Sub GroupControl1_Paint(sender As Object, e As PaintEventArgs) Handles GroupControl1.Paint
+    Private Sub txtTestCd_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanging, txtTestNm.EditValueChanging
+
+        QueryString = String.Empty
+        QueryString &= "SELECT * FROM m2i_LAB004                        "
+        QueryString &= "WHERE TESTCD LIKE '%" & txtTestCd.Text & "%'    "
+
+        LoadDataToGrid(QueryString)
 
     End Sub
 
-    Private Sub gcTestList_Paint(sender As Object, e As PaintEventArgs) Handles gcTestList.Paint
+    Private Sub txtTestNm_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
+        QueryString = String.Empty
+        QueryString &= "SELECT * FROM m2i_LAB004                        "
+        QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
+
+        LoadDataToGrid(QueryString)
 
     End Sub
+
+    Private Sub LoadDataToGrid(strQuery As String)
+
+        Dim sTable As DataTable = ClsDb.CfMSelectQuery(strQuery)
+
+        grdTestList.DataSource = sTable
+
+    End Sub
+
 End Class

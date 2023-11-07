@@ -37,11 +37,17 @@ Module mod_m2i
     Public gPrintTimeOut As Integer = 5000
 
 
-    Public Str_HOST_IP As String = "59.23.195.70"
-    Public Str_HOST_PORT As String = "1433"
-    Public Str_DATABASE_NAME As String = "SM_Barcode"
-    Public Str_USER_ID As String = "sa"
-    Public Str_PASSWORD As String = "m2i_soft"
+    'Public Str_HOST_IP As String = "59.23.195.70"
+    'Public Str_HOST_PORT As String = "1433"
+    'Public Str_DATABASE_NAME As String = "SM_Barcode"
+    'Public Str_USER_ID As String = "sa"
+    'Public Str_PASSWORD As String = "m2i_soft"
+
+    Public Str_HOST_IP As String
+    Public Str_HOST_PORT As String
+    Public Str_DATABASE_NAME As String
+    Public Str_USER_ID As String
+    Public Str_PASSWORD As String
 
     ' mDB 설정
     Public gMDbType As String = "ACCESS"
@@ -60,6 +66,17 @@ Module mod_m2i
         Shared _search As String = "Data Search"          ' 데이터 검색 작업 시
         Shared _MenuWork As String = "Menu Work"          ' 메뉴 작업 시
     End Structure
+
+    '사용자정보
+    Public Structure TESTInfo
+        Shared UserId As String        '
+        Shared UserName As String      '
+        Shared TESTIdx As String      'm2i_LAB101의 LupIdx의 A1, B1, C1을 받음
+        Shared HospName As String      '
+        Shared UserLevel As String     '
+        Shared DeptCode As String      '
+    End Structure
+
 
     '자식폼 열기
     Public Sub OpenChildForm(childForm As XtraForm)
@@ -196,34 +213,83 @@ Module mod_m2i
         End If
 
         Dim ClsDb As New ClsDatabase
-        Dim sQuery As String = ""
+        Dim QueryString As String = ""
         Dim sPcName As String = Environment.MachineName     ' 현재 실행 중인 컴퓨터이름
         Dim sDate As String = Format(Now, "yyyy-MM-dd")
 
-        sQuery &= "INSERT INTO hstWORKLOG (                            " & vbNewLine
-        sQuery &= "       workdt                                       " & vbNewLine
-        sQuery &= "     , workseq                                      " & vbNewLine
-        sQuery &= "     , scrcd                                        " & vbNewLine
-        sQuery &= "     , eventnm                                      " & vbNewLine
-        sQuery &= "     , usercd                                       " & vbNewLine
-        sQuery &= "     , workpc                                       " & vbNewLine
-        sQuery &= "     , describe                                     " & vbNewLine
-        sQuery &= "     , wrtdt                                        " & vbNewLine
-        sQuery &= ") VALUES (                                          " & vbNewLine
-        sQuery &= "       '" & sDate & "'                              " & vbNewLine
-        sQuery &= "     , ISNULL((SELECT MAX(workseq) FROM hstWORKLOG  " & vbNewLine
-        sQuery &= "                WHERE workdt = '" & sDate & "'      " & vbNewLine
-        sQuery &= "                GROUP BY workdt),0) + 1             " & vbNewLine
-        sQuery &= "     , '" & scrcd & "'                              " & vbNewLine
-        sQuery &= "     , '" & eventnm & "'                            " & vbNewLine
-        sQuery &= "     , '" & gUserID & "'                            " & vbNewLine
-        sQuery &= "     , '" & sPcName & "'                            " & vbNewLine
-        sQuery &= "     , '" & workstr & "'                            " & vbNewLine
-        sQuery &= "     , getdate()                                    " & vbNewLine
-        sQuery &= ")"
+        QueryString &= "INSERT INTO hstWORKLOG (                            " & vbNewLine
+        QueryString &= "       workdt                                       " & vbNewLine
+        QueryString &= "     , workseq                                      " & vbNewLine
+        QueryString &= "     , scrcd                                        " & vbNewLine
+        QueryString &= "     , eventnm                                      " & vbNewLine
+        QueryString &= "     , usercd                                       " & vbNewLine
+        QueryString &= "     , workpc                                       " & vbNewLine
+        QueryString &= "     , describe                                     " & vbNewLine
+        QueryString &= "     , wrtdt                                        " & vbNewLine
+        QueryString &= ") VALUES (                                          " & vbNewLine
+        QueryString &= "       '" & sDate & "'                              " & vbNewLine
+        QueryString &= "     , ISNULL((SELECT MAX(workseq) FROM hstWORKLOG  " & vbNewLine
+        QueryString &= "                WHERE workdt = '" & sDate & "'      " & vbNewLine
+        QueryString &= "                GROUP BY workdt),0) + 1             " & vbNewLine
+        QueryString &= "     , '" & scrcd & "'                              " & vbNewLine
+        QueryString &= "     , '" & eventnm & "'                            " & vbNewLine
+        QueryString &= "     , '" & gUserID & "'                            " & vbNewLine
+        QueryString &= "     , '" & sPcName & "'                            " & vbNewLine
+        QueryString &= "     , '" & workstr & "'                            " & vbNewLine
+        QueryString &= "     , getdate()                                    " & vbNewLine
+        QueryString &= ")"
         If gUserID.ToUpper <> gDevUserId Then
-            Call ClsDb.CfExecuteQuery(sQuery)
+            Call ClsDb.CfExecuteQuery(QueryString)
         End If
+    End Sub
+
+    Public Sub LookUpSubSet(lueObj As LookUpEdit, Optional CodeString As String = "")
+        ' WorkArea 룩업에딧 정의
+        Dim ClsDb As New ClsDatabase
+        Try
+
+            QueryString = ""
+            QueryString &= "     SELECT DISTINCT [WorkArea] FROM [m2i_LAB002]                 " & vbCrLf
+            QueryString &= "     WHERE 1=1                                                    " & vbCrLf
+            If Not IsNothing(CodeString) AndAlso CodeString.Length > 0 Then
+                QueryString &= " AND [BloodTube] = '" & CodeString & "'                       " & vbCrLf
+            End If
+
+            With lueObj.Properties
+                .Columns.Clear()
+                .TextEditStyle = Controls.TextEditStyles.DisableTextEditor                             ' 텍스트 입력 비활성화
+                .DataSource = ClsDb.CfMSelectQuery(QueryString)
+                .Columns.Add(New Controls.LookUpColumnInfo("WorkArea", "WorkArea", 100))
+                .ValueMember = "WorkArea"
+                .DisplayMember = "WorkArea"
+                .BestFitMode = Controls.BestFitMode.BestFitResizePopup
+            End With
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Public Sub LookUpSet(lueObj As LookUpEdit)
+        Dim ClsDb As New ClsDatabase
+        Try
+            QueryString = ""
+            ' BloodTube 룩업에딧 정의
+            QueryString &= "SELECT BloodTube FROM m2i_LAB002                                  " & vbCrLf
+            QueryString &= " GROUP BY BloodTube                                               "
+
+            With lueObj.Properties
+                .Columns.Clear()
+                .TextEditStyle = Controls.TextEditStyles.DisableTextEditor                             ' 텍스트 입력 비활성화
+                .DataSource = ClsDb.CfMSelectQuery(QueryString)
+                .Columns.Add(New Controls.LookUpColumnInfo("BloodTube", "채혈용기", 100))
+                .ValueMember = "BloodTube"
+                .DisplayMember = "BloodTube"
+                .BestFitMode = Controls.BestFitMode.BestFitResizePopup
+            End With
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 End Module

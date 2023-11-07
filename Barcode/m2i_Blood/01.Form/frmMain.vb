@@ -111,7 +111,7 @@ Public Class frmMain
 
             QueryString = String.Empty
             QueryString &= " SELECT TESTNM, WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd, BarcodeDivision " & vbCrLf
-            QueryString &= "   FROM m2i_LAB002                                                                 " & vbCrLf
+            QueryString &= "   FROM m2i_LAB004                                                                 " & vbCrLf
             QueryString &= "  WHERE 1 = 1                                                                      " & vbCrLf
             QueryString &= "    AND TESTCD in (" & TESTCD & ")                                                 " & vbCrLf
             QueryString &= "  ORDER BY TESTCD                                                                  " & vbCrLf

@@ -8,6 +8,7 @@
         Shared sMsg_ProgramStart As String = " 프로그램이 시작 되었습니다."
         Shared sMsg_Error As String = " 프로그램에 오류가 발생 했습니다." & Chr(10) & Chr(10) &
                                       " 시스템 로그 파일을 확인하시기 바랍니다."
+        Shared sMsg_NoXML As String = " 해당 xml파일이 존재하지 않습니다."
     End Structure
 
     Public Structure _sMsg_Title
@@ -17,6 +18,7 @@
         Shared sMsgTitle_Delete As String = "삭제 완료"
         Shared sMsgTitle_Exit As String = "종료"
         Shared sMsgTitle_Info As String = "안내"
+        Shared sMsgTitle_File As String = "파일 에러"
     End Structure
 
     Public Structure _sMsg_Question
