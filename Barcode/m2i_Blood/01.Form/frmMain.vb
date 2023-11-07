@@ -39,8 +39,8 @@ Public Class frmMain
         GfColumnSet(GridView, "나이", "PTAGE", 15, "L", , True)
 
         GfColumnSet(GridView3, "검사이름", "TESTNM", 30, "L", , True)
-        GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
         GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
+        GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
         GfColumnSet(GridView3, "검사약어", "TESTNM_10", 30, "L", , True)
         GfColumnSet(GridView3, "특이사항", "Remark", 40, "L", , True)
         GfColumnSet(GridView3, "출력장수", "PrintAdd", 15, "L", , True)
@@ -62,10 +62,12 @@ Public Class frmMain
 
             Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
+
+
             Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
                                                                           Format(dtpTo.EditValue, "yyyyMMdd"),  '종료일
-                                                                          luReceipt.EditValue,                  '접수타입
-                                                                          luSearchCond.EditValue,               '검색타입
+                                                                          cboReceipt.EditValue,                 '접수타입
+                                                                          cboSearchCond.EditValue,              '검색타입
                                                                           txtSearchWrd.Text)                    '검색어
 
             grdSearchQry.DataSource = sTable
@@ -110,11 +112,11 @@ Public Class frmMain
             End If
 
             QueryString = String.Empty
-            QueryString &= " SELECT TESTNM, WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd, BarcodeDivision " & vbCrLf
-            QueryString &= "   FROM m2i_LAB004                                                                 " & vbCrLf
-            QueryString &= "  WHERE 1 = 1                                                                      " & vbCrLf
-            QueryString &= "    AND TESTCD in (" & TESTCD & ")                                                 " & vbCrLf
-            QueryString &= "  ORDER BY TESTCD                                                                  " & vbCrLf
+            QueryString &= " SELECT TESTNM, BLOODTUBE, WORKAREA, TESTNM_10, Remark,  PrintAdd" & vbCrLf
+            QueryString &= "   FROM m2i_LAB004                                               " & vbCrLf
+            QueryString &= "  WHERE 1 = 1                                                    " & vbCrLf
+            QueryString &= "    AND TESTCD in (" & TESTCD & ")                               " & vbCrLf
+            QueryString &= "  ORDER BY BLOODTUBE,WORKAREA                                    " & vbCrLf
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
@@ -129,109 +131,56 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFrom.EditValue = Now
         dtpTo.EditValue = Now
+
+        With cboReceipt.Properties
+            .Items.Add("접수")
+            .Items.Add("결과")
+        End With
+
+        With cboPrintYN.Properties
+            .Items.Add("출력")
+            .Items.Add("미출력")
+        End With
+
+        With cboSearchCond.Properties
+            .Items.Add("이름")
+            .Items.Add("차트번호")
+        End With
     End Sub
 
     Private Sub PsPrintRoutine()
-        Dim sIpPing As New Net.NetworkInformation.Ping()
-        Dim sPingReply As Net.NetworkInformation.PingReply = sIpPing.Send(gPrintIP, gPrintTimeOut)
+        Dim strOldDivision As String = String.Empty
+        Dim strNewDivision As String = String.Empty
+        Dim printBool As Boolean
 
-        Dim BarcodeString As String = String.Empty
+        Dim intRowCount As Integer
 
-        Dim sPTNM As String = String.Empty
-        Dim sBARCODE As String = String.Empty
-        Dim sCHARTNO As String = String.Empty
-        Dim sSEX As String = String.Empty
-        Dim sAGE As String = String.Empty
+        Dim sPTNM As String = txtPtnm.EditValue
+        Dim sBARCODE As String = txtBarcodeNo.EditValue
+        Dim sCHARTNO As String = txtPtChartNo.EditValue
+        Dim sSEX As String = txtPtSex.EditValue
+        Dim sAGE As String = txtPtAge.EditValue
         'Dim sPTDIV As String = String.Empty
         'Dim sBIRTH As String = String.Empty
-        Dim sMEDOFFICE As String = String.Empty
-        Dim sRECEIPTDATE As String = String.Empty
-        Dim sDOCTOR As String = String.Empty
-        Dim sACCEPTDATE As String = String.Empty
-        Dim sMEMO As String = String.Empty
+        Dim sMEDOFFICE As String = txtMedOffice.EditValue
+        Dim sRECEIPTDATE As String = txtReceiptDate.EditValue
+        Dim sDOCTOR As String = txtDoctor.EditValue
+        Dim sACCEPTDATE As String = txtAcceptDate.EditValue
+        Dim sMEMO As String = memoComment.EditValue
 
-        sPTNM = txtPtnm.EditValue
-        sBARCODE = txtBarcodeNo.EditValue
-        sCHARTNO = txtPtChartNo.EditValue
-        sSEX = txtPtSex.EditValue
-        sAGE = txtPtAge.EditValue
-        sMEDOFFICE = txtMedOffice.EditValue
-        sRECEIPTDATE = txtReceiptDate.EditValue
-        sDOCTOR = txtDoctor.EditValue
-        sACCEPTDATE = txtAcceptDate.EditValue
-        sMEMO = memoComment.EditValue
+        For intRowCount = 0 To GridView3.RowCount - 1
+            With GridView3
 
-        '성별처리
-        If sSEX = "F" Then
-            sSEX = "여"
-        ElseIf sSEX = "M" Then
-            sSEX = "남"
-        Else
-            sSEX = "-"
-        End If
+                strNewDivision = .GetRowCellValue(intRowCount, "BLOODTUBE").ToString()
 
-        BarcodeString = "^XA" & vbCrLf
-        BarcodeString &= "^LH0,0" & vbCrLf
-        BarcodeString &= "^SEE:UHANGUL.DAT^FS" & vbCrLf
-        BarcodeString &= "^PON^FS" & vbCrLf
-        BarcodeString &= "^CW1,E:KFONT15.FNT^FS" & vbCrLf
-        BarcodeString &= "^FO45,40^CI26^A1N,25,20^FD이름 : " & sPTNM & "^FS" & vbCrLf
-        BarcodeString &= "^FO340,40^CI26^A1N,25,20^FD" & sSEX & "," & sAGE & "세^FS" & vbCrLf
-        BarcodeString &= "^FO45,75^CI26^A1N,25,20^FD차트번호 : " & sBARCODE & "^FS" & vbCrLf
-        BarcodeString &= "^FO45,110^CI26^A1N,25,25^FD진료과 : " & sMEDOFFICE & "^FS" & vbCrLf
-        BarcodeString &= "^FO230,110^CI26^A1N,25,25^FD담당의 : " & sDOCTOR & "^FS" & vbCrLf
-        BarcodeString &= "^FO180,145^CI26^A1N,25,25^FD접수날짜 : " & sRECEIPTDATE & "^FS" & vbCrLf
+                If strNewDivision <> strOldDivision Or printBool = False Then
+                    Print_Barcode(sPTNM, sBARCODE, sCHARTNO, sSEX, sAGE, sMEDOFFICE, sRECEIPTDATE, sDOCTOR, sACCEPTDATE, sMEMO)
+                End If
 
-        BarcodeString &= "^BY2,2,80" & vbCrLf
-        BarcodeString &= "^FO45,180^B3N,N,,Y,N^FD" & sBARCODE & "^FS" & vbCrLf
-        BarcodeString &= "^PQ1,1,1,Y^FS" & vbCrLf
-        BarcodeString &= "^XZ" & vbCrLf
-
-        Console.Write(BarcodeString)
-
-        If gBolFlag = "SERIAL" Then
-            'Try
-            '    With SerialPort
-            '        .Close()
-            '        .PortName = "COM4"
-            '        .BaudRate = 9600
-            '        .DataBits = 8
-            '        .StopBits = 1
-            '        .Open()
-            '    End With
-            'Catch ex As Exception
-            '    XtraMessageBox.Show("Serial Port(" & SerialPort.PortName & ") not open !!", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            '    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
-            'End Try
-
-            'Call PfSendCommand(BarcodeString)
-        Else
-            If sPingReply.Status <> Net.NetworkInformation.IPStatus.Success Then
-
-                'Call SaveScreenShot(True)
-
-                Dim sMsgStr As String = "BARCODE Printer(" & gPrintIP_ZD & ")에 연결할 수 없습니다." & vbCrLf & " 네트워크 연결상태를 확인 후 다시 실행해 주세요."
-                XtraMessageBox.Show(sMsgStr, "프린터연결오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-            Else
-                Try
-                    Using tcpClient As New System.Net.Sockets.TcpClient
-                        tcpClient.Connect(gPrintIP_ZD, gPrintPort)
-                        Using Writer As New System.IO.StreamWriter(tcpClient.GetStream(), System.Text.Encoding.GetEncoding("euc-kr")) 'UTF-8 인코딩 => ^CI28과 같이 사용
-                            Writer.Write(BarcodeString)
-                            Writer.Flush()
-                        End Using
-                    End Using
-                Catch ex As Exception
-
-                    XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            End If
-        End If
-
-        Dim sMsg As String = " 출력이 완료 되었습니다..", sMsgTitle As String = Me.Text
-        XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                strOldDivision = .GetRowCellValue(intRowCount, "BLOODTUBE").ToString()
+                printBool = True
+            End With
+        Next
 
     End Sub
 

@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.m2i_Blood.frmConfig
+            Me.MainForm = Global.m2i_Blood.frmMDI
         End Sub
     End Class
 End Namespace
