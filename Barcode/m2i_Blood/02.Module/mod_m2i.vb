@@ -30,18 +30,24 @@ Module mod_m2i
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"
 
-    Public gPrintIP As String = "192.168.0.240"
-    Public gPrintIP_ZD As String = "192.168.0.241"
+    Public gPrintIP As String = "192.168.0.241"
+    Public gPrintIP_ZD As String = "172.0.0.101"
 
     Public gPrintPort As Integer = 9100
     Public gPrintTimeOut As Integer = 5000
 
 
-    Public Str_HOST_IP As String = "59.23.195.70"
-    Public Str_HOST_PORT As String = "1433"
-    Public Str_DATABASE_NAME As String = "SM_Barcode"
-    Public Str_USER_ID As String = "sa"
-    Public Str_PASSWORD As String = "m2i_soft"
+    'Public Str_HOST_IP As String = "59.23.195.70"
+    'Public Str_HOST_PORT As String = "1433"
+    'Public Str_DATABASE_NAME As String = "SM_Barcode"
+    'Public Str_USER_ID As String = "sa"
+    'Public Str_PASSWORD As String = "m2i_soft"
+
+    Public Str_HOST_IP As String
+    Public Str_HOST_PORT As String
+    Public Str_DATABASE_NAME As String
+    Public Str_USER_ID As String
+    Public Str_PASSWORD As String
 
     ' mDB 설정
     Public gMDbType As String = "ACCESS"

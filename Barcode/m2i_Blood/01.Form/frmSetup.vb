@@ -45,8 +45,7 @@ Public Class frmSetup
 
     End Sub
 
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles btnPanWork.ButtonClick
-
+    Private Sub btnPanWork_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles btnPanWork.ButtonClick
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
@@ -177,76 +176,95 @@ Public Class frmSetup
         Me.Close()
     End Sub
 
-    Private Sub grdTestList_Click(sender As Object, e As EventArgs) Handles grdTestList.Click
+    'Private Sub grdTestList_Click(sender As Object, e As EventArgs) Handles grdTestList.Click
 
-        Dim sSelectRow As Integer = GridView.FocusedRowHandle
+    '    Dim sSelectRow As Integer = GridView.FocusedRowHandle
 
-        If sSelectRow < 0 Then
-            Return
-        ElseIf sSelectRow >= 0 Then
-            With GridView
-                txtTestCd.Text = .GetRowCellValue(sSelectRow, "TESTCD").ToString()
-                txtTestNm.Text = .GetRowCellValue(sSelectRow, "TESTNM").ToString()
-                txtTestNm_10.Text = .GetRowCellValue(sSelectRow, "TestNm_10").ToString()
-                If .GetRowCellValue(sSelectRow, "BloodTube").ToString() = "" Then
-                    lupBloodTube.EditValue = 0
-                Else
-                    lupBloodTube.EditValue = .GetRowCellValue(sSelectRow, "BloodTube").ToString
-                End If
-                txtWorkArea.Text = .GetRowCellValue(sSelectRow, "WorkArea").ToString
-                cboPrtCnt.EditValue = .GetRowCellValue(sSelectRow, "PrintAdd").ToString()
-                txtRemark.Text = .GetRowCellValue(sSelectRow, "Remark").ToString()
-                txtNote.Text = .GetRowCellValue(sSelectRow, "Note").ToString()
-            End With
+    '    If sSelectRow < 0 Then
+    '        Return
+    '    ElseIf sSelectRow >= 0 Then
+    '        With GridView
+    '            txtTestCd.Text = .GetRowCellValue(sSelectRow, "TESTCD").ToString()
+    '            txtTestNm.Text = .GetRowCellValue(sSelectRow, "TESTNM").ToString()
+    '            txtTestNm_10.Text = .GetRowCellValue(sSelectRow, "TestNm_10").ToString()
+    '            If .GetRowCellValue(sSelectRow, "BloodTube").ToString() = "" Then
+    '                lupBloodTube.EditValue = 0
+    '            Else
+    '                lupBloodTube.EditValue = .GetRowCellValue(sSelectRow, "BloodTube").ToString()
+    '            End If
+    '            txtWorkArea.Text = .GetRowCellValue(sSelectRow, "WorkArea").ToString()
+    '            cboPrtCnt.EditValue = .GetRowCellValue(sSelectRow, "PrintAdd").ToString()
+    '            txtRemark.Text = .GetRowCellValue(sSelectRow, "Remark").ToString()
+    '            txtNote.Text = .GetRowCellValue(sSelectRow, "Note").ToString()
 
+    '        End With
+
+    '    End If
+
+    'End Sub
+
+    Private Sub GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles GridView.RowCellClick
+
+        If e.Button = MouseButtons.Left Then ' 왼쪽 마우스 버튼 클릭인 경우에만 처리
+            ' 클릭된 행의 데이터를 가져오기
+            Dim focusedRow As Integer = GridView.FocusedRowHandle
+
+            ' 형식을 Object로 주어 개체 인스턴스 에러 방지
+            Dim TestCD As Object = GridView.GetFocusedRowCellValue("TESTCD")
+            Dim TestNM As Object = GridView.GetFocusedRowCellValue("TESTNM")
+            Dim TestNm_10 As Object = GridView.GetFocusedRowCellValue("TestNm_10")
+            Dim BloodTube As Object = GridView.GetFocusedRowCellValue("BloodTube")
+            Dim WorkArea As Object = GridView.GetFocusedRowCellValue("WorkArea")
+            Dim PrtCnt As Object = GridView.GetFocusedRowCellValue("PrintAdd")
+            Dim Remark As Object = GridView.GetFocusedRowCellValue("Remark")
+            Dim Note As Object = GridView.GetFocusedRowCellValue("Note")
+
+            If focusedRow >= 0 Then
+                '' NullReferenceException 에러 다시 발생 시 이 코드를 사용
+                'If testCd IsNot Nothing Then
+                '    txtTestCd.Text = testCd.ToString()
+                'Else
+                '    txtTestCd.Text = ""
+                'End If
+                txtTestCd.Text = TestCD.ToString()
+                txtTestNm.Text = TestNM.ToString()
+                txtTestNm_10.Text = TestNm_10.ToString()
+                lupBloodTube.EditValue = BloodTube.ToString()
+                txtWorkArea.Text = WorkArea.ToString()
+                cboPrtCnt.EditValue = PrtCnt.ToString()
+                txtRemark.Text = Remark.ToString()
+                txtNote.Text = Note.ToString()
+
+            End If
         End If
 
     End Sub
 
-    Private Sub txtTestCd_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanged
+    Private Sub txtTestCd_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanging, txtTestNm.EditValueChanging
 
         QueryString = String.Empty
-        QueryString &= "SELECT * FROM m2i_LAB004 WHERE TESTCD = '" & txtTestCd.Text & "'"
+        QueryString &= "SELECT * FROM m2i_LAB004                        "
+        QueryString &= "WHERE TESTCD LIKE '%" & txtTestCd.Text & "%'    "
 
-        Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+        LoadDataToGrid(QueryString)
 
-        ' TestCode를 입력했을 때 Search 기능
-        If sTable.Rows.Count > 0 Then
-            txtTestNm.Text = sTable.Rows(0)(1).ToString()
-            txtTestNm_10.Text = sTable.Rows(0)(2).ToString()
-            If sTable.Rows(0)(3).ToString() = "" Then
-                lupBloodTube.EditValue = 0
-            Else
-                lupBloodTube.EditValue = sTable.Rows(0)(3).ToString()
-            End If
-            txtWorkArea.Text = sTable.Rows(0)(4).ToString()
-            cboPrtCnt.EditValue = sTable.Rows(0)(5).ToString()
-            txtRemark.Text = sTable.Rows(0)(6).ToString()
-            txtNote.Text = sTable.Rows(0)(7).ToString()
-
-        End If
     End Sub
 
     Private Sub txtTestNm_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
         QueryString = String.Empty
-        QueryString &= "SELECT * FROM m2i_LAB004 WHERE TESTNM = '" & txtTestNm.Text & "'"
+        QueryString &= "SELECT * FROM m2i_LAB004                        "
+        QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
 
-        Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+        LoadDataToGrid(QueryString)
 
-        ' TestCode를 입력했을 때 Search 기능
-        If sTable.Rows.Count > 0 Then
-            txtTestCd.Text = sTable.Rows(0)(0).ToString()
-            txtTestNm_10.Text = sTable.Rows(0)(2).ToString()
-            If sTable.Rows(0)(3).ToString() = "" Then
-                lupBloodTube.EditValue = 0
-            Else
-                lupBloodTube.EditValue = sTable.Rows(0)(3).ToString()
-            End If
-            txtWorkArea.Text = sTable.Rows(0)(4).ToString()
-            cboPrtCnt.EditValue = sTable.Rows(0)(5).ToString()
-            txtRemark.Text = sTable.Rows(0)(6).ToString()
-            txtNote.Text = sTable.Rows(0)(7).ToString()
-
-        End If
     End Sub
+
+    Private Sub LoadDataToGrid(strQuery As String)
+
+        Dim sTable As DataTable = ClsDb.CfMSelectQuery(strQuery)
+
+        grdTestList.DataSource = sTable
+
+    End Sub
+
 End Class

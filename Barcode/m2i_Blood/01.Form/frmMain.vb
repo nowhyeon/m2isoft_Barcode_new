@@ -76,16 +76,6 @@ Public Class frmMain
 
     End Sub
 
-    '수진자조회 버튼
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
-
-        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
-
-        Select Case sTag
-            Case "Find"
-                Call PsFindRoutine()
-        End Select
-    End Sub
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
@@ -93,12 +83,16 @@ Public Class frmMain
 
         Try
             With GridView
-                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()
-                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()
-                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()
-                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()
-                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()
-                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()
+                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
+                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
+                txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
+                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
+                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
+                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
+                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
+                txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
+                txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
+                memoComment.Text = .GetRowCellValue(sSelectRow, "REMARK").ToString()       '메모
             End With
 
             Dim TestCode As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
@@ -135,7 +129,129 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFrom.EditValue = Now
         dtpTo.EditValue = Now
+    End Sub
+
+    Private Sub PsPrintRoutine()
+        Dim sIpPing As New Net.NetworkInformation.Ping()
+        Dim sPingReply As Net.NetworkInformation.PingReply = sIpPing.Send(gPrintIP, gPrintTimeOut)
+
+        Dim BarcodeString As String = String.Empty
+
+        Dim sPTNM As String = String.Empty
+        Dim sBARCODE As String = String.Empty
+        Dim sCHARTNO As String = String.Empty
+        Dim sSEX As String = String.Empty
+        Dim sAGE As String = String.Empty
+        'Dim sPTDIV As String = String.Empty
+        'Dim sBIRTH As String = String.Empty
+        Dim sMEDOFFICE As String = String.Empty
+        Dim sRECEIPTDATE As String = String.Empty
+        Dim sDOCTOR As String = String.Empty
+        Dim sACCEPTDATE As String = String.Empty
+        Dim sMEMO As String = String.Empty
+
+        sPTNM = txtPtnm.EditValue
+        sBARCODE = txtBarcodeNo.EditValue
+        sCHARTNO = txtPtChartNo.EditValue
+        sSEX = txtPtSex.EditValue
+        sAGE = txtPtAge.EditValue
+        sMEDOFFICE = txtMedOffice.EditValue
+        sRECEIPTDATE = txtReceiptDate.EditValue
+        sDOCTOR = txtDoctor.EditValue
+        sACCEPTDATE = txtAcceptDate.EditValue
+        sMEMO = memoComment.EditValue
+
+        '성별처리
+        If sSEX = "F" Then
+            sSEX = "여"
+        ElseIf sSEX = "M" Then
+            sSEX = "남"
+        Else
+            sSEX = "-"
+        End If
+
+        BarcodeString = "^XA" & vbCrLf
+        BarcodeString &= "^LH0,0" & vbCrLf
+        BarcodeString &= "^SEE:UHANGUL.DAT^FS" & vbCrLf
+        BarcodeString &= "^PON^FS" & vbCrLf
+        BarcodeString &= "^CW1,E:KFONT15.FNT^FS" & vbCrLf
+        BarcodeString &= "^FO45,40^CI26^A1N,25,20^FD이름 : " & sPTNM & "^FS" & vbCrLf
+        BarcodeString &= "^FO340,40^CI26^A1N,25,20^FD" & sSEX & "," & sAGE & "세^FS" & vbCrLf
+        BarcodeString &= "^FO45,75^CI26^A1N,25,20^FD차트번호 : " & sBARCODE & "^FS" & vbCrLf
+        BarcodeString &= "^FO45,110^CI26^A1N,25,25^FD진료과 : " & sMEDOFFICE & "^FS" & vbCrLf
+        BarcodeString &= "^FO230,110^CI26^A1N,25,25^FD담당의 : " & sDOCTOR & "^FS" & vbCrLf
+        BarcodeString &= "^FO180,145^CI26^A1N,25,25^FD접수날짜 : " & sRECEIPTDATE & "^FS" & vbCrLf
+
+        BarcodeString &= "^BY2,2,80" & vbCrLf
+        BarcodeString &= "^FO45,180^B3N,N,,Y,N^FD" & sBARCODE & "^FS" & vbCrLf
+        BarcodeString &= "^PQ1,1,1,Y^FS" & vbCrLf
+        BarcodeString &= "^XZ" & vbCrLf
+
+        Console.Write(BarcodeString)
+
+        If gBolFlag = "SERIAL" Then
+            'Try
+            '    With SerialPort
+            '        .Close()
+            '        .PortName = "COM4"
+            '        .BaudRate = 9600
+            '        .DataBits = 8
+            '        .StopBits = 1
+            '        .Open()
+            '    End With
+            'Catch ex As Exception
+            '    XtraMessageBox.Show("Serial Port(" & SerialPort.PortName & ") not open !!", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+            'End Try
+
+            'Call PfSendCommand(BarcodeString)
+        Else
+            If sPingReply.Status <> Net.NetworkInformation.IPStatus.Success Then
+
+                'Call SaveScreenShot(True)
+
+                Dim sMsgStr As String = "BARCODE Printer(" & gPrintIP_ZD & ")에 연결할 수 없습니다." & vbCrLf & " 네트워크 연결상태를 확인 후 다시 실행해 주세요."
+                XtraMessageBox.Show(sMsgStr, "프린터연결오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Else
+                Try
+                    Using tcpClient As New System.Net.Sockets.TcpClient
+                        tcpClient.Connect(gPrintIP_ZD, gPrintPort)
+                        Using Writer As New System.IO.StreamWriter(tcpClient.GetStream(), System.Text.Encoding.GetEncoding("euc-kr")) 'UTF-8 인코딩 => ^CI28과 같이 사용
+                            Writer.Write(BarcodeString)
+                            Writer.Flush()
+                        End Using
+                    End Using
+                Catch ex As Exception
+
+                    XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        End If
+
+        Dim sMsg As String = " 출력이 완료 되었습니다..", sMsgTitle As String = Me.Text
+        XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
 
     End Sub
 
+    '수진자조회 버튼
+    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
+
+        Select Case sTag
+            Case "Find"
+                Call PsFindRoutine()
+        End Select
+    End Sub
+
+    '하단 버튼
+    Private Sub CommandButton2_ButtonClick(sender As Object, e As ButtonEventArgs) Handles WindowsUIButtonPanel1.ButtonClick
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
+
+        Select Case sTag
+            Case "print"
+                Call PsPrintRoutine()
+        End Select
+    End Sub
 End Class
