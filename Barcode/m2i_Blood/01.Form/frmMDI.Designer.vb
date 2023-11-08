@@ -39,6 +39,7 @@ Partial Class frmMDI
         Me.AccordionControlElement5 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement6 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.Element7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlElement7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FluentDesignFormControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,7 +77,7 @@ Partial Class frmMDI
         '
         'AccordionControlElement3
         '
-        Me.AccordionControlElement3.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnTestList})
+        Me.AccordionControlElement3.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnTestList, Me.AccordionControlElement7})
         Me.AccordionControlElement3.Expanded = True
         Me.AccordionControlElement3.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement3.Name = "AccordionControlElement3"
@@ -174,6 +175,12 @@ Partial Class frmMDI
         Me.Element7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.Element7.Text = "원격지원"
         '
+        'AccordionControlElement7
+        '
+        Me.AccordionControlElement7.Name = "AccordionControlElement7"
+        Me.AccordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.AccordionControlElement7.Text = "통신설정"
+        '
         'frmMDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -217,4 +224,5 @@ Partial Class frmMDI
     Friend WithEvents AccordionControlElement5 As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents AccordionControlElement6 As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents Element7 As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents AccordionControlElement7 As DevExpress.XtraBars.Navigation.AccordionControlElement
 End Class

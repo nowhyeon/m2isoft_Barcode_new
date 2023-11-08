@@ -46,7 +46,12 @@ Public Class frmMDI
         Get_TestCode()
     End Sub
 
-    Private Sub frmMDI_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        Me.DialogResult = DialogResult.Cancel
+    Private Sub btnCommunication_click(sender As Object, e As EventArgs) Handles AccordionControlElement7.Click
+        frmConfig.Show()
     End Sub
+
+    Private Sub frmMDI_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Application.Exit()
+    End Sub
+
 End Class

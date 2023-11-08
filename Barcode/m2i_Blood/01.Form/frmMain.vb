@@ -9,6 +9,7 @@ Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Controls
+Imports System.Runtime.InteropServices
 
 Public Class frmMain
     Private ClsEncrypt As New ClsEncryptDecrypt
@@ -30,7 +31,6 @@ Public Class frmMain
 
             .Columns.Clear()
         End With
-        'GridView, "검사코드", "TESTCD", 15, "D", True, True, "S", 0, False, Nothing, False, False
         GfColumnSet(GridView, "차트번호", "PTID", 30, "L", , True)
         GfColumnSet(GridView, "이름", "PTNM", 15, "L", , True)
         GfColumnSet(GridView, "접수일", "REQDATE", 30, "L", , True)
@@ -58,6 +58,8 @@ Public Class frmMain
     '수진자 조회
     Private Sub PsFindRoutine()
         Try
+            SplashScreenManager.ShowWaitForm()
+
             Dim sWorkLog As String = " Customer List Searching."
 
             Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
@@ -72,6 +74,8 @@ Public Class frmMain
 
             grdSearchQry.DataSource = sTable
 
+            SplashScreenManager.CloseWaitForm()
+
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -84,6 +88,8 @@ Public Class frmMain
         Dim TESTCD As String = String.Empty
 
         Try
+            SplashScreenManager.ShowWaitForm()
+
             With GridView
                 txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
                 txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
@@ -122,6 +128,7 @@ Public Class frmMain
 
             grdSelect.DataSource = sTable
 
+            SplashScreenManager.CloseWaitForm()
         Catch ex As Exception
 
         End Try
@@ -129,23 +136,30 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SplashScreenManager.ShowWaitForm()
+
         dtpFrom.EditValue = Now
         dtpTo.EditValue = Now
 
         With cboReceipt.Properties
+            .Items.Clear()
             .Items.Add("접수")
             .Items.Add("결과")
         End With
 
         With cboPrintYN.Properties
+            .Items.Clear()
             .Items.Add("출력")
             .Items.Add("미출력")
         End With
 
         With cboSearchCond.Properties
+            .Items.Clear()
             .Items.Add("이름")
             .Items.Add("차트번호")
         End With
+
+        SplashScreenManager.CloseWaitForm()
     End Sub
 
     Private Sub PsPrintRoutine()
@@ -201,6 +215,34 @@ Public Class frmMain
         Select Case sTag
             Case "print"
                 Call PsPrintRoutine()
+            Case "manualShow"
+                Call frmManual.Show()
+            Case "Remove"
+                Call PsClearRoutine()
+            Case "close"
+                Me.DialogResult = DialogResult.Cancel
+                Me.Close()
         End Select
+    End Sub
+
+    Private Sub PsClearRoutine()
+        dtpFrom.EditValue = Now
+        dtpTo.EditValue = Now
+        cboReceipt.EditValue = String.Empty
+        cboPrintYN.EditValue = String.Empty
+        cboSearchCond.EditValue = String.Empty
+        txtSearchWrd.EditValue = String.Empty
+        txtPtnm.EditValue = String.Empty
+        txtBarcodeNo.EditValue = String.Empty
+        txtPtSex.EditValue = String.Empty
+        txtPtAge.EditValue = String.Empty
+        txtPtChartNo.EditValue = String.Empty
+        txtPtDiv.EditValue = String.Empty
+        txtPtBirth.EditValue = String.Empty
+        txtMedOffice.EditValue = String.Empty
+        txtReceiptDate.EditValue = String.Empty
+        txtDoctor.EditValue = String.Empty
+        txtAcceptDate.EditValue = String.Empty
+        memoComment.EditValue = String.Empty
     End Sub
 End Class

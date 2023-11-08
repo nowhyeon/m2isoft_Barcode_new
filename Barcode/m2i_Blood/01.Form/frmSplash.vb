@@ -17,13 +17,12 @@
     End Sub
 
     Private Sub tmr_tick(sender As Object, e As EventArgs) Handles tmrFrmSplash.Tick
-        If marqueeProgressBarControl1.Properties.IsLoading = False Then
-            tmrFrmSplash.Enabled = False
+        marqueeProgressBarControl1.Position += 2
+        If marqueeProgressBarControl1.Position >= 100 Then
 
-            Dim frmLogin = New frmLogin
             frmLogin.Show()
+            Me.Close()
 
-            Me.Hide()
         End If
     End Sub
 End Class

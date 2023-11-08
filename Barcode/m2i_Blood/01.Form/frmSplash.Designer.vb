@@ -27,12 +27,12 @@ Partial Class frmSplash
         Me.pictureEdit2 = New DevExpress.XtraEditors.PictureEdit()
         Me.labelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.labelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.marqueeProgressBarControl1 = New DevExpress.XtraEditors.MarqueeProgressBarControl()
         Me.tmrFrmSplash = New System.Windows.Forms.Timer(Me.components)
         Me.pictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
+        Me.marqueeProgressBarControl1 = New DevExpress.XtraEditors.ProgressBarControl()
         CType(Me.pictureEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.marqueeProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.marqueeProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pictureEdit2
@@ -66,17 +66,10 @@ Partial Class frmSplash
         Me.labelControl1.TabIndex = 11
         Me.labelControl1.Text = "Copyright"
         '
-        'marqueeProgressBarControl1
-        '
-        Me.marqueeProgressBarControl1.EditValue = 0
-        Me.marqueeProgressBarControl1.Location = New System.Drawing.Point(27, 213)
-        Me.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1"
-        Me.marqueeProgressBarControl1.Size = New System.Drawing.Size(471, 11)
-        Me.marqueeProgressBarControl1.TabIndex = 10
-        '
         'tmrFrmSplash
         '
-        Me.tmrFrmSplash.Interval = 3000
+        Me.tmrFrmSplash.Enabled = True
+        Me.tmrFrmSplash.Interval = 20
         '
         'pictureEdit1
         '
@@ -92,6 +85,13 @@ Partial Class frmSplash
         Me.pictureEdit1.Size = New System.Drawing.Size(210, 60)
         Me.pictureEdit1.TabIndex = 13
         '
+        'marqueeProgressBarControl1
+        '
+        Me.marqueeProgressBarControl1.Location = New System.Drawing.Point(27, 213)
+        Me.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1"
+        Me.marqueeProgressBarControl1.Size = New System.Drawing.Size(471, 11)
+        Me.marqueeProgressBarControl1.TabIndex = 10
+        '
         'frmSplash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
@@ -105,8 +105,8 @@ Partial Class frmSplash
         Me.Name = "frmSplash"
         Me.Text = "Form1"
         CType(Me.pictureEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.marqueeProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.marqueeProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -114,7 +114,7 @@ Partial Class frmSplash
     Private WithEvents pictureEdit2 As DevExpress.XtraEditors.PictureEdit
     Private WithEvents labelControl2 As DevExpress.XtraEditors.LabelControl
     Private WithEvents labelControl1 As DevExpress.XtraEditors.LabelControl
-    Private WithEvents marqueeProgressBarControl1 As DevExpress.XtraEditors.MarqueeProgressBarControl
     Friend WithEvents tmrFrmSplash As Timer
     Private WithEvents pictureEdit1 As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents marqueeProgressBarControl1 As DevExpress.XtraEditors.ProgressBarControl
 End Class

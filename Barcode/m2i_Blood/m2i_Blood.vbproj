@@ -134,6 +134,12 @@
     <Compile Include="01.Form\frmSplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="01.Form\WaitForm.Designer.vb">
+      <DependentUpon>WaitForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="01.Form\WaitForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="02.Module\mod_m2i.vb" />
     <Compile Include="02.Module\mod_Message.vb" />
     <Compile Include="03.Class\ClsDatabase.vb" />
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmSplash.resx">
       <DependentUpon>frmSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01.Form\WaitForm.resx">
+      <DependentUpon>WaitForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
