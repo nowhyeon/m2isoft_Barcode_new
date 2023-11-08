@@ -1,99 +1,298 @@
-﻿'Imports System.Net
-'Imports System.Net.NetworkInformation
-'Imports System.ComponentModel
-'Imports System.Xml
-'Imports DevExpress.XtraBars.Docking2010
-'Imports DevExpress.XtraEditors
+﻿Imports System.Net
+Imports System.Net.NetworkInformation
+Imports System.ComponentModel
+Imports System.Xml
+Imports DevExpress.XtraBars.Docking2010
+Imports DevExpress.XtraEditors
 
-'Public Class frmConfig
+Public Class frmConfig
 
-'    Dim ClsErrorLog As New ClsErrorsAndEvents
-'    Dim ClsEncryption As New ClsEncryptDecrypt
+    Dim ClsErrorLog As New ClsErrorsAndEvents
+    Dim ClsEncryption As New ClsEncryptDecrypt
 
-'    Private Sub frmConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-'        Call PsClearRoutine()
+        Call PsClearRoutine()
 
-'        Call Common_Load()
+        Call Common_Load()
 
-'        With cboDATABASETYPE
-'            .Properties.Items.Add("MSSQL")
-'            .Properties.Items.Add("ORACLE")
-'            .Properties.Items.Add("ACCESS")
-'        End With
+        With cboDBType
+            .Properties.Items.Add("MSSQL")
+            .Properties.Items.Add("ORACLE")
+            .Properties.Items.Add("ACCESS")
+        End With
 
-'        With XTCSetup
-'            .TabPages(0).Text = "※ 서버설정"
-'            .TabPages(1).Text = "※ 기타정보설정"
-'        End With
+        With cboMDBType
+            .Properties.Items.Add("ACCESS")
+        End With
 
-'    End Sub
+    End Sub
 
-'    Private Sub btnMyIP_Click(sender As Object, e As EventArgs) Handles btnMyIP.Click
-'        Try
-'            Dim ipentry As IPHostEntry
+    Private Sub btnMyIP_Click(sender As Object, e As EventArgs) Handles btnMyIP.Click
+        Try
+            Dim ipentry As IPHostEntry
 
-'            ipentry = Dns.GetHostEntry("")
-'            txtMyIP.Text = ipentry.AddressList(1).ToString()
+            ipentry = Dns.GetHostEntry("")
+            txtMyIP.Text = ipentry.AddressList(1).ToString()
 
-'            MessageBox.Show("현재 컴퓨터의 IP 주소: " & txtMyIP.Text, "IP 주소", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("현재 컴퓨터의 IP 주소: " & txtMyIP.Text, "IP 주소", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-'        Catch ex As Exception
-'            MessageBox.Show("IP 주소를 가져오는 중 오류가 발생했습니다: " & ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
-'        End Try
+        Catch ex As Exception
+            MessageBox.Show("IP 주소를 가져오는 중 오류가 발생했습니다: " & ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
-'    End Sub
+    End Sub
 
-'    Private Sub btnPingTest_Click(sender As Object, e As EventArgs) Handles btnPingTest.Click
+    Private Sub btnPingTest_Click(sender As Object, e As EventArgs) Handles btnPingTest.Click
+        Try
+            Dim ping As New Ping
+            Dim pReply As PingReply = ping.Send(txtMyIP.Text, 1000)
 
-'        Dim ping As New Ping
-'        Dim pReply As PingReply = ping.Send(txtMyIP.Text, 1000)
+            MessageBox.Show("Ping Test 결과 : " & pReply.Status.ToString, "Ping Test", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-'        MessageBox.Show("Ping Test 결과 : " & pReply.Status.ToString, "Ping Test", MessageBoxButtons.OK, MessageBoxIcon.Information)
-'    End Sub
+        Catch ex As Exception
+            MessageBox.Show("Ping Test 도중 오류가 발생했습니다: " & ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
-'    Private Sub PsClearRoutine()
+    End Sub
 
-'        txtCommPort.Text = String.Empty
-'        txtCommPortNum.Text = String.Empty
-'        txtMyIP.Text = String.Empty
-'        txtPrtIP.Text = String.Empty
-'        txtPrtPort.Text = String.Empty
+    Private Sub btnPanWork_Click(sender As Object, e As ButtonEventArgs) Handles btnPanWork.ButtonClick
 
-'    End Sub
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
-'    Private Sub Common_Load()      ' XML파일 로드 하는 코드
+        Select Case sTag
 
-'        Dim xmlDoc As New XmlDocument()
+            Case "Reroad"
+                Call Common_Load()
+            Case "Save"
+                Call PsAddRoutine()
+            Case "Clear"
+                Call PsClearRoutine()
+            Case "Close"
+                Me.DialogResult = DialogResult.Cancel
+                Me.Close()
 
-'        Try
-'            If Not System.IO.File.Exists(Application.StartupPath & "\Common.xml") Then     ' 파일 존재 여부 파악
-'                XtraMessageBox.Show(_sMsg.sMsg_NoXML, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
-'            End If
+        End Select
 
-'            xmlDoc.Load(Application.StartupPath & "\Common.xml")
+    End Sub
 
-'            Dim mIF365 As XmlNodeList = xmlDoc.SelectNodes("/mIF365/SERVER")
+    Private Sub btnFileDic_Click(sender As Object, e As EventArgs) Handles btnFileDic.Click
+        Dim dlgOFD As New OpenFileDialog()
+        Dim sfilePath As String
 
-'            For Each SERVER As XmlNode In mIF365
-'                gDATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
-'                gHOST_IP = SERVER.SelectSingleNode("HOST_IP").InnerText
-'                gHOST_PORT = SERVER.SelectSingleNode("HOST_PORT").InnerText
-'                gDATABASE_NAME = SERVER.SelectSingleNode("DATABASE_NAME").InnerText
-'                gUSER_ID = ClsEncryption.Decrypt(SERVER.SelectSingleNode("USER_ID").InnerText)
-'                gPASSWORD = ClsEncryption.Decrypt(SERVER.SelectSingleNode("PASSWORD").InnerText)
-'            Next
-'            cboDATABASETYPE.Text = gDATABASE_TYPE
-'            txtIP.Text = gHOST_IP
-'            txtPORT.Text = gHOST_PORT
-'            txtDATABASE.Text = gDATABASE_NAME
-'            txtUSERID.Text = gUSER_ID
-'            txtPASSWORLD.Text = gPASSWORD
-'        Catch ex As Exception
+        With dlgOFD
+            .InitialDirectory = Application.StartupPath
+            .Filter = "MDB파일 (*.mdb)|*.mdb"
+            .FilterIndex = 1
+        End With
 
-'        End Try
+        If dlgOFD.ShowDialog = DialogResult.OK Then
+            sfilePath = dlgOFD.FileName
+            txtMDBName.Text = sfilePath
+
+            '-[ 텍스트 파일을 읽으려면
+            'txtFileMemo.Text = My.Computer.FileSystem.ReadAllText(sfilePath)
+
+            '-[ 인코딩된 텍스트 파일을 읽으려면 
+            'txtFileMemo.Text = My.Computer.FileSystem.ReadAllText(sfilePath, System.Text.Encoding.Default)
+
+            ' 파일의 내용을 읽어오는 부분
+            'Dim strContents = System.IO.File.ReadAllText(sfilePath, System.Text.Encoding.Default)
+
+            'txtFileMemo.Text = strContents
+        Else
+            Return
+        End If
+    End Sub
 
 
-'    End Sub
+    Private Sub PsAddRoutine()          ' XML파일에 서브 노드들을 추가해주는 코드
 
-'End Class
+        Dim ClsEncryption As New ClsEncryptDecrypt
+        Dim xmlDoc As New XmlDocument()
+        Try
+            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_ServerSave, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+
+                Dim rootNode As XmlNode = xmlDoc.CreateElement("mBlood")
+                xmlDoc.AppendChild(rootNode)
+
+                Dim childNode As XmlNode = xmlDoc.CreateElement("SERVER")
+                Dim childNode2 As XmlNode = xmlDoc.CreateElement("Communication")
+                Dim childNode3 As XmlNode = xmlDoc.CreateElement("MDB")
+
+
+                ' XML 파일에 NODE를 추가해주는 부분 
+                ' - SERVER 부분에 들어가는 노드들 -
+                Dim DATABASE_TYPE_Node As XmlNode = xmlDoc.CreateElement("DATABASE_TYPE")
+                Dim HOST_IP_Node As XmlNode = xmlDoc.CreateElement("HOST_IP")
+                Dim HOST_PORT_Node As XmlNode = xmlDoc.CreateElement("HOST_PORT")
+                Dim DB__NM_Node As XmlNode = xmlDoc.CreateElement("DATABASE_NAME")
+                Dim USER_ID_Node As XmlNode = xmlDoc.CreateElement("USER_ID")
+                Dim PASSWORD_Node As XmlNode = xmlDoc.CreateElement("PASSWORD")
+
+                ' - 통신설정 부분에 들어가는 노드들 -
+                Dim COMM_PORT_Node As XmlNode = xmlDoc.CreateElement("COMM_PORT")
+                Dim COMM_PORTNUM_Node As XmlNode = xmlDoc.CreateElement("COMM_PORTNUM")
+                Dim PC_IP_Node As XmlNode = xmlDoc.CreateElement("PC_IP")
+                Dim PRINTER_IP_Node As XmlNode = xmlDoc.CreateElement("PRINTER_IP")
+                Dim PRINTER_PORT_Node As XmlNode = xmlDoc.CreateElement("PRINTER_PORT")
+
+                ' - MDB설정 부분에 들어가는 노드들 -
+                Dim MDB_TYPE_Node As XmlNode = xmlDoc.CreateElement("MDB_TYPE")
+                Dim MDB_NM_Node As XmlNode = xmlDoc.CreateElement("MDB_NAME")
+                Dim MDB_ID_Node As XmlNode = xmlDoc.CreateElement("MDB_ID")
+                Dim MDB_PW_Node As XmlNode = xmlDoc.CreateElement("MDB_PW")
+
+
+                DATABASE_TYPE_Node.InnerText = cboDBType.Text                       ' DB 타입 노드에 들어갈 입력값
+                childNode.AppendChild(DATABASE_TYPE_Node)
+
+                HOST_IP_Node.InnerText = txtDBIP.Text                               ' DB IP 노드에 들어갈 입력값
+                childNode.AppendChild(HOST_IP_Node)
+
+                HOST_PORT_Node.InnerText = txtDBPort.Text                           ' DB PORT NUMBER 노드에 들어갈 입력값
+                childNode.AppendChild(HOST_PORT_Node)
+
+                DB__NM_Node.InnerText = txtDataBaseNM.Text                         ' DB 이름 노드에 들어갈 입력값
+                childNode.AppendChild(DB__NM_Node)
+
+                USER_ID_Node.InnerText = ClsEncryption.Encrypt(txtConnID.Text)      ' 접속 ID 노드에 들어갈 입력값
+                childNode.AppendChild(USER_ID_Node)
+
+                PASSWORD_Node.InnerText = ClsEncryption.Encrypt(txtConnPW.Text)     ' 접속 PW 노드에 들어갈 입력값
+                childNode.AppendChild(PASSWORD_Node)
+
+
+
+                COMM_PORT_Node.InnerText = txtCommPort.Text                         ' 시리얼통신 포트 노드에 들어갈 입력값
+                childNode2.AppendChild(COMM_PORT_Node)
+
+                COMM_PORTNUM_Node.InnerText = txtCommPortNum.Text                   ' 시리얼통신 포트 번호에 들어갈 입력값
+                childNode2.AppendChild(COMM_PORTNUM_Node)
+
+                PC_IP_Node.InnerText = txtMyIP.Text                                 ' 현재 PC의 IP에 들어갈 입력값
+                childNode2.AppendChild(PC_IP_Node)
+
+                PRINTER_IP_Node.InnerText = txtPrtIP.Text                           ' 바코드 프린터의 IP에 들어갈 입력값
+                childNode2.AppendChild(PRINTER_IP_Node)
+
+                PRINTER_PORT_Node.InnerText = txtPrtPort.Text                       ' 바코드 프린터 포트 번호에 들어갈 입력값
+                childNode2.AppendChild(PRINTER_PORT_Node)
+
+
+
+                MDB_TYPE_Node.InnerText = cboMDBType.Text                           ' MDB타입에 들어갈 입력값
+                childNode3.AppendChild(MDB_TYPE_Node)
+
+                MDB_NM_Node.InnerText = txtMDBName.Text                                 ' 현재 PC의 IP에 들어갈 입력값
+                childNode3.AppendChild(MDB_NM_Node)
+
+                MDB_ID_Node.InnerText = txtMDBID.Text                           ' 바코드 프린터의 IP에 들어갈 입력값
+                childNode3.AppendChild(MDB_ID_Node)
+
+                MDB_PW_Node.InnerText = txtMDBPW.Text                       ' 바코드 프린터 포트 번호에 들어갈 입력값
+                childNode3.AppendChild(MDB_PW_Node)
+
+                rootNode.AppendChild(childNode)
+                rootNode.AppendChild(childNode2)
+                rootNode.AppendChild(childNode3)
+
+                xmlDoc.Save(Application.StartupPath & "\Common.xml")
+
+            End If
+
+            XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_SaveError, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+
+
+    End Sub
+
+    Private Sub PsClearRoutine()
+
+        txtCommPort.Text = String.Empty
+        txtCommPortNum.Text = String.Empty
+        txtMyIP.Text = String.Empty
+        txtPrtIP.Text = String.Empty
+        txtPrtPort.Text = String.Empty
+        cboDBType.Text = String.Empty
+        cboMDBType.Text = String.Empty
+        txtMDBID.Text = String.Empty
+        txtMDBPW.Text = String.Empty
+        txtDBIP.Text = String.Empty
+        txtDataBaseNM.Text = String.Empty
+        txtDBPort.Text = String.Empty
+        txtDataBaseNM.Text = String.Empty
+        txtConnID.Text = String.Empty
+        txtConnPW.Text = String.Empty
+
+    End Sub
+
+    Private Sub Common_Load()      ' XML파일 로드 하는 코드
+
+        Dim xmlDoc As New XmlDocument()
+
+        Try
+            If Not System.IO.File.Exists(Application.StartupPath & "\Common.xml") Then     ' 파일 존재 여부 파악
+                XtraMessageBox.Show(_sMsg.sMsg_NoXML, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+            xmlDoc.Load(Application.StartupPath & "\Common.xml")
+
+            Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
+            Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
+            Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
+
+            For Each SERVER As XmlNode In mBlood
+                Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
+                Str_HOST_IP = SERVER.SelectSingleNode("HOST_IP").InnerText
+                Str_HOST_PORT = SERVER.SelectSingleNode("HOST_PORT").InnerText
+                Str_DATABASE_NAME = SERVER.SelectSingleNode("DATABASE_NAME").InnerText
+                Str_USER_ID = ClsEncryption.Decrypt(SERVER.SelectSingleNode("USER_ID").InnerText)
+                Str_PASSWORD = ClsEncryption.Decrypt(SERVER.SelectSingleNode("PASSWORD").InnerText)
+            Next
+
+            For Each Communication As XmlNode In mBlood2
+                ' GK420d 같은 시리얼을 사용하는 프린터기에 대한 포트 설정 필요
+                'Str_DATABASE_TYPE = Communication.SelectSingleNode("COMM_PORT").InnerText
+                'Str_HOST_IP = Communication.SelectSingleNode("COMM_PORTNUM").InnerText
+                gPrintIP = Communication.SelectSingleNode("PC_IP").InnerText
+                gPrintIP_ZD = Communication.SelectSingleNode("PRINTER_IP").InnerText
+                gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
+            Next
+
+            For Each MDB As XmlNode In mBlood3
+                gMDbType = MDB.SelectSingleNode("MDB_TYPE").InnerText
+                gMDbName = MDB.SelectSingleNode("MDB_NAME").InnerText
+                gMDbUserNM = MDB.SelectSingleNode("MDB_ID").InnerText
+                gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
+            Next
+
+
+            cboDBType.Text = Str_DATABASE_TYPE
+            txtDBIP.Text = Str_HOST_IP
+            txtDBPort.Text = Str_HOST_PORT
+            txtDataBaseNM.Text = Str_DATABASE_NAME
+            txtConnID.Text = Str_USER_ID
+            txtConnPW.Text = Str_PASSWORD
+
+            txtMyIP.Text = gPrintIP
+            txtPrtIP.Text = gPrintIP_ZD
+            txtPrtPort.Text = gPrintPort
+
+            cboMDBType.Text = gMDbType
+            txtDataBaseNM.Text = gMDbName
+            txtMDBID.Text = gMDbUserNM
+            txtMDBPW.Text = gMDbUserPW
+
+        Catch ex As Exception
+
+            XtraMessageBox.Show(_sMsg.sMsg_NoLoad, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        End Try
+
+    End Sub
+
+End Class

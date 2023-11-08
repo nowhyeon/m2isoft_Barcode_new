@@ -27,8 +27,8 @@ Public Class ClsDatabase
 
         'mdb 연결
         mDBCn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & gMDbName & ";" &
-                         "User ID=" & gMDbUserNM & ";" &
-                         "Jet OLEDB:Database Password=" & gMDbUserPW & ";"
+                                 "User ID=" & gMDbUserNM & ";" &
+                                 "Jet OLEDB:Database Password=" & gMDbUserPW & ";"
     End Sub
 
     Public Sub MSSQL_DBOpen()

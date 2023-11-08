@@ -8,6 +8,7 @@ Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraPrinting
+Imports System.Xml
 
 Module mod_m2i
 
@@ -30,30 +31,47 @@ Module mod_m2i
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"
 
-    Public gPrintIP As String = "192.168.0.241"
-    Public gPrintIP_ZD As String = "172.0.0.101"
+    Public gPrintIP As String
+    Public gPrintIP_ZD As String
 
-    Public gPrintPort As Integer = 9100
+    Public gPrintPort As Integer
     Public gPrintTimeOut As Integer = 5000
 
 
-    Public Str_HOST_IP As String = "59.23.195.70"
-    Public Str_HOST_PORT As String = "1433"
-    Public Str_DATABASE_NAME As String = "SM_Barcode"
-    Public Str_USER_ID As String = "sa"
-    Public Str_PASSWORD As String = "m2i_soft"
+    '' TCPIP 프린트설정
+    'Public gBolFlag As String = "TCPIP"
 
-    'Public Str_HOST_IP As String
-    'Public Str_HOST_PORT As String
-    'Public Str_DATABASE_NAME As String
-    'Public Str_USER_ID As String
-    'Public Str_PASSWORD As String
+    'Public gPrintIP As String = "192.168.0.241"
+    'Public gPrintIP_ZD As String = "172.0.0.101"
+
+    'Public gPrintPort As Integer = 9100
+    'Public gPrintTimeOut As Integer = 5000
+
+
+    'Public Str_HOST_IP As String = "59.23.195.70"
+    'Public Str_HOST_PORT As String = "1433"
+    'Public Str_DATABASE_NAME As String = "SM_Barcode"
+    'Public Str_USER_ID As String = "sa"
+    'Public Str_PASSWORD As String = "m2i_soft"
+
+    Public Str_HOST_IP As String
+    Public Str_HOST_PORT As String
+    Public Str_DATABASE_NAME As String
+    Public Str_DATABASE_TYPE As String
+    Public Str_USER_ID As String
+    Public Str_PASSWORD As String
+
+    '' mDB 설정
+    'Public gMDbType As String = "ACCESS"
+    'Public gMDbName As String = IO.Path.Combine(Application.StartupPath, "00.DATABASE\m2i_Local_DB.mdb")
+    'Public gMDbUserNM As String = "admin"
+    'Public gMDbUserPW As String = "admin"
 
     ' mDB 설정
-    Public gMDbType As String = "ACCESS"
-    Public gMDbName As String = IO.Path.Combine(Application.StartupPath, "00.DATABASE\m2i_Local_DB.mdb")
-    Public gMDbUserNM As String = "admin"
-    Public gMDbUserPW As String = "admin"
+    Public gMDbType As String
+    Public gMDbName As String
+    Public gMDbUserNM As String
+    Public gMDbUserPW As String
     Public gTestCode As String
 
     Dim ClsDb As New ClsDatabase
@@ -289,6 +307,7 @@ Module mod_m2i
         End Try
     End Sub
 
+    '단일출력
     Public Sub Print_Barcode(ByVal sPTNM As String,          '이름
                              ByVal sBARCODE As String,       '바코드
                              ByVal sCHARTNO As String,       '차트번호
@@ -319,6 +338,7 @@ Module mod_m2i
         BarcodeString &= "^SEE:UHANGUL.DAT^FS" & vbCrLf
         BarcodeString &= "^PON^FS" & vbCrLf
         BarcodeString &= "^CW1,E:KFONT15.FNT^FS" & vbCrLf
+
         BarcodeString &= "^FO45,40^CI26^A1N,25,20^FD이름 : " & sPTNM & "^FS" & vbCrLf
         BarcodeString &= "^FO340,40^CI26^A1N,25,20^FD" & sSEX & "," & sAGE & "세^FS" & vbCrLf
         BarcodeString &= "^FO45,75^CI26^A1N,25,20^FD차트번호 : " & sCHARTNO & "^FS" & vbCrLf
@@ -328,6 +348,7 @@ Module mod_m2i
 
         BarcodeString &= "^BY2,2,80" & vbCrLf
         BarcodeString &= "^FO45,180^B3N,N,,Y,N^FD" & sBARCODE & "^FS" & vbCrLf
+
         BarcodeString &= "^PQ1,1,1,Y^FS" & vbCrLf
         BarcodeString &= "^XZ" & vbCrLf
 
@@ -360,18 +381,8 @@ Module mod_m2i
                     Using tcpClient As New System.Net.Sockets.TcpClient
                         tcpClient.Connect(gPrintIP_ZD, gPrintPort)
                         Using Writer As New System.IO.StreamWriter(tcpClient.GetStream(), System.Text.Encoding.GetEncoding("euc-kr")) 'UTF-8 인코딩 => ^CI28과 같이 사용
-                            '최대 출력 장수 10으로 제한
-                            'If SpinEdit1.EditValue > 10 Then
-                            'SpinEdit1.EditValue = 10
-                            'End If
-
-                            '출력 장수 만큼 출력
-                            'For i = 1 To SpinEdit1.EditValue
-
                             'Writer.Write(BarcodeString)
                             'Writer.Flush()
-
-                            'Next
                         End Using
                     End Using
 
@@ -389,7 +400,6 @@ Module mod_m2i
                         QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
                         QueryString &= "  WHERE REQDATE = '" & sRECEIPTDATE & "'                        " & vbNewLine
                         QueryString &= "  AND   PTID = '" & sCHARTNO & "'                               " & vbNewLine
-                        Debug.Print(QueryString)
                     Else
                         QueryString = String.Empty
                         QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
@@ -406,7 +416,6 @@ Module mod_m2i
                         QueryString &= "  ,'" & sCHARTNO & "'                                           " & vbNewLine
                         QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
                         QueryString &= "  )                                                             " & vbNewLine
-                        Debug.Print(QueryString)
                     End If
 
                     If QueryString.Length > 0 Then
@@ -419,11 +428,156 @@ Module mod_m2i
                     End If
 
                 Catch ex As Exception
-
                     XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End If
 
     End Sub
+
+    '메뉴얼출력
+    Public Sub Print_Manual_Print(strBarcodeNo As String,   '바코드번호
+                                  strMemoComment As String) '코멘트
+
+        Dim BarcodeString As String = String.Empty
+        Dim strBarcodeString As String = String.Empty
+        Dim strHeight As Integer
+        Dim strFontWidth As Integer
+        Dim strStartPos As Integer
+
+        Dim sIpPing As New Net.NetworkInformation.Ping()
+        Dim sPingReply As Net.NetworkInformation.PingReply = sIpPing.Send(gPrintIP_ZD, gPrintTimeOut)
+
+        Dim strtmp
+        Dim i As Integer
+
+        BarcodeString = "^XA" & vbCrLf
+        BarcodeString &= "^LH0,0" & vbCrLf
+        BarcodeString &= "^SEE:UHANGUL.DAT^FS" & vbCrLf
+        BarcodeString &= "^PON^FS" & vbCrLf
+        BarcodeString &= "^CW1,E:KFONT15.FNT^FS" & vbCrLf
+
+        strtmp = Split(strMemoComment, vbCrLf)
+
+        Select Case UBound(strtmp)
+            Case 0
+                strHeight = 110
+            Case 1
+                strHeight = 70
+            Case Is >= 2
+                strHeight = 30
+        End Select
+
+        For i = 0 To UBound(strtmp)
+            strBarcodeString = strtmp(i)
+
+            If IsNumeric(strBarcodeString) Then                         '숫자일 때
+                strFontWidth = 70
+                strStartPos = 10 + (10 - Len(strBarcodeString)) * 20
+            Else                                                        '문자일 때
+                strFontWidth = 50
+                strStartPos = 10
+                If Len(strBarcodeString) < 10 Then strBarcodeString = Space(10 - Len(strBarcodeString)) & strBarcodeString
+            End If
+
+            BarcodeString = BarcodeString & vbCrLf & "^FO" & strStartPos & "," & strHeight + (80 * (i)) & "^CI26^A1N,70," & strFontWidth & "^FD" & strBarcodeString & "^FS"
+        Next
+
+        If strBarcodeNo <> "" Then
+            BarcodeString &= "^BY2,2,80" & vbCrLf
+            BarcodeString &= "^FO60,180^B3N,N,,Y,N^FD" & strBarcodeNo & "^FS" & vbCrLf
+        End If
+
+        BarcodeString &= "^PQ1,1,1,Y^FS" & vbCrLf
+        BarcodeString &= "^XZ" & vbCrLf
+
+        If gBolFlag = "SERIAL" Then
+            'Try
+            '    With SerialPort
+            '        .Close()
+            '        .PortName = "COM4"
+            '        .BaudRate = 9600
+            '        .DataBits = 8
+            '        .StopBits = 1
+            '        .Open()
+            '    End With
+            'Catch ex As Exception
+            '    XtraMessageBox.Show("Serial Port(" & SerialPort.PortName & ") not open !!", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+            'End Try
+
+            'Call PfSendCommand(BarcodeString)
+        Else
+            If sPingReply.Status <> Net.NetworkInformation.IPStatus.Success Then
+
+                'Call SaveScreenShot(True)
+
+                Dim sMsgStr As String = "BARCODE Printer(" & gPrintIP_ZD & ")에 연결할 수 없습니다." & vbCrLf & " 네트워크 연결상태를 확인 후 다시 실행해 주세요."
+                XtraMessageBox.Show(sMsgStr, "프린터연결오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Else
+                Try
+                    Using tcpClient As New System.Net.Sockets.TcpClient
+                        tcpClient.Connect(gPrintIP_ZD, gPrintPort)
+                        Using Writer As New System.IO.StreamWriter(tcpClient.GetStream(), System.Text.Encoding.GetEncoding("euc-kr")) 'UTF-8 인코딩 => ^CI28과 같이 사용
+                            Writer.Write(BarcodeString)
+                            Writer.Flush()
+                        End Using
+                    End Using
+                Catch ex As Exception
+                    XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        End If
+    End Sub
+
+    Public Function CommonRead() As Boolean
+        Dim ClsEncryption As New ClsEncryptDecrypt
+
+        Try
+            If Not System.IO.File.Exists(Application.StartupPath & "\COMMON.XML") Then
+                XtraMessageBox.Show(_sMsg.sMsg_NoLoad, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+            Dim xmlDoc As New XmlDocument()
+            xmlDoc.Load(Application.StartupPath & "\COMMON.XML")
+
+            Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
+            Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
+            Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
+
+            For Each SERVER As XmlNode In mBlood
+                Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
+                Str_HOST_IP = SERVER.SelectSingleNode("HOST_IP").InnerText
+                Str_HOST_PORT = SERVER.SelectSingleNode("HOST_PORT").InnerText
+                Str_DATABASE_NAME = SERVER.SelectSingleNode("DATABASE_NAME").InnerText
+                Str_USER_ID = ClsEncryption.Decrypt(SERVER.SelectSingleNode("USER_ID").InnerText)
+                Str_PASSWORD = ClsEncryption.Decrypt(SERVER.SelectSingleNode("PASSWORD").InnerText)
+            Next
+
+            For Each Communication As XmlNode In mBlood2
+                ' GK420d 같은 시리얼을 사용하는 프린터기에 대한 포트 설정 필요
+                'Str_DATABASE_TYPE = Communication.SelectSingleNode("COMM_PORT").InnerText
+                'Str_HOST_IP = Communication.SelectSingleNode("COMM_PORTNUM").InnerText
+                gPrintIP = Communication.SelectSingleNode("PC_IP").InnerText
+                gPrintIP_ZD = Communication.SelectSingleNode("PRINTER_IP").InnerText
+                gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
+            Next
+
+            For Each MDB As XmlNode In mBlood3
+                gMDbType = MDB.SelectSingleNode("MDB_TYPE").InnerText
+                gMDbName = MDB.SelectSingleNode("MDB_NAME").InnerText
+                gMDbUserNM = MDB.SelectSingleNode("MDB_ID").InnerText
+                gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
+            Next
+
+            Return True
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
+
+    End Function
 End Module
