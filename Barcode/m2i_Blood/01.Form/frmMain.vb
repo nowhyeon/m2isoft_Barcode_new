@@ -138,8 +138,8 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SplashScreenManager.ShowWaitForm()
 
-        dtpFrom.EditValue = Now
-        dtpTo.EditValue = Now
+        dtpFrom.DateTime = Now.AddDays(-PrevDay)
+        dtpTo.DateTime = Now.AddDays(NextDay)
 
         With cboReceipt.Properties
             .Items.Clear()
@@ -226,8 +226,8 @@ Public Class frmMain
     End Sub
 
     Private Sub PsClearRoutine()
-        dtpFrom.EditValue = Now
-        dtpTo.EditValue = Now
+        dtpFrom.EditValue = Now.AddDays(-PrevDay)
+        dtpTo.EditValue = Now.AddDays(NextDay)
         cboReceipt.EditValue = String.Empty
         cboPrintYN.EditValue = String.Empty
         cboSearchCond.EditValue = String.Empty

@@ -22,4 +22,10 @@
     <MDB_ID>admin</MDB_ID>
     <MDB_PW>admin</MDB_PW>
   </MDB>
+  <DateSet>
+    <NextMonth>0</NextMonth>
+    <PrevMonth>1</PrevMonth>
+    <NextDay>3</NextDay>
+    <PrevDay>3</PrevDay>
+  </DateSet>
 </mBlood>
