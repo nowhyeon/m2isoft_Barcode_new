@@ -46,7 +46,7 @@
         'sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2) , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO "
         sqldoc = sqldoc & vbCrLf & "      , RIGHT('000000000000'+CAST(CONCAT(DATEDIFF(day, b.ReceiptDate,format(getdate(),'yyyyMMdd')),a.PTNO)AS VARCHAR(12)),12) As SPCNO "
         sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE "
-        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS JUBSU "
+        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS STATUS "
         sqldoc = sqldoc & vbCrLf & "      , a.SIGNIN                                                                                                        "
         sqldoc = sqldoc & vbCrLf & "      , b.REMARK                                                                                                        "
         sqldoc = sqldoc & vbCrLf & "      , a.DeptCode                                                                                                      "
