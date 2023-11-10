@@ -45,25 +45,12 @@ Module mod_m2i
     'Public gPrintPort As Integer = 9100
     'Public gPrintTimeOut As Integer = 5000
 
-
-    'Public Str_HOST_IP As String = "59.23.195.70"
-    'Public Str_HOST_PORT As String = "1433"
-    'Public Str_DATABASE_NAME As String = "SM_Barcode"
-    'Public Str_USER_ID As String = "sa"
-    'Public Str_PASSWORD As String = "m2i_soft"
-
     Public Str_HOST_IP As String
     Public Str_HOST_PORT As String
     Public Str_DATABASE_NAME As String
     Public Str_DATABASE_TYPE As String
     Public Str_USER_ID As String
     Public Str_PASSWORD As String
-
-    '' mDB 설정
-    'Public gMDbType As String = "ACCESS"
-    'Public gMDbName As String = IO.Path.Combine(Application.StartupPath, "00.DATABASE\m2i_Local_DB.mdb")
-    'Public gMDbUserNM As String = "admin"
-    'Public gMDbUserPW As String = "admin"
 
     ' mDB 설정
     Public gMDbType As String

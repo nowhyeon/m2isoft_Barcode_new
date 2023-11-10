@@ -244,5 +244,8 @@ Public Class frmMain
         txtDoctor.EditValue = String.Empty
         txtAcceptDate.EditValue = String.Empty
         memoComment.EditValue = String.Empty
+
+        grdSearchQry.DataSource = Nothing
+        grdSelect.DataSource = Nothing
     End Sub
 End Class
