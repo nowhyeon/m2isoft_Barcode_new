@@ -30,10 +30,8 @@ Module mod_m2i
 
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"
-
     Public gPrintIP As String
     Public gPrintIP_ZD As String
-
     Public gPrintPort As Integer
     Public gPrintTimeOut As Integer = 5000
 
@@ -72,6 +70,7 @@ Module mod_m2i
     Public gMDbName As String
     Public gMDbUserNM As String
     Public gMDbUserPW As String
+
     Public gTestCode As String
 
     Dim ClsDb As New ClsDatabase

@@ -15,7 +15,7 @@ Public Class ClsDatabase
     Private ConnectionString As String
 
     Public Sub New()
-
+        Call CommonRead()
         ConnectionString = "data source=" & Str_HOST_IP & ";" &
                            "initial catalog=" & Str_DATABASE_NAME & ";" &
                            "user id=" & Str_USER_ID & ";" &
@@ -46,6 +46,21 @@ Public Class ClsDatabase
         cMsDbCn.ConnectionString = ConnectionString
 
         cMsDbCn.Open()
+
+    End Sub
+
+    Public Sub ACCESS_DBOpen()
+        ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & gMDbName & ";" &
+                           "User ID=" & gMDbUserNM & ";" &
+                           "Jet OLEDB:Database Password=" & gMDbUserPW & ";"
+
+        If mDBCn.State = ConnectionState.Open Or mDBCn.State = ConnectionState.Connecting Then
+            mDBCn.Close()
+        End If
+
+        mDBCn.ConnectionString = ConnectionString
+
+        mDBCn.Open()
 
     End Sub
 

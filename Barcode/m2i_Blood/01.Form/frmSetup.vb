@@ -147,12 +147,13 @@ Public Class frmSetup
 
     Private Sub PtReroadRoutine()
         Try
-
+            'SplashWaitForm.ShowWaitForm()
             QueryString = String.Empty
             QueryString &= "SELECT * FROM m2i_LAB004 " & vbNewLine
-            QueryString &= " ORDER BY TESTCD         "
+            QueryString &= "ORDER BY TESTCD          "
 
             grdTestList.DataSource = ClsDb.CfMSelectQuery(QueryString)
+            'SplashWaitForm.CloseWaitForm()
             Call PtScreenClear()
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "새로고침 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -175,33 +176,6 @@ Public Class frmSetup
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
-
-    'Private Sub grdTestList_Click(sender As Object, e As EventArgs) Handles grdTestList.Click
-
-    '    Dim sSelectRow As Integer = GridView.FocusedRowHandle
-
-    '    If sSelectRow < 0 Then
-    '        Return
-    '    ElseIf sSelectRow >= 0 Then
-    '        With GridView
-    '            txtTestCd.Text = .GetRowCellValue(sSelectRow, "TESTCD").ToString()
-    '            txtTestNm.Text = .GetRowCellValue(sSelectRow, "TESTNM").ToString()
-    '            txtTestNm_10.Text = .GetRowCellValue(sSelectRow, "TestNm_10").ToString()
-    '            If .GetRowCellValue(sSelectRow, "BloodTube").ToString() = "" Then
-    '                lupBloodTube.EditValue = 0
-    '            Else
-    '                lupBloodTube.EditValue = .GetRowCellValue(sSelectRow, "BloodTube").ToString()
-    '            End If
-    '            txtWorkArea.Text = .GetRowCellValue(sSelectRow, "WorkArea").ToString()
-    '            cboPrtCnt.EditValue = .GetRowCellValue(sSelectRow, "PrintAdd").ToString()
-    '            txtRemark.Text = .GetRowCellValue(sSelectRow, "Remark").ToString()
-    '            txtNote.Text = .GetRowCellValue(sSelectRow, "Note").ToString()
-
-    '        End With
-
-    '    End If
-
-    'End Sub
 
     Private Sub GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles GridView.RowCellClick
 
@@ -226,16 +200,25 @@ Public Class frmSetup
                 'Else
                 '    txtTestCd.Text = ""
                 'End If
-                txtTestCd.Text = TestCD.ToString()
-                txtTestNm.Text = TestNM.ToString()
-                txtTestNm_10.Text = TestNm_10.ToString()
-                lupBloodTube.EditValue = BloodTube.ToString()
-                txtWorkArea.Text = WorkArea.ToString()
-                cboPrtCnt.EditValue = PrtCnt.ToString()
-                txtRemark.Text = Remark.ToString()
-                txtNote.Text = Note.ToString()
+                txtTestCd.Text = TestCD.ToString().Trim()
+                txtTestNm.Text = TestNM.ToString().Trim()
+                txtTestNm_10.Text = TestNm_10.ToString().Trim()
+                lupBloodTube.EditValue = BloodTube.ToString().Trim()
+                txtWorkArea.Text = WorkArea.ToString().Trim()
+                cboPrtCnt.EditValue = PrtCnt.ToString().Trim()
+                txtRemark.Text = Remark.ToString().Trim()
+                txtNote.Text = Note.ToString().Trim()
 
             End If
+
+            ' 마우스커서를 텍스트 오른쪽에 배치
+            Call MouseCursor(txtTestCd)
+            Call MouseCursor(txtTestNm)
+            Call MouseCursor(txtTestNm_10)
+            Call MouseCursor(txtWorkArea)
+            Call MouseCursor(txtRemark)
+            Call MouseCursor(txtNote)
+
         End If
 
     End Sub
@@ -265,6 +248,11 @@ Public Class frmSetup
 
         grdTestList.DataSource = sTable
 
+    End Sub
+
+    Private Sub MouseCursor(txtedit As TextEdit)
+        txtedit.SelectionStart = txtedit.Text.Length
+        txtedit.ScrollToCaret()
     End Sub
 
 End Class

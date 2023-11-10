@@ -30,7 +30,9 @@ Partial Class WaitForm
         'progressPanel1
         '
         Me.progressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.progressPanel1.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.progressPanel1.Appearance.Options.UseBackColor = True
+        Me.progressPanel1.Appearance.Options.UseFont = True
         Me.progressPanel1.AppearanceCaption.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.progressPanel1.AppearanceCaption.Options.UseFont = True
         Me.progressPanel1.AppearanceDescription.Font = New System.Drawing.Font("맑은 고딕", 8.25!)
@@ -41,10 +43,10 @@ Partial Class WaitForm
         Me.progressPanel1.Description = "잠시만 기다려주세요. 자료를 로딩 중입니다."
         Me.progressPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.progressPanel1.ImageHorzOffset = 20
-        Me.progressPanel1.Location = New System.Drawing.Point(0, 16)
-        Me.progressPanel1.Margin = New System.Windows.Forms.Padding(0, 3, 0, 3)
+        Me.progressPanel1.Location = New System.Drawing.Point(0, 20)
+        Me.progressPanel1.Margin = New System.Windows.Forms.Padding(0, 4, 0, 4)
         Me.progressPanel1.Name = "progressPanel1"
-        Me.progressPanel1.Size = New System.Drawing.Size(643, 65)
+        Me.progressPanel1.Size = New System.Drawing.Size(735, 81)
         Me.progressPanel1.TabIndex = 0
         Me.progressPanel1.Text = "progressPanel1"
         Me.progressPanel1.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line
@@ -58,23 +60,26 @@ Partial Class WaitForm
         Me.tableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tableLayoutPanel1.Controls.Add(Me.progressPanel1, 0, 0)
         Me.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tableLayoutPanel1.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.tableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.tableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.tableLayoutPanel1.Name = "tableLayoutPanel1"
-        Me.tableLayoutPanel1.Padding = New System.Windows.Forms.Padding(0, 13, 0, 13)
+        Me.tableLayoutPanel1.Padding = New System.Windows.Forms.Padding(0, 16, 0, 16)
         Me.tableLayoutPanel1.RowCount = 1
         Me.tableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tableLayoutPanel1.Size = New System.Drawing.Size(643, 97)
+        Me.tableLayoutPanel1.Size = New System.Drawing.Size(735, 121)
         Me.tableLayoutPanel1.TabIndex = 1
         '
         'WaitForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(643, 97)
+        Me.ClientSize = New System.Drawing.Size(735, 121)
         Me.Controls.Add(Me.tableLayoutPanel1)
         Me.DoubleBuffered = True
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "WaitForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"
