@@ -23,7 +23,7 @@ Namespace My
             End If
 
             clsDB.MSSQL_DBOpen()
-            clsDB.ACCESS_DBOpen()
+            'clsDB.ACCESS_DBOpen()
 
         End Sub
 
