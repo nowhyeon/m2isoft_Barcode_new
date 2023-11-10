@@ -32,6 +32,11 @@ Public Class ClsDatabase
     End Sub
 
     Public Sub MSSQL_DBOpen()
+
+        If CommonRead() = False Then
+            End
+        End If
+
         ConnectionString = "data source=" & Str_HOST_IP & ";" &
                            "initial catalog=" & Str_DATABASE_NAME & ";" &
                            "user id=" & Str_USER_ID & ";" &
@@ -50,6 +55,11 @@ Public Class ClsDatabase
     End Sub
 
     Public Sub ACCESS_DBOpen()
+
+        If CommonRead() = False Then
+            End
+        End If
+
         ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & gMDbName & ";" &
                            "User ID=" & gMDbUserNM & ";" &
                            "Jet OLEDB:Database Password=" & gMDbUserPW & ";"

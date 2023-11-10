@@ -105,6 +105,13 @@ Public Class frmConfig
         End If
     End Sub
 
+    Private Sub DateSetupTextEdit_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
 
     Private Sub PsAddRoutine()          ' XML파일에 서브 노드들을 추가해주는 코드
 
@@ -119,6 +126,7 @@ Public Class frmConfig
                 Dim childNode As XmlNode = xmlDoc.CreateElement("SERVER")
                 Dim childNode2 As XmlNode = xmlDoc.CreateElement("Communication")
                 Dim childNode3 As XmlNode = xmlDoc.CreateElement("MDB")
+                Dim childNode4 As XmlNode = xmlDoc.CreateElement("DateSet")
 
 
                 ' XML 파일에 NODE를 추가해주는 부분 
@@ -142,6 +150,10 @@ Public Class frmConfig
                 Dim MDB_NM_Node As XmlNode = xmlDoc.CreateElement("MDB_NAME")
                 Dim MDB_ID_Node As XmlNode = xmlDoc.CreateElement("MDB_ID")
                 Dim MDB_PW_Node As XmlNode = xmlDoc.CreateElement("MDB_PW")
+
+                ' - 날짜설정 부분에 들어가는 노드들 -
+                Dim NextDay_Node As XmlNode = xmlDoc.CreateElement("NextDay")
+                Dim PrevDay_Node As XmlNode = xmlDoc.CreateElement("PrevDay")
 
 
                 DATABASE_TYPE_Node.InnerText = cboDBType.Text                       ' DB 타입 노드에 들어갈 입력값
@@ -184,18 +196,27 @@ Public Class frmConfig
                 MDB_TYPE_Node.InnerText = cboMDBType.Text                           ' MDB타입에 들어갈 입력값
                 childNode3.AppendChild(MDB_TYPE_Node)
 
-                MDB_NM_Node.InnerText = txtMDBName.Text                                 ' 현재 PC의 IP에 들어갈 입력값
+                MDB_NM_Node.InnerText = txtMDBName.Text                             ' 현재 PC의 IP에 들어갈 입력값
                 childNode3.AppendChild(MDB_NM_Node)
 
-                MDB_ID_Node.InnerText = txtMDBID.Text                           ' 바코드 프린터의 IP에 들어갈 입력값
+                MDB_ID_Node.InnerText = txtMDBID.Text                               ' 바코드 프린터의 IP에 들어갈 입력값
                 childNode3.AppendChild(MDB_ID_Node)
 
-                MDB_PW_Node.InnerText = txtMDBPW.Text                       ' 바코드 프린터 포트 번호에 들어갈 입력값
+                MDB_PW_Node.InnerText = txtMDBPW.Text                               ' 바코드 프린터 포트 번호에 들어갈 입력값
                 childNode3.AppendChild(MDB_PW_Node)
+
+
+                NextDay_Node.InnerText = txtNextDay.Text
+                childNode4.AppendChild(NextDay_Node)
+
+                PrevDay_Node.InnerText = txtPrevDay.Text
+                childNode4.AppendChild(PrevDay_Node)
+
 
                 rootNode.AppendChild(childNode)
                 rootNode.AppendChild(childNode2)
                 rootNode.AppendChild(childNode3)
+                rootNode.AppendChild(childNode4)
 
                 xmlDoc.Save(Application.StartupPath & "\Common.xml")
 
@@ -245,6 +266,7 @@ Public Class frmConfig
             Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
             Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
+            Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -271,6 +293,10 @@ Public Class frmConfig
                 gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
             Next
 
+            For Each DateSet As XmlNode In mBlood4
+                NextDay = DateSet.SelectSingleNode("NextDay").InnerText
+                PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
+            Next
 
             cboDBType.Text = Str_DATABASE_TYPE
             txtDBIP.Text = Str_HOST_IP
@@ -287,6 +313,9 @@ Public Class frmConfig
             txtMDBName.Text = gMDbName
             txtMDBID.Text = gMDbUserNM
             txtMDBPW.Text = gMDbUserPW
+
+            txtNextDay.Text = NextDay
+            txtPrevDay.Text = PrevDay
 
         Catch ex As Exception
 

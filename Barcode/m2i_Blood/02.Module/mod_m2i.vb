@@ -71,6 +71,12 @@ Module mod_m2i
     Public gMDbUserNM As String
     Public gMDbUserPW As String
 
+    ' 날짜 설정
+    Public NextDay As Integer   ' dtpTo 컨트롤에 들어갈 변수( dtpTo ) 양수가 들어가야 함
+    Public PrevDay As Integer   ' dtpFrom 컨트롤에 들어갈 변수( dtpFrom ) 음수가 들어가야 함
+    Public NextMonth As Integer
+    Public PrevMonth As Integer
+
     Public gTestCode As String
 
     Dim ClsDb As New ClsDatabase
@@ -544,6 +550,7 @@ Module mod_m2i
             Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
             Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
+            Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -568,6 +575,11 @@ Module mod_m2i
                 gMDbName = MDB.SelectSingleNode("MDB_NAME").InnerText
                 gMDbUserNM = MDB.SelectSingleNode("MDB_ID").InnerText
                 gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
+            Next
+
+            For Each DateSet As XmlNode In mBlood4
+                NextDay = DateSet.SelectSingleNode("NextDay").InnerText
+                PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
             Next
 
             Return True
