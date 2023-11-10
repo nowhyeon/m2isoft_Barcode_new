@@ -11,15 +11,19 @@ Namespace My
     ' NetworkAvailabilityChanged: 네트워크가 연결되거나 연결이 끊어질 때 발생합니다.
     Partial Friend Class MyApplication
         Dim clsDB As New ClsDatabase
+        Dim clsACCESSDB As New ClsAccessDB
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
 
             WindowsFormsSettings.LoadApplicationSettings()
             REM WindowsFormsSettings.DefaultFont = New System.Drawing.Font("Tahoma", 9)
             WindowsFormsSettings.DefaultFont = New System.Drawing.Font("맑은 고딕", 9)
 
-            CommonRead()
+            If CommonRead() = False Then
+                End
+            End If
 
-            clsDB.CfDatabaseOpen()
+            clsDB.MSSQL_DBOpen()
+            clsDB.ACCESS_DBOpen()
 
         End Sub
 

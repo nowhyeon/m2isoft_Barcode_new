@@ -60,6 +60,7 @@ Partial Class frmSetup
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.SplashWaitForm = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.m2i_Blood.WaitForm), True, True)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -474,7 +475,8 @@ Partial Class frmSetup
         '
         Me.LayoutControlItem11.Control = Me.PanelControl2
         Me.LayoutControlItem11.Location = New System.Drawing.Point(557, 594)
-        Me.LayoutControlItem11.MinSize = New System.Drawing.Size(4, 70)
+        Me.LayoutControlItem11.MaxSize = New System.Drawing.Size(285, 85)
+        Me.LayoutControlItem11.MinSize = New System.Drawing.Size(285, 85)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(285, 85)
         Me.LayoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
@@ -488,6 +490,10 @@ Partial Class frmSetup
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
         Me.EmptySpaceItem5.Size = New System.Drawing.Size(10, 112)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'SplashWaitForm
+        '
+        Me.SplashWaitForm.ClosingDelay = 500
         '
         'frmSetup
         '
@@ -582,4 +588,5 @@ Partial Class frmSetup
     Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents btnPanWork As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
+    Friend WithEvents SplashWaitForm As DevExpress.XtraSplashScreen.SplashScreenManager
 End Class

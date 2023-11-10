@@ -227,6 +227,7 @@ Public Class frmConfig
         txtDataBaseNM.Text = String.Empty
         txtConnID.Text = String.Empty
         txtConnPW.Text = String.Empty
+        txtMDBName.Text = String.Empty
 
     End Sub
 
@@ -283,7 +284,7 @@ Public Class frmConfig
             txtPrtPort.Text = gPrintPort
 
             cboMDBType.Text = gMDbType
-            txtDataBaseNM.Text = gMDbName
+            txtMDBName.Text = gMDbName
             txtMDBID.Text = gMDbUserNM
             txtMDBPW.Text = gMDbUserPW
 
