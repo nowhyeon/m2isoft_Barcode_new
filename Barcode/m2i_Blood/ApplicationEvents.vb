@@ -17,9 +17,9 @@ Namespace My
             REM WindowsFormsSettings.DefaultFont = New System.Drawing.Font("Tahoma", 9)
             WindowsFormsSettings.DefaultFont = New System.Drawing.Font("맑은 고딕", 9)
 
-            CommonRead()
+            Call CommonRead()
 
-            clsDB.CfDatabaseOpen()
+            clsDB.MSSQL_DBOpen()
 
         End Sub
 

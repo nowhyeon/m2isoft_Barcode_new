@@ -105,7 +105,7 @@ Public Class frmMain
 
             Dim TestCode As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
                                                                                GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
-                                                                               GridView.GetRowCellValue(sSelectRow, "JUBSU").ToString)
+                                                                               GridView.GetRowCellValue(sSelectRow, "STATUS").ToString)
 
             If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
                 For Each row As DataRow In TestCode.Rows
