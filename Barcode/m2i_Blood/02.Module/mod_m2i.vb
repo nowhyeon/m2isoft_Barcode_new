@@ -336,10 +336,11 @@ Module mod_m2i
         BarcodeString &= "^FO45,75^CI26^A1N,25,20^FD차트번호 : " & sCHARTNO & "^FS" & vbCrLf
         BarcodeString &= "^FO45,110^CI26^A1N,25,25^FD진료과 : " & sMEDOFFICE & "^FS" & vbCrLf
         BarcodeString &= "^FO230,110^CI26^A1N,25,25^FD담당의 : " & sDOCTOR & "^FS" & vbCrLf
-        BarcodeString &= "^FO180,145^CI26^A1N,25,25^FD접수날짜 : " & sRECEIPTDATE & "^FS" & vbCrLf
+        BarcodeString &= "^FO135,145^CI26^A1N,25,25^FD접수날짜 : " & sRECEIPTDATE & "^FS" & vbCrLf
 
         BarcodeString &= "^BY2,2,80" & vbCrLf
-        BarcodeString &= "^FO45,180^B3N,N,,Y,N^FD" & sBARCODE & "^FS" & vbCrLf
+        BarcodeString &= "^FO45,180^B3N,N,,Y,N^FD" & sBARCODE & "^FS" & vbCrLf ' B3 39
+        'BarcodeString &= "^FO45,180^B3N,N,50,Y^FD" & sBARCODE & "^FS" & vbCrLf ' 같은 39인데 height 조절 
 
         BarcodeString &= "^PQ1,1,1,Y^FS" & vbCrLf
         BarcodeString &= "^XZ" & vbCrLf
@@ -355,7 +356,7 @@ Module mod_m2i
             '        .Open()
             '    End With
             'Catch ex As Exception
-            '    XtraMessageBox.Show("Serial Port(" & SerialPort.PortName & ") not open !!", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    XtraMessageBox.Show("Serial Port(" & SerialPort.PortName & ") Not open !!", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             '    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
             'End Try
 
@@ -373,8 +374,8 @@ Module mod_m2i
                     Using tcpClient As New System.Net.Sockets.TcpClient
                         tcpClient.Connect(gPrintIP_ZD, gPrintPort)
                         Using Writer As New System.IO.StreamWriter(tcpClient.GetStream(), System.Text.Encoding.GetEncoding("euc-kr")) 'UTF-8 인코딩 => ^CI28과 같이 사용
-                            'Writer.Write(BarcodeString)
-                            'Writer.Flush()
+                            Writer.Write(BarcodeString)
+                            Writer.Flush()
                         End Using
                     End Using
 

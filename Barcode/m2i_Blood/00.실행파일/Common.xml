@@ -12,8 +12,8 @@
     </COMM_PORT>
     <COMM_PORTNUM>
     </COMM_PORTNUM>
-    <PC_IP>192.168.0.54</PC_IP>
-    <PRINTER_IP>127.0.0.1</PRINTER_IP>
+    <PC_IP>192.168.0.22</PC_IP>
+    <PRINTER_IP>172.0.0.101</PRINTER_IP>
     <PRINTER_PORT>9100</PRINTER_PORT>
   </Communication>
   <MDB>
@@ -22,4 +22,8 @@
     <MDB_ID>admin</MDB_ID>
     <MDB_PW>admin</MDB_PW>
   </MDB>
+  <DateSet>
+    <NextDay>2</NextDay>
+    <PrevDay>2</PrevDay>
+  </DateSet>
 </mBlood>
