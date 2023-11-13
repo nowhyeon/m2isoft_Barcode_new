@@ -223,7 +223,17 @@ Public Class frmSetup
 
     End Sub
 
-    Private Sub txtTestCd_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanging, txtTestNm.EditValueChanging
+    'Private Sub txtTestCd_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanging
+
+    '    QueryString = String.Empty
+    '    QueryString &= "SELECT * FROM m2i_LAB004                        "
+    '    QueryString &= "WHERE TESTCD LIKE '%" & txtTestCd.Text & "%'    "
+
+    '    LoadDataToGrid(QueryString)
+
+    'End Sub
+
+    Private Sub txtTestCd_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanged
 
         QueryString = String.Empty
         QueryString &= "SELECT * FROM m2i_LAB004                        "
@@ -233,7 +243,30 @@ Public Class frmSetup
 
     End Sub
 
-    Private Sub txtTestNm_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
+
+    Private Sub txtTestCd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTestCd.KeyDown
+
+        If e.KeyCode = Keys.Return Then
+
+            QueryString = String.Empty
+            QueryString &= "SELECT * FROM m2i_LAB004                        "
+            QueryString &= "WHERE TESTCD LIKE '%" & txtTestCd.Text & "%'      "
+
+            SearchDataToGrid(txtTestCd, QueryString)
+
+        End If
+    End Sub
+
+    'Private Sub txtTestNm_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanging
+    '    QueryString = String.Empty
+    '    QueryString &= "SELECT * FROM m2i_LAB004                        "
+    '    QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
+
+    '    LoadDataToGrid(QueryString)
+
+    'End Sub
+
+    Private Sub txtTestNm_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
         QueryString = String.Empty
         QueryString &= "SELECT * FROM m2i_LAB004                        "
         QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
@@ -242,6 +275,21 @@ Public Class frmSetup
 
     End Sub
 
+    Private Sub txtTestNm_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTestNm.KeyDown
+
+        If e.KeyCode = Keys.Return Then
+
+            QueryString = String.Empty
+            QueryString &= "SELECT * FROM m2i_LAB004                          "
+            QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'      "
+
+            SearchDataToGrid(txtTestNm, QueryString)
+
+        End If
+
+    End Sub
+
+
     Private Sub LoadDataToGrid(strQuery As String)
 
         Dim sTable As DataTable = ClsDb.CfMSelectQuery(strQuery)
@@ -249,6 +297,34 @@ Public Class frmSetup
         grdTestList.DataSource = sTable
 
     End Sub
+
+    Private Sub SearchDataToGrid(txtEdit As TextEdit, strQuery As String)
+
+        Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+        If sTable.Rows.Count > 0 Then
+            If txtEdit Is txtTestCd Then
+                txtTestNm.Text = sTable.Rows(0)(1).ToString()
+                txtTestNm_10.Text = sTable.Rows(0)(2).ToString()
+                lupBloodTube.EditValue = sTable.Rows(0)(3).ToString()
+                txtWorkArea.Text = sTable.Rows(0)(4).ToString()
+                cboPrtCnt.EditValue = sTable.Rows(0)(5).ToString()
+                txtRemark.Text = sTable.Rows(0)(6).ToString()
+                txtNote.Text = sTable.Rows(0)(7).ToString()
+            ElseIf txtEdit Is txtTestNm Then
+                txtTestCd.Text = sTable.Rows(0)(0).ToString()
+                txtTestNm_10.Text = sTable.Rows(0)(2).ToString()
+                lupBloodTube.EditValue = sTable.Rows(0)(3).ToString()
+                txtWorkArea.Text = sTable.Rows(0)(4).ToString()
+                cboPrtCnt.EditValue = sTable.Rows(0)(5).ToString()
+                txtRemark.Text = sTable.Rows(0)(6).ToString()
+                txtNote.Text = sTable.Rows(0)(7).ToString()
+            End If
+
+        End If
+
+    End Sub
+
 
     Private Sub MouseCursor(txtedit As TextEdit)
         txtedit.SelectionStart = txtedit.Text.Length
