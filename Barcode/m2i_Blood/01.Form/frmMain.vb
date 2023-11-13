@@ -39,8 +39,8 @@ Public Class frmMain
         GfColumnSet(GridView, "나이", "PTAGE", 15, "L", , True)
 
         GfColumnSet(GridView3, "검사이름", "TESTNM", 30, "L", , True)
-        GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
         GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
+        GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
         GfColumnSet(GridView3, "검사약어", "TESTNM_10", 30, "L", , True)
         GfColumnSet(GridView3, "특이사항", "Remark", 40, "L", , True)
         GfColumnSet(GridView3, "출력장수", "PrintAdd", 15, "L", , True)
@@ -88,8 +88,6 @@ Public Class frmMain
         Dim TESTCD As String = String.Empty
 
         Try
-            SplashScreenManager.ShowWaitForm()
-
             With GridView
                 txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
                 txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
@@ -118,17 +116,15 @@ Public Class frmMain
             End If
 
             QueryString = String.Empty
-            QueryString &= " SELECT TESTNM, BLOODTUBE, WORKAREA, TESTNM_10, Remark,  PrintAdd" & vbCrLf
+            QueryString &= " SELECT TESTNM,  WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd" & vbCrLf
             QueryString &= "   FROM m2i_LAB004                                               " & vbCrLf
             QueryString &= "  WHERE 1 = 1                                                    " & vbCrLf
             QueryString &= "    AND TESTCD in (" & TESTCD & ")                               " & vbCrLf
-            QueryString &= "  ORDER BY BLOODTUBE,WORKAREA                                    " & vbCrLf
+            QueryString &= "  ORDER BY WORKAREA,BLOODTUBE                                    " & vbCrLf
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
             grdSelect.DataSource = sTable
-
-            SplashScreenManager.CloseWaitForm()
         Catch ex As Exception
 
         End Try
@@ -185,13 +181,13 @@ Public Class frmMain
         For intRowCount = 0 To GridView3.RowCount - 1
             With GridView3
 
-                strNewDivision = .GetRowCellValue(intRowCount, "BLOODTUBE").ToString()
+                strNewDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
 
                 If strNewDivision <> strOldDivision Or printBool = False Then
                     Print_Barcode(sPTNM, sBARCODE, sCHARTNO, sSEX, sAGE, sMEDOFFICE, sRECEIPTDATE, sDOCTOR, sACCEPTDATE, sMEMO)
                 End If
 
-                strOldDivision = .GetRowCellValue(intRowCount, "BLOODTUBE").ToString()
+                strOldDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
                 printBool = True
             End With
         Next
@@ -247,5 +243,9 @@ Public Class frmMain
 
         grdSearchQry.DataSource = Nothing
         grdSelect.DataSource = Nothing
+    End Sub
+
+    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As EventArgs) Handles WindowsUIButtonPanel1.Click
+
     End Sub
 End Class

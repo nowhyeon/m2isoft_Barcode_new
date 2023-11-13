@@ -28,6 +28,7 @@ Partial Class frmMDI
         Me.btnMain = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement3 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnTestList = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlElement7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement1 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement2 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.FluentDesignFormControl1 = New DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl()
@@ -39,7 +40,6 @@ Partial Class frmMDI
         Me.AccordionControlElement5 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement6 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.Element7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-        Me.AccordionControlElement7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FluentDesignFormControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,14 +57,13 @@ Partial Class frmMDI
         Me.AccordionControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.AccordionControl1.Name = "AccordionControl1"
         Me.AccordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch
-        Me.AccordionControl1.Size = New System.Drawing.Size(130, 849)
+        Me.AccordionControl1.Size = New System.Drawing.Size(178, 849)
         Me.AccordionControl1.TabIndex = 1
         Me.AccordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu
         '
         'AccordionControlElement4
         '
         Me.AccordionControlElement4.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnMain})
-        Me.AccordionControlElement4.Expanded = True
         Me.AccordionControlElement4.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement4.Name = "AccordionControlElement4"
         Me.AccordionControlElement4.Text = "Main"
@@ -78,7 +77,6 @@ Partial Class frmMDI
         'AccordionControlElement3
         '
         Me.AccordionControlElement3.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnTestList, Me.AccordionControlElement7})
-        Me.AccordionControlElement3.Expanded = True
         Me.AccordionControlElement3.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement3.Name = "AccordionControlElement3"
         Me.AccordionControlElement3.Text = "Setup"
@@ -89,10 +87,15 @@ Partial Class frmMDI
         Me.btnTestList.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.btnTestList.Text = "검사항목"
         '
+        'AccordionControlElement7
+        '
+        Me.AccordionControlElement7.Name = "AccordionControlElement7"
+        Me.AccordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.AccordionControlElement7.Text = "통신설정"
+        '
         'AccordionControlElement1
         '
         Me.AccordionControlElement1.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.AccordionControlElement2})
-        Me.AccordionControlElement1.Expanded = True
         Me.AccordionControlElement1.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement1.Name = "AccordionControlElement1"
         Me.AccordionControlElement1.Text = "Surpport"
@@ -151,10 +154,10 @@ Partial Class frmMDI
         'FluentDesignFormContainer1
         '
         Me.FluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(130, 27)
+        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(178, 27)
         Me.FluentDesignFormContainer1.Margin = New System.Windows.Forms.Padding(2)
         Me.FluentDesignFormContainer1.Name = "FluentDesignFormContainer1"
-        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1140, 849)
+        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1092, 849)
         Me.FluentDesignFormContainer1.TabIndex = 0
         '
         'AccordionControlElement5
@@ -174,12 +177,6 @@ Partial Class frmMDI
         Me.Element7.Name = "Element7"
         Me.Element7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.Element7.Text = "원격지원"
-        '
-        'AccordionControlElement7
-        '
-        Me.AccordionControlElement7.Name = "AccordionControlElement7"
-        Me.AccordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.AccordionControlElement7.Text = "통신설정"
         '
         'frmMDI
         '
