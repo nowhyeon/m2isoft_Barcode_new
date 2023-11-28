@@ -30,7 +30,6 @@ Module mod_m2i
 
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"
-    Public gPrintIP As String
     Public gPrintIP_ZD As String
     Public gPrintPort As Integer
     Public gPrintTimeOut As Integer = 5000
@@ -77,17 +76,6 @@ Module mod_m2i
         Shared _search As String = "Data Search"          ' 데이터 검색 작업 시
         Shared _MenuWork As String = "Menu Work"          ' 메뉴 작업 시
     End Structure
-
-    '사용자정보
-    Public Structure TESTInfo
-        Shared UserId As String        '
-        Shared UserName As String      '
-        Shared TESTIdx As String      'm2i_LAB101의 LupIdx의 A1, B1, C1을 받음
-        Shared HospName As String      '
-        Shared UserLevel As String     '
-        Shared DeptCode As String      '
-    End Structure
-
 
     '자식폼 열기
     Public Sub OpenChildForm(childForm As XtraForm)
@@ -553,7 +541,7 @@ Module mod_m2i
                 ' GK420d 같은 시리얼을 사용하는 프린터기에 대한 포트 설정 필요
                 'Str_DATABASE_TYPE = Communication.SelectSingleNode("COMM_PORT").InnerText
                 'Str_HOST_IP = Communication.SelectSingleNode("COMM_PORTNUM").InnerText
-                gPrintIP = Communication.SelectSingleNode("PC_IP").InnerText
+                'gPrintIP = Communication.SelectSingleNode("PC_IP").InnerText
                 gPrintIP_ZD = Communication.SelectSingleNode("PRINTER_IP").InnerText
                 gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
             Next
