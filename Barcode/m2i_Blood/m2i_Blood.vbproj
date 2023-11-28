@@ -163,6 +163,12 @@
     <Compile Include="01.Form\frmAMHTest.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="01.Form\frmAMHTest2.Designer.vb">
+      <DependentUpon>frmAMHTest2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="01.Form\frmAMHTest2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
@@ -170,6 +176,9 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <EmbeddedResource Include="01.Form\frmAMHTest.resx">
       <DependentUpon>frmAMHTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01.Form\frmAMHTest2.resx">
+      <DependentUpon>frmAMHTest2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmConfig.resx">
       <DependentUpon>frmConfig.vb</DependentUpon>
