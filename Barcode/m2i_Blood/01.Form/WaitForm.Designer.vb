@@ -79,7 +79,6 @@ Partial Class WaitForm
         Me.Controls.Add(Me.tableLayoutPanel1)
         Me.DoubleBuffered = True
         Me.Name = "WaitForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"
         Me.tableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)

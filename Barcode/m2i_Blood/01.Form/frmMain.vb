@@ -27,22 +27,24 @@ Public Class frmMain
             .OptionsView.ShowGroupPanel = False
             .OptionsSelection.EnableAppearanceFocusedCell = False                                ' 포커스 설정
             .OptionsSelection.MultiSelect = True                                                 ' 다중라인 선택유무
-            .OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
+            '.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect                 ' 선택모드(일반)  
+            .OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect          ' 선택모드(체크박스)
+            .OptionsSelection.CheckBoxSelectorColumnWidth = 40
 
             .Columns.Clear()
         End With
-        GfColumnSet(GridView, "차트번호", "PTID", 30, "L", , True)
-        GfColumnSet(GridView, "이름", "PTNM", 15, "L", , True)
-        GfColumnSet(GridView, "접수일", "REQDATE", 30, "L", , True)
-        GfColumnSet(GridView, "바코드", "SPCNO", 30, "L", , True)
-        GfColumnSet(GridView, "성별", "PTSEX", 15, "L", , True)
-        GfColumnSet(GridView, "나이", "PTAGE", 15, "L", , True)
+        GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
+        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
+        GfColumnSet(GridView, "접수일", "REQDATE", 35, "L", , True)
+        GfColumnSet(GridView, "바코드", "SPCNO", 50, "L", , True)
+        GfColumnSet(GridView, "성별", "PTSEX", 12, "L", , True)
+        GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
 
         GfColumnSet(GridView3, "검사이름", "TESTNM", 30, "L", , True)
         GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
         GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
         GfColumnSet(GridView3, "검사약어", "TESTNM_10", 30, "L", , True)
-        GfColumnSet(GridView3, "특이사항", "Remark", 40, "L", , True)
+        GfColumnSet(GridView3, "특이사항", "Remark", 30, "L", , True)
         GfColumnSet(GridView3, "출력장수", "PrintAdd", 15, "L", , True)
         GfColumnSet(GridView3, "바코드분류", "BarcodeDivision", 15, "L", , True)
 
@@ -51,8 +53,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnManual_Click(sender As Object, e As EventArgs)
-        Dim manual As New frmManual
-        manual.Show()
+        frmManual.Show()
     End Sub
 
     '수진자 조회
@@ -64,14 +65,11 @@ Public Class frmMain
 
             Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
-
-
-            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(Format(dtpFrom.EditValue, "yyyyMMdd"),'시작일
-                                                                          Format(dtpTo.EditValue, "yyyyMMdd"),  '종료일
-                                                                          cboReceipt.EditValue,                 '접수타입
-                                                                          cboSearchCond.EditValue,              '검색타입
-                                                                          txtSearchWrd.Text)                    '검색어
-
+            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(dtpFrom.Text,             '시작일
+                                                                          dtpTo.Text,               '종료일
+                                                                          cboReceipt.EditValue,     '접수타입
+                                                                          cboSearchCond.EditValue,  '검색타입
+                                                                          txtSearchWrd.Text)        '검색어
             grdSearchQry.DataSource = sTable
 
             SplashScreenManager.CloseWaitForm()
@@ -79,15 +77,65 @@ Public Class frmMain
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
 
+    '프린트완료 건 backColor 변경
+    Private Sub GridView_RowStyle(ByVal sender As Object,
+                                  ByVal e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView.RowStyle
+        Try
+            Dim View As GridView = sender
+
+            If (e.RowHandle >= 0) Then
+                Dim PITD As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("PTID"))
+                Dim REQDATE As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("REQDATE"))
+
+                QueryString = String.Empty
+                QueryString &= " SELECT *          " & vbNewLine
+                QueryString &= "   FROM m2i_LAB201 " & vbNewLine
+                QueryString &= "  WHERE 1 = 1      " & vbNewLine
+                QueryString &= "    AND REQDATE >= '" & Format(dtpFrom.EditValue, "yyyy-MM-dd") & "'" & vbNewLine
+
+                Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+                If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+                    For intRow = 0 To sTable.Rows.Count - 1
+                        If PITD = sTable.Rows(intRow)("PTID").ToString And REQDATE = sTable.Rows(intRow)("REQDATE").ToString Then
+                            e.Appearance.BackColor = Color.Salmon
+                            e.Appearance.BackColor2 = Color.SeaShell
+                            e.HighPriority = True
+                        End If
+                    Next
+                End If
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    'Public Sub GRID_SET_COLOR(grdview As GridView,
+    '                          i As Integer,
+    '                          setColor As String)
+    '    Dim intRow As Integer = GridView.GetVisibleRowHandle(i)
+    '    With GridView
+    '        Select Case setColor
+    '            Case "RED"
+    '                '.Appearance.Row.ForeColor = Color.Red
+    '                .SetRowCellValue(intRow, "이름", ForeColor = Color.Red)
+    '            Case "BLUE"
+
+    '            Case "BLACK"
+    '        End Select
+    '    End With
+    'End Sub
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
         Dim TESTCD As String = String.Empty
 
         Try
+            SplashScreenManager.ShowWaitForm()
+
             With GridView
                 txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
                 txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
@@ -116,15 +164,17 @@ Public Class frmMain
             End If
 
             QueryString = String.Empty
-            QueryString &= " SELECT TESTNM,  WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd" & vbCrLf
-            QueryString &= "   FROM m2i_LAB004                                               " & vbCrLf
-            QueryString &= "  WHERE 1 = 1                                                    " & vbCrLf
-            QueryString &= "    AND TESTCD in (" & TESTCD & ")                               " & vbCrLf
-            QueryString &= "  ORDER BY WORKAREA,BLOODTUBE                                    " & vbCrLf
+            QueryString &= " SELECT TESTNM,  WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd " & vbCrLf
+            QueryString &= "   FROM m2i_LAB004                                                 " & vbCrLf
+            QueryString &= "  WHERE 1 = 1                                                      " & vbCrLf
+            QueryString &= "    AND TESTCD in (" & TESTCD & ")                                 " & vbCrLf
+            QueryString &= "  ORDER BY WORKAREA,BLOODTUBE                                      " & vbCrLf
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
             grdSelect.DataSource = sTable
+
+            SplashScreenManager.CloseWaitForm()
         Catch ex As Exception
 
         End Try
@@ -245,7 +295,4 @@ Public Class frmMain
         grdSelect.DataSource = Nothing
     End Sub
 
-    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As EventArgs) Handles WindowsUIButtonPanel1.Click
-
-    End Sub
 End Class

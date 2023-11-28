@@ -415,10 +415,10 @@ Module mod_m2i
                         sReturn = ClsDb.CfMExecuteQuery(QueryString)
                     End If
 
-                    If sReturn Then
-                        Dim sMsg As String = "저장되었습니다.", sMsgTitle As String = "저장 완료", sQst As String = "저장 하시겠습니까?"
-                        XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
+                    'If sReturn Then
+                    '    Dim sMsg As String = "저장되었습니다.", sMsgTitle As String = "저장 완료", sQst As String = "저장 하시겠습니까?"
+                    '    XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'End If
 
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
