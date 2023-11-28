@@ -11,7 +11,7 @@ Imports DevExpress.XtraPrinting
 Imports System.Xml
 
 Module mod_m2i
-
+    'test
     ' 로그인 설정
     Public QueryString As String = String.Empty
 

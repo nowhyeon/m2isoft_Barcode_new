@@ -18,7 +18,7 @@ Public Class frmMain
     Public Hospital_DB As New ClsOrder
 
     Public Sub New()
-        ' 디자이너에서 이 호출이 필요합니다.
+        ' 디자이너에서 이 호출이 필요합니다. 'test
         InitializeComponent()
 
         Me.StartPosition = FormStartPosition.CenterScreen
