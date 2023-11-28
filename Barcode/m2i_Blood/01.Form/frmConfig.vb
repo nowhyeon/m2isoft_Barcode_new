@@ -28,34 +28,6 @@ Public Class frmConfig
 
     End Sub
 
-    Private Sub btnMyIP_Click(sender As Object, e As EventArgs) Handles btnMyIP.Click
-        Try
-            Dim ipentry As IPHostEntry
-
-            ipentry = Dns.GetHostEntry("")
-            txtMyIP.Text = ipentry.AddressList(1).ToString()
-
-            MessageBox.Show("현재 컴퓨터의 IP 주소: " & txtMyIP.Text, "IP 주소", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-        Catch ex As Exception
-            MessageBox.Show("IP 주소를 가져오는 중 오류가 발생했습니다: " & ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
-
-    Private Sub btnPingTest_Click(sender As Object, e As EventArgs) Handles btnPingTest.Click
-        Try
-            Dim ping As New Ping
-            Dim pReply As PingReply = ping.Send(txtMyIP.Text, 1000)
-
-            MessageBox.Show("Ping Test 결과 : " & pReply.Status.ToString, "Ping Test", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-        Catch ex As Exception
-            MessageBox.Show("Ping Test 도중 오류가 발생했습니다: " & ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
-
     Private Sub btnPanWork_Click(sender As Object, e As ButtonEventArgs) Handles btnPanWork.ButtonClick
 
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
@@ -141,7 +113,6 @@ Public Class frmConfig
                 ' - 통신설정 부분에 들어가는 노드들 -
                 Dim COMM_PORT_Node As XmlNode = xmlDoc.CreateElement("COMM_PORT")
                 Dim COMM_PORTNUM_Node As XmlNode = xmlDoc.CreateElement("COMM_PORTNUM")
-                Dim PC_IP_Node As XmlNode = xmlDoc.CreateElement("PC_IP")
                 Dim PRINTER_IP_Node As XmlNode = xmlDoc.CreateElement("PRINTER_IP")
                 Dim PRINTER_PORT_Node As XmlNode = xmlDoc.CreateElement("PRINTER_PORT")
 
@@ -181,9 +152,6 @@ Public Class frmConfig
 
                 COMM_PORTNUM_Node.InnerText = txtCommPortNum.Text                   ' 시리얼통신 포트 번호에 들어갈 입력값
                 childNode2.AppendChild(COMM_PORTNUM_Node)
-
-                PC_IP_Node.InnerText = txtMyIP.Text                                 ' 현재 PC의 IP에 들어갈 입력값
-                childNode2.AppendChild(PC_IP_Node)
 
                 PRINTER_IP_Node.InnerText = txtPrtIP.Text                           ' 바코드 프린터의 IP에 들어갈 입력값
                 childNode2.AppendChild(PRINTER_IP_Node)
@@ -235,7 +203,6 @@ Public Class frmConfig
 
         txtCommPort.Text = String.Empty
         txtCommPortNum.Text = String.Empty
-        txtMyIP.Text = String.Empty
         txtPrtIP.Text = String.Empty
         txtPrtPort.Text = String.Empty
         cboDBType.Text = String.Empty
@@ -281,7 +248,6 @@ Public Class frmConfig
                 ' GK420d 같은 시리얼을 사용하는 프린터기에 대한 포트 설정 필요
                 'Str_DATABASE_TYPE = Communication.SelectSingleNode("COMM_PORT").InnerText
                 'Str_HOST_IP = Communication.SelectSingleNode("COMM_PORTNUM").InnerText
-                gPrintIP = Communication.SelectSingleNode("PC_IP").InnerText
                 gPrintIP_ZD = Communication.SelectSingleNode("PRINTER_IP").InnerText
                 gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
             Next
@@ -305,7 +271,6 @@ Public Class frmConfig
             txtConnID.Text = Str_USER_ID
             txtConnPW.Text = Str_PASSWORD
 
-            txtMyIP.Text = gPrintIP
             txtPrtIP.Text = gPrintIP_ZD
             txtPrtPort.Text = gPrintPort
 

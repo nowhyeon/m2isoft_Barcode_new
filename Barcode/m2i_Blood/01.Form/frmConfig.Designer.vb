@@ -31,19 +31,13 @@ Partial Class frmConfig
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl4 = New DevExpress.XtraLayout.LayoutControl()
-        Me.btnPingTest = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnMyIP = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtMyIP = New DevExpress.XtraEditors.TextEdit()
         Me.txtPrtIP = New DevExpress.XtraEditors.TextEdit()
         Me.txtPrtPort = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem7 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem8 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl3 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtCommPort = New DevExpress.XtraEditors.TextEdit()
@@ -136,17 +130,13 @@ Partial Class frmConfig
         Me.GroupControl2.SuspendLayout()
         CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl4.SuspendLayout()
-        CType(Me.txtMyIP.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPrtIP.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPrtPort.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -261,7 +251,7 @@ Partial Class frmConfig
         WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
         WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("지우기", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Clear", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False)})
+        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("새로고침", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("지우기", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Clear", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False)})
         Me.btnPanWork.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPanWork.Location = New System.Drawing.Point(425, 453)
         Me.btnPanWork.Margin = New System.Windows.Forms.Padding(4)
@@ -314,9 +304,6 @@ Partial Class frmConfig
         '
         'LayoutControl4
         '
-        Me.LayoutControl4.Controls.Add(Me.btnPingTest)
-        Me.LayoutControl4.Controls.Add(Me.btnMyIP)
-        Me.LayoutControl4.Controls.Add(Me.txtMyIP)
         Me.LayoutControl4.Controls.Add(Me.txtPrtIP)
         Me.LayoutControl4.Controls.Add(Me.txtPrtPort)
         Me.LayoutControl4.Dock = System.Windows.Forms.DockStyle.Fill
@@ -328,41 +315,9 @@ Partial Class frmConfig
         Me.LayoutControl4.TabIndex = 0
         Me.LayoutControl4.Text = "LayoutControl3"
         '
-        'btnPingTest
-        '
-        Me.btnPingTest.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPingTest.Appearance.Options.UseFont = True
-        Me.btnPingTest.Location = New System.Drawing.Point(508, 12)
-        Me.btnPingTest.Name = "btnPingTest"
-        Me.btnPingTest.Size = New System.Drawing.Size(131, 28)
-        Me.btnPingTest.StyleController = Me.LayoutControl4
-        Me.btnPingTest.TabIndex = 8
-        Me.btnPingTest.Text = "Ping Test"
-        '
-        'btnMyIP
-        '
-        Me.btnMyIP.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMyIP.Appearance.Options.UseFont = True
-        Me.btnMyIP.Location = New System.Drawing.Point(380, 12)
-        Me.btnMyIP.Name = "btnMyIP"
-        Me.btnMyIP.Size = New System.Drawing.Size(124, 28)
-        Me.btnMyIP.StyleController = Me.LayoutControl4
-        Me.btnMyIP.TabIndex = 7
-        Me.btnMyIP.Text = "현재 IP"
-        '
-        'txtMyIP
-        '
-        Me.txtMyIP.Location = New System.Drawing.Point(109, 12)
-        Me.txtMyIP.Name = "txtMyIP"
-        Me.txtMyIP.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.txtMyIP.Properties.Appearance.Options.UseFont = True
-        Me.txtMyIP.Size = New System.Drawing.Size(267, 26)
-        Me.txtMyIP.StyleController = Me.LayoutControl4
-        Me.txtMyIP.TabIndex = 4
-        '
         'txtPrtIP
         '
-        Me.txtPrtIP.Location = New System.Drawing.Point(109, 40)
+        Me.txtPrtIP.Location = New System.Drawing.Point(109, 12)
         Me.txtPrtIP.Name = "txtPrtIP"
         Me.txtPrtIP.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.txtPrtIP.Properties.Appearance.Options.UseFont = True
@@ -372,7 +327,7 @@ Partial Class frmConfig
         '
         'txtPrtPort
         '
-        Me.txtPrtPort.Location = New System.Drawing.Point(109, 68)
+        Me.txtPrtPort.Location = New System.Drawing.Point(109, 40)
         Me.txtPrtPort.Name = "txtPrtPort"
         Me.txtPrtPort.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.txtPrtPort.Properties.Appearance.Options.UseFont = True
@@ -384,31 +339,17 @@ Partial Class frmConfig
         '
         Me.LayoutControlGroup3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup3.GroupBordersVisible = False
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.EmptySpaceItem7, Me.EmptySpaceItem8, Me.LayoutControlItem9, Me.LayoutControlItem10})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.EmptySpaceItem7, Me.EmptySpaceItem8})
         Me.LayoutControlGroup3.Name = "Root"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(651, 165)
         Me.LayoutControlGroup3.TextVisible = False
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlItem6.AppearanceItemCaption.Options.UseFont = True
-        Me.LayoutControlItem6.Control = Me.txtMyIP
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem6.MaxSize = New System.Drawing.Size(368, 28)
-        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(368, 28)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(368, 28)
-        Me.LayoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem6.Text = "| PC IP"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(94, 20)
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LayoutControlItem7.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem7.Control = Me.txtPrtIP
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 28)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.MaxSize = New System.Drawing.Size(368, 28)
         Me.LayoutControlItem7.MinSize = New System.Drawing.Size(368, 28)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
@@ -422,7 +363,7 @@ Partial Class frmConfig
         Me.LayoutControlItem8.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LayoutControlItem8.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem8.Control = Me.txtPrtPort
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 56)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 28)
         Me.LayoutControlItem8.MaxSize = New System.Drawing.Size(368, 28)
         Me.LayoutControlItem8.MinSize = New System.Drawing.Size(368, 28)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
@@ -434,40 +375,18 @@ Partial Class frmConfig
         'EmptySpaceItem7
         '
         Me.EmptySpaceItem7.AllowHotTrack = False
-        Me.EmptySpaceItem7.Location = New System.Drawing.Point(368, 32)
+        Me.EmptySpaceItem7.Location = New System.Drawing.Point(368, 0)
         Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
-        Me.EmptySpaceItem7.Size = New System.Drawing.Size(263, 113)
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(263, 145)
         Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem8
         '
         Me.EmptySpaceItem8.AllowHotTrack = False
-        Me.EmptySpaceItem8.Location = New System.Drawing.Point(0, 84)
+        Me.EmptySpaceItem8.Location = New System.Drawing.Point(0, 56)
         Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
-        Me.EmptySpaceItem8.Size = New System.Drawing.Size(368, 61)
+        Me.EmptySpaceItem8.Size = New System.Drawing.Size(368, 89)
         Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem9
-        '
-        Me.LayoutControlItem9.Control = Me.btnMyIP
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(368, 0)
-        Me.LayoutControlItem9.MinSize = New System.Drawing.Size(105, 31)
-        Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(128, 32)
-        Me.LayoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem9.TextVisible = False
-        '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.btnPingTest
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(496, 0)
-        Me.LayoutControlItem10.MinSize = New System.Drawing.Size(105, 31)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(135, 32)
-        Me.LayoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem10.TextVisible = False
         '
         'GroupControl1
         '
@@ -1327,17 +1246,13 @@ Partial Class frmConfig
         Me.GroupControl2.ResumeLayout(False)
         CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl4.ResumeLayout(False)
-        CType(Me.txtMyIP.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPrtIP.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPrtPort.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1455,9 +1370,7 @@ Partial Class frmConfig
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents txtMyIP As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtPrtIP As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtPrtPort As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
@@ -1493,10 +1406,6 @@ Partial Class frmConfig
     Friend WithEvents LayoutControlItem28 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem24 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem25 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents btnMyIP As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents btnPingTest As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents btnPanWork As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
     Friend WithEvents cboMDBType As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem

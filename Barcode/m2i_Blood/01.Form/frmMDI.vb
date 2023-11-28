@@ -42,6 +42,10 @@ Public Class frmMDI
         OpenChildForm(New frmSetup())
     End Sub
 
+    Private Sub btnAMH_Click(sender As Object, e As EventArgs) Handles btnAMH.Click
+        OpenChildForm(New frmAMHTest())
+    End Sub
+
     Private Sub frmMDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Get_TestCode()
     End Sub
