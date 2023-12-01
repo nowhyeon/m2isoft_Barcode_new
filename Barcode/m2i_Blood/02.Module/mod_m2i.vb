@@ -64,6 +64,7 @@ Module mod_m2i
     Public PrevMonth As Integer
 
     Public gTestCode As String
+    Public gTestCodeAMH As String
 
     Dim ClsDb As New ClsDatabase
 

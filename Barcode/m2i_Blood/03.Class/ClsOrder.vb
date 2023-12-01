@@ -71,7 +71,7 @@
             End Select
         End If
         sqldoc = sqldoc & vbCrLf & " ORDER BY REQDATE, SPCNO                                                         "
-
+        Debug.Print(sqldoc)
         Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
 
         If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then

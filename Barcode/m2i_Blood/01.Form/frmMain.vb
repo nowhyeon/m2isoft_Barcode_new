@@ -59,7 +59,7 @@ Public Class frmMain
     '수진자 조회
     Private Sub PsFindRoutine()
         Try
-            SplashScreenManager.ShowWaitForm()
+            'SplashScreenManager.ShowWaitForm()
 
             Dim sWorkLog As String = " Customer List Searching."
 
@@ -72,7 +72,7 @@ Public Class frmMain
                                                                           txtSearchWrd.Text)        '검색어
             grdSearchQry.DataSource = sTable
 
-            SplashScreenManager.CloseWaitForm()
+            'SplashScreenManager.CloseWaitForm()
 
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
