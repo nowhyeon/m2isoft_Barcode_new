@@ -271,6 +271,36 @@ Public Class frmMain
         End Select
     End Sub
 
+    Private Sub PsAMHReportView()
+        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
+
+        With Report_IF_AMH
+            .mPTNM = txtPtnm.EditValue
+            .mBirth = txtPtBirth.EditValue
+            .mAge = txtPtAge.EditValue
+            .mChartNo = txtPtChartNo.EditValue
+            .mMedOffice = txtMedOffice.EditValue
+            .mReceiptDate = txtReceiptDate.EditValue
+            .mDoctor = txtDoctor.EditValue
+            .mAcceptDate = txtAcceptDate.EditValue
+            .mAMHResult = ""
+            .mComment1 = ""
+            .mComment2 = ""
+            .mComment3 = ""
+        End With
+
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_IF_AMH
+            Report_IF_AMH.CreateDocument()
+            .ShowDialog()
+
+            'If .DialogResult = DialogResult.OK Then
+            '    btnReport_Visit_Click(sender, e)
+            'End If
+        End With
+
+    End Sub
+
     Private Sub PsClearRoutine()
         dtpFrom.EditValue = Now.AddDays(-PrevDay)
         dtpTo.EditValue = Now.AddDays(NextDay)
@@ -295,4 +325,40 @@ Public Class frmMain
         grdSelect.DataSource = Nothing
     End Sub
 
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
+        Dim sex As String
+        If txtPtSex.EditValue = "F" Then
+            sex = "여"
+        ElseIf txtPtSex.EditValue = "M" Then
+            sex = "남"
+        Else
+            sex = "-"
+        End If
+
+        With Report_IF_AMH
+            .mPTNM = txtPtnm.EditValue
+            .mBirth = txtPtBirth.EditValue
+            .mAge = txtPtSex.EditValue & "/" & txtPtAge.EditValue
+            .mChartNo = txtPtChartNo.EditValue
+            .mMedOffice = txtMedOffice.EditValue
+            .mReceiptDate = txtReceiptDate.EditValue
+            .mDoctor = txtDoctor.EditValue
+            .mAcceptDate = txtAcceptDate.EditValue
+            .mAMHResult = ""
+            .mComment1 = ""
+            .mComment2 = ""
+            .mComment3 = ""
+        End With
+
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_IF_AMH
+            Report_IF_AMH.CreateDocument()
+            .ShowDialog()
+
+            If .DialogResult = DialogResult.OK Then
+                SimpleButton1_Click(sender, e)
+            End If
+        End With
+    End Sub
 End Class
