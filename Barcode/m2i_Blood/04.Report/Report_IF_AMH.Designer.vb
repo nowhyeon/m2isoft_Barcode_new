@@ -35,7 +35,6 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHComment2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -124,7 +123,7 @@ Partial Public Class Report_IF_AMH
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult, Me.XrPictureBox2, Me.XrPictureBox1})
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult, Me.XrPictureBox1})
         Me.Detail.HeightF = 841.875!
         Me.Detail.Name = "Detail"
         '
@@ -139,42 +138,41 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHComment2
         '
+        Me.lblAMHComment2.Font = New System.Drawing.Font("Arial", 8.0!)
         Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(82.29166!, 584.5834!)
         Me.lblAMHComment2.Multiline = True
         Me.lblAMHComment2.Name = "lblAMHComment2"
         Me.lblAMHComment2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(258.3333!, 76.04163!)
+        Me.lblAMHComment2.StylePriority.UseFont = False
         Me.lblAMHComment2.Text = "lblAMHComment2"
         '
         'lblAMHComment1
         '
-        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(82.29166!, 161.6667!)
+        Me.lblAMHComment1.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(82.29166!, 170.0!)
         Me.lblAMHComment1.Multiline = True
         Me.lblAMHComment1.Name = "lblAMHComment1"
         Me.lblAMHComment1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(272.9167!, 138.5417!)
+        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(272.9167!, 130.2084!)
+        Me.lblAMHComment1.SnapLineMargin = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 10, 0, 100.0!)
+        Me.lblAMHComment1.StylePriority.UseFont = False
+        Me.lblAMHComment1.StylePriority.UseTextAlignment = False
         Me.lblAMHComment1.Text = "lblAMHComment1"
+        Me.lblAMHComment1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
         'lblAMHResult
         '
-        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(207.2917!, 91.87502!)
+        Me.lblAMHResult.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAMHResult.ForeColor = System.Drawing.Color.Red
+        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(211.4583!, 95.00002!)
         Me.lblAMHResult.Multiline = True
         Me.lblAMHResult.Name = "lblAMHResult"
         Me.lblAMHResult.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblAMHResult.SizeF = New System.Drawing.SizeF(42.70831!, 23.95833!)
+        Me.lblAMHResult.StylePriority.UseFont = False
+        Me.lblAMHResult.StylePriority.UseForeColor = False
         Me.lblAMHResult.Text = "lblAMHResult"
-        '
-        'XrPictureBox2
-        '
-        Me.XrPictureBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash
-        Me.XrPictureBox2.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter
-        Me.XrPictureBox2.ImageUrl = "C:\Users\M2I_SOFT\Desktop\Git\m2isoft_Barcode_new\Barcode\m2i_Blood\05.Rpt\AMH_Fo" &
-    "rm_01\00.AMH_BACK_10.jpg"
-        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(82.29166!, 393.9583!)
-        Me.XrPictureBox2.Name = "XrPictureBox2"
-        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(688.5416!, 153.1251!)
-        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
-        Me.XrPictureBox2.StylePriority.UseBorderDashStyle = False
         '
         'XrPictureBox1
         '
@@ -202,7 +200,6 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
     Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
-    Friend WithEvents XrPictureBox2 As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents lblAge As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblBirth As DevExpress.XtraReports.UI.XRLabel
