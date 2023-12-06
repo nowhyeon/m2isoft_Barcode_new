@@ -155,7 +155,6 @@ Public Class frmAMHTest
         End Try
     End Sub
 
-
     Private Sub frmAMHTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Get_TestCodeAMH()

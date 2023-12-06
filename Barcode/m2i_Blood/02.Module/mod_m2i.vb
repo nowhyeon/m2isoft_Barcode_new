@@ -9,6 +9,7 @@ Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraPrinting
 Imports System.Xml
+Imports Microsoft.Win32
 
 Module mod_m2i
     'test
@@ -20,7 +21,7 @@ Module mod_m2i
     Public gUserPASSWD As String = String.Empty
     Public gUserLEV As String = String.Empty
 
-    Public validPswdCount As Integer = 3
+    Public validPswdCount As Integer = 4
 
     Public gQcSampleHeadID As String = "QC"
     Public gRetestStr As String = "RETEST"
@@ -568,4 +569,36 @@ Module mod_m2i
 
 
     End Function
+
+    Public Function ReadReg(strRegKey As String) As String
+
+        ' HKEY_CURRENT_USER 아래 "Software\YourApplication" 경로
+        Dim RegistryKey As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\m2isoft\mIF365")
+
+        If RegistryKey IsNot Nothing Then
+            Dim Value As Object = RegistryKey.GetValue(strRegKey)
+
+            If Value IsNot Nothing Then
+                Return Value
+            End If
+
+            Console.WriteLine(Value & " 값이 전달되었습니다.")
+
+            RegistryKey.Close()
+        End If
+
+    End Function
+
+    Public Function SaveReg(strRegKey As String, strValue As String) As Boolean
+
+        Dim RegistryKey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\m2isoft\mIF365")
+
+        RegistryKey.SetValue(strRegKey, strValue)
+        RegistryKey.Close()
+
+        Console.WriteLine(strValue & " Registry 값이 저장되었습니다.")
+
+        SaveReg = True
+    End Function
+
 End Module
