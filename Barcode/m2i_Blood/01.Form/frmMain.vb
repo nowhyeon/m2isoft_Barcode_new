@@ -268,25 +268,35 @@ Public Class frmMain
             Case "close"
                 Me.DialogResult = DialogResult.Cancel
                 Me.Close()
+            Case "AMH"
+                Call PsAMHReportView()
         End Select
     End Sub
 
     Private Sub PsAMHReportView()
         Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
+        Dim sex As String
+        If txtPtSex.EditValue = "F" Then
+            sex = "여"
+        ElseIf txtPtSex.EditValue = "M" Then
+            sex = "남"
+        Else
+            sex = "-"
+        End If
 
         With Report_IF_AMH
             .mPTNM = txtPtnm.EditValue
             .mBirth = txtPtBirth.EditValue
-            .mAge = txtPtAge.EditValue
+            .mAge = sex & " / " & txtPtAge.EditValue
             .mChartNo = txtPtChartNo.EditValue
             .mMedOffice = txtMedOffice.EditValue
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = ""
-            .mComment1 = ""
-            .mComment2 = ""
-            .mComment3 = ""
+            .mAMHResult = "3.44"
+            '.mComment1 = ""
+            '.mComment2 = ""
+            '.mComment3 = ""
         End With
 
         With frmReportView
@@ -295,10 +305,9 @@ Public Class frmMain
             .ShowDialog()
 
             'If .DialogResult = DialogResult.OK Then
-            '    btnReport_Visit_Click(sender, e)
+            '    SimpleButton1_Click(sender, e)
             'End If
         End With
-
     End Sub
 
     Private Sub PsClearRoutine()
@@ -323,42 +332,5 @@ Public Class frmMain
 
         grdSearchQry.DataSource = Nothing
         grdSelect.DataSource = Nothing
-    End Sub
-
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
-        Dim sex As String
-        If txtPtSex.EditValue = "F" Then
-            sex = "여"
-        ElseIf txtPtSex.EditValue = "M" Then
-            sex = "남"
-        Else
-            sex = "-"
-        End If
-
-        With Report_IF_AMH
-            .mPTNM = txtPtnm.EditValue
-            .mBirth = txtPtBirth.EditValue
-            .mAge = txtPtSex.EditValue & "/" & txtPtAge.EditValue
-            .mChartNo = txtPtChartNo.EditValue
-            .mMedOffice = txtMedOffice.EditValue
-            .mReceiptDate = txtReceiptDate.EditValue
-            .mDoctor = txtDoctor.EditValue
-            .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = ""
-            .mComment1 = ""
-            .mComment2 = ""
-            .mComment3 = ""
-        End With
-
-        With frmReportView
-            .dcvPrevView.DocumentSource = Report_IF_AMH
-            Report_IF_AMH.CreateDocument()
-            .ShowDialog()
-
-            If .DialogResult = DialogResult.OK Then
-                SimpleButton1_Click(sender, e)
-            End If
-        End With
     End Sub
 End Class
