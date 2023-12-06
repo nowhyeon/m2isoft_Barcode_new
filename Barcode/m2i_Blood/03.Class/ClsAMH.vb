@@ -43,12 +43,13 @@
         sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE "
         sqldoc = sqldoc & vbCrLf & "      , a.SIGNIN                                                                                                        "
         sqldoc = sqldoc & vbCrLf & "      , a.DeptCode                                                                                                      "
+        sqldoc = sqldoc & vbCrLf & "      , b.RESULT                                                                                                      "
         sqldoc = sqldoc & vbCrLf & "      , b.RESULTDATE                                                                                                    "
         sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                "
         sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                 "
         sqldoc = sqldoc & vbCrLf & "    AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "') AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자   "
         sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in ('AMH')                              -- 검사코드"
-
+        Debug.Print(sqldoc)
         If strSearchType <> "" Then
             Select Case strSearchType
                 Case "이름" : sqldoc = sqldoc & vbCrLf & "           AND a.SNAME      LIKE '%" & strSearchText & "%'        "

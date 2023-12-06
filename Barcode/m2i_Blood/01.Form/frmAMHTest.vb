@@ -69,9 +69,47 @@ Public Class frmAMHTest
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
+            Case "print"
+                Call PsAMHReportView()
             Case "Remove"
                 Call PsClearRoutine()
         End Select
+    End Sub
+    Private Sub PsAMHReportView()
+        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
+        Dim sex As String
+        If txtPtSex.EditValue = "F" Then
+            sex = "여"
+        ElseIf txtPtSex.EditValue = "M" Then
+            sex = "남"
+        Else
+            sex = "-"
+        End If
+
+        With Report_IF_AMH
+            .mPTNM = txtPtnm.EditValue
+            .mBirth = txtPtBirth.EditValue
+            .mAge = sex & " / " & txtPtAge.EditValue
+            .mChartNo = txtPtChartNo.EditValue
+            .mMedOffice = txtMedOffice.EditValue
+            .mReceiptDate = txtReceiptDate.EditValue
+            .mDoctor = txtDoctor.EditValue
+            .mAcceptDate = txtAcceptDate.EditValue
+            .mAMHResult = RESULT.Text
+            '.mComment1 = ""
+            '.mComment2 = ""
+            '.mComment3 = ""
+        End With
+
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_IF_AMH
+            Report_IF_AMH.CreateDocument()
+            .ShowDialog()
+
+            'If .DialogResult = DialogResult.OK Then
+            '    SimpleButton1_Click(sender, e)
+            'End If
+        End With
     End Sub
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
@@ -93,6 +131,7 @@ Public Class frmAMHTest
                 txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
                 txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
                 txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
+                RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
 
             End With
 
