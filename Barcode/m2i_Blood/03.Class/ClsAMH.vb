@@ -4,8 +4,7 @@
     Private ClsDb As New ClsDatabase
 
     Public Function HOSPITAL_ORDER_PATIENT_GET(ByVal strDate As String,  '접수날짜
-                                               ByVal strPTID As String,  '차트번호
-                                               ByVal strState As String  '접수상태
+                                               ByVal strPTID As String  '차트번호
                                                ) As DataTable
 
         '검사항목 부분만 조회
@@ -14,9 +13,6 @@
         sqldoc = sqldoc & vbCrLf & " FROM SLA_LabMaster a, SLA_LabResult b                                    "
         sqldoc = sqldoc & vbCrLf & " WHERE a.PTNO = b.PTNO                                                    "
         sqldoc = sqldoc & vbCrLf & " AND a.RECEIPTDATE = format(CONVERT(DATE,'" & strDate & "'),'yyyy-MM-dd') "
-        If strState <> "" Then
-            sqldoc = sqldoc & vbCrLf & " AND a.JSTATUS = " & strState & "      -- A:04 R:02                   "
-        End If
         sqldoc = sqldoc & vbCrLf & " and   a.PTNO = '" & strPTID & "'                                         "
         sqldoc = sqldoc & vbCrLf & " and   b.LABNAME in  (" & gTestCode & " )   -- 검사코드                   "
         sqldoc = sqldoc & vbCrLf & " ORDER BY TESTCODE                                                        "
@@ -51,7 +47,7 @@
         sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                "
         sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                 "
         sqldoc = sqldoc & vbCrLf & "    AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "') AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자   "
-        sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in (" & gTestCodeAMH & " )                              -- 검사코드"
+        sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in ('AMH')                              -- 검사코드"
 
         If strSearchType <> "" Then
             Select Case strSearchType
@@ -70,4 +66,31 @@
             Return Nothing
         End If
     End Function
+
+    Public Function HOSPITAL_ORDER_AMH_RESULT(ByVal strDate As String, ByVal strPTID As String) As DataTable
+
+        QueryString = String.Empty
+        QueryString &= " SELECT b.ORDERCODE AS TESTCODE                                                      " & vbCrLf
+        QueryString &= " ,a.PTNO                                                                             " & vbCrLf
+        QueryString &= " ,a.SNAME                                                                            " & vbCrLf
+        QueryString &= " ,a.AGE                                                                              " & vbCrLf
+        QueryString &= " ,b.RESULT                                                                           " & vbCrLf
+        QueryString &= " FROM SLA_LabMaster a, SLA_LabResult b                                               " & vbCrLf
+        QueryString &= " WHERE a.PTNO = b.PTNO                                                               " & vbCrLf
+        QueryString &= " AND a.RECEIPTDATE = format(CONVERT(DATE,'" & strDate & "'),'yyyy-MM-dd')            " & vbCrLf
+        QueryString &= " and   a.PTNO = '" & strPTID & "'                                                    " & vbCrLf
+        QueryString &= " And b.LABNAME In  ('AMH')                                                           " & vbCrLf
+        QueryString &= " ORDER BY TESTCODE                                                                   " & vbCrLf
+
+
+        Dim sTable As DataTable = ClsDb.CfSelectQuery(QueryString)
+
+        If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+            Return sTable
+        Else
+            Return Nothing
+        End If
+
+    End Function
+
 End Class

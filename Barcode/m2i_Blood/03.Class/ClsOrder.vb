@@ -39,38 +39,39 @@
                                             ) As DataTable
 
         Dim sqldoc As String = String.Empty
-        sqldoc = sqldoc & vbCrLf & " SELECT a.PTNO                                                                                                  AS PTID "
-        sqldoc = sqldoc & vbCrLf & "      , a.SNAME                                                                                                 AS PTNM "
-        sqldoc = sqldoc & vbCrLf & "      , format(CONVERT(DATE,a.ReceiptDate),'yyyy-MM-dd')                                                       AS REQDATE "
-        sqldoc = sqldoc & vbCrLf & "      , a.SEX                                                                                                  AS PTSEX "
+        sqldoc = sqldoc & vbCrLf & " SELECT a.PTNO                                                                                                  AS PTID                "
+        sqldoc = sqldoc & vbCrLf & "      , a.SNAME                                                                                                 AS PTNM                "
+        sqldoc = sqldoc & vbCrLf & "      , format(CONVERT(DATE,a.ReceiptDate),'yyyy-MM-dd')                                                       AS REQDATE              "
+        sqldoc = sqldoc & vbCrLf & "      , a.SEX                                                                                                  AS PTSEX                "
         'sqldoc = sqldoc & vbCrLf & "      , CONCAT(SUBSTRING(b.ReceiptDate, 3, 2),SUBSTRING(b.ReceiptDate, 6, 2) , RIGHT(b.ReceiptDate, 2),a.PTNO) As SPCNO "
         sqldoc = sqldoc & vbCrLf & "      , RIGHT('000000000000'+CAST(CONCAT(DATEDIFF(day, b.ReceiptDate,format(getdate(),'yyyyMMdd')),a.PTNO)AS VARCHAR(12)),12) As SPCNO "
-        sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE "
-        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS STATUS "
-        sqldoc = sqldoc & vbCrLf & "      , a.SIGNIN                                                                                                        "
-        sqldoc = sqldoc & vbCrLf & "      , b.REMARK                                                                                                        "
-        sqldoc = sqldoc & vbCrLf & "      , a.DeptCode                                                                                                      "
-        sqldoc = sqldoc & vbCrLf & "      , b.RESULTDATE                                                                                                    "
-        sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                "
-        sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                 "
-        sqldoc = sqldoc & vbCrLf & "    AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "') AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자   "
-        sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in (" & gTestCode & " )                              -- 검사코드"
+        sqldoc = sqldoc & vbCrLf & "      , a.AGE                                                                                                  AS PTAGE                "
+        sqldoc = sqldoc & vbCrLf & "      , a.JSTATUS                                                                                              AS STATUS               "
+        sqldoc = sqldoc & vbCrLf & "      , a.SIGNIN                                                                                                                       "
+        sqldoc = sqldoc & vbCrLf & "      , b.REMARK                                                                                                                       "
+        sqldoc = sqldoc & vbCrLf & "      , a.DeptCode                                                                                                                     "
+        sqldoc = sqldoc & vbCrLf & "      , b.RESULTDATE                                                                                                                   "
+        sqldoc = sqldoc & vbCrLf & "   FROM SLA_LabMaster a, SLA_LabResult b                                                                                               "
+        sqldoc = sqldoc & vbCrLf & "  WHERE a.PTNO = b.PTNO                                                                                                                "
+        sqldoc = sqldoc & vbCrLf & "    AND a.ReceiptDate between CONVERT(DATE,'" & strFromDate & "') AND CONVERT(DATE,'" & strToDate & "')   -- 접수일자                  "
+        sqldoc = sqldoc & vbCrLf & "    AND b.ORDERCODE in (" & gTestCode & " )                                                               -- 검사코드                  "
         If strRcptType <> "" Then
             Select Case strRcptType
-                Case "결과" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 2                                -- 02:결과 "
-                Case "접수" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 4                                -- 04:접수 "
+                Case "결과" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 2                                -- 02:결과                                                 "
+                Case "접수" : sqldoc = sqldoc & vbCrLf & " AND   a.JSTATUS   = 4                                -- 04:접수                                                 "
                 Case Else
             End Select
         End If
 
         If strSearchType <> "" Then
             Select Case strSearchType
-                Case "이름" : sqldoc = sqldoc & vbCrLf & "           AND a.SNAME      LIKE '%" & strSearchText & "%'        "
-                Case "차트번호" : sqldoc = sqldoc & vbCrLf & "       AND a.PTNO       LIKE '%" & strSearchText & "%'        "
+                Case "이름" : sqldoc = sqldoc & vbCrLf & "           AND a.SNAME         LIKE '%" & strSearchText & "%'                                                    "
+                Case "차트번호" : sqldoc = sqldoc & vbCrLf & "       AND a.PTNO          LIKE '%" & strSearchText & "%'                                                    "
+                Case "바코드번호" : sqldoc = sqldoc & vbCrLf & "     AND a.SPCNO         LIKE '%" & strSearchText & "%'                                                    "
                 Case Else
             End Select
         End If
-        sqldoc = sqldoc & vbCrLf & " ORDER BY REQDATE, SPCNO                                                         "
+        sqldoc = sqldoc & vbCrLf & " ORDER BY REQDATE, SPCNO                                                                                                               "
         Debug.Print(sqldoc)
         Dim sTable As DataTable = ClsDb.CfSelectQuery(sqldoc)
 

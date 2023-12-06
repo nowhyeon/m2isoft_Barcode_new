@@ -45,13 +45,11 @@ Public Class frmAMHTest
         GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
 
         ' 수진자 AMH 상세 결과 Grid
-        GfColumnSet(GridView1, "검사이름", "TESTNM", 30, "L", , True)
-        'GfColumnSet(GridView1, "검사분야", "WORKAREA", 20, "L", , True)
-        'GfColumnSet(GridView1, "채혈용기", "BLOODTUBE", 20, "L", , True)
-        'GfColumnSet(GridView1, "검사약어", "TESTNM_10", 30, "L", , True)
-        GfColumnSet(GridView1, "특이사항", "Remark", 30, "L", , True)
-        GfColumnSet(GridView1, "출력장수", "PrintAdd", 15, "L", , True)
-        GfColumnSet(GridView1, "바코드분류", "BarcodeDivision", 15, "L", , True)
+        GfColumnSet(GridView1, "검사코드", "TESTCODE", 30, "C", , True)
+        GfColumnSet(GridView1, "수진자번호", "PTNO", 23, "C", , True)
+        GfColumnSet(GridView1, "수진자명", "SNAME", 30, "C", , True)
+        GfColumnSet(GridView1, "나이", "AGE", 15, "C", , True)
+        GfColumnSet(GridView1, "결과", "RESULT", 15, "C", , True)
 
         grdSearchQry.Dock = DockStyle.Fill
 
@@ -67,9 +65,78 @@ Public Class frmAMHTest
         End Select
     End Sub
 
+    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel1.ButtonClick
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
+
+        Select Case sTag
+            Case "Remove"
+                Call PsClearRoutine()
+        End Select
+    End Sub
+
+    Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
+
+        Dim sSelectRow As Integer = GridView.FocusedRowHandle
+        Dim TESTCD As String = String.Empty
+        Dim PTAGE As Integer = GridView.GetRowCellValue(sSelectRow, "PTAGE")
+
+        Try
+            SplashScreenManager.ShowWaitForm()
+
+            With GridView
+                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
+                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
+                txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
+                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
+                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
+                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
+                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
+                txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
+                txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
+
+            End With
+
+            Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
+                                                                               GridView.GetRowCellValue(sSelectRow, "PTID").ToString)
+
+            If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
+                For Each row As DataRow In TestCode.Rows
+                    TESTCD &= "'" & row(0).ToString & "',"
+                Next
+                TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
+            Else
+                XtraMessageBox.Show(_sMsg.sMsg_NoTestCode, _sMsg_Title.sMsgTitle_TestCode, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+            Dim sTable As DataTable = ClsDb.CfSelectQuery(QueryString)
+
+            grdAMH.DataSource = sTable
+
+            Select Case True
+                Case PTAGE >= 20 AndAlso PTAGE <= 24
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg")
+                Case PTAGE >= 25 AndAlso PTAGE <= 29
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg")
+                Case PTAGE >= 30 AndAlso PTAGE <= 34
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg")
+                Case PTAGE >= 35 AndAlso PTAGE <= 39
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg")
+                Case PTAGE >= 40 AndAlso PTAGE <= 44
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg")
+                Case PTAGE >= 45 AndAlso PTAGE <= 50
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg")
+            End Select
+
+            SplashScreenManager.CloseWaitForm()
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub PsFindRoutine()
         Try
-            'SplashScreenManager.ShowWaitForm()
+            SplashScreenManager.ShowWaitForm()
 
             Dim sWorkLog As String = " Customer List Searching."
 
@@ -81,7 +148,7 @@ Public Class frmAMHTest
                                                                                   txtSearchWrd.Text)        '검색어
             grdSearchQry.DataSource = sTable
 
-            'SplashScreenManager.CloseWaitForm()
+            SplashScreenManager.CloseWaitForm()
 
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -90,7 +157,28 @@ Public Class frmAMHTest
 
 
     Private Sub frmAMHTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Get_TestCodeAMH()
+
+        Call Get_TestCodeAMH()
+
+        SplashScreenManager.ShowWaitForm()
+
+        dtpFrom.DateTime = Now.AddDays(-PrevDay)
+        dtpTo.DateTime = Now.AddDays(NextDay)
+
+        With cboPrintYN.Properties
+            .Items.Clear()
+            .Items.Add("출력")
+            .Items.Add("미출력")
+        End With
+
+        With cboSearchCond.Properties
+            .Items.Clear()
+            .Items.Add("이름")
+            .Items.Add("차트번호")
+            .Items.Add("바코드번호")
+        End With
+
+        SplashScreenManager.CloseWaitForm()
     End Sub
 
     'mDB에서 검사코드 가져온다
@@ -101,7 +189,6 @@ Public Class frmAMHTest
             QueryString &= " FROM m2i_LAB002        " & vbCrLf
             QueryString &= " WHERE TESTCD = 'AMH'   " & vbCrLf
             QueryString &= " ORDER BY TESTCD        " & vbCrLf
-
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
             ' mDB의 TESTCD의 정보를 가져와서 sTable이라는 테이블에 저장
@@ -121,4 +208,27 @@ Public Class frmAMHTest
 
         End Try
     End Sub
+
+    Private Sub PsClearRoutine()
+        'dtpFrom.EditValue = Now.AddDays(-PrevDay)
+        'dtpTo.EditValue = Now.AddDays(NextDay)
+        cboPrintYN.EditValue = String.Empty
+        cboSearchCond.EditValue = String.Empty
+        txtSearchWrd.EditValue = String.Empty
+        txtPtnm.EditValue = String.Empty
+        txtBarcodeNo.EditValue = String.Empty
+        txtPtSex.EditValue = String.Empty
+        txtPtAge.EditValue = String.Empty
+        txtPtChartNo.EditValue = String.Empty
+        txtPtBirth.EditValue = String.Empty
+        txtMedOffice.EditValue = String.Empty
+        txtReceiptDate.EditValue = String.Empty
+        txtDoctor.EditValue = String.Empty
+        txtAcceptDate.EditValue = String.Empty
+
+        grdAMH.DataSource = Nothing
+
+        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\AMH.jpg")
+    End Sub
+
 End Class

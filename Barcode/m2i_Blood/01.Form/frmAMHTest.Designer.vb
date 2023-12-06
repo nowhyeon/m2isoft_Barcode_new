@@ -69,6 +69,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem39 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl6 = New DevExpress.XtraLayout.LayoutControl()
         Me.WindowsUIButtonPanel2 = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
@@ -94,6 +95,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.SplashScreenManager = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.m2i_Blood.WaitForm), True, True)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,6 +148,7 @@ Partial Class frmAMHTest
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -198,9 +201,9 @@ Partial Class frmAMHTest
         Me.GroupControl3.AppearanceCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl3.AppearanceCaption.Options.UseFont = True
         Me.GroupControl3.Controls.Add(Me.LayoutControl3)
-        Me.GroupControl3.Location = New System.Drawing.Point(387, 225)
+        Me.GroupControl3.Location = New System.Drawing.Point(430, 225)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(810, 177)
+        Me.GroupControl3.Size = New System.Drawing.Size(767, 232)
         Me.GroupControl3.TabIndex = 13
         Me.GroupControl3.Text = "※ 수진자 AMH 상세 결과"
         '
@@ -211,7 +214,7 @@ Partial Class frmAMHTest
         Me.LayoutControl3.Location = New System.Drawing.Point(2, 29)
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.Root = Me.LayoutControlGroup2
-        Me.LayoutControl3.Size = New System.Drawing.Size(806, 146)
+        Me.LayoutControl3.Size = New System.Drawing.Size(763, 201)
         Me.LayoutControl3.TabIndex = 0
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -220,7 +223,7 @@ Partial Class frmAMHTest
         Me.grdAMH.Location = New System.Drawing.Point(12, 12)
         Me.grdAMH.MainView = Me.GridView1
         Me.grdAMH.Name = "grdAMH"
-        Me.grdAMH.Size = New System.Drawing.Size(782, 122)
+        Me.grdAMH.Size = New System.Drawing.Size(739, 177)
         Me.grdAMH.TabIndex = 4
         Me.grdAMH.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -228,6 +231,7 @@ Partial Class frmAMHTest
         '
         Me.GridView1.GridControl = Me.grdAMH
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.Editable = False
         Me.GridView1.OptionsView.ShowGroupPanel = False
         '
         'LayoutControlGroup2
@@ -236,7 +240,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem16})
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(806, 146)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(763, 201)
         Me.LayoutControlGroup2.TextVisible = False
         '
         'LayoutControlItem16
@@ -244,7 +248,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem16.Control = Me.grdAMH
         Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(786, 126)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(743, 181)
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
@@ -255,9 +259,9 @@ Partial Class frmAMHTest
         Me.gcGraph.AppearanceCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gcGraph.AppearanceCaption.Options.UseFont = True
         Me.gcGraph.Controls.Add(Me.LayoutControl2)
-        Me.gcGraph.Location = New System.Drawing.Point(387, 406)
+        Me.gcGraph.Location = New System.Drawing.Point(430, 461)
         Me.gcGraph.Name = "gcGraph"
-        Me.gcGraph.Size = New System.Drawing.Size(810, 570)
+        Me.gcGraph.Size = New System.Drawing.Size(767, 515)
         Me.gcGraph.TabIndex = 12
         Me.gcGraph.Text = "※ AMH 수치 그래프"
         '
@@ -268,7 +272,7 @@ Partial Class frmAMHTest
         Me.LayoutControl2.Location = New System.Drawing.Point(2, 29)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
-        Me.LayoutControl2.Size = New System.Drawing.Size(806, 539)
+        Me.LayoutControl2.Size = New System.Drawing.Size(763, 484)
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -281,7 +285,7 @@ Partial Class frmAMHTest
         Me.PictureEdit1.Properties.Appearance.Options.UseFont = True
         Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(782, 515)
+        Me.PictureEdit1.Size = New System.Drawing.Size(739, 460)
         Me.PictureEdit1.StyleController = Me.LayoutControl2
         Me.PictureEdit1.TabIndex = 4
         '
@@ -291,7 +295,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(806, 539)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(763, 484)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem7
@@ -299,7 +303,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem7.Control = Me.PictureEdit1
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(786, 519)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(743, 464)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -331,7 +335,7 @@ Partial Class frmAMHTest
         Me.gcSelect.Location = New System.Drawing.Point(12, 225)
         Me.gcSelect.Margin = New System.Windows.Forms.Padding(2, 4, 2, 4)
         Me.gcSelect.Name = "gcSelect"
-        Me.gcSelect.Size = New System.Drawing.Size(371, 751)
+        Me.gcSelect.Size = New System.Drawing.Size(414, 751)
         Me.gcSelect.TabIndex = 9
         Me.gcSelect.Text = "※ 수진자 조회 결과"
         '
@@ -342,7 +346,7 @@ Partial Class frmAMHTest
         Me.LayoutControl4.Location = New System.Drawing.Point(2, 29)
         Me.LayoutControl4.Name = "LayoutControl4"
         Me.LayoutControl4.Root = Me.LayoutControlGroup3
-        Me.LayoutControl4.Size = New System.Drawing.Size(367, 720)
+        Me.LayoutControl4.Size = New System.Drawing.Size(410, 720)
         Me.LayoutControl4.TabIndex = 0
         Me.LayoutControl4.Text = "LayoutControl4"
         '
@@ -353,7 +357,7 @@ Partial Class frmAMHTest
         Me.grdSearchQry.MainView = Me.GridView
         Me.grdSearchQry.Margin = New System.Windows.Forms.Padding(2, 4, 2, 4)
         Me.grdSearchQry.Name = "grdSearchQry"
-        Me.grdSearchQry.Size = New System.Drawing.Size(343, 696)
+        Me.grdSearchQry.Size = New System.Drawing.Size(386, 696)
         Me.grdSearchQry.TabIndex = 4
         Me.grdSearchQry.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -371,7 +375,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup3.GroupBordersVisible = False
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem19})
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(367, 720)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(410, 720)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem19
@@ -379,7 +383,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem19.Control = Me.grdSearchQry
         Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
-        Me.LayoutControlItem19.Size = New System.Drawing.Size(347, 700)
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(390, 700)
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem19.TextVisible = False
         '
@@ -388,10 +392,10 @@ Partial Class frmAMHTest
         Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
         Me.GroupControl1.Controls.Add(Me.LayoutControl7)
-        Me.GroupControl1.Location = New System.Drawing.Point(387, 12)
+        Me.GroupControl1.Location = New System.Drawing.Point(430, 12)
         Me.GroupControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(810, 209)
+        Me.GroupControl1.Size = New System.Drawing.Size(767, 209)
         Me.GroupControl1.TabIndex = 8
         Me.GroupControl1.Text = "※ 수진자 상세 조회"
         '
@@ -412,7 +416,7 @@ Partial Class frmAMHTest
         Me.LayoutControl7.Margin = New System.Windows.Forms.Padding(4)
         Me.LayoutControl7.Name = "LayoutControl7"
         Me.LayoutControl7.Root = Me.LayoutControlGroup6
-        Me.LayoutControl7.Size = New System.Drawing.Size(806, 178)
+        Me.LayoutControl7.Size = New System.Drawing.Size(763, 178)
         Me.LayoutControl7.TabIndex = 0
         Me.LayoutControl7.Text = "LayoutControl7"
         '
@@ -425,20 +429,20 @@ Partial Class frmAMHTest
         Me.txtPtnm.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.txtPtnm.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtnm.Properties.Appearance.Options.UseFont = True
-        Me.txtPtnm.Size = New System.Drawing.Size(265, 34)
+        Me.txtPtnm.Size = New System.Drawing.Size(277, 34)
         Me.txtPtnm.StyleController = Me.LayoutControl7
         Me.txtPtnm.TabIndex = 4
         '
         'txtBarcodeNo
         '
-        Me.txtBarcodeNo.Location = New System.Drawing.Point(555, 12)
+        Me.txtBarcodeNo.Location = New System.Drawing.Point(567, 12)
         Me.txtBarcodeNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBarcodeNo.Name = "txtBarcodeNo"
         Me.txtBarcodeNo.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.txtBarcodeNo.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.txtBarcodeNo.Properties.Appearance.Options.UseBackColor = True
         Me.txtBarcodeNo.Properties.Appearance.Options.UseFont = True
-        Me.txtBarcodeNo.Size = New System.Drawing.Size(239, 34)
+        Me.txtBarcodeNo.Size = New System.Drawing.Size(184, 34)
         Me.txtBarcodeNo.StyleController = Me.LayoutControl7
         Me.txtBarcodeNo.TabIndex = 5
         '
@@ -449,29 +453,29 @@ Partial Class frmAMHTest
         Me.txtPtSex.Name = "txtPtSex"
         Me.txtPtSex.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtPtSex.Properties.Appearance.Options.UseFont = True
-        Me.txtPtSex.Size = New System.Drawing.Size(62, 26)
+        Me.txtPtSex.Size = New System.Drawing.Size(68, 26)
         Me.txtPtSex.StyleController = Me.LayoutControl7
         Me.txtPtSex.TabIndex = 6
         '
         'txtPtChartNo
         '
-        Me.txtPtChartNo.Location = New System.Drawing.Point(555, 50)
+        Me.txtPtChartNo.Location = New System.Drawing.Point(567, 50)
         Me.txtPtChartNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtChartNo.Name = "txtPtChartNo"
         Me.txtPtChartNo.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtPtChartNo.Properties.Appearance.Options.UseFont = True
-        Me.txtPtChartNo.Size = New System.Drawing.Size(239, 26)
+        Me.txtPtChartNo.Size = New System.Drawing.Size(184, 26)
         Me.txtPtChartNo.StyleController = Me.LayoutControl7
         Me.txtPtChartNo.TabIndex = 7
         '
         'txtPtAge
         '
-        Me.txtPtAge.Location = New System.Drawing.Point(352, 50)
+        Me.txtPtAge.Location = New System.Drawing.Point(358, 50)
         Me.txtPtAge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtAge.Name = "txtPtAge"
         Me.txtPtAge.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtPtAge.Properties.Appearance.Options.UseFont = True
-        Me.txtPtAge.Size = New System.Drawing.Size(62, 26)
+        Me.txtPtAge.Size = New System.Drawing.Size(68, 26)
         Me.txtPtAge.StyleController = Me.LayoutControl7
         Me.txtPtAge.TabIndex = 8
         '
@@ -482,7 +486,7 @@ Partial Class frmAMHTest
         Me.txtPtBirth.Name = "txtPtBirth"
         Me.txtPtBirth.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtPtBirth.Properties.Appearance.Options.UseFont = True
-        Me.txtPtBirth.Size = New System.Drawing.Size(265, 26)
+        Me.txtPtBirth.Size = New System.Drawing.Size(153, 26)
         Me.txtPtBirth.StyleController = Me.LayoutControl7
         Me.txtPtBirth.TabIndex = 10
         '
@@ -493,18 +497,18 @@ Partial Class frmAMHTest
         Me.txtMedOffice.Name = "txtMedOffice"
         Me.txtMedOffice.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtMedOffice.Properties.Appearance.Options.UseFont = True
-        Me.txtMedOffice.Size = New System.Drawing.Size(111, 26)
+        Me.txtMedOffice.Size = New System.Drawing.Size(97, 26)
         Me.txtMedOffice.StyleController = Me.LayoutControl7
         Me.txtMedOffice.TabIndex = 11
         '
         'txtReceiptDate
         '
-        Me.txtReceiptDate.Location = New System.Drawing.Point(555, 80)
+        Me.txtReceiptDate.Location = New System.Drawing.Point(567, 80)
         Me.txtReceiptDate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtReceiptDate.Name = "txtReceiptDate"
         Me.txtReceiptDate.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtReceiptDate.Properties.Appearance.Options.UseFont = True
-        Me.txtReceiptDate.Size = New System.Drawing.Size(239, 26)
+        Me.txtReceiptDate.Size = New System.Drawing.Size(184, 26)
         Me.txtReceiptDate.StyleController = Me.LayoutControl7
         Me.txtReceiptDate.TabIndex = 12
         '
@@ -515,18 +519,18 @@ Partial Class frmAMHTest
         Me.txtDoctor.Name = "txtDoctor"
         Me.txtDoctor.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtDoctor.Properties.Appearance.Options.UseFont = True
-        Me.txtDoctor.Size = New System.Drawing.Size(111, 26)
+        Me.txtDoctor.Size = New System.Drawing.Size(97, 26)
         Me.txtDoctor.StyleController = Me.LayoutControl7
         Me.txtDoctor.TabIndex = 13
         '
         'txtAcceptDate
         '
-        Me.txtAcceptDate.Location = New System.Drawing.Point(555, 110)
+        Me.txtAcceptDate.Location = New System.Drawing.Point(567, 110)
         Me.txtAcceptDate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAcceptDate.Name = "txtAcceptDate"
         Me.txtAcceptDate.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtAcceptDate.Properties.Appearance.Options.UseFont = True
-        Me.txtAcceptDate.Size = New System.Drawing.Size(239, 26)
+        Me.txtAcceptDate.Size = New System.Drawing.Size(184, 26)
         Me.txtAcceptDate.StyleController = Me.LayoutControl7
         Me.txtAcceptDate.TabIndex = 14
         '
@@ -534,9 +538,9 @@ Partial Class frmAMHTest
         '
         Me.LayoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup6.GroupBordersVisible = False
-        Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem11, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.LayoutControlItem38, Me.LayoutControlItem42, Me.LayoutControlItem40, Me.LayoutControlItem41, Me.EmptySpaceItem5, Me.LayoutControlItem39, Me.EmptySpaceItem2})
+        Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem11, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.LayoutControlItem38, Me.LayoutControlItem42, Me.LayoutControlItem40, Me.LayoutControlItem41, Me.EmptySpaceItem5, Me.LayoutControlItem39, Me.EmptySpaceItem2, Me.EmptySpaceItem1})
         Me.LayoutControlGroup6.Name = "LayoutControlGroup6"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(806, 178)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(763, 178)
         Me.LayoutControlGroup6.TextVisible = False
         '
         'LayoutControlItem10
@@ -547,7 +551,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem10.MinSize = New System.Drawing.Size(203, 38)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(406, 38)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(418, 38)
         Me.LayoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem10.Text = "│ 수진자 "
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(134, 28)
@@ -558,10 +562,8 @@ Partial Class frmAMHTest
         Me.LayoutControlItem12.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem12.Control = Me.txtPtSex
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 38)
-        Me.LayoutControlItem12.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(203, 30)
-        Me.LayoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(209, 30)
         Me.LayoutControlItem12.Text = "│ 성별 "
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(134, 20)
         '
@@ -570,10 +572,10 @@ Partial Class frmAMHTest
         Me.LayoutControlItem11.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.LayoutControlItem11.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem11.Control = Me.txtBarcodeNo
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(406, 0)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(418, 0)
         Me.LayoutControlItem11.MinSize = New System.Drawing.Size(203, 38)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(380, 38)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(325, 38)
         Me.LayoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem11.Text = "│ 바코드번호 "
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(134, 28)
@@ -583,11 +585,9 @@ Partial Class frmAMHTest
         Me.LayoutControlItem13.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem13.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem13.Control = Me.txtPtChartNo
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(406, 38)
-        Me.LayoutControlItem13.MinSize = New System.Drawing.Size(203, 30)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(418, 38)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(380, 30)
-        Me.LayoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(325, 30)
         Me.LayoutControlItem13.Text = "│ 차트번호 "
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(134, 20)
         '
@@ -596,11 +596,9 @@ Partial Class frmAMHTest
         Me.LayoutControlItem14.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem14.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem14.Control = Me.txtPtAge
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(203, 38)
-        Me.LayoutControlItem14.MinSize = New System.Drawing.Size(203, 30)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(209, 38)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(203, 30)
-        Me.LayoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(209, 30)
         Me.LayoutControlItem14.Text = "│ 나이"
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(134, 20)
         '
@@ -612,7 +610,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem38.Location = New System.Drawing.Point(0, 68)
         Me.LayoutControlItem38.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem38.Name = "LayoutControlItem38"
-        Me.LayoutControlItem38.Size = New System.Drawing.Size(406, 30)
+        Me.LayoutControlItem38.Size = New System.Drawing.Size(294, 30)
         Me.LayoutControlItem38.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem38.Text = "│ 생년월일 "
         Me.LayoutControlItem38.TextSize = New System.Drawing.Size(134, 20)
@@ -622,10 +620,10 @@ Partial Class frmAMHTest
         Me.LayoutControlItem42.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem42.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem42.Control = Me.txtAcceptDate
-        Me.LayoutControlItem42.Location = New System.Drawing.Point(406, 98)
+        Me.LayoutControlItem42.Location = New System.Drawing.Point(418, 98)
         Me.LayoutControlItem42.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem42.Name = "LayoutControlItem42"
-        Me.LayoutControlItem42.Size = New System.Drawing.Size(380, 30)
+        Me.LayoutControlItem42.Size = New System.Drawing.Size(325, 30)
         Me.LayoutControlItem42.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem42.Text = "│ 결과일자"
         Me.LayoutControlItem42.TextSize = New System.Drawing.Size(134, 20)
@@ -635,10 +633,10 @@ Partial Class frmAMHTest
         Me.LayoutControlItem40.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem40.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem40.Control = Me.txtReceiptDate
-        Me.LayoutControlItem40.Location = New System.Drawing.Point(406, 68)
+        Me.LayoutControlItem40.Location = New System.Drawing.Point(418, 68)
         Me.LayoutControlItem40.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
-        Me.LayoutControlItem40.Size = New System.Drawing.Size(380, 30)
+        Me.LayoutControlItem40.Size = New System.Drawing.Size(325, 30)
         Me.LayoutControlItem40.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem40.Text = "│ 접수일자"
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(134, 20)
@@ -651,7 +649,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem41.Location = New System.Drawing.Point(0, 98)
         Me.LayoutControlItem41.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem41.Name = "LayoutControlItem41"
-        Me.LayoutControlItem41.Size = New System.Drawing.Size(252, 30)
+        Me.LayoutControlItem41.Size = New System.Drawing.Size(238, 30)
         Me.LayoutControlItem41.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem41.Text = "│ 진료의사 "
         Me.LayoutControlItem41.TextSize = New System.Drawing.Size(134, 20)
@@ -659,9 +657,9 @@ Partial Class frmAMHTest
         'EmptySpaceItem5
         '
         Me.EmptySpaceItem5.AllowHotTrack = False
-        Me.EmptySpaceItem5.Location = New System.Drawing.Point(252, 128)
+        Me.EmptySpaceItem5.Location = New System.Drawing.Point(238, 128)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(534, 30)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(505, 30)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem39
@@ -672,7 +670,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem39.Location = New System.Drawing.Point(0, 128)
         Me.LayoutControlItem39.MinSize = New System.Drawing.Size(203, 30)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
-        Me.LayoutControlItem39.Size = New System.Drawing.Size(252, 30)
+        Me.LayoutControlItem39.Size = New System.Drawing.Size(238, 30)
         Me.LayoutControlItem39.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem39.Text = "│ 진료과 "
         Me.LayoutControlItem39.TextSize = New System.Drawing.Size(134, 20)
@@ -680,10 +678,18 @@ Partial Class frmAMHTest
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(252, 98)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(238, 98)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(154, 30)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(180, 30)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(294, 68)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(124, 30)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'GroupControl2
         '
@@ -693,7 +699,7 @@ Partial Class frmAMHTest
         Me.GroupControl2.Location = New System.Drawing.Point(12, 12)
         Me.GroupControl2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(371, 209)
+        Me.GroupControl2.Size = New System.Drawing.Size(414, 209)
         Me.GroupControl2.TabIndex = 7
         Me.GroupControl2.Text = "※ 수진자 조회"
         '
@@ -710,7 +716,7 @@ Partial Class frmAMHTest
         Me.LayoutControl6.Margin = New System.Windows.Forms.Padding(4)
         Me.LayoutControl6.Name = "LayoutControl6"
         Me.LayoutControl6.Root = Me.LayoutControlGroup5
-        Me.LayoutControl6.Size = New System.Drawing.Size(367, 178)
+        Me.LayoutControl6.Size = New System.Drawing.Size(410, 178)
         Me.LayoutControl6.TabIndex = 0
         Me.LayoutControl6.Text = "LayoutControl6"
         '
@@ -718,10 +724,10 @@ Partial Class frmAMHTest
         '
         WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.WindowsUIButtonPanel2.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("조회", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Find", -1, False)})
-        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(288, 72)
+        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(322, 72)
         Me.WindowsUIButtonPanel2.Margin = New System.Windows.Forms.Padding(4)
         Me.WindowsUIButtonPanel2.Name = "WindowsUIButtonPanel2"
-        Me.WindowsUIButtonPanel2.Size = New System.Drawing.Size(67, 84)
+        Me.WindowsUIButtonPanel2.Size = New System.Drawing.Size(76, 84)
         Me.WindowsUIButtonPanel2.TabIndex = 10
         Me.WindowsUIButtonPanel2.Text = "WindowsUIButtonPanel2"
         '
@@ -735,7 +741,7 @@ Partial Class frmAMHTest
         Me.dtpTo.Properties.Appearance.Options.UseFont = True
         Me.dtpTo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpTo.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpTo.Size = New System.Drawing.Size(247, 26)
+        Me.dtpTo.Size = New System.Drawing.Size(290, 26)
         Me.dtpTo.StyleController = Me.LayoutControl6
         Me.dtpTo.TabIndex = 5
         '
@@ -746,7 +752,7 @@ Partial Class frmAMHTest
         Me.txtSearchWrd.Name = "txtSearchWrd"
         Me.txtSearchWrd.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtSearchWrd.Properties.Appearance.Options.UseFont = True
-        Me.txtSearchWrd.Size = New System.Drawing.Size(176, 26)
+        Me.txtSearchWrd.Size = New System.Drawing.Size(210, 26)
         Me.txtSearchWrd.StyleController = Me.LayoutControl6
         Me.txtSearchWrd.TabIndex = 9
         '
@@ -760,7 +766,7 @@ Partial Class frmAMHTest
         Me.dtpFrom.Properties.Appearance.Options.UseFont = True
         Me.dtpFrom.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFrom.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFrom.Size = New System.Drawing.Size(247, 26)
+        Me.dtpFrom.Size = New System.Drawing.Size(290, 26)
         Me.dtpFrom.StyleController = Me.LayoutControl6
         Me.dtpFrom.TabIndex = 11
         '
@@ -770,7 +776,8 @@ Partial Class frmAMHTest
         Me.cboPrintYN.Margin = New System.Windows.Forms.Padding(4)
         Me.cboPrintYN.Name = "cboPrintYN"
         Me.cboPrintYN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboPrintYN.Size = New System.Drawing.Size(176, 24)
+        Me.cboPrintYN.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboPrintYN.Size = New System.Drawing.Size(210, 24)
         Me.cboPrintYN.StyleController = Me.LayoutControl6
         Me.cboPrintYN.TabIndex = 13
         '
@@ -780,7 +787,8 @@ Partial Class frmAMHTest
         Me.cboSearchCond.Margin = New System.Windows.Forms.Padding(4)
         Me.cboSearchCond.Name = "cboSearchCond"
         Me.cboSearchCond.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboSearchCond.Size = New System.Drawing.Size(176, 24)
+        Me.cboSearchCond.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboSearchCond.Size = New System.Drawing.Size(210, 24)
         Me.cboSearchCond.StyleController = Me.LayoutControl6
         Me.cboSearchCond.TabIndex = 14
         '
@@ -790,7 +798,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup5.GroupBordersVisible = False
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem34, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.LayoutControlItem9, Me.EmptySpaceItem7})
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(367, 178)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(410, 178)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem3
@@ -801,7 +809,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 117)
         Me.LayoutControlItem3.MinSize = New System.Drawing.Size(162, 30)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(276, 31)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(310, 31)
         Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem3.Text = "│ 검색어 : "
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(93, 20)
@@ -815,7 +823,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.MinSize = New System.Drawing.Size(162, 30)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(347, 30)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(390, 30)
         Me.LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem2.Text = "│ 기간 : "
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(93, 20)
@@ -827,7 +835,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem34.Control = Me.dtpTo
         Me.LayoutControlItem34.Location = New System.Drawing.Point(0, 30)
         Me.LayoutControlItem34.Name = "LayoutControlItem34"
-        Me.LayoutControlItem34.Size = New System.Drawing.Size(347, 30)
+        Me.LayoutControlItem34.Size = New System.Drawing.Size(390, 30)
         Me.LayoutControlItem34.Text = "     ~"
         Me.LayoutControlItem34.TextSize = New System.Drawing.Size(93, 20)
         '
@@ -839,7 +847,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 60)
         Me.LayoutControlItem17.MinSize = New System.Drawing.Size(162, 28)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(276, 29)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(310, 29)
         Me.LayoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem17.Text = "│ 출력상태 : "
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(93, 20)
@@ -852,7 +860,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 89)
         Me.LayoutControlItem18.MinSize = New System.Drawing.Size(162, 28)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(276, 28)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(310, 28)
         Me.LayoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem18.Text = "│ 검색조건 : "
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(93, 20)
@@ -860,10 +868,10 @@ Partial Class frmAMHTest
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.WindowsUIButtonPanel2
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(276, 60)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(310, 60)
         Me.LayoutControlItem9.MinSize = New System.Drawing.Size(4, 66)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(71, 88)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(80, 88)
         Me.LayoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
@@ -873,7 +881,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem7.AllowHotTrack = False
         Me.EmptySpaceItem7.Location = New System.Drawing.Point(0, 148)
         Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
-        Me.EmptySpaceItem7.Size = New System.Drawing.Size(347, 10)
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(390, 10)
         Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
         '
         'Root
@@ -890,16 +898,16 @@ Partial Class frmAMHTest
         Me.LayoutControlItem4.Control = Me.GroupControl2
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(375, 213)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(418, 213)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.GroupControl1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(375, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(418, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(814, 213)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(771, 213)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -909,7 +917,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 213)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(132, 79)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(375, 755)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(418, 755)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -929,10 +937,10 @@ Partial Class frmAMHTest
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.gcGraph
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(375, 394)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(418, 449)
         Me.LayoutControlItem8.MinSize = New System.Drawing.Size(132, 79)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(814, 574)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(771, 519)
         Me.LayoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
@@ -940,10 +948,10 @@ Partial Class frmAMHTest
         'LayoutControlItem15
         '
         Me.LayoutControlItem15.Control = Me.GroupControl3
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(375, 213)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(418, 213)
         Me.LayoutControlItem15.MinSize = New System.Drawing.Size(132, 79)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(814, 181)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(771, 236)
         Me.LayoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
@@ -965,6 +973,10 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem4.Size = New System.Drawing.Size(786, 28)
         Me.EmptySpaceItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'SplashScreenManager
+        '
+        Me.SplashScreenManager.ClosingDelay = 500
         '
         'frmAMHTest
         '
@@ -1030,6 +1042,7 @@ Partial Class frmAMHTest
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1131,4 +1144,6 @@ Partial Class frmAMHTest
     Friend WithEvents grdAMH As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SplashScreenManager As DevExpress.XtraSplashScreen.SplashScreenManager
+    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

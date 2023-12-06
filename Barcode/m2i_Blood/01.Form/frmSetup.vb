@@ -136,8 +136,7 @@ Public Class frmSetup
         End If
 
         If sReturn Then
-            Dim sMsg As String = "저장되었습니다.", sMsgTitle As String = "저장 완료", sQst As String = "저장 하시겠습니까?"
-            XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Save, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             ' 저장 후 필요한 작업 수행
             PtReroadRoutine()
@@ -266,7 +265,7 @@ Public Class frmSetup
 
     'End Sub
 
-    Private Sub txtTestNm_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
+    Private Sub txtTestNm_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
         QueryString = String.Empty
         QueryString &= "SELECT * FROM m2i_LAB004                        "
         QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
