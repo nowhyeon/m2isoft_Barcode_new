@@ -10,6 +10,7 @@ Public Class Report_IF_AMH
     Public mReceiptDate As String
     Public mBirth As String
     Public mAge As String
+    Public mSex As String
     Public mAMHResult As String
     Public mComment1 As String
     Public mComment2 As String
@@ -108,6 +109,68 @@ Public Class Report_IF_AMH
 
         End If
 
+        '나이에 따른 이미지
+        Select Case True
+            Case Val(mAge) >= 20 AndAlso Val(mAge) < 24.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg"
+            Case Val(mAge) >= 25 AndAlso Val(mAge) < 29.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg"
+            Case Val(mAge) >= 30 AndAlso Val(mAge) < 34.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg"
+            Case Val(mAge) >= 35 AndAlso Val(mAge) < 39.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg"
+            Case Val(mAge) >= 40 AndAlso Val(mAge) < 44.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg"
+            Case Val(mAge) >= 45 AndAlso Val(mAge) < 50.9
+                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg"
+        End Select
+
+        '결과값에 따른 선
+        Select Case True
+            Case Val(mAMHResult) >= 10
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 130)
+            Case Val(mAMHResult) > 9 AndAlso Val(mAMHResult) < 10
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 136.5)
+            Case Val(mAMHResult) = 9
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 143)
+            Case Val(mAMHResult) > 8 AndAlso Val(mAMHResult) < 9
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 136.5)
+            Case Val(mAMHResult) = 8
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 156)
+            Case Val(mAMHResult) > 7 AndAlso Val(mAMHResult) < 8
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 162.5)
+            Case Val(mAMHResult) = 7
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 169)
+            Case Val(mAMHResult) > 6 AndAlso Val(mAMHResult) < 7
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 175.5)
+            Case Val(mAMHResult) = 6
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 182)
+            Case Val(mAMHResult) > 5 AndAlso Val(mAMHResult) < 6
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 188.5)
+            Case Val(mAMHResult) = 5
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 195)
+            Case Val(mAMHResult) > 4 AndAlso Val(mAMHResult) < 5
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 201.5)
+            Case Val(mAMHResult) = 4
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 208)
+            Case Val(mAMHResult) > 3 AndAlso Val(mAMHResult) < 4
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 214.5)
+            Case Val(mAMHResult) = 3
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 221)
+            Case Val(mAMHResult) > 2 AndAlso Val(mAMHResult) < 3
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 227.5)
+            Case Val(mAMHResult) = 2
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 234)
+            Case Val(mAMHResult) > 1 AndAlso Val(mAMHResult) < 2
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 240.5)
+            Case Val(mAMHResult) = 1
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 247)
+            Case Val(mAMHResult) > 0 AndAlso Val(mAMHResult) < 1
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 253.5)
+            Case Val(mAMHResult) <= 0
+                AMHResultLine.LocationF = New System.Drawing.PointF(373, 260)
+        End Select
+
         lblPTNM.Text = mPTNM
         lblMedOffice.Text = mMedOffice
         lblDoctor.Text = mDoctor
@@ -115,7 +178,7 @@ Public Class Report_IF_AMH
         lblAcceptDate.Text = mAcceptDate
         lblReceiptDate.Text = mReceiptDate
         lblBirth.Text = mBirth
-        lblAge.Text = mAge
+        lblAge.Text = mSex & " / " & mAge
         lblAMHResult.Text = mAMHResult
         lblAMHComment1.Text = mComment4
         lblAMHComment2.Text = strAFC1

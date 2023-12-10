@@ -10,6 +10,8 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Controls
 Imports System.Runtime.InteropServices
+Imports System.Drawing.Printing
+Imports DevExpress.XtraReports.UI
 
 Public Class frmAMHTest
 
@@ -69,13 +71,75 @@ Public Class frmAMHTest
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
+            Case "MultiPrint"
+                Call PsMultiPrint()
             Case "print"
-                Call PsAMHReportView()
+                Call PsPrint()
             Case "Remove"
                 Call PsClearRoutine()
         End Select
     End Sub
-    Private Sub PsAMHReportView()
+
+    Private Sub PsMultiPrint()
+        Dim sRowHandles As Int32() = GridView.GetSelectedRows()
+
+        For sRowCnt = 0 To sRowHandles.Length - 1
+
+            Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
+            Dim sex As String
+            If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
+                sex = "여"
+            ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
+                sex = "남"
+            Else
+                sex = "-"
+            End If
+
+            With Report_IF_AMH
+                .mPTNM = GridView.GetRowCellValue(sRowCnt, "PTNM").ToString
+                .mBirth = ""
+                .mSex = sex
+                .mAge = GridView.GetRowCellValue(sRowCnt, "PTAGE").ToString
+                .mChartNo = GridView.GetRowCellValue(sRowCnt, "PTID").ToString
+                .mMedOffice = GridView.GetRowCellValue(sRowCnt, "DeptCode").ToString
+                .mReceiptDate = GridView.GetRowCellValue(sRowCnt, "REQDATE").ToString
+                .mDoctor = GridView.GetRowCellValue(sRowCnt, "SIGNIN").ToString
+                .mAcceptDate = GridView.GetRowCellValue(sRowCnt, "RESULTDATE").ToString
+                .mAMHResult = GridView.GetRowCellValue(sRowCnt, "RESULT").ToString
+                '.mComment1 = ""
+                '.mComment2 = ""
+                '.mComment3 = ""
+            End With
+
+            'prevView (x)---------------------------------------------------------------------------------------------------------
+            Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+            ' PrintDocument 인스턴스 생성
+            Dim printDocument As New PrintDocument()
+
+            ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+            ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+            printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+            ' 보고서를 바로 출력
+            printTool.Print()
+            '---------------------------------------------------------------------------------------------------------------------
+
+            'prevView (O)---------------------------------------------------------------------------------------------------------
+            'With frmReportView
+            '    .dcvPrevView.DocumentSource = Report_IF_AMH
+            '    Report_IF_AMH.CreateDocument()
+            '    .ShowDialog()
+
+            '    'If .DialogResult = DialogResult.OK Then
+            '    '    SimpleButton1_Click(sender, e)
+            '    'End If
+            'End With
+            '---------------------------------------------------------------------------------------------------------------------
+        Next
+    End Sub
+
+    Private Sub PsPrint()
         Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
         Dim sex As String
         If txtPtSex.EditValue = "F" Then
@@ -89,7 +153,8 @@ Public Class frmAMHTest
         With Report_IF_AMH
             .mPTNM = txtPtnm.EditValue
             .mBirth = txtPtBirth.EditValue
-            .mAge = sex & " / " & txtPtAge.EditValue
+            .mSex = sex
+            .mAge = txtPtAge.EditValue
             .mChartNo = txtPtChartNo.EditValue
             .mMedOffice = txtMedOffice.EditValue
             .mReceiptDate = txtReceiptDate.EditValue
@@ -101,15 +166,31 @@ Public Class frmAMHTest
             '.mComment3 = ""
         End With
 
-        With frmReportView
-            .dcvPrevView.DocumentSource = Report_IF_AMH
-            Report_IF_AMH.CreateDocument()
-            .ShowDialog()
+        'prevView (x)---------------------------------------------------------------------------------------------------------
+        Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
-            'If .DialogResult = DialogResult.OK Then
-            '    SimpleButton1_Click(sender, e)
-            'End If
-        End With
+        ' PrintDocument 인스턴스 생성
+        Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        printTool.Print()
+        '---------------------------------------------------------------------------------------------------------------------
+
+        'prevView (O)---------------------------------------------------------------------------------------------------------
+        'With frmReportView
+        '    .dcvPrevView.DocumentSource = Report_IF_AMH
+        '    Report_IF_AMH.CreateDocument()
+        '    .ShowDialog()
+
+        '    'If .DialogResult = DialogResult.OK Then
+        '    '    SimpleButton1_Click(sender, e)
+        '    'End If
+        'End With
+        '---------------------------------------------------------------------------------------------------------------------
     End Sub
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
@@ -132,7 +213,6 @@ Public Class frmAMHTest
                 txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
                 txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
                 RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
-
             End With
 
             Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,

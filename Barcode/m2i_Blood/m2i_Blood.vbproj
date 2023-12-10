@@ -297,6 +297,7 @@
     <Content Include="05.Rpt\AMH_Form_01\00.AMH_BACK_12.jpg" />
     <Content Include="05.Rpt\AMH_Form_01\00.AMH_BACK_13.jpg" />
     <Content Include="05.Rpt\AMH_Form_01\00.AMH_BACK_default.png" />
+    <Content Include="05.Rpt\AMH_Form_01\AMHResultLine.png" />
     <Content Include="m2ilogo2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
