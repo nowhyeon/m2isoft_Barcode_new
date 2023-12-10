@@ -67,7 +67,7 @@ Public Class frmAMHTest
         End Select
     End Sub
 
-    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel1.ButtonClick
+    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) 
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
