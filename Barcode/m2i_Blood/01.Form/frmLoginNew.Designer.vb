@@ -341,6 +341,7 @@ Partial Class frmLoginNew
         Me.cboSkin.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.cboSkin.Properties.Appearance.Options.UseFont = True
         Me.cboSkin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboSkin.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboSkin.Size = New System.Drawing.Size(120, 26)
         Me.cboSkin.TabIndex = 14
         Me.cboSkin.TabStop = False

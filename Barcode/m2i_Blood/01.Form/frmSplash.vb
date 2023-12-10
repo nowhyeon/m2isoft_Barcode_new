@@ -20,7 +20,7 @@
         marqueeProgressBarControl1.Position += 2
         If marqueeProgressBarControl1.Position >= 100 Then
 
-            frmLogin.Show()
+            frmLoginNew.Show()
             Me.Close()
 
         End If

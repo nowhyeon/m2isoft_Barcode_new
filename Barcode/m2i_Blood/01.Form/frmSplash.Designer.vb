@@ -39,30 +39,34 @@ Partial Class frmSplash
         '
         Me.pictureEdit2.Cursor = System.Windows.Forms.Cursors.Default
         Me.pictureEdit2.EditValue = CType(resources.GetObject("pictureEdit2.EditValue"), Object)
-        Me.pictureEdit2.Location = New System.Drawing.Point(14, 11)
+        Me.pictureEdit2.Location = New System.Drawing.Point(16, 14)
+        Me.pictureEdit2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pictureEdit2.Name = "pictureEdit2"
         Me.pictureEdit2.Properties.AllowFocused = False
         Me.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.pictureEdit2.Properties.Appearance.Options.UseBackColor = True
         Me.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pictureEdit2.Properties.ShowMenu = False
-        Me.pictureEdit2.Size = New System.Drawing.Size(497, 166)
+        Me.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
+        Me.pictureEdit2.Size = New System.Drawing.Size(568, 208)
         Me.pictureEdit2.TabIndex = 14
         '
         'labelControl2
         '
-        Me.labelControl2.Location = New System.Drawing.Point(27, 190)
+        Me.labelControl2.Location = New System.Drawing.Point(31, 238)
+        Me.labelControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.labelControl2.Name = "labelControl2"
-        Me.labelControl2.Size = New System.Drawing.Size(55, 14)
+        Me.labelControl2.Size = New System.Drawing.Size(64, 18)
         Me.labelControl2.TabIndex = 12
         Me.labelControl2.Text = "Starting..."
         '
         'labelControl1
         '
         Me.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.labelControl1.Location = New System.Drawing.Point(27, 264)
+        Me.labelControl1.Location = New System.Drawing.Point(31, 330)
+        Me.labelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.labelControl1.Name = "labelControl1"
-        Me.labelControl1.Size = New System.Drawing.Size(52, 14)
+        Me.labelControl1.Size = New System.Drawing.Size(61, 18)
         Me.labelControl1.TabIndex = 11
         Me.labelControl1.Text = "Copyright"
         '
@@ -75,33 +79,36 @@ Partial Class frmSplash
         '
         Me.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default
         Me.pictureEdit1.EditValue = CType(resources.GetObject("pictureEdit1.EditValue"), Object)
-        Me.pictureEdit1.Location = New System.Drawing.Point(301, 230)
+        Me.pictureEdit1.Location = New System.Drawing.Point(344, 288)
+        Me.pictureEdit1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pictureEdit1.Name = "pictureEdit1"
         Me.pictureEdit1.Properties.AllowFocused = False
         Me.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.pictureEdit1.Properties.Appearance.Options.UseBackColor = True
         Me.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pictureEdit1.Properties.ShowMenu = False
-        Me.pictureEdit1.Size = New System.Drawing.Size(210, 60)
+        Me.pictureEdit1.Size = New System.Drawing.Size(240, 75)
         Me.pictureEdit1.TabIndex = 13
         '
         'marqueeProgressBarControl1
         '
-        Me.marqueeProgressBarControl1.Location = New System.Drawing.Point(27, 213)
+        Me.marqueeProgressBarControl1.Location = New System.Drawing.Point(31, 266)
+        Me.marqueeProgressBarControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1"
-        Me.marqueeProgressBarControl1.Size = New System.Drawing.Size(471, 11)
+        Me.marqueeProgressBarControl1.Size = New System.Drawing.Size(538, 14)
         Me.marqueeProgressBarControl1.TabIndex = 10
         '
         'frmSplash
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(525, 295)
+        Me.ClientSize = New System.Drawing.Size(600, 369)
         Me.Controls.Add(Me.pictureEdit2)
         Me.Controls.Add(Me.pictureEdit1)
         Me.Controls.Add(Me.labelControl2)
         Me.Controls.Add(Me.labelControl1)
         Me.Controls.Add(Me.marqueeProgressBarControl1)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmSplash"
         Me.Text = "Form1"
         CType(Me.pictureEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
