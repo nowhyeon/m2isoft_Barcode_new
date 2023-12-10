@@ -149,4 +149,8 @@ Public Class frmLoginNew
     Private Sub LabelControl2_Click(sender As Object, e As EventArgs) Handles LabelControl2.Click
         Process.Start("IExplore.exe", "http://m2isoft.com/")
     End Sub
+
+    Private Sub CmdNewUser_Click(sender As Object, e As EventArgs) Handles CmdNewUser.Click
+        frmUserAdd.Show()
+    End Sub
 End Class
