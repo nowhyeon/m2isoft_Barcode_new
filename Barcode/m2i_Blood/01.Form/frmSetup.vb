@@ -72,11 +72,9 @@ Public Class frmSetup
         End If
 
         If sReturn Then
-            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_Delete, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Call PtReroadRoutine()
-                Call PtScreenClear()
-            End If
+            XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Call PtReroadRoutine()
+            Call PtScreenClear()
         End If
     End Sub
 

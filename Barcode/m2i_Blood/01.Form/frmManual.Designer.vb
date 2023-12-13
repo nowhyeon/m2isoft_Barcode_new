@@ -25,26 +25,26 @@ Partial Class frmManual
         Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.btnFileOpen = New DevExpress.XtraEditors.SimpleButton()
         Me.menuBtn = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.txtBarcodeNo = New DevExpress.XtraEditors.TextEdit()
         Me.memoComment = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtFileNM = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.txtFileNM = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.btnFileOpen = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtBarcodeNo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.memoComment.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtFileNM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtFileNM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -58,11 +58,22 @@ Partial Class frmManual
         Me.LayoutControl1.Controls.Add(Me.txtFileNM)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(379, 383)
+        Me.LayoutControl1.Size = New System.Drawing.Size(433, 492)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'btnFileOpen
+        '
+        Me.btnFileOpen.Location = New System.Drawing.Point(393, 16)
+        Me.btnFileOpen.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnFileOpen.Name = "btnFileOpen"
+        Me.btnFileOpen.Size = New System.Drawing.Size(27, 27)
+        Me.btnFileOpen.StyleController = Me.LayoutControl1
+        Me.btnFileOpen.TabIndex = 9
+        Me.btnFileOpen.Text = "..."
         '
         'menuBtn
         '
@@ -76,27 +87,39 @@ Partial Class frmManual
         WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
         Me.menuBtn.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("단일출력", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "print", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("화면비우기", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Clear", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False)})
         Me.menuBtn.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
-        Me.menuBtn.Location = New System.Drawing.Point(12, 296)
+        Me.menuBtn.Location = New System.Drawing.Point(13, 381)
+        Me.menuBtn.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.menuBtn.Name = "menuBtn"
-        Me.menuBtn.Size = New System.Drawing.Size(355, 75)
+        Me.menuBtn.Size = New System.Drawing.Size(407, 95)
         Me.menuBtn.TabIndex = 6
         Me.menuBtn.Text = "btnPrt"
         '
         'txtBarcodeNo
         '
-        Me.txtBarcodeNo.Location = New System.Drawing.Point(70, 38)
+        Me.txtBarcodeNo.Location = New System.Drawing.Point(86, 49)
+        Me.txtBarcodeNo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtBarcodeNo.Name = "txtBarcodeNo"
-        Me.txtBarcodeNo.Size = New System.Drawing.Size(297, 20)
+        Me.txtBarcodeNo.Size = New System.Drawing.Size(334, 24)
         Me.txtBarcodeNo.StyleController = Me.LayoutControl1
         Me.txtBarcodeNo.TabIndex = 4
         '
         'memoComment
         '
-        Me.memoComment.Location = New System.Drawing.Point(70, 62)
+        Me.memoComment.Location = New System.Drawing.Point(86, 79)
+        Me.memoComment.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.memoComment.Name = "memoComment"
-        Me.memoComment.Size = New System.Drawing.Size(297, 230)
+        Me.memoComment.Size = New System.Drawing.Size(334, 296)
         Me.memoComment.StyleController = Me.LayoutControl1
         Me.memoComment.TabIndex = 5
+        '
+        'txtFileNM
+        '
+        Me.txtFileNM.Location = New System.Drawing.Point(86, 16)
+        Me.txtFileNM.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtFileNM.Name = "txtFileNM"
+        Me.txtFileNM.Size = New System.Drawing.Size(303, 24)
+        Me.txtFileNM.StyleController = Me.LayoutControl1
+        Me.txtFileNM.TabIndex = 7
         '
         'Root
         '
@@ -104,83 +127,67 @@ Partial Class frmManual
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem6})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(379, 383)
+        Me.Root.Size = New System.Drawing.Size(433, 492)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.txtBarcodeNo
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 33)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(359, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(411, 30)
         Me.LayoutControlItem1.Text = "│ 바코드 : "
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(55, 14)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(70, 18)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.memoComment
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 50)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 63)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(359, 234)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(411, 302)
         Me.LayoutControlItem2.Text = "│ 코멘트 :"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(55, 14)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(70, 18)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.menuBtn
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 284)
-        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(4, 61)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 365)
+        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(5, 78)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(359, 79)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(411, 101)
         Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
-        '
-        'txtFileNM
-        '
-        Me.txtFileNM.Location = New System.Drawing.Point(70, 12)
-        Me.txtFileNM.Name = "txtFileNM"
-        Me.txtFileNM.Size = New System.Drawing.Size(270, 20)
-        Me.txtFileNM.StyleController = Me.LayoutControl1
-        Me.txtFileNM.TabIndex = 7
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.txtFileNM
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(332, 26)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(380, 33)
         Me.LayoutControlItem4.Text = "│ 파일 : "
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(55, 14)
-        '
-        'btnFileOpen
-        '
-        Me.btnFileOpen.Location = New System.Drawing.Point(344, 12)
-        Me.btnFileOpen.Name = "btnFileOpen"
-        Me.btnFileOpen.Size = New System.Drawing.Size(23, 22)
-        Me.btnFileOpen.StyleController = Me.LayoutControl1
-        Me.btnFileOpen.TabIndex = 9
-        Me.btnFileOpen.Text = "..."
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(70, 18)
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.btnFileOpen
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(332, 0)
-        Me.LayoutControlItem6.MaxSize = New System.Drawing.Size(27, 26)
-        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(27, 26)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(380, 0)
+        Me.LayoutControlItem6.MaxSize = New System.Drawing.Size(31, 33)
+        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(31, 33)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(27, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(31, 33)
         Me.LayoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
         'frmManual
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(379, 383)
+        Me.ClientSize = New System.Drawing.Size(433, 492)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmManual"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "바코드 수동 출력"
@@ -188,11 +195,11 @@ Partial Class frmManual
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtBarcodeNo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.memoComment.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtFileNM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtFileNM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

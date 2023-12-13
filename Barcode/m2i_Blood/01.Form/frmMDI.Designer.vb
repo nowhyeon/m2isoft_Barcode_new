@@ -65,7 +65,7 @@ Partial Class frmMDI
         '
         'AccordionControlElement4
         '
-        Me.AccordionControlElement4.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnMain, Me.btnAMH, Me.AccordionControlElement8})
+        Me.AccordionControlElement4.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnMain, Me.btnAMH})
         Me.AccordionControlElement4.Expanded = True
         Me.AccordionControlElement4.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement4.Name = "AccordionControlElement4"
@@ -205,6 +205,7 @@ Partial Class frmMDI
         Me.FluentDesignFormControl = Me.FluentDesignFormControl1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MaximizeBox = False
         Me.Name = "frmMDI"
         Me.NavigationControl = Me.AccordionControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -237,5 +238,4 @@ Partial Class frmMDI
     Friend WithEvents Element7 As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents AccordionControlElement7 As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents btnAMH As DevExpress.XtraBars.Navigation.AccordionControlElement
-    Friend WithEvents AccordionControlElement8 As DevExpress.XtraBars.Navigation.AccordionControlElement
 End Class

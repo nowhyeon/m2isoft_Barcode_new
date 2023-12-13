@@ -39,9 +39,9 @@ Public Class frmAMHTest
         End With
 
         ' 수진자 조회 결과 Grid
-        GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
-        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
+        'GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
         GfColumnSet(GridView, "접수일", "REQDATE", 35, "L", , True)
+        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
         GfColumnSet(GridView, "바코드", "SPCNO", 50, "L", , True)
         GfColumnSet(GridView, "성별", "PTSEX", 12, "L", , True)
         GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
@@ -160,36 +160,36 @@ Public Class frmAMHTest
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = txtRESULT.Text
+            .mAMHResult = RESULT.Text
             '.mComment1 = ""
             '.mComment2 = ""
             '.mComment3 = ""
         End With
 
         'prevView (x)---------------------------------------------------------------------------------------------------------
-        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+        Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
-        '' PrintDocument 인스턴스 생성
-        'Dim printDocument As New PrintDocument()
+        ' PrintDocument 인스턴스 생성
+        Dim printDocument As New PrintDocument()
 
-        '' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
-        '' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
-        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
 
-        '' 보고서를 바로 출력
-        'printTool.Print()
+        ' 보고서를 바로 출력
+        printTool.Print()
         '---------------------------------------------------------------------------------------------------------------------
 
         'prevView (O)---------------------------------------------------------------------------------------------------------
-        With frmReportView
-            .dcvPrevView.DocumentSource = Report_IF_AMH
-            Report_IF_AMH.CreateDocument()
-            .ShowDialog()
+        'With frmReportView
+        '    .dcvPrevView.DocumentSource = Report_IF_AMH
+        '    Report_IF_AMH.CreateDocument()
+        '    .ShowDialog()
 
-            'If .DialogResult = DialogResult.OK Then
-            '    SimpleButton1_Click(sender, e)
-            'End If
-        End With
+        '    'If .DialogResult = DialogResult.OK Then
+        '    '    SimpleButton1_Click(sender, e)
+        '    'End If
+        'End With
         '---------------------------------------------------------------------------------------------------------------------
     End Sub
 
@@ -212,7 +212,7 @@ Public Class frmAMHTest
                 txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
                 txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
                 txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
-                txtRESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
+                RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
             End With
 
             Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,

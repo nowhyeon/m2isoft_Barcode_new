@@ -83,7 +83,7 @@ Module mod_m2i
     Public Sub OpenChildForm(childForm As XtraForm)
 
         childForm.TopLevel = False                                   ' 자식 폼 설정
-        'childForm.FormBorderStyle = FormBorderStyle.None
+        childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
         frmMDI.FluentDesignFormContainer1.Controls.Add(childForm)    ' FluentDesignFormControl에 자식 폼 추가
         childForm.BringToFront()                                     ' 자식 폼을 앞으로 가져오기
