@@ -44,6 +44,34 @@ Public Class frmUserAdd
         End Select
     End Sub
 
+    Private Sub GridView1_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles GridView1.RowCellClick
+
+        If e.Button = MouseButtons.Left Then ' 왼쪽 마우스 버튼 클릭인 경우에만 처리
+            ' 클릭된 행의 데이터를 가져오기
+            Dim focusedRow As Integer = GridView1.FocusedRowHandle
+
+            ' 형식을 Object로 주어 개체 인스턴스 에러 방지
+            Dim USERID As Object = GridView1.GetFocusedRowCellValue("EMP_ID")
+            Dim USERPW As Object = GridView1.GetFocusedRowCellValue("PASSWD")
+            Dim USERNM As Object = GridView1.GetFocusedRowCellValue("EMP_NM")
+
+            If focusedRow >= 0 Then
+                '' NullReferenceException 에러 다시 발생 시 이 코드를 사용
+                'If testCd IsNot Nothing Then
+                '    txtTestCd.Text = testCd.ToString()
+                'Else
+                '    txtTestCd.Text = ""
+                'End If
+                txtID.Text = USERID.ToString().Trim()
+                txtPW.Text = USERPW.ToString().Trim()
+                txtNM.Text = USERNM.ToString().Trim()
+
+            End If
+
+        End If
+
+    End Sub
+
     Private Sub UserReroadRoutine()
         Try
             SplashWaitForm.ShowWaitForm()
@@ -136,13 +164,12 @@ Public Class frmUserAdd
         End If
 
         If sReturn Then
-            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_Delete, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Call UserReroadRoutine()
-                Call UserScreenClear()
-            End If
+            Call UserReroadRoutine()
+            Call UserScreenClear()
         End If
     End Sub
+
 
 End Class

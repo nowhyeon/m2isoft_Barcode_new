@@ -90,6 +90,8 @@ Partial Class frmAMHTest2
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControl3 = New DevExpress.XtraLayout.LayoutControl()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -161,6 +163,8 @@ Partial Class frmAMHTest2
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -202,9 +206,7 @@ Partial Class frmAMHTest2
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.LabelControl3)
-        Me.Panel1.Controls.Add(Me.LabelControl2)
-        Me.Panel1.Controls.Add(Me.LabelControl1)
+        Me.Panel1.Controls.Add(Me.LayoutControl3)
         Me.Panel1.Location = New System.Drawing.Point(384, 246)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(813, 115)
@@ -216,7 +218,7 @@ Partial Class frmAMHTest2
         Me.LabelControl3.Appearance.ForeColor = System.Drawing.Color.Red
         Me.LabelControl3.Appearance.Options.UseFont = True
         Me.LabelControl3.Appearance.Options.UseForeColor = True
-        Me.LabelControl3.Location = New System.Drawing.Point(433, 39)
+        Me.LabelControl3.Location = New System.Drawing.Point(389, -27)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(73, 50)
         Me.LabelControl3.TabIndex = 2
@@ -226,7 +228,7 @@ Partial Class frmAMHTest2
         '
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("맑은 고딕", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(530, 46)
+        Me.LabelControl2.Location = New System.Drawing.Point(498, -18)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(80, 41)
         Me.LabelControl2.TabIndex = 1
@@ -236,7 +238,7 @@ Partial Class frmAMHTest2
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("맑은 고딕", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(187, 39)
+        Me.LabelControl1.Location = New System.Drawing.Point(162, -15)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(201, 50)
         Me.LabelControl1.TabIndex = 0
@@ -249,6 +251,9 @@ Partial Class frmAMHTest2
         Me.gcGraph.AppearanceCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gcGraph.AppearanceCaption.Options.UseFont = True
         Me.gcGraph.Controls.Add(Me.LayoutControl2)
+        Me.gcGraph.Controls.Add(Me.LabelControl2)
+        Me.gcGraph.Controls.Add(Me.LabelControl3)
+        Me.gcGraph.Controls.Add(Me.LabelControl1)
         Me.gcGraph.Location = New System.Drawing.Point(384, 365)
         Me.gcGraph.Name = "gcGraph"
         Me.gcGraph.Size = New System.Drawing.Size(813, 624)
@@ -915,6 +920,23 @@ Partial Class frmAMHTest2
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
+        'LayoutControl3
+        '
+        Me.LayoutControl3.Location = New System.Drawing.Point(87, 12)
+        Me.LayoutControl3.Name = "LayoutControl3"
+        Me.LayoutControl3.Root = Me.LayoutControlGroup2
+        Me.LayoutControl3.Size = New System.Drawing.Size(537, 51)
+        Me.LayoutControl3.TabIndex = 3
+        Me.LayoutControl3.Text = "LayoutControl3"
+        '
+        'LayoutControlGroup2
+        '
+        Me.LayoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup2.GroupBordersVisible = False
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(537, 51)
+        Me.LayoutControlGroup2.TextVisible = False
+        '
         'frmAMHTest2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -926,9 +948,9 @@ Partial Class frmAMHTest2
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.gcGraph, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gcGraph.ResumeLayout(False)
+        Me.gcGraph.PerformLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -995,6 +1017,8 @@ Partial Class frmAMHTest2
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1064,4 +1088,6 @@ Partial Class frmAMHTest2
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents WindowsUIButtonPanel1 As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControl3 As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
 End Class

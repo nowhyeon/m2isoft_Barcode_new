@@ -39,9 +39,9 @@ Public Class frmAMHTest
         End With
 
         ' 수진자 조회 결과 Grid
-        GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
-        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
+        'GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
         GfColumnSet(GridView, "접수일", "REQDATE", 35, "L", , True)
+        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
         GfColumnSet(GridView, "바코드", "SPCNO", 50, "L", , True)
         GfColumnSet(GridView, "성별", "PTSEX", 12, "L", , True)
         GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
@@ -67,7 +67,7 @@ Public Class frmAMHTest
         End Select
     End Sub
 
-    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) 
+    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel3.ButtonClick
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag

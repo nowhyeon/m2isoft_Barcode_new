@@ -46,7 +46,7 @@ Public Class frmMDI
         OpenChildForm(New frmAMHTest())
     End Sub
 
-    Private Sub AccordionControlElement8_Click(sender As Object, e As EventArgs) Handles AccordionControlElement8.Click
+    Private Sub AccordionControlElement8_Click(sender As Object, e As EventArgs) 
         OpenChildForm(New frmAMHTest2())
     End Sub
 
