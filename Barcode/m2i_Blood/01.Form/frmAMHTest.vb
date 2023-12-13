@@ -39,7 +39,7 @@ Public Class frmAMHTest
         End With
 
         ' 수진자 조회 결과 Grid
-        'GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
+        GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
         GfColumnSet(GridView, "접수일", "REQDATE", 35, "L", , True)
         GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
         GfColumnSet(GridView, "바코드", "SPCNO", 50, "L", , True)

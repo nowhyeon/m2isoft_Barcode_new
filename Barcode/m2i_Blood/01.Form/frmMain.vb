@@ -333,4 +333,5 @@ Public Class frmMain
         grdSearchQry.DataSource = Nothing
         grdSelect.DataSource = Nothing
     End Sub
+
 End Class

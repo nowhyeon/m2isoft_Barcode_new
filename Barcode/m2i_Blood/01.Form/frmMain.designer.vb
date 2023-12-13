@@ -234,6 +234,7 @@ Partial Class frmMain
         Me.LayoutControl7.Location = New System.Drawing.Point(2, 29)
         Me.LayoutControl7.Margin = New System.Windows.Forms.Padding(4)
         Me.LayoutControl7.Name = "LayoutControl7"
+        Me.LayoutControl7.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(3260, 395, 812, 500)
         Me.LayoutControl7.Root = Me.LayoutControlGroup6
         Me.LayoutControl7.Size = New System.Drawing.Size(784, 212)
         Me.LayoutControl7.TabIndex = 0
@@ -248,6 +249,8 @@ Partial Class frmMain
         Me.txtPtnm.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.txtPtnm.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtnm.Properties.Appearance.Options.UseFont = True
+        Me.txtPtnm.Properties.ReadOnly = True
+        Me.txtPtnm.Properties.UseReadOnlyAppearance = False
         Me.txtPtnm.Size = New System.Drawing.Size(278, 34)
         Me.txtPtnm.StyleController = Me.LayoutControl7
         Me.txtPtnm.TabIndex = 4
@@ -380,7 +383,7 @@ Partial Class frmMain
         Me.LayoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup6.GroupBordersVisible = False
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem11, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.LayoutControlItem15, Me.LayoutControlItem38, Me.LayoutControlItem39, Me.LayoutControlItem40, Me.LayoutControlItem41, Me.LayoutControlItem42, Me.LayoutControlItem43})
-        Me.LayoutControlGroup6.Name = "LayoutControlGroup6"
+        Me.LayoutControlGroup6.Name = "Root"
         Me.LayoutControlGroup6.Size = New System.Drawing.Size(784, 212)
         Me.LayoutControlGroup6.TextVisible = False
         '
