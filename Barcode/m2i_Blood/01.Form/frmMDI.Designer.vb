@@ -27,7 +27,7 @@ Partial Class frmMDI
         Me.AccordionControlElement4 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnMain = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnAMH = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-        'Me.AccordionControlElement8 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+
         Me.AccordionControlElement3 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnTestList = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -82,10 +82,6 @@ Partial Class frmMDI
         Me.btnAMH.Name = "btnAMH"
         Me.btnAMH.Text = "AMH"
         '
-        'AccordionControlElement8
-        '
-        'Me.AccordionControlElement8.Name = "AccordionControlElement8"
-        'Me.AccordionControlElement8.Text = "AMH2"
         '
         'AccordionControlElement3
         '
