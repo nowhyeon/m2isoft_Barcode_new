@@ -39,6 +39,7 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.picAMHResult = New DevExpress.XtraReports.UI.XRPictureBox()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -141,7 +142,7 @@ Partial Public Class Report_IF_AMH
         Me.AMHResultLine.LineWidth = 2.0!
         Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(366.2132!, 67.30835!)
         Me.AMHResultLine.Name = "AMHResultLine"
-        Me.AMHResultLine.SizeF = New System.Drawing.SizeF(360.6005!, 22.91669!)
+        Me.AMHResultLine.SizeF = New System.Drawing.SizeF(362.0!, 22.92!)
         Me.AMHResultLine.StylePriority.UseBorderWidth = False
         Me.AMHResultLine.StylePriority.UseForeColor = False
         '
@@ -155,7 +156,7 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHComment3
         '
-        Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(58.0!, 693.96!)
+        Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(54.37495!, 699.1683!)
         Me.lblAMHComment3.Multiline = True
         Me.lblAMHComment3.Name = "lblAMHComment3"
         Me.lblAMHComment3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -164,11 +165,11 @@ Partial Public Class Report_IF_AMH
         'lblAMHComment2
         '
         Me.lblAMHComment2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(58.0!, 584.58!)
+        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(57.99993!, 590.83!)
         Me.lblAMHComment2.Multiline = True
         Me.lblAMHComment2.Name = "lblAMHComment2"
         Me.lblAMHComment2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(258.3333!, 76.04163!)
+        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(253.125!, 76.04163!)
         Me.lblAMHComment2.StylePriority.UseFont = False
         '
         'lblAMHComment1
@@ -239,4 +240,5 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents AMHResultLine As DevExpress.XtraReports.UI.XRLine
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class

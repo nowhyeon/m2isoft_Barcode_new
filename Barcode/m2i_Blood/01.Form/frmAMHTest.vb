@@ -67,7 +67,7 @@ Public Class frmAMHTest
         End Select
     End Sub
 
-    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) 
+    Private Sub WindowsUIButtonPanel1_Click(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel3.ButtonClick
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
 
         Select Case sTag
@@ -160,36 +160,36 @@ Public Class frmAMHTest
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = RESULT.Text
+            .mAMHResult = txtRESULT.Text
             '.mComment1 = ""
             '.mComment2 = ""
             '.mComment3 = ""
         End With
 
         'prevView (x)---------------------------------------------------------------------------------------------------------
-        Dim printTool As New ReportPrintTool(Report_IF_AMH)
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
-        ' PrintDocument 인스턴스 생성
-        Dim printDocument As New PrintDocument()
+        '' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
 
-        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
-        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
-        printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+        '' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        '' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
 
-        ' 보고서를 바로 출력
-        printTool.Print()
+        '' 보고서를 바로 출력
+        'printTool.Print()
         '---------------------------------------------------------------------------------------------------------------------
 
         'prevView (O)---------------------------------------------------------------------------------------------------------
-        'With frmReportView
-        '    .dcvPrevView.DocumentSource = Report_IF_AMH
-        '    Report_IF_AMH.CreateDocument()
-        '    .ShowDialog()
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_IF_AMH
+            Report_IF_AMH.CreateDocument()
+            .ShowDialog()
 
-        '    'If .DialogResult = DialogResult.OK Then
-        '    '    SimpleButton1_Click(sender, e)
-        '    'End If
-        'End With
+            'If .DialogResult = DialogResult.OK Then
+            '    SimpleButton1_Click(sender, e)
+            'End If
+        End With
         '---------------------------------------------------------------------------------------------------------------------
     End Sub
 
@@ -212,7 +212,7 @@ Public Class frmAMHTest
                 txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
                 txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
                 txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
-                RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
+                txtRESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
             End With
 
             Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,

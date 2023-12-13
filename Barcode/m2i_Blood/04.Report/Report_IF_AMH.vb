@@ -22,7 +22,7 @@ Public Class Report_IF_AMH
     Public mAMHConn As String
     Public strAFC1 As String
 
-    Dim ClsDb As New ClsDatabase
+    Private ClsDb As New ClsDatabase
 
     Private Sub VisitReport_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
 
@@ -45,27 +45,23 @@ Public Class Report_IF_AMH
         mComment1 = String.Empty
         If Val(mAMHResult) < 0.01 Then
             mComment1 &= vbCrLf & "AMH 결과값 0.01 이하 ng/ml 이며 "
-            'strAMHResult1 = strAMHResult 'strAMHResult1 : grid 클릭했을 때  미리보기로 보여줄 값 
         ElseIf Val(mAMHResult) >= 0.01 And Val(mAMHResult) <= 23 Then
             mComment1 &= vbCrLf & "AMH 결과값 " & mAMHResult & " ng/ml 이며 "
-            'strAMHResult1 = strAMHResult
         Else
             mComment1 &= vbCrLf & "AMH 결과값 23 이상 ng/ml 이며"
-            'strAMHResult1 = strAMHResult  
         End If
 
         QueryString = String.Empty
-        QueryString &= " SELECT *                                      " & vbCrLf
-        QueryString &= "   FROM AMH_JUDGE                              " & vbCrLf
-        QueryString &= "  WHERE Val(age_f) <=              " & Val(mAge) & vbCrLf
-        QueryString &= "    AND Val(age_to) >=       " & Val(mAge) & " " & vbCrLf
-        QueryString &= "    AND val(low) <           " & Val(mAMHResult) & vbCrLf
-        QueryString &= "    AND val(high)>=   " & Val(mAMHResult) & "  " & vbCrLf
+        QueryString &= " SELECT *                                       " & vbCrLf
+        QueryString &= "   FROM AMH_JUDGE                               " & vbCrLf
+        QueryString &= "  WHERE Val(age_f) <='" & Val(mAge) & "'        " & vbCrLf
+        QueryString &= "    AND Val(age_to) >= '" & Val(mAge) & "'      " & vbCrLf
+        QueryString &= "    AND val(low) < '" & Val(mAMHResult) & "'    " & vbCrLf
+        QueryString &= "    AND val(high)>= '" & Val(mAMHResult) & "'   " & vbCrLf
 
         Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
         If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
-            'lblUser.Text = sTable.Rows(0)("EMP_NM").ToString
             mComment2 = sTable.Rows(0)("COMMENT").ToString
             mRemark = sTable.Rows(0)("REMARK").ToString
             mRemark1 = sTable.Rows(0)("REMARK1").ToString
@@ -85,15 +81,15 @@ Public Class Report_IF_AMH
             If mAMHResult <> "" Then
                 '계산공식: (나이) = (정량결과          - 7.6241) / 0.155 * -1
                 mAMHConn = (Val(mAMHResult) - 7.6241) / 0.155 * -1
-
+                '           절대값  소수점 버림     
                 mAMHConn = Math.Abs(Fix(mAMHConn))
             Else
                 mAMHConn = ""
             End If
-            ''
-            '''                           계산공식 = (정량결과-7.4908)/0.1502*-1
-            ''                        strAMHConn = (Val(strAMHResult) - 7.6241) / 0.155 * -1
-            ''                        strAMHConn = Abs(Fix(strAMHConn))
+            '
+            '                          계산공식 = (정량결과          - 7.4908) / 0.1502 * -1
+            '                        strAMHConn = (Val(strAMHResult) - 7.6241) / 0.155  * -1
+            '                        strAMHConn = Abs(Fix(strAMHConn))
             mComment3 = "만 " & mAMHConn & " 세 중앙값에 해당합니다."
 
         End If
@@ -182,7 +178,5 @@ Public Class Report_IF_AMH
         lblAMHResult.Text = mAMHResult
         lblAMHComment1.Text = mComment4
         lblAMHComment2.Text = strAFC1
-        'lblAMHComment3.Text = mComment3
-
     End Sub
 End Class
