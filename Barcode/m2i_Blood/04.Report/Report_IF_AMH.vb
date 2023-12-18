@@ -22,6 +22,8 @@ Public Class Report_IF_AMH
     Public mAMHConn As String
     Public strAFC1 As String
 
+    Public mAddress As String
+
     Private ClsDb As New ClsDatabase
 
     Private Sub VisitReport_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
@@ -31,15 +33,15 @@ Public Class Report_IF_AMH
         If Val(mAMHResult) > 2.28 Then
             strAFC1 &= vbCrLf & "● AFC 0개 이상 ~ 7개 미만인 확률은 1%"
             strAFC1 &= vbCrLf & "● AFC 8개 이상 ~ 15개 미만인 확률은 24%"
-            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확룰은 75% 입니다."
+            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확률은 75% 입니다."
         ElseIf Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28 Then
             strAFC1 &= vbCrLf & "● AFC 0개 이상 ~ 7개 미만인 확률은 12%"
             strAFC1 &= vbCrLf & "● AFC 8개 이상 ~ 15개 미만인 확률은 57%"
-            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확룰은 31% 입니다."
+            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확률은 31% 입니다."
         ElseIf Val(mAMHResult) < 0.69 Then
             strAFC1 &= vbCrLf & "● AFC 0개 이상 ~ 7개 미만인 확률은 63%"
             strAFC1 &= vbCrLf & "● AFC 8개 이상 ~ 15개 미만인 확률은 32%"
-            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확룰은 4% 입니다."
+            strAFC1 &= vbCrLf & "● AFC 15개 초과 일 확률은 4% 입니다."
         End If
 
         mComment1 = String.Empty
@@ -50,6 +52,9 @@ Public Class Report_IF_AMH
         Else
             mComment1 &= vbCrLf & "AMH 결과값 23 이상 ng/ml 이며"
         End If
+
+
+
 
         QueryString = String.Empty
         QueryString &= " SELECT *                                       " & vbCrLf
@@ -178,5 +183,12 @@ Public Class Report_IF_AMH
         lblAMHResult.Text = mAMHResult
         lblAMHComment1.Text = mComment4
         lblAMHComment2.Text = strAFC1
+
+
+        ' 보고서 하단 병원 주소 입력
+        mAddress &= "부산마리아의원" & vbCrLf
+        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원" & vbCrLf
+        mAddress &= "대표번호: 051-441-6555" & vbCrLf
+        lblAcceptDate.Text = mAddress
     End Sub
 End Class
