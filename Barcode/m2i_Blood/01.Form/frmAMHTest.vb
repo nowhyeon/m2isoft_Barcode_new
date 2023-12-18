@@ -284,13 +284,13 @@ Public Class frmAMHTest
         dtpTo.DateTime = Now.AddDays(NextDay)
 
         With cboPrintYN.Properties
-            .Items.Clear()
+            .Items.Add("선택 없음")
             .Items.Add("출력")
             .Items.Add("미출력")
         End With
 
         With cboSearchCond.Properties
-            .Items.Clear()
+            .Items.Add("선택 없음")
             .Items.Add("이름")
             .Items.Add("차트번호")
             .Items.Add("바코드번호")
@@ -330,8 +330,8 @@ Public Class frmAMHTest
     Private Sub PsClearRoutine()
         'dtpFrom.EditValue = Now.AddDays(-PrevDay)
         'dtpTo.EditValue = Now.AddDays(NextDay)
-        cboPrintYN.EditValue = String.Empty
-        cboSearchCond.EditValue = String.Empty
+        cboPrintYN.EditValue = "선택 없음"
+        cboSearchCond.EditValue = "선택 없음"
         txtSearchWrd.EditValue = String.Empty
         txtPtnm.EditValue = String.Empty
         txtBarcodeNo.EditValue = String.Empty
