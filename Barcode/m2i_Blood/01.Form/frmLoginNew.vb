@@ -1,8 +1,5 @@
 ﻿Imports DevExpress.Skins
 Imports DevExpress.XtraEditors
-Imports System.Data.SqlClient
-Imports System.IO
-Imports System.Net
 
 Public Class frmLoginNew
 
@@ -75,7 +72,8 @@ Public Class frmLoginNew
                     Call SaveReg("Login Check", IsClick)
                 End If
 
-                frmMDI.Show()
+                'frmMDI.Show()
+                frmMainNew.Show()
 
             ElseIf invalidPswdCount > validPswdCount Then
                 Application.Exit()

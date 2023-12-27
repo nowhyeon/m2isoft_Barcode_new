@@ -10,9 +10,10 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraPrinting
 Imports System.Xml
 Imports Microsoft.Win32
+Imports System.ComponentModel
 
 Module mod_m2i
-    'test
+
     ' 로그인 설정
     Public QueryString As String = String.Empty
 
@@ -30,7 +31,7 @@ Module mod_m2i
     Public gProcessName As String = String.Empty
 
     ' TCPIP 프린트설정
-    Public gBolFlag As String = "TCPIP"
+    Public gBolFlag As String = "TCPIP"             ' LAN: TCPIP, 시리얼: SERIAL
     Public gPrintIP_ZD As String
     Public gPrintPort As Integer
     Public gPrintTimeOut As Integer = 5000
@@ -45,6 +46,7 @@ Module mod_m2i
     'Public gPrintPort As Integer = 9100
     'Public gPrintTimeOut As Integer = 5000
 
+    ' DB 연결 설정
     Public Str_HOST_IP As String
     Public Str_HOST_PORT As String
     Public Str_DATABASE_NAME As String
@@ -64,8 +66,17 @@ Module mod_m2i
     Public NextMonth As Integer
     Public PrevMonth As Integer
 
+    ' 체크 Visible 설정
+    Public BloodCheck As Boolean
+    Public AMHCheck As Boolean
+
+    ' 검사코드 받는 변수(바코드용, AMH용)
     Public gTestCode As String
     Public gTestCodeAMH As String
+
+    ' 원격요청용 변수
+    Public UserIP As String
+    Public UserPC As String
 
     Dim ClsDb As New ClsDatabase
 
@@ -85,12 +96,14 @@ Module mod_m2i
         childForm.TopLevel = False                                   ' 자식 폼 설정
         childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
-        frmMDI.FluentDesignFormContainer1.Controls.Add(childForm)    ' FluentDesignFormControl에 자식 폼 추가
+        'frmMDI.FluentDesignFormContainer1.Controls.Add(childForm)    ' FluentDesignFormControl에 자식 폼 추가
+        frmMainNew.TabView.Container.Add(childForm)
         childForm.BringToFront()                                     ' 자식 폼을 앞으로 가져오기
         childForm.Show()                                             ' 자식 폼 표시
 
     End Sub
 
+    ' Grid Column 설정
     Public Sub GfColumnSet(gridNm As GridView,                     ' 그리드의 이름                             
                            textNm As String,                       ' 입력/수정할 때 기입하는 항목들의 헤드이름
                            columnNm As String,                     ' 그리드의 열이름
@@ -529,6 +542,7 @@ Module mod_m2i
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
             Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
             Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
+            Dim mBlood5 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ProgramSelect")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -560,6 +574,11 @@ Module mod_m2i
                 PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
             Next
 
+            For Each ProgramSelect As XmlNode In mBlood5
+                BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
+                AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+            Next
+
             Return True
 
         Catch ex As Exception
@@ -573,7 +592,7 @@ Module mod_m2i
     Public Function ReadReg(strRegKey As String) As String
 
         ' HKEY_CURRENT_USER 아래 "Software\YourApplication" 경로
-        Dim RegistryKey As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\m2isoft\mIF365")
+        Dim RegistryKey As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\m2isoft\ProgramSelect")
 
         If RegistryKey IsNot Nothing Then
             Dim Value As Object = RegistryKey.GetValue(strRegKey)
@@ -587,11 +606,11 @@ Module mod_m2i
             RegistryKey.Close()
         End If
 
-    End Function
+      End Function
 
     Public Function SaveReg(strRegKey As String, strValue As String) As Boolean
 
-        Dim RegistryKey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\m2isoft\mIF365")
+        Dim RegistryKey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\m2isoft\ProgramSelect")
 
         RegistryKey.SetValue(strRegKey, strValue)
         RegistryKey.Close()
@@ -599,6 +618,31 @@ Module mod_m2i
         Console.WriteLine(strValue & " Registry 값이 저장되었습니다.")
 
         SaveReg = True
+    End Function
+
+    ' 현재 PC의 IP주소 가져오기
+    Public Function GetIPAddress() As String
+        Dim hostName As String = Dns.GetHostName()
+        Dim ipHostEntry As IPHostEntry = Dns.GetHostEntry(hostName)
+
+        Dim Ipv4Address As String = ""
+        For Each ipAddress As IPAddress In ipHostEntry.AddressList
+            If ipAddress.AddressFamily = System.Net.Sockets.AddressFamily.InterNetwork Then
+                Ipv4Address = ipAddress.ToString()
+                Exit For
+            End If
+        Next
+
+        Console.WriteLine("Local IPv4 Address: " & Ipv4Address)
+        Console.ReadLine()
+        Return Ipv4Address
+
+    End Function
+
+    ' 현재 PC의 이름 가져오기
+    Public Function GetComputerName() As String
+        Dim ComputerName As String = Environment.MachineName
+        GetComputerName = ComputerName
     End Function
 
 End Module

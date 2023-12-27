@@ -1,25 +1,18 @@
-﻿Imports System.IO
-Imports System.ComponentModel
-Imports DevExpress.XtraBars.Docking2010
+﻿Imports DevExpress.XtraBars.Docking2010
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid
-Imports DevExpress.XtraCharts
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraPrinting
-Imports DevExpress.XtraGrid.Views.Base
-Imports DevExpress.XtraEditors.Controls
-Imports System.Runtime.InteropServices
+
 Imports System.Drawing.Printing
 Imports DevExpress.XtraReports.UI
 
 Public Class frmAMHTest
 
+    Public Hospital_DB As New ClsOrder
+    Public Hospital_DB_AMH As New ClsAMH
     Private ClsEncrypt As New ClsEncryptDecrypt
     Private ClsErrorLog As New ClsErrorsAndEvents
     Private ClsDb As New ClsDatabase
-    Public Hospital_DB As New ClsOrder
-    Public Hospital_DB_AMH As New ClsAMH
+    Private SearchEnabled As Boolean = False
 
     Public Sub New()
         ' 디자이너에서 이 호출이 필요합니다.
@@ -77,6 +70,20 @@ Public Class frmAMHTest
                 Call PsPrint()
             Case "Remove"
                 Call PsClearRoutine()
+            Case "SearchOn"
+                ' 토글 상태 업데이트
+                SearchEnabled = Not SearchEnabled
+
+                If SearchEnabled Then
+                    ' 검색 켜기
+                    GridView.OptionsView.ShowAutoFilterRow = True
+                    GridView.OptionsFind.AlwaysVisible = True
+                Else
+                    ' 검색 끄기
+                    GridView.OptionsView.ShowAutoFilterRow = False
+                    GridView.OptionsFind.AlwaysVisible = False
+                End If
+
         End Select
     End Sub
 
@@ -167,29 +174,29 @@ Public Class frmAMHTest
         End With
 
         'prevView (x)---------------------------------------------------------------------------------------------------------
-        Dim printTool As New ReportPrintTool(Report_IF_AMH)
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
         ' PrintDocument 인스턴스 생성
-        Dim printDocument As New PrintDocument()
+        'Dim printDocument As New PrintDocument()
 
         ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
         ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
-        printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
 
         ' 보고서를 바로 출력
-        printTool.Print()
+        'printTool.Print()
         '---------------------------------------------------------------------------------------------------------------------
 
         'prevView (O)---------------------------------------------------------------------------------------------------------
-        'With frmReportView
-        '    .dcvPrevView.DocumentSource = Report_IF_AMH
-        '    Report_IF_AMH.CreateDocument()
-        '    .ShowDialog()
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_IF_AMH
+            Report_IF_AMH.CreateDocument()
+            .ShowDialog()
 
-        '    'If .DialogResult = DialogResult.OK Then
-        '    '    SimpleButton1_Click(sender, e)
-        '    'End If
-        'End With
+            'If .DialogResult = DialogResult.OK Then
+            '    SimpleButton1_Click(sender, e)
+            'End If
+        End With
         '---------------------------------------------------------------------------------------------------------------------
     End Sub
 
@@ -278,7 +285,7 @@ Public Class frmAMHTest
 
         Call Get_TestCodeAMH()
 
-        SplashScreenManager.ShowWaitForm()
+        'SplashScreenManager.ShowWaitForm()
 
         dtpFrom.DateTime = Now.AddDays(-PrevDay)
         dtpTo.DateTime = Now.AddDays(NextDay)
@@ -296,7 +303,7 @@ Public Class frmAMHTest
             .Items.Add("바코드번호")
         End With
 
-        SplashScreenManager.CloseWaitForm()
+        '6SplashScreenManager.CloseWaitForm()
     End Sub
 
     'mDB에서 검사코드 가져온다
@@ -318,8 +325,7 @@ Public Class frmAMHTest
                 Next
                 gTestCodeAMH = Mid(gTestCodeAMH, 1, Len(gTestCodeAMH) - 1)
             Else
-                Dim sMsg As String = "등록된 검사코드가 없습니다 !", sMsgTitle As String = "검사코드 오류"
-                XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show(_sMsg.sMsg_NoTestCode, _sMsg_Title.sMsgTitle_TestCode, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         Catch ex As Exception
@@ -328,8 +334,7 @@ Public Class frmAMHTest
     End Sub
 
     Private Sub PsClearRoutine()
-        'dtpFrom.EditValue = Now.AddDays(-PrevDay)
-        'dtpTo.EditValue = Now.AddDays(NextDay)
+
         cboPrintYN.EditValue = "선택 없음"
         cboSearchCond.EditValue = "선택 없음"
         txtSearchWrd.EditValue = String.Empty

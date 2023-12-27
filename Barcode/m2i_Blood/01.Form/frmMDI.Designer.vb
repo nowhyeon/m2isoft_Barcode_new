@@ -27,7 +27,6 @@ Partial Class frmMDI
         Me.AccordionControlElement4 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnMain = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnAMH = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-
         Me.AccordionControlElement3 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.btnTestList = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement7 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -55,11 +54,11 @@ Partial Class frmMDI
         '
         Me.AccordionControl1.Dock = System.Windows.Forms.DockStyle.Left
         Me.AccordionControl1.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.AccordionControlElement4, Me.AccordionControlElement3, Me.AccordionControlElement1})
-        Me.AccordionControl1.Location = New System.Drawing.Point(0, 27)
+        Me.AccordionControl1.Location = New System.Drawing.Point(0, 35)
         Me.AccordionControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.AccordionControl1.Name = "AccordionControl1"
         Me.AccordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch
-        Me.AccordionControl1.Size = New System.Drawing.Size(178, 849)
+        Me.AccordionControl1.Size = New System.Drawing.Size(222, 1064)
         Me.AccordionControl1.TabIndex = 1
         Me.AccordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu
         '
@@ -82,10 +81,10 @@ Partial Class frmMDI
         Me.btnAMH.Name = "btnAMH"
         Me.btnAMH.Text = "AMH"
         '
-        '
         'AccordionControlElement3
         '
         Me.AccordionControlElement3.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnTestList, Me.AccordionControlElement7})
+        Me.AccordionControlElement3.Expanded = True
         Me.AccordionControlElement3.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement3.Name = "AccordionControlElement3"
         Me.AccordionControlElement3.Text = "Setup"
@@ -105,6 +104,7 @@ Partial Class frmMDI
         'AccordionControlElement1
         '
         Me.AccordionControlElement1.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.AccordionControlElement2})
+        Me.AccordionControlElement1.Expanded = True
         Me.AccordionControlElement1.HeaderTemplate.AddRange(New DevExpress.XtraBars.Navigation.HeaderElementInfo() {New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image), New DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text)})
         Me.AccordionControlElement1.Name = "AccordionControlElement1"
         Me.AccordionControlElement1.Text = "Surpport"
@@ -123,7 +123,7 @@ Partial Class frmMDI
         Me.FluentDesignFormControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.FluentDesignFormControl1.Name = "FluentDesignFormControl1"
         Me.FluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.FluentDesignFormControl1.Size = New System.Drawing.Size(1270, 27)
+        Me.FluentDesignFormControl1.Size = New System.Drawing.Size(1596, 35)
         Me.FluentDesignFormControl1.TabIndex = 2
         Me.FluentDesignFormControl1.TabStop = False
         '
@@ -163,10 +163,10 @@ Partial Class frmMDI
         'FluentDesignFormContainer1
         '
         Me.FluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(178, 27)
+        Me.FluentDesignFormContainer1.Location = New System.Drawing.Point(222, 35)
         Me.FluentDesignFormContainer1.Margin = New System.Windows.Forms.Padding(2)
         Me.FluentDesignFormContainer1.Name = "FluentDesignFormContainer1"
-        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1092, 849)
+        Me.FluentDesignFormContainer1.Size = New System.Drawing.Size(1374, 1064)
         Me.FluentDesignFormContainer1.TabIndex = 0
         '
         'AccordionControlElement5
@@ -189,16 +189,19 @@ Partial Class frmMDI
         '
         'frmMDI
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.Appearance.Options.UseFont = True
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1270, 876)
+        Me.ClientSize = New System.Drawing.Size(1596, 1099)
         Me.ControlContainer = Me.FluentDesignFormContainer1
         Me.Controls.Add(Me.FluentDesignFormContainer1)
         Me.Controls.Add(Me.AccordionControl1)
         Me.Controls.Add(Me.FluentDesignFormControl1)
+        Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.EnableAcrylicAccent = False
         Me.FluentDesignFormControl = Me.FluentDesignFormControl1
+        Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False

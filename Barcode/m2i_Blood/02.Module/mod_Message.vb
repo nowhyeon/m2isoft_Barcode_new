@@ -12,6 +12,10 @@
     Shared sMsg_NoTestCode As String = " 등록된 검사코드가 없습니다 !"
     Shared sMsg_NoPw As String = " 비밀번호가 틀렸습니다"
     Shared sMsg_NoID As String = " 등록된 사용자가 아닙니다 !"
+    Shared sMsg_NoCh As String = " 채널번호를 선택해 주세요 !"
+    Shared sMsg_Exit As String = " 업무가 진행중 입니다." & Chr(10) & Chr(10) &
+                                 " 작업을 종료하면 진행 중인 데이터를 잃게 됩니다.   " & Chr(10) & Chr(10) &
+                                 " 종료하시겠습니까?"
 
 End Structure
 
@@ -27,6 +31,8 @@ Public Structure _sMsg_Title
     Shared sMsgTitle_TestCode As String = "검사코드 에러"
     Shared sMsgTitle_NoPw As String = "비밀번호 에러"
     Shared sMsgTitle_NoID As String = "사용자 등록 에러"
+    Shared sMsgTitle_Error As String = "에러"
+
 End Structure
 
 Public Structure _sMsg_Question

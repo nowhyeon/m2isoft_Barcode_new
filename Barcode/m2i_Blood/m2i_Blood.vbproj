@@ -136,6 +136,12 @@
     <Compile Include="01.Form\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="01.Form\frmMainNew.Designer.vb">
+      <DependentUpon>frmMainNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="01.Form\frmMainNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="01.Form\frmMDI.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,12 @@
       <DependentUpon>frmManual.vb</DependentUpon>
     </Compile>
     <Compile Include="01.Form\frmManual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01.Form\frmRemote.Designer.vb">
+      <DependentUpon>frmRemote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="01.Form\frmRemote.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="01.Form\frmReportView.designer.vb">
@@ -206,12 +218,6 @@
     <Compile Include="01.Form\frmAMHTest.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LineChartTest.Designer.vb">
-      <DependentUpon>LineChartTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="LineChartTest.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
@@ -229,6 +235,9 @@
     <EmbeddedResource Include="01.Form\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="01.Form\frmMainNew.resx">
+      <DependentUpon>frmMainNew.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmMDI.resx">
       <DependentUpon>frmMDI.vb</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmManual.resx">
       <DependentUpon>frmManual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01.Form\frmRemote.resx">
+      <DependentUpon>frmRemote.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmReportView.resx">
       <DependentUpon>frmReportView.vb</DependentUpon>
@@ -255,9 +267,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="04.Report\Report_IF_AMH.resx">
       <DependentUpon>Report_IF_AMH.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LineChartTest.resx">
-      <DependentUpon>LineChartTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -25,6 +25,9 @@ Namespace My
             clsDB.MSSQL_DBOpen()
             'clsDB.ACCESS_DBOpen()
 
+            UserIP = GetIPAddress()
+            UserPC = GetComputerName()
+
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown

@@ -99,7 +99,7 @@ Public Class frmConfig
                 Dim childNode2 As XmlNode = xmlDoc.CreateElement("Communication")
                 Dim childNode3 As XmlNode = xmlDoc.CreateElement("MDB")
                 Dim childNode4 As XmlNode = xmlDoc.CreateElement("DateSet")
-
+                Dim childNode5 As XmlNode = xmlDoc.CreateElement("ProgramSelect")
 
                 ' XML 파일에 NODE를 추가해주는 부분 
                 ' - SERVER 부분에 들어가는 노드들 -
@@ -126,6 +126,9 @@ Public Class frmConfig
                 Dim NextDay_Node As XmlNode = xmlDoc.CreateElement("NextDay")
                 Dim PrevDay_Node As XmlNode = xmlDoc.CreateElement("PrevDay")
 
+                ' - 프로그램 선택 부분에 들어가는 노드들 -
+                Dim Blood_Node As XmlNode = xmlDoc.CreateElement("Blood")
+                Dim AMH_Node As XmlNode = xmlDoc.CreateElement("AMH")
 
                 DATABASE_TYPE_Node.InnerText = cboDBType.Text                       ' DB 타입 노드에 들어갈 입력값
                 childNode.AppendChild(DATABASE_TYPE_Node)
@@ -180,11 +183,17 @@ Public Class frmConfig
                 PrevDay_Node.InnerText = txtPrevDay.Text
                 childNode4.AppendChild(PrevDay_Node)
 
+                Blood_Node.InnerText = chkBlood.Checked.ToString
+                childNode5.AppendChild(Blood_Node)
+
+                AMH_Node.InnerText = chkAMH.Checked.ToString
+                childNode5.AppendChild(AMH_Node)
 
                 rootNode.AppendChild(childNode)
                 rootNode.AppendChild(childNode2)
                 rootNode.AppendChild(childNode3)
                 rootNode.AppendChild(childNode4)
+                rootNode.AppendChild(childNode5)
 
                 xmlDoc.Save(Application.StartupPath & "\Common.xml")
 
@@ -234,6 +243,7 @@ Public Class frmConfig
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
             Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
             Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
+            Dim mBlood5 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ProgramSelect")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -264,6 +274,11 @@ Public Class frmConfig
                 PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
             Next
 
+            For Each ProgramSelect As XmlNode In mBlood5
+                BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
+                AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+            Next
+
             cboDBType.Text = Str_DATABASE_TYPE
             txtDBIP.Text = Str_HOST_IP
             txtDBPort.Text = Str_HOST_PORT
@@ -281,6 +296,9 @@ Public Class frmConfig
 
             txtNextDay.Text = NextDay
             txtPrevDay.Text = PrevDay
+
+            chkBlood.Checked = BloodCheck
+            chkAMH.Checked = AMHCheck
 
         Catch ex As Exception
 

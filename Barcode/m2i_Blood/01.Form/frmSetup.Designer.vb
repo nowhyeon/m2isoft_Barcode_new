@@ -24,6 +24,7 @@ Partial Class frmSetup
         Dim WindowsUIButtonImageOptions2 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions5 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.btnPanWork = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -56,7 +57,6 @@ Partial Class frmSetup
         Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SplashWaitForm = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.m2i_Blood.WaitForm), True, True)
@@ -95,7 +95,6 @@ Partial Class frmSetup
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -109,7 +108,7 @@ Partial Class frmSetup
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(3113, 233, 812, 500)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(862, 699)
+        Me.LayoutControl1.Size = New System.Drawing.Size(862, 711)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -123,12 +122,15 @@ Partial Class frmSetup
         WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
         WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("삭제", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Delete", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False)})
+        WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions5.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("삭제", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Delete", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("검색 On/Off", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Search", -1, True)})
+        Me.btnPanWork.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPanWork.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPanWork.Location = New System.Drawing.Point(594, 608)
+        Me.btnPanWork.Location = New System.Drawing.Point(12, 637)
         Me.btnPanWork.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPanWork.Name = "btnPanWork"
-        Me.btnPanWork.Size = New System.Drawing.Size(256, 79)
+        Me.btnPanWork.Size = New System.Drawing.Size(838, 62)
         Me.btnPanWork.TabIndex = 104
         '
         'GroupControl1
@@ -138,7 +140,7 @@ Partial Class frmSetup
         Me.GroupControl1.Controls.Add(Me.LayoutControl2)
         Me.GroupControl1.Location = New System.Drawing.Point(12, 12)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(838, 592)
+        Me.GroupControl1.Size = New System.Drawing.Size(838, 621)
         Me.GroupControl1.TabIndex = 4
         Me.GroupControl1.Text = "※ 검사항목 입력 및 수정"
         '
@@ -154,11 +156,11 @@ Partial Class frmSetup
         Me.LayoutControl2.Controls.Add(Me.txtNote)
         Me.LayoutControl2.Controls.Add(Me.txtWorkArea)
         Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl2.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl2.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(3075, 399, 812, 500)
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
-        Me.LayoutControl2.Size = New System.Drawing.Size(834, 561)
+        Me.LayoutControl2.Size = New System.Drawing.Size(834, 593)
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -206,17 +208,17 @@ Partial Class frmSetup
         Me.gcTestList.Controls.Add(Me.grdTestList)
         Me.gcTestList.Location = New System.Drawing.Point(12, 132)
         Me.gcTestList.Name = "gcTestList"
-        Me.gcTestList.Size = New System.Drawing.Size(810, 417)
+        Me.gcTestList.Size = New System.Drawing.Size(810, 449)
         Me.gcTestList.TabIndex = 1
         Me.gcTestList.Text = "※ 검사항목리스트"
         '
         'grdTestList
         '
         Me.grdTestList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdTestList.Location = New System.Drawing.Point(2, 29)
+        Me.grdTestList.Location = New System.Drawing.Point(2, 26)
         Me.grdTestList.MainView = Me.GridView
         Me.grdTestList.Name = "grdTestList"
-        Me.grdTestList.Size = New System.Drawing.Size(806, 386)
+        Me.grdTestList.Size = New System.Drawing.Size(806, 421)
         Me.grdTestList.TabIndex = 0
         Me.grdTestList.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -284,7 +286,7 @@ Partial Class frmSetup
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem1, Me.EmptySpaceItem1, Me.EmptySpaceItem6, Me.LayoutControlItem8, Me.LayoutControlItem6, Me.LayoutControlItem4, Me.EmptySpaceItem9, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.labelcontrol20, Me.LayoutControlItem5, Me.EmptySpaceItem3, Me.EmptySpaceItem4})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(834, 561)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(834, 593)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem3
@@ -308,7 +310,7 @@ Partial Class frmSetup
         Me.LayoutControlItem1.Control = Me.gcTestList
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(814, 421)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(814, 453)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -433,9 +435,9 @@ Partial Class frmSetup
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem2, Me.LayoutControlItem7})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem7})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(862, 699)
+        Me.Root.Size = New System.Drawing.Size(862, 711)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem2
@@ -445,29 +447,16 @@ Partial Class frmSetup
         Me.LayoutControlItem2.Control = Me.GroupControl1
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(842, 596)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(842, 625)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 596)
-        Me.EmptySpaceItem2.MinSize = New System.Drawing.Size(104, 24)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(582, 83)
-        Me.EmptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.btnPanWork
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(582, 596)
-        Me.LayoutControlItem7.MaxSize = New System.Drawing.Size(260, 83)
-        Me.LayoutControlItem7.MinSize = New System.Drawing.Size(260, 83)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 625)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(260, 83)
-        Me.LayoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(842, 66)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -488,7 +477,7 @@ Partial Class frmSetup
         Me.Appearance.Options.UseFont = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(862, 699)
+        Me.ClientSize = New System.Drawing.Size(862, 711)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -531,7 +520,6 @@ Partial Class frmSetup
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -568,7 +556,6 @@ Partial Class frmSetup
     Friend WithEvents EmptySpaceItem9 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents txtWorkArea As DevExpress.XtraEditors.TextEdit
     Friend WithEvents labelcontrol20 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents btnPanWork As DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel

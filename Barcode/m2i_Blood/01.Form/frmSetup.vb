@@ -4,6 +4,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmSetup
 
+    Private SearchEnabled As Boolean = False
     Dim ClsDb As New ClsDatabase
     Dim ClsErrorLog As New ClsErrorsAndEvents
 
@@ -57,6 +58,20 @@ Public Class frmSetup
                 Call PtDeleteRoutine()
             Case "Close"
                 Call PtScreenClose()
+            Case "Search"
+                ' 토글 상태 업데이트
+                SearchEnabled = Not SearchEnabled
+
+                If SearchEnabled Then
+                    ' 검색 켜기
+                    GridView.OptionsView.ShowAutoFilterRow = True
+                    GridView.OptionsFind.AlwaysVisible = True
+                Else
+                    ' 검색 끄기
+                    GridView.OptionsView.ShowAutoFilterRow = False
+                    GridView.OptionsFind.AlwaysVisible = False
+                End If
+
         End Select
     End Sub
 
@@ -220,16 +235,6 @@ Public Class frmSetup
 
     End Sub
 
-    'Private Sub txtTestCd_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanging
-
-    '    QueryString = String.Empty
-    '    QueryString &= "SELECT * FROM m2i_LAB004                        "
-    '    QueryString &= "WHERE TESTCD LIKE '%" & txtTestCd.Text & "%'    "
-
-    '    LoadDataToGrid(QueryString)
-
-    'End Sub
-
     Private Sub txtTestCd_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestCd.EditValueChanged
 
         QueryString = String.Empty
@@ -253,15 +258,6 @@ Public Class frmSetup
 
         End If
     End Sub
-
-    'Private Sub txtTestNm_EditValueChanging(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanging
-    '    QueryString = String.Empty
-    '    QueryString &= "SELECT * FROM m2i_LAB004                        "
-    '    QueryString &= "WHERE TESTNM LIKE '%" & txtTestNm.Text & "%'    "
-
-    '    LoadDataToGrid(QueryString)
-
-    'End Sub
 
     Private Sub txtTestNm_EditValueChanged(sender As Object, e As EventArgs) Handles txtTestNm.EditValueChanged
         QueryString = String.Empty

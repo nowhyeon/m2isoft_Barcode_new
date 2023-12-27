@@ -1,15 +1,6 @@
-﻿Imports System.IO
-Imports System.ComponentModel
-Imports DevExpress.XtraBars.Docking2010
+﻿Imports DevExpress.XtraBars.Docking2010
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid
-Imports DevExpress.XtraCharts
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraPrinting
-Imports DevExpress.XtraGrid.Views.Base
-Imports DevExpress.XtraEditors.Controls
-Imports System.Runtime.InteropServices
 
 Public Class frmMain
     Private ClsEncrypt As New ClsEncryptDecrypt
@@ -91,9 +82,9 @@ Public Class frmMain
 
                 QueryString = String.Empty
                 QueryString &= " SELECT *          " & vbNewLine
-                QueryString &= "   FROM m2i_LAB201 " & vbNewLine
-                QueryString &= "  WHERE 1 = 1      " & vbNewLine
-                QueryString &= "    AND REQDATE >= '" & Format(dtpFrom.EditValue, "yyyy-MM-dd") & "'" & vbNewLine
+                QueryString &= " FROM [m2i_LAB201] " & vbNewLine
+                QueryString &= " WHERE 1 = 1       " & vbNewLine
+                QueryString &= " AND [REQDATE] >= '" & Format(dtpFrom.EditValue, "yyyy-MM-dd") & "'" & vbNewLine
 
                 Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
@@ -164,11 +155,11 @@ Public Class frmMain
             End If
 
             QueryString = String.Empty
-            QueryString &= " SELECT TESTNM,  WORKAREA, BLOODTUBE, TESTNM_10, Remark,  PrintAdd " & vbCrLf
-            QueryString &= "   FROM m2i_LAB004                                                 " & vbCrLf
-            QueryString &= "  WHERE 1 = 1                                                      " & vbCrLf
-            QueryString &= "    AND TESTCD in (" & TESTCD & ")                                 " & vbCrLf
-            QueryString &= "  ORDER BY WORKAREA,BLOODTUBE                                      " & vbCrLf
+            QueryString &= " SELECT [TESTNM],  [WORKAREA], [BLOODTUBE], [TESTNM_10], [Remark],  [PrintAdd] " & vbCrLf
+            QueryString &= " FROM [m2i_LAB004]                                                             " & vbCrLf
+            QueryString &= " WHERE 1 = 1                                                                   " & vbCrLf
+            QueryString &= " AND [TESTCD] in (" & TESTCD & ")                                              " & vbCrLf
+            QueryString &= " ORDER BY [WORKAREA],[BLOODTUBE]                                               " & vbCrLf
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
@@ -182,30 +173,33 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SplashScreenManager.ShowWaitForm()
+
+        Call Get_TestCode()
 
         dtpFrom.DateTime = Now.AddDays(-PrevDay)
         dtpTo.DateTime = Now.AddDays(NextDay)
 
         With cboReceipt.Properties
             .Items.Clear()
+            .Items.Add("선택없음")
             .Items.Add("접수")
             .Items.Add("결과")
         End With
 
         With cboPrintYN.Properties
             .Items.Clear()
+            .Items.Add("선택없음")
             .Items.Add("출력")
             .Items.Add("미출력")
         End With
 
         With cboSearchCond.Properties
             .Items.Clear()
+            .Items.Add("선택없음")
             .Items.Add("이름")
             .Items.Add("차트번호")
         End With
 
-        SplashScreenManager.CloseWaitForm()
     End Sub
 
     Private Sub PsPrintRoutine()
@@ -268,46 +262,7 @@ Public Class frmMain
             Case "close"
                 Me.DialogResult = DialogResult.Cancel
                 Me.Close()
-            Case "AMH"
-                Call PsAMHReportView()
         End Select
-    End Sub
-
-    Private Sub PsAMHReportView()
-        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
-        Dim sex As String
-        If txtPtSex.EditValue = "F" Then
-            sex = "여"
-        ElseIf txtPtSex.EditValue = "M" Then
-            sex = "남"
-        Else
-            sex = "-"
-        End If
-
-        With Report_IF_AMH
-            .mPTNM = txtPtnm.EditValue
-            .mBirth = txtPtBirth.EditValue
-            .mAge = sex & " / " & txtPtAge.EditValue
-            .mChartNo = txtPtChartNo.EditValue
-            .mMedOffice = txtMedOffice.EditValue
-            .mReceiptDate = txtReceiptDate.EditValue
-            .mDoctor = txtDoctor.EditValue
-            .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = "3.44"
-            '.mComment1 = ""
-            '.mComment2 = ""
-            '.mComment3 = ""
-        End With
-
-        With frmReportView
-            .dcvPrevView.DocumentSource = Report_IF_AMH
-            Report_IF_AMH.CreateDocument()
-            .ShowDialog()
-
-            'If .DialogResult = DialogResult.OK Then
-            '    SimpleButton1_Click(sender, e)
-            'End If
-        End With
     End Sub
 
     Private Sub PsClearRoutine()
@@ -332,6 +287,33 @@ Public Class frmMain
 
         grdSearchQry.DataSource = Nothing
         grdSelect.DataSource = Nothing
+    End Sub
+
+    'mDB에서 검사코드 가져온다
+    Public Sub Get_TestCode()
+        Try
+            QueryString = String.Empty
+            QueryString &= " SELECT TESTCD, TESTNM  " & vbCrLf
+            QueryString &= " FROM m2i_LAB004        " & vbCrLf
+            QueryString &= " WHERE TESTCD <> 'AMH'  " & vbCrLf
+            QueryString &= " ORDER BY TESTCD        " & vbCrLf
+
+            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+            ' mDB의 TESTCD의 정보를 가져와서 sTable이라는 테이블에 저장
+
+            ' sTable에 없는 검사코드가 있을 때
+            If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+                For Each row As DataRow In sTable.Rows
+                    gTestCode &= "'" & row(1).ToString & "',"
+                Next
+                gTestCode = Mid(gTestCode, 1, Len(gTestCode) - 1)
+            Else
+                XtraMessageBox.Show(_sMsg.sMsg_NoTestCode, _sMsg_Title.sMsgTitle_TestCode, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 End Class

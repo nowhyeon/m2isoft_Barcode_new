@@ -115,12 +115,12 @@ Partial Class frmLoginNew
         Me.LayoutControl1.Controls.Add(Me.txtPassword)
         Me.LayoutControl1.Controls.Add(Me.CmdLogin)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl1.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(754, 239, 650, 400)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(259, 184)
+        Me.LayoutControl1.Size = New System.Drawing.Size(259, 187)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -142,7 +142,7 @@ Partial Class frmLoginNew
         Me.lblUsernm.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.lblUsernm.Location = New System.Drawing.Point(12, 69)
         Me.lblUsernm.Name = "lblUsernm"
-        Me.lblUsernm.Size = New System.Drawing.Size(235, 44)
+        Me.lblUsernm.Size = New System.Drawing.Size(235, 47)
         Me.lblUsernm.TabIndex = 4
         Me.lblUsernm.Text = "사용자"
         Me.lblUsernm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -163,7 +163,7 @@ Partial Class frmLoginNew
         'txtPassword
         '
         Me.txtPassword.EditValue = ""
-        Me.txtPassword.Location = New System.Drawing.Point(12, 117)
+        Me.txtPassword.Location = New System.Drawing.Point(12, 120)
         Me.txtPassword.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Properties.Appearance.Options.UseTextOptions = True
@@ -179,7 +179,7 @@ Partial Class frmLoginNew
         Me.CmdLogin.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.CmdLogin.Appearance.Options.UseFont = True
         Me.CmdLogin.ImageOptions.Image = CType(resources.GetObject("CmdLogin.ImageOptions.Image"), System.Drawing.Image)
-        Me.CmdLogin.Location = New System.Drawing.Point(12, 145)
+        Me.CmdLogin.Location = New System.Drawing.Point(12, 148)
         Me.CmdLogin.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CmdLogin.Name = "CmdLogin"
         Me.CmdLogin.Size = New System.Drawing.Size(235, 27)
@@ -193,7 +193,7 @@ Partial Class frmLoginNew
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutControlItem1, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(259, 184)
+        Me.Root.Size = New System.Drawing.Size(259, 187)
         '
         'layoutControlItem1
         '
@@ -219,7 +219,7 @@ Partial Class frmLoginNew
         Me.layoutControlItem2.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.layoutControlItem2.Control = Me.txtPassword
         Me.layoutControlItem2.CustomizationFormText = "layoutControlItem2"
-        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 105)
+        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 108)
         Me.layoutControlItem2.Name = "layoutControlItem2"
         Me.layoutControlItem2.Size = New System.Drawing.Size(239, 28)
         Me.layoutControlItem2.Text = "암호 : "
@@ -231,7 +231,7 @@ Partial Class frmLoginNew
         '
         Me.layoutControlItem4.Control = Me.CmdLogin
         Me.layoutControlItem4.CustomizationFormText = "layoutControlItem4"
-        Me.layoutControlItem4.Location = New System.Drawing.Point(0, 133)
+        Me.layoutControlItem4.Location = New System.Drawing.Point(0, 136)
         Me.layoutControlItem4.Name = "layoutControlItem4"
         Me.layoutControlItem4.Size = New System.Drawing.Size(239, 31)
         Me.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Left
@@ -243,7 +243,7 @@ Partial Class frmLoginNew
         Me.LayoutControlItem3.Control = Me.lblUsernm
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 57)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 48)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 51)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '

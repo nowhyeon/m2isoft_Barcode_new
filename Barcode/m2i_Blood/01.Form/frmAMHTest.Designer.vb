@@ -25,6 +25,7 @@ Partial Class frmAMHTest
         Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim WindowsUIButtonImageOptions5 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions6 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.WindowsUIButtonPanel3 = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
@@ -215,7 +216,9 @@ Partial Class frmAMHTest
         WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
         WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.WindowsUIButtonPanel3.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("다중출력", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "MultiPrint", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("단일출력", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "print", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("화면비우기", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Remove", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False)})
+        WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions5.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.WindowsUIButtonPanel3.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("다중출력", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "MultiPrint", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("단일출력", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "print", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("화면비우기", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Remove", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("검색 On/Off", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "SearchOn", -1, True)})
         Me.WindowsUIButtonPanel3.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
         Me.WindowsUIButtonPanel3.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.WindowsUIButtonPanel3.Location = New System.Drawing.Point(12, 993)
@@ -241,11 +244,11 @@ Partial Class frmAMHTest
         '
         Me.LayoutControl3.Controls.Add(Me.grdAMH)
         Me.LayoutControl3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl3.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl3.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl3.Margin = New System.Windows.Forms.Padding(2)
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.Root = Me.LayoutControlGroup2
-        Me.LayoutControl3.Size = New System.Drawing.Size(702, 188)
+        Me.LayoutControl3.Size = New System.Drawing.Size(702, 191)
         Me.LayoutControl3.TabIndex = 0
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -256,7 +259,7 @@ Partial Class frmAMHTest
         Me.grdAMH.MainView = Me.GridView1
         Me.grdAMH.Margin = New System.Windows.Forms.Padding(2)
         Me.grdAMH.Name = "grdAMH"
-        Me.grdAMH.Size = New System.Drawing.Size(678, 164)
+        Me.grdAMH.Size = New System.Drawing.Size(678, 167)
         Me.grdAMH.TabIndex = 4
         Me.grdAMH.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -273,7 +276,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem16})
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(702, 188)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(702, 191)
         Me.LayoutControlGroup2.TextVisible = False
         '
         'LayoutControlItem16
@@ -281,7 +284,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem16.Control = Me.grdAMH
         Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(682, 168)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(682, 171)
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
@@ -303,11 +306,11 @@ Partial Class frmAMHTest
         '
         Me.LayoutControl2.Controls.Add(Me.PictureEdit1)
         Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl2.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl2.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl2.Margin = New System.Windows.Forms.Padding(2)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
-        Me.LayoutControl2.Size = New System.Drawing.Size(702, 477)
+        Me.LayoutControl2.Size = New System.Drawing.Size(702, 480)
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -321,7 +324,7 @@ Partial Class frmAMHTest
         Me.PictureEdit1.Properties.Appearance.Options.UseFont = True
         Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(678, 453)
+        Me.PictureEdit1.Size = New System.Drawing.Size(678, 456)
         Me.PictureEdit1.StyleController = Me.LayoutControl2
         Me.PictureEdit1.TabIndex = 4
         '
@@ -331,7 +334,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(702, 477)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(702, 480)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem7
@@ -339,7 +342,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem7.Control = Me.PictureEdit1
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(682, 457)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(682, 460)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -359,11 +362,11 @@ Partial Class frmAMHTest
         '
         Me.LayoutControl4.Controls.Add(Me.grdSearchQry)
         Me.LayoutControl4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl4.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl4.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl4.Margin = New System.Windows.Forms.Padding(2)
         Me.LayoutControl4.Name = "LayoutControl4"
         Me.LayoutControl4.Root = Me.LayoutControlGroup3
-        Me.LayoutControl4.Size = New System.Drawing.Size(457, 700)
+        Me.LayoutControl4.Size = New System.Drawing.Size(457, 703)
         Me.LayoutControl4.TabIndex = 0
         Me.LayoutControl4.Text = "LayoutControl4"
         '
@@ -374,7 +377,7 @@ Partial Class frmAMHTest
         Me.grdSearchQry.MainView = Me.GridView
         Me.grdSearchQry.Margin = New System.Windows.Forms.Padding(2, 4, 2, 4)
         Me.grdSearchQry.Name = "grdSearchQry"
-        Me.grdSearchQry.Size = New System.Drawing.Size(433, 676)
+        Me.grdSearchQry.Size = New System.Drawing.Size(433, 679)
         Me.grdSearchQry.TabIndex = 4
         Me.grdSearchQry.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -392,7 +395,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup3.GroupBordersVisible = False
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem19})
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(457, 700)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(457, 703)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem19
@@ -400,7 +403,7 @@ Partial Class frmAMHTest
         Me.LayoutControlItem19.Control = Me.grdSearchQry
         Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
-        Me.LayoutControlItem19.Size = New System.Drawing.Size(437, 680)
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(437, 683)
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem19.TextVisible = False
         '
@@ -431,12 +434,12 @@ Partial Class frmAMHTest
         Me.LayoutControl7.Controls.Add(Me.RESULT)
         Me.LayoutControl7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl7.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6})
-        Me.LayoutControl7.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl7.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl7.Margin = New System.Windows.Forms.Padding(4)
         Me.LayoutControl7.Name = "LayoutControl7"
         Me.LayoutControl7.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2988, 295, 812, 500)
         Me.LayoutControl7.Root = Me.LayoutControlGroup6
-        Me.LayoutControl7.Size = New System.Drawing.Size(702, 211)
+        Me.LayoutControl7.Size = New System.Drawing.Size(702, 214)
         Me.LayoutControl7.TabIndex = 0
         Me.LayoutControl7.Text = "LayoutControl7"
         '
@@ -596,7 +599,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup6.GroupBordersVisible = False
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem11, Me.LayoutControlItem14, Me.LayoutControlItem40, Me.LayoutControlItem21, Me.LayoutControlItem41, Me.LayoutControlItem39, Me.LayoutControlItem13, Me.LayoutControlItem42, Me.EmptySpaceItem6, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
         Me.LayoutControlGroup6.Name = "Root"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(702, 211)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(702, 214)
         Me.LayoutControlGroup6.TextVisible = False
         '
         'LayoutControlItem10
@@ -722,7 +725,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem6.AllowHotTrack = False
         Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 158)
         Me.EmptySpaceItem6.Name = "EmptySpaceItem6"
-        Me.EmptySpaceItem6.Size = New System.Drawing.Size(301, 33)
+        Me.EmptySpaceItem6.Size = New System.Drawing.Size(301, 36)
         Me.EmptySpaceItem6.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem1
@@ -730,7 +733,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(343, 128)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(339, 63)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(339, 66)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem2
@@ -738,7 +741,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem2.AllowHotTrack = False
         Me.EmptySpaceItem2.Location = New System.Drawing.Point(301, 0)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(42, 191)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(42, 194)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'GroupControl2
@@ -762,19 +765,20 @@ Partial Class frmAMHTest
         Me.LayoutControl6.Controls.Add(Me.cboPrintYN)
         Me.LayoutControl6.Controls.Add(Me.cboSearchCond)
         Me.LayoutControl6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl6.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl6.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl6.Margin = New System.Windows.Forms.Padding(4)
         Me.LayoutControl6.Name = "LayoutControl6"
         Me.LayoutControl6.Root = Me.LayoutControlGroup5
-        Me.LayoutControl6.Size = New System.Drawing.Size(457, 211)
+        Me.LayoutControl6.Size = New System.Drawing.Size(457, 214)
         Me.LayoutControl6.TabIndex = 0
         Me.LayoutControl6.Text = "LayoutControl6"
         '
         'WindowsUIButtonPanel2
         '
-        WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.WindowsUIButtonPanel2.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("조회", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Find", -1, False)})
-        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(344, 56)
+        WindowsUIButtonImageOptions6.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions6.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions6.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.WindowsUIButtonPanel2.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("조회", True, WindowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Find", -1, False)})
+        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(344, 55)
         Me.WindowsUIButtonPanel2.Margin = New System.Windows.Forms.Padding(4)
         Me.WindowsUIButtonPanel2.Name = "WindowsUIButtonPanel2"
         Me.WindowsUIButtonPanel2.Size = New System.Drawing.Size(101, 62)
@@ -854,7 +858,7 @@ Partial Class frmAMHTest
         Me.LayoutControlGroup5.GroupBordersVisible = False
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem34, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.LayoutControlItem9, Me.EmptySpaceItem5, Me.EmptySpaceItem7, Me.EmptySpaceItem8})
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(457, 211)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(457, 214)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem3
@@ -916,7 +920,7 @@ Partial Class frmAMHTest
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.WindowsUIButtonPanel2
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(332, 44)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(332, 43)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(105, 66)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
@@ -927,7 +931,7 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem5.AllowHotTrack = False
         Me.EmptySpaceItem5.Location = New System.Drawing.Point(0, 150)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(437, 41)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(437, 44)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem7
@@ -935,15 +939,15 @@ Partial Class frmAMHTest
         Me.EmptySpaceItem7.AllowHotTrack = False
         Me.EmptySpaceItem7.Location = New System.Drawing.Point(332, 0)
         Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
-        Me.EmptySpaceItem7.Size = New System.Drawing.Size(105, 44)
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(105, 43)
         Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem8
         '
         Me.EmptySpaceItem8.AllowHotTrack = False
-        Me.EmptySpaceItem8.Location = New System.Drawing.Point(332, 110)
+        Me.EmptySpaceItem8.Location = New System.Drawing.Point(332, 109)
         Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
-        Me.EmptySpaceItem8.Size = New System.Drawing.Size(105, 40)
+        Me.EmptySpaceItem8.Size = New System.Drawing.Size(105, 41)
         Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
         '
         'Root
