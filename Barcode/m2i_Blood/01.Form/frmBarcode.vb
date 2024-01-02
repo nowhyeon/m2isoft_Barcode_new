@@ -2,11 +2,12 @@
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
 
-Public Class frmMain
+Public Class frmBarcode
     Private ClsEncrypt As New ClsEncryptDecrypt
     Private ClsErrorLog As New ClsErrorsAndEvents
     Private ClsDb As New ClsDatabase
     Public Hospital_DB As New ClsOrder
+    Private SearchEnabled As Boolean = False
 
     Public Sub New()
         ' 디자이너에서 이 호출이 필요합니다. 'test
@@ -259,6 +260,21 @@ Public Class frmMain
                 Call frmManual.Show()
             Case "Remove"
                 Call PsClearRoutine()
+
+            Case "SearchOn"
+                ' 토글 상태 업데이트
+                SearchEnabled = Not SearchEnabled
+
+                If SearchEnabled Then
+                    ' 검색 켜기
+                    GridView.OptionsView.ShowAutoFilterRow = True
+                    GridView.OptionsFind.AlwaysVisible = True
+                Else
+                    ' 검색 끄기
+                    GridView.OptionsView.ShowAutoFilterRow = False
+                    GridView.OptionsFind.AlwaysVisible = False
+                End If
+
             Case "close"
                 Me.DialogResult = DialogResult.Cancel
                 Me.Close()

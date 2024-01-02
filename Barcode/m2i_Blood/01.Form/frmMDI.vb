@@ -35,7 +35,7 @@ Public Class frmMDI
     End Sub
 
     Private Sub btnMain_Click(sender As Object, e As EventArgs) Handles btnMain.Click
-        OpenChildForm(New frmMain())
+        OpenChildForm(New frmBarcode())
     End Sub
 
     Private Sub btnTestList_Click(sender As Object, e As EventArgs) Handles btnTestList.Click

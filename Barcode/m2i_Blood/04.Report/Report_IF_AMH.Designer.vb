@@ -123,11 +123,11 @@ Partial Public Class Report_IF_AMH
         '
         'lblAddress
         '
-        Me.lblAddress.LocationFloat = New DevExpress.Utils.PointFloat(411.1666!, 0!)
+        Me.lblAddress.LocationFloat = New DevExpress.Utils.PointFloat(236.1665!, 0!)
         Me.lblAddress.Multiline = True
         Me.lblAddress.Name = "lblAddress"
         Me.lblAddress.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAddress.SizeF = New System.Drawing.SizeF(319.1667!, 38.20668!)
+        Me.lblAddress.SizeF = New System.Drawing.SizeF(494.1666!, 38.20668!)
         '
         'Detail
         '
@@ -160,7 +160,7 @@ Partial Public Class Report_IF_AMH
         Me.AMHResultLine.BorderWidth = 1.0!
         Me.AMHResultLine.ForeColor = System.Drawing.Color.Red
         Me.AMHResultLine.LineWidth = 2.0!
-        Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(307.5!, 69.80835!)
+        Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(334.0!, 130.0!)
         Me.AMHResultLine.Name = "AMHResultLine"
         Me.AMHResultLine.SizeF = New System.Drawing.SizeF(362.0!, 22.92!)
         Me.AMHResultLine.StylePriority.UseBorderWidth = False

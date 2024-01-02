@@ -130,10 +130,10 @@
     <Compile Include="01.Form\frmLoginNew.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01.Form\frmMain.designer.vb">
-      <DependentUpon>frmMain.vb</DependentUpon>
+    <Compile Include="01.Form\frmBarcode.designer.vb">
+      <DependentUpon>frmBarcode.vb</DependentUpon>
     </Compile>
-    <Compile Include="01.Form\frmMain.vb">
+    <Compile Include="01.Form\frmBarcode.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="01.Form\frmMainNew.Designer.vb">
@@ -232,8 +232,8 @@
     <EmbeddedResource Include="01.Form\frmLoginNew.resx">
       <DependentUpon>frmLoginNew.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01.Form\frmMain.resx">
-      <DependentUpon>frmMain.vb</DependentUpon>
+    <EmbeddedResource Include="01.Form\frmBarcode.resx">
+      <DependentUpon>frmBarcode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmMainNew.resx">
       <DependentUpon>frmMainNew.vb</DependentUpon>

@@ -126,50 +126,50 @@ Public Class Report_IF_AMH
                 picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg"
         End Select
 
-        '결과값에 따른 선
+        '결과값에 따른 선 333, 124 , 148
         Select Case True
             Case Val(mAMHResult) >= 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 130)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 124)
             Case Val(mAMHResult) > 9 AndAlso Val(mAMHResult) < 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 136.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 130)
             Case Val(mAMHResult) = 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 143)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 136)
             Case Val(mAMHResult) > 8 AndAlso Val(mAMHResult) < 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 136.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 142)
             Case Val(mAMHResult) = 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 156)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 148)
             Case Val(mAMHResult) > 7 AndAlso Val(mAMHResult) < 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 162.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 154)
             Case Val(mAMHResult) = 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 169)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 160)
             Case Val(mAMHResult) > 6 AndAlso Val(mAMHResult) < 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 175.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 166)
             Case Val(mAMHResult) = 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 182)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 172)
             Case Val(mAMHResult) > 5 AndAlso Val(mAMHResult) < 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 188.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 178)
             Case Val(mAMHResult) = 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 195)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 184)
             Case Val(mAMHResult) > 4 AndAlso Val(mAMHResult) < 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 201.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 190)
             Case Val(mAMHResult) = 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 208)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 196)
             Case Val(mAMHResult) > 3 AndAlso Val(mAMHResult) < 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 214.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 202)
             Case Val(mAMHResult) = 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 221)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 208)
             Case Val(mAMHResult) > 2 AndAlso Val(mAMHResult) < 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 227.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 214)
             Case Val(mAMHResult) = 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 234)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 220)
             Case Val(mAMHResult) > 1 AndAlso Val(mAMHResult) < 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 240.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 226)
             Case Val(mAMHResult) = 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 247)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 232)
             Case Val(mAMHResult) > 0 AndAlso Val(mAMHResult) < 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 253.5)
+                AMHResultLine.LocationF = New System.Drawing.PointF(335, 238)
             Case Val(mAMHResult) <= 0
-                AMHResultLine.LocationF = New System.Drawing.PointF(373, 260)
+                AMHResultLine.LocationF = New System.Drawing.PointF(3355, 244)
         End Select
 
         lblPTNM.Text = mPTNM
@@ -186,9 +186,9 @@ Public Class Report_IF_AMH
 
 
         ' 보고서 하단 병원 주소 입력
-        mAddress &= "부산마리아의원" & vbCrLf
+        mAddress &= "                                 부산마리아의원" & vbCrLf
         mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원" & vbCrLf
-        mAddress &= "대표번호: 051-441-6555" & vbCrLf
-        lblAcceptDate.Text = mAddress
+        mAddress &= "                         대표번호: 051-441-6555" & vbCrLf
+        'lblAddress.Text = mAddress
     End Sub
 End Class
