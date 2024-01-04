@@ -47,13 +47,13 @@ Partial Public Class Report_IF_AMH
         '
         Me.TopMargin.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblAge, Me.lblBirth, Me.lblReceiptDate, Me.lblAcceptDate, Me.lblChartNo, Me.lblDoctor, Me.lblMedOffice, Me.lblPTNM})
         Me.TopMargin.Font = New System.Drawing.Font("맑은 고딕", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TopMargin.HeightF = 276.6667!
+        Me.TopMargin.HeightF = 277.0!
         Me.TopMargin.Name = "TopMargin"
         Me.TopMargin.StylePriority.UseFont = False
         '
         'lblAge
         '
-        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(491.6669!, 228.3333!)
+        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(491.67!, 232.0!)
         Me.lblAge.Multiline = True
         Me.lblAge.Name = "lblAge"
         Me.lblAge.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -61,7 +61,7 @@ Partial Public Class Report_IF_AMH
         '
         'lblBirth
         '
-        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(491.6669!, 205.4166!)
+        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(491.67!, 206.0!)
         Me.lblBirth.Multiline = True
         Me.lblBirth.Name = "lblBirth"
         Me.lblBirth.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -85,7 +85,7 @@ Partial Public Class Report_IF_AMH
         '
         'lblChartNo
         '
-        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 228.3333!)
+        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 232.0!)
         Me.lblChartNo.Multiline = True
         Me.lblChartNo.Name = "lblChartNo"
         Me.lblChartNo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -93,7 +93,7 @@ Partial Public Class Report_IF_AMH
         '
         'lblDoctor
         '
-        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 205.4166!)
+        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 206.0!)
         Me.lblDoctor.Multiline = True
         Me.lblDoctor.Name = "lblDoctor"
         Me.lblDoctor.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -101,7 +101,7 @@ Partial Public Class Report_IF_AMH
         '
         'lblMedOffice
         '
-        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 178.5417!)
+        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 181.6666!)
         Me.lblMedOffice.Multiline = True
         Me.lblMedOffice.Name = "lblMedOffice"
         Me.lblMedOffice.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -118,7 +118,7 @@ Partial Public Class Report_IF_AMH
         'BottomMargin
         '
         Me.BottomMargin.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblAddress})
-        Me.BottomMargin.HeightF = 41.24994!
+        Me.BottomMargin.HeightF = 41.0!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'lblAddress
@@ -225,7 +225,7 @@ Partial Public Class Report_IF_AMH
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(33, 41, 277, 41)
+        Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 41)
         Me.PageHeight = 1169
         Me.PageWidth = 827
         Me.PaperKind = System.Drawing.Printing.PaperKind.A4
