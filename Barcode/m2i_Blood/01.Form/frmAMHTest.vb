@@ -32,12 +32,12 @@ Public Class frmAMHTest
         End With
 
         ' 수진자 조회 결과 Grid
-        GfColumnSet(GridView, "차트번호", "PTID", 35, "L", , True)
-        GfColumnSet(GridView, "접수일", "REQDATE", 35, "L", , True)
-        GfColumnSet(GridView, "이름", "PTNM", 23, "L", , True)
-        GfColumnSet(GridView, "바코드", "SPCNO", 50, "L", , True)
-        GfColumnSet(GridView, "성별", "PTSEX", 12, "L", , True)
-        GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
+        GfColumnSet(GridView, "차트번호", "PTID", 25, "C", , True)
+        GfColumnSet(GridView, "접수일", "REQDATE", 25, "C", , True)
+        GfColumnSet(GridView, "이름", "PTNM", 23, "C", , True)
+        GfColumnSet(GridView, "바코드", "SPCNO", 35, "C", , True)
+        GfColumnSet(GridView, "성별", "PTSEX", 12, "C", , True)
+        GfColumnSet(GridView, "나이", "PTAGE", 12, "C", , True)
 
         ' 수진자 AMH 상세 결과 Grid
         GfColumnSet(GridView1, "검사코드", "TESTCODE", 30, "C", , True)
@@ -351,7 +351,8 @@ Public Class frmAMHTest
 
         grdAMH.DataSource = Nothing
 
-        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\AMH.jpg")
+        'PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\AMH.jpg")
     End Sub
+
 
 End Class

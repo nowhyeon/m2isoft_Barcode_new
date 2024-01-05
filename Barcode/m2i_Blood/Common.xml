@@ -27,6 +27,6 @@
   </DateSet>
   <ProgramSelect>
     <Blood>False</Blood>
-    <AMH>True</AMH>
+    <AMH>False</AMH>
   </ProgramSelect>
 </mBlood>
