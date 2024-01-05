@@ -4,7 +4,7 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid
 
-Public Class frmUserAdd
+Public Class GridVeiwTest
     Dim ClsDb As New ClsDatabase
     Dim ClsErrorLog As New ClsErrorsAndEvents
     Public Sub New()
@@ -74,7 +74,7 @@ Public Class frmUserAdd
 
     Private Sub UserReroadRoutine()
         Try
-            SplashWaitForm.ShowWaitForm()
+
 
             QueryString = String.Empty
             QueryString &= "SELECT * FROM m2i_LAB001 " & vbNewLine
@@ -82,7 +82,7 @@ Public Class frmUserAdd
 
             grdUserInfo.DataSource = ClsDb.CfMSelectQuery(QueryString)
 
-            SplashWaitForm.CloseWaitForm()
+
 
             Call UserScreenClear()
 
@@ -171,7 +171,7 @@ Public Class frmUserAdd
         End If
     End Sub
 
-    Private Sub frmUserAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub GridVeiwTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

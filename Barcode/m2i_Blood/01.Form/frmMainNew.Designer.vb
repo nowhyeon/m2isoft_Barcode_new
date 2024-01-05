@@ -64,7 +64,7 @@ Partial Class frmMainNew
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl.MaxItemId = 5
         Me.RibbonControl.Name = "RibbonControl"
-        Me.RibbonControl.Size = New System.Drawing.Size(1498, 67)
+        Me.RibbonControl.Size = New System.Drawing.Size(1224, 67)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar
         '
         'BarDockingMenuItem1
@@ -97,7 +97,7 @@ Partial Class frmMainNew
         Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 972)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(1498, 27)
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(1224, 27)
         '
         'DockManager1
         '
@@ -280,7 +280,7 @@ Partial Class frmMainNew
         Me.Appearance.Options.UseFont = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1498, 999)
+        Me.ClientSize = New System.Drawing.Size(1224, 999)
         Me.Controls.Add(Me.DockPanel1)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
