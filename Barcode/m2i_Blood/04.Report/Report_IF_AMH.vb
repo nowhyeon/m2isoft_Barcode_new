@@ -187,7 +187,8 @@ Public Class Report_IF_AMH
         '결과
         Select Case True
             Case Val(mAMHResult) > 2.28
-
+                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(51, 447)
+                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(51, 477)
             Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
 
             Case Val(mAMHResult) < 0.69
