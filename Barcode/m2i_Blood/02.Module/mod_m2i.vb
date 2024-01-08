@@ -32,19 +32,9 @@ Module mod_m2i
 
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"             ' LAN: TCPIP, 시리얼: SERIAL
-    Public gPrintIP_ZD As String
-    Public gPrintPort As Integer
+    Public gPrintIP_ZD As String                    ' "172.0.0.101"
+    Public gPrintPort As Integer                    ' 9100
     Public gPrintTimeOut As Integer = 5000
-
-
-    '' TCPIP 프린트설정
-    'Public gBolFlag As String = "TCPIP"
-
-    'Public gPrintIP As String = "192.168.0.241"
-    'Public gPrintIP_ZD As String = "172.0.0.101"
-
-    'Public gPrintPort As Integer = 9100
-    'Public gPrintTimeOut As Integer = 5000
 
     ' DB 연결 설정
     Public Str_HOST_IP As String
@@ -77,6 +67,10 @@ Module mod_m2i
     ' 원격요청용 변수
     Public UserIP As String
     Public UserPC As String
+
+    ' MDB 백업용 변수
+    Public gLocalBackupFolder As String = Application.StartupPath & "\Backup\"
+    Public gLocalDBFile As String = "\00.DATABASE\m2i_Local_DB.mdb"
 
     Dim ClsDb As New ClsDatabase
 
@@ -643,6 +637,24 @@ Module mod_m2i
     Public Function GetComputerName() As String
         Dim ComputerName As String = Environment.MachineName
         GetComputerName = ComputerName
+    End Function
+
+    ' 파일 삭제
+    Public Function FileDelete(BackupFileName As String) As Boolean
+        Try
+            If File.Exists(BackupFileName) Then
+                File.Delete(BackupFileName)
+                Console.WriteLine(" > 파일이 존재하여 삭제합니다.")
+            Else
+                Console.WriteLine(" > 파일이 존재하지 않습니다.")
+            End If
+
+        Catch ex As Exception
+            Console.WriteLine(" > 파일 삭제 중 에러 발생: " & ex.Message)
+        End Try
+
+        Return True
+
     End Function
 
 End Module

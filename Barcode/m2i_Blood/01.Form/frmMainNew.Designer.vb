@@ -40,7 +40,6 @@ Partial Class frmMainNew
         Me.aceComm = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator1 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.AccordionControlElement8 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-        Me.aceHomePage = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.aceRemote = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.DocumentManager1 = New DevExpress.XtraBars.Docking2010.DocumentManager(Me.components)
         Me.TabView = New DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(Me.components)
@@ -211,7 +210,7 @@ Partial Class frmMainNew
         Me.aceComm.Appearance.Normal.Options.UseFont = True
         Me.aceComm.Name = "aceComm"
         Me.aceComm.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.aceComm.Text = "      통신설정"
+        Me.aceComm.Text = "      환경설정"
         '
         'AccordionControlSeparator1
         '
@@ -219,20 +218,12 @@ Partial Class frmMainNew
         '
         'AccordionControlElement8
         '
-        Me.AccordionControlElement8.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.aceHomePage, Me.aceRemote})
+        Me.AccordionControlElement8.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.aceRemote})
         Me.AccordionControlElement8.Expanded = True
         Me.AccordionControlElement8.ImageOptions.SvgImage = CType(resources.GetObject("AccordionControlElement8.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.AccordionControlElement8.ImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
         Me.AccordionControlElement8.Name = "AccordionControlElement8"
         Me.AccordionControlElement8.Text = "Support"
-        '
-        'aceHomePage
-        '
-        Me.aceHomePage.Appearance.Normal.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.aceHomePage.Appearance.Normal.Options.UseFont = True
-        Me.aceHomePage.Name = "aceHomePage"
-        Me.aceHomePage.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.aceHomePage.Text = "      (주)엠투아이소프트 홈페이지"
         '
         'aceRemote
         '
@@ -329,6 +320,5 @@ Partial Class frmMainNew
     Private WithEvents AccordionControlSeparator3 As DevExpress.XtraBars.Navigation.AccordionControlSeparator
     Private WithEvents AccordionControlSeparator1 As DevExpress.XtraBars.Navigation.AccordionControlSeparator
     Friend WithEvents AccordionControlElement8 As DevExpress.XtraBars.Navigation.AccordionControlElement
-    Friend WithEvents aceHomePage As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents aceRemote As DevExpress.XtraBars.Navigation.AccordionControlElement
 End Class

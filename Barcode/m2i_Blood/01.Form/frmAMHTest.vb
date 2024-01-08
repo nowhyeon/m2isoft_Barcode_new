@@ -130,6 +130,44 @@ Public Class frmAMHTest
 
             ' 보고서를 바로 출력
             printTool.Print()
+
+            QueryString = String.Empty
+            QueryString &= " SELECT * FROM m2i_LAB201                                           " & vbNewLine
+            QueryString &= " WHERE REQDATE = '" & txtAcceptDate.Text & "'                       " & vbNewLine
+            QueryString &= " AND   PTID = '" & txtPtChartNo.Text & "'                           " & vbNewLine
+
+            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+            If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+                QueryString = String.Empty
+                QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+                QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+                QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+                QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+                QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+                QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+            Else
+                QueryString = String.Empty
+                QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+                QueryString &= " (                                                              " & vbNewLine
+                QueryString &= "        REQDATE                                                 " & vbNewLine
+                QueryString &= "      , SPCNO                                                   " & vbNewLine
+                QueryString &= "      , PTNM                                                    " & vbNewLine
+                QueryString &= "      , PTID                                                    " & vbNewLine
+                QueryString &= "      , PRTDATE                                                 " & vbNewLine
+                QueryString &= "  )VALUES(                                                      " & vbNewLine
+                QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+                QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+                QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+                QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+                QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+                QueryString &= "  )                                                             " & vbNewLine
+            End If
+
+            If QueryString.Length > 0 Then
+                ClsDb.CfMExecuteQuery(QueryString)
+            End If
+
             '---------------------------------------------------------------------------------------------------------------------
 
             'prevView (O)---------------------------------------------------------------------------------------------------------
@@ -354,5 +392,38 @@ Public Class frmAMHTest
         'PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\AMH.jpg")
     End Sub
 
+    '프린트완료 건 backColor 변경
+    Private Sub GridView_RowStyle(ByVal sender As Object,
+                                  ByVal e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView.RowStyle
+        Try
+            Dim View As GridView = sender
+
+            If (e.RowHandle >= 0) Then
+                Dim PITD As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("PTID"))
+                Dim REQDATE As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("REQDATE"))
+
+                QueryString = String.Empty
+                QueryString &= " SELECT *          " & vbNewLine
+                QueryString &= " FROM [m2i_LAB201] " & vbNewLine
+                QueryString &= " WHERE 1 = 1       " & vbNewLine
+                QueryString &= " AND [REQDATE] >= '" & Format(dtpFrom.EditValue, "yyyy-MM-dd") & "'" & vbNewLine
+
+                Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+                If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+                    For intRow = 0 To sTable.Rows.Count - 1
+                        If PITD = sTable.Rows(intRow)("PTID").ToString And REQDATE = sTable.Rows(intRow)("REQDATE").ToString Then
+                            e.Appearance.BackColor = Color.Salmon
+                            e.Appearance.BackColor2 = Color.SeaShell
+                            e.HighPriority = True
+                        End If
+                    Next
+                End If
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
 End Class

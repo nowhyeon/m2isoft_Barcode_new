@@ -28,10 +28,6 @@ Public Class frmMainNew
         End If
     End Sub
 
-    Private Sub aceHomePage_Click(sender As Object, e As EventArgs) Handles aceHomePage.Click
-        Process.Start("IExplore.exe", "http://m2isoft.com/")
-    End Sub
-
     Private Sub aceRemote_Click(sender As Object, e As EventArgs) Handles aceRemote.Click
         frmRemote.Show()
     End Sub

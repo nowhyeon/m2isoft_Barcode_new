@@ -32,7 +32,6 @@ Partial Public Class Report_IF_AMH
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.lblAddress = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
-        Me.picAFC = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.AMHResultLine = New DevExpress.XtraReports.UI.XRLine()
         Me.lblAMHComment3 = New DevExpress.XtraReports.UI.XRLabel()
@@ -41,6 +40,7 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.picAMHResult = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.picAFC = New DevExpress.XtraReports.UI.XRPictureBox()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -132,16 +132,10 @@ Partial Public Class Report_IF_AMH
         'Detail
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.picAFC, Me.XrLabel1, Me.AMHResultLine, Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult, Me.picAMHResult})
+        Me.Detail.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Detail.HeightF = 837.6267!
         Me.Detail.Name = "Detail"
-        '
-        'picAFC
-        '
-        Me.picAFC.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("picAFC.ImageSource"))
-        Me.picAFC.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 412.5!)
-        Me.picAFC.Name = "picAFC"
-        Me.picAFC.SizeF = New System.Drawing.SizeF(677.7083!, 173.3333!)
-        Me.picAFC.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        Me.Detail.StylePriority.UseFont = False
         '
         'XrLabel1
         '
@@ -199,16 +193,18 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHResult
         '
-        Me.lblAMHResult.Font = New System.Drawing.Font("맑은 고딕", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblAMHResult.Font = New System.Drawing.Font("맑은 고딕", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.lblAMHResult.ForeColor = System.Drawing.Color.Red
-        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(172.7466!, 103.0!)
+        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(162.8333!, 92.99998!)
         Me.lblAMHResult.Multiline = True
         Me.lblAMHResult.Name = "lblAMHResult"
         Me.lblAMHResult.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHResult.SizeF = New System.Drawing.SizeF(37.80635!, 23.95832!)
+        Me.lblAMHResult.SizeF = New System.Drawing.SizeF(45.3064!, 33.12495!)
         Me.lblAMHResult.StylePriority.UseFont = False
         Me.lblAMHResult.StylePriority.UseForeColor = False
-        Me.lblAMHResult.Text = "lblAMHResult"
+        Me.lblAMHResult.StylePriority.UseTextAlignment = False
+        Me.lblAMHResult.Text = "11.1"
+        Me.lblAMHResult.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'picAMHResult
         '
@@ -220,6 +216,14 @@ Partial Public Class Report_IF_AMH
         Me.picAMHResult.SizeF = New System.Drawing.SizeF(397.9167!, 189.5833!)
         Me.picAMHResult.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
+        'picAFC
+        '
+        Me.picAFC.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("picAFC.ImageSource"))
+        Me.picAFC.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 412.5!)
+        Me.picAFC.Name = "picAFC"
+        Me.picAFC.SizeF = New System.Drawing.SizeF(677.7083!, 173.3333!)
+        Me.picAFC.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        '
         'Report_IF_AMH
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
@@ -229,6 +233,7 @@ Partial Public Class Report_IF_AMH
         Me.PageHeight = 1169
         Me.PageWidth = 827
         Me.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
         Me.Version = "18.2"
         Me.Watermark.Image = CType(resources.GetObject("Report_IF_AMH.Watermark.Image"), System.Drawing.Image)
         Me.Watermark.ImageViewMode = DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch
