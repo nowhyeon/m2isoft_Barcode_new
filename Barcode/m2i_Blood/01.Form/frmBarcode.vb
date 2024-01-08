@@ -33,6 +33,7 @@ Public Class frmBarcode
         GfColumnSet(GridView, "나이", "PTAGE", 12, "L", , True)
 
         GfColumnSet(GridView3, "검사이름", "TESTNM", 30, "L", , True)
+        GfColumnSet(GridView3, "검사코드", "TESTCD", 30, "L", , True)
         GfColumnSet(GridView3, "검사분야", "WORKAREA", 20, "L", , True)
         GfColumnSet(GridView3, "채혈용기", "BLOODTUBE", 20, "L", , True)
         GfColumnSet(GridView3, "검사약어", "TESTNM_10", 30, "L", , True)
@@ -105,22 +106,6 @@ Public Class frmBarcode
         End Try
     End Sub
 
-    'Public Sub GRID_SET_COLOR(grdview As GridView,
-    '                          i As Integer,
-    '                          setColor As String)
-    '    Dim intRow As Integer = GridView.GetVisibleRowHandle(i)
-    '    With GridView
-    '        Select Case setColor
-    '            Case "RED"
-    '                '.Appearance.Row.ForeColor = Color.Red
-    '                .SetRowCellValue(intRow, "이름", ForeColor = Color.Red)
-    '            Case "BLUE"
-
-    '            Case "BLACK"
-    '        End Select
-    '    End With
-    'End Sub
-
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
         Dim TESTCD As String = String.Empty
@@ -156,11 +141,11 @@ Public Class frmBarcode
             End If
 
             QueryString = String.Empty
-            QueryString &= " SELECT [TESTNM],  [WORKAREA], [BLOODTUBE], [TESTNM_10], [Remark],  [PrintAdd] " & vbCrLf
-            QueryString &= " FROM [m2i_LAB004]                                                             " & vbCrLf
-            QueryString &= " WHERE 1 = 1                                                                   " & vbCrLf
-            QueryString &= " AND [TESTCD] in (" & TESTCD & ")                                              " & vbCrLf
-            QueryString &= " ORDER BY [WORKAREA],[BLOODTUBE]                                               " & vbCrLf
+            QueryString &= " SELECT [TESTNM],  [TESTCD], [WORKAREA], [BLOODTUBE], [TESTNM_10], [Remark],  [PrintAdd] " & vbCrLf
+            QueryString &= " FROM [m2i_LAB004]                                                                       " & vbCrLf
+            QueryString &= " WHERE 1 = 1                                                                             " & vbCrLf
+            QueryString &= " AND [TESTCD] in (" & TESTCD & ")                                                        " & vbCrLf
+            QueryString &= " ORDER BY [WORKAREA],[BLOODTUBE]                                                         " & vbCrLf
 
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 

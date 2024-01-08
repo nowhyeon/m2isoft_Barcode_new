@@ -28,6 +28,10 @@ Namespace My
             UserIP = GetIPAddress()
             UserPC = GetComputerName()
 
+            If clsACCESSDB.LocalDBBackupCopy() = False Then
+                End
+            End If
+
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown

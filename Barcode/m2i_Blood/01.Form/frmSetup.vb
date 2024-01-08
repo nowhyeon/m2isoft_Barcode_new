@@ -33,7 +33,7 @@ Public Class frmSetup
         GfColumnSet(GridView, "검사이름", "TESTNM", 25, "D", True, True, "S", 0)
         GfColumnSet(GridView, "검사약어", "TestNm_10", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "채혈용기", "BloodTube", 5, "D", True, True, "S", 0)
-        GfColumnSet(GridView, "WorkArea", "WorkArea", 5, "D", True, True, "S", 0)
+        GfColumnSet(GridView, "검사분야", "WorkArea", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "바코드 출력 장수", "PrintAdd", 5, "D", True, True, "S", 0)
         GfColumnSet(GridView, "특이사항", "Remark", 20, "D", True, True, "S", 0)
         GfColumnSet(GridView, "비고", "Note", 20, "D", True, True, "S", 0)

@@ -157,26 +157,26 @@ Public Class ClsAccessDB
         Return sReturn
     End Function
 
-    'Public Function LocalDBBackupCopy() As Boolean
-    '    Try
-    '        If Not System.IO.Directory.Exists(gLocalBackupFolder) Then
-    '            System.IO.Directory.CreateDirectory(gLocalBackupFolder)
-    '        End If
+    Public Function LocalDBBackupCopy() As Boolean
+        Try
+            If Not System.IO.Directory.Exists(gLocalBackupFolder) Then
+                System.IO.Directory.CreateDirectory(gLocalBackupFolder)
+            End If
 
-    '        If System.IO.File.Exists(String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today)) Then
-    '            System.IO.File.Delete(String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today))
-    '        End If
+            If System.IO.File.Exists(String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today)) Then
+                System.IO.File.Delete(String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today))
+            End If
 
-    '        System.IO.File.Copy(Application.StartupPath & gLocalDBFile,
-    '                            String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today))
+            System.IO.File.Copy(Application.StartupPath & gLocalDBFile,
+                                String.Format(gLocalBackupFolder & "{0:yyyyMMdd}.mdb", Date.Today))
 
-    '        Return True
+            Return True
 
-    '    Catch ex As Exception
-    '        Return False
+        Catch ex As Exception
+            Return False
 
-    '    End Try
+        End Try
 
-    'End Function
+    End Function
 
 End Class
