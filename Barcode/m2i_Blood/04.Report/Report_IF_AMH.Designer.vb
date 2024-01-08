@@ -32,15 +32,19 @@ Partial Public Class Report_IF_AMH
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.lblAddress = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
-        Me.picAFC = New DevExpress.XtraReports.UI.XRPictureBox()
-        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrChart2 = New DevExpress.XtraReports.UI.XRChart()
         Me.AMHResultLine = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
-        Me.picAMHResult = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.XrCrossBandBox1 = New DevExpress.XtraReports.UI.XRCrossBandBox()
+        Me.XrCrossBandBox2 = New DevExpress.XtraReports.UI.XRCrossBandBox()
+        CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -131,44 +135,57 @@ Partial Public Class Report_IF_AMH
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.picAFC, Me.XrLabel1, Me.AMHResultLine, Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult, Me.picAMHResult})
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.AMHResultLine, Me.XrChart1, Me.XrLabel1, Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult})
         Me.Detail.HeightF = 837.6267!
         Me.Detail.Name = "Detail"
         '
-        'picAFC
+        'XrChart2
         '
-        Me.picAFC.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("picAFC.ImageSource"))
-        Me.picAFC.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 412.5!)
-        Me.picAFC.Name = "picAFC"
-        Me.picAFC.SizeF = New System.Drawing.SizeF(677.7083!, 173.3333!)
-        Me.picAFC.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        Me.XrChart2.BorderColor = System.Drawing.Color.Black
+        Me.XrChart2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrChart2.Legend.Name = "Default Legend"
+        Me.XrChart2.LocationFloat = New DevExpress.Utils.PointFloat(45.0!, 421.96!)
+        Me.XrChart2.Name = "XrChart2"
+        Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.XrChart2.SizeF = New System.Drawing.SizeF(667.7084!, 159.375!)
+        '
+        'AMHResultLine
+        '
+        Me.AMHResultLine.BorderColor = System.Drawing.Color.DarkRed
+        Me.AMHResultLine.BorderWidth = 2.0!
+        Me.AMHResultLine.ForeColor = System.Drawing.Color.Red
+        Me.AMHResultLine.LineWidth = 3.0!
+        Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(413.0!, 148.0!)
+        Me.AMHResultLine.Name = "AMHResultLine"
+        Me.AMHResultLine.SizeF = New System.Drawing.SizeF(279.1667!, 14.58334!)
+        Me.AMHResultLine.StylePriority.UseBorderColor = False
+        Me.AMHResultLine.StylePriority.UseBorderWidth = False
+        Me.AMHResultLine.StylePriority.UseForeColor = False
+        '
+        'XrChart1
+        '
+        Me.XrChart1.BorderColor = System.Drawing.Color.Black
+        Me.XrChart1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrChart1.Legend.Name = "Default Legend"
+        Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(289.5834!, 134.7059!)
+        Me.XrChart1.Name = "XrChart1"
+        Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 200.4167!)
         '
         'XrLabel1
         '
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 7.0!)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(307.5!, 303.4167!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(508.8114!, 335.1226!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(346.8137!, 15.71082!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(195.772!, 15.71082!)
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "* AMH 결과가 빨간색 선으로 표시됩니다"
         '
-        'AMHResultLine
-        '
-        Me.AMHResultLine.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top
-        Me.AMHResultLine.BorderWidth = 1.0!
-        Me.AMHResultLine.ForeColor = System.Drawing.Color.Red
-        Me.AMHResultLine.LineWidth = 2.0!
-        Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(334.0!, 130.0!)
-        Me.AMHResultLine.Name = "AMHResultLine"
-        Me.AMHResultLine.SizeF = New System.Drawing.SizeF(362.0!, 22.92!)
-        Me.AMHResultLine.StylePriority.UseBorderWidth = False
-        Me.AMHResultLine.StylePriority.UseForeColor = False
-        '
         'lblAMHComment3
         '
-        Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 740.3351!)
+        Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(40.41668!, 743.46!)
         Me.lblAMHComment3.Multiline = True
         Me.lblAMHComment3.Name = "lblAMHComment3"
         Me.lblAMHComment3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -177,21 +194,21 @@ Partial Public Class Report_IF_AMH
         'lblAMHComment2
         '
         Me.lblAMHComment2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 623.96!)
+        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 628.1266!)
         Me.lblAMHComment2.Multiline = True
         Me.lblAMHComment2.Name = "lblAMHComment2"
         Me.lblAMHComment2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(253.125!, 76.04163!)
+        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(238.5417!, 76.04163!)
         Me.lblAMHComment2.StylePriority.UseFont = False
         '
         'lblAMHComment1
         '
         Me.lblAMHComment1.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 147.7916!)
+        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 147.7916!)
         Me.lblAMHComment1.Multiline = True
         Me.lblAMHComment1.Name = "lblAMHComment1"
         Me.lblAMHComment1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(249.1667!, 130.2084!)
+        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(226.25!, 130.2084!)
         Me.lblAMHComment1.SnapLineMargin = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 10, 0, 100.0!)
         Me.lblAMHComment1.StylePriority.UseFont = False
         Me.lblAMHComment1.StylePriority.UseTextAlignment = False
@@ -210,19 +227,37 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHResult.StylePriority.UseForeColor = False
         Me.lblAMHResult.Text = "lblAMHResult"
         '
-        'picAMHResult
+        'XrCrossBandBox1
         '
-        Me.picAMHResult.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter
-        Me.picAMHResult.ImageUrl = "C:\Users\M2I_SOFT\Desktop\Git\m2isoft_Barcode_new\Barcode\m2i_Blood\05.Rpt\AMH_Fo" &
-    "rm_01\00.AMH_BACK_00.png"
-        Me.picAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(307.5!, 103.0!)
-        Me.picAMHResult.Name = "picAMHResult"
-        Me.picAMHResult.SizeF = New System.Drawing.SizeF(397.9167!, 189.5833!)
-        Me.picAMHResult.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        Me.XrCrossBandBox1.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
+        Me.XrCrossBandBox1.BorderColor = System.Drawing.Color.Navy
+        Me.XrCrossBandBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
+        Me.XrCrossBandBox1.BorderWidth = 3.0!
+        Me.XrCrossBandBox1.EndBand = Me.Detail
+        Me.XrCrossBandBox1.EndPointFloat = New DevExpress.Utils.PointFloat(413.0!, 307.0!)
+        Me.XrCrossBandBox1.Name = "XrCrossBandBox1"
+        Me.XrCrossBandBox1.StartBand = Me.Detail
+        Me.XrCrossBandBox1.StartPointFloat = New DevExpress.Utils.PointFloat(413.0!, 154.0!)
+        Me.XrCrossBandBox1.WidthF = 45.0!
+        '
+        'XrCrossBandBox2
+        '
+        Me.XrCrossBandBox2.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
+        Me.XrCrossBandBox2.BorderColor = System.Drawing.Color.Navy
+        Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
+        Me.XrCrossBandBox2.BorderWidth = 3.0!
+        Me.XrCrossBandBox2.EndBand = Me.Detail
+        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(51.0!, 477.0!)
+        Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
+        Me.XrCrossBandBox2.StartBand = Me.Detail
+        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(51.0!, 447.0!)
+        Me.XrCrossBandBox2.WidthF = 653.7501!
         '
         'Report_IF_AMH
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
+        Me.BorderWidth = 2.0!
+        Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandBox2, Me.XrCrossBandBox1})
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 41)
@@ -232,6 +267,8 @@ Partial Public Class Report_IF_AMH
         Me.Version = "18.2"
         Me.Watermark.Image = CType(resources.GetObject("Report_IF_AMH.Watermark.Image"), System.Drawing.Image)
         Me.Watermark.ImageViewMode = DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch
+        CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -239,7 +276,6 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
     Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
-    Friend WithEvents picAMHResult As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents lblAge As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblBirth As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblReceiptDate As DevExpress.XtraReports.UI.XRLabel
@@ -252,9 +288,12 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents lblAMHComment2 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblAMHComment1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblAMHResult As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents AMHResultLine As DevExpress.XtraReports.UI.XRLine
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblAddress As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents picAFC As DevExpress.XtraReports.UI.XRPictureBox
+    Friend WithEvents XrChart1 As DevExpress.XtraReports.UI.XRChart
+    Friend WithEvents AMHResultLine As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents XrCrossBandBox1 As DevExpress.XtraReports.UI.XRCrossBandBox
+    Friend WithEvents XrChart2 As DevExpress.XtraReports.UI.XRChart
+    Friend WithEvents XrCrossBandBox2 As DevExpress.XtraReports.UI.XRCrossBandBox
 End Class

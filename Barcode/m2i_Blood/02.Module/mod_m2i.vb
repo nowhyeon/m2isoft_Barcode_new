@@ -606,7 +606,9 @@ Module mod_m2i
             RegistryKey.Close()
         End If
 
-      End Function
+        Return ""
+
+    End Function
 
     Public Function SaveReg(strRegKey As String, strValue As String) As Boolean
 

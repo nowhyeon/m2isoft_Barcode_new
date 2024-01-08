@@ -110,66 +110,87 @@ Public Class Report_IF_AMH
 
         End If
 
-        '나이에 따른 이미지
+        '나이
         Select Case True
             Case Val(mAge) >= 20 AndAlso Val(mAge) < 24.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(413, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(413, 312)
             Case Val(mAge) >= 25 AndAlso Val(mAge) < 29.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(458, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(458, 312)
             Case Val(mAge) >= 30 AndAlso Val(mAge) < 34.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(506, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(506, 312)
             Case Val(mAge) >= 35 AndAlso Val(mAge) < 39.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(553, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(553, 312)
             Case Val(mAge) >= 40 AndAlso Val(mAge) < 44.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(600, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(600, 312)
             Case Val(mAge) >= 45 AndAlso Val(mAge) < 50.9
-                picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg"
+                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg"
+                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(649, 140)
+                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(649, 312)
         End Select
 
-        '결과값에 따른 선 333, 124 , 148
+        '결과값에 따른 선 
         Select Case True
             Case Val(mAMHResult) >= 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 124)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 148)
             Case Val(mAMHResult) > 9 AndAlso Val(mAMHResult) < 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 130)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 155.5)
             Case Val(mAMHResult) = 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 136)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 163)
             Case Val(mAMHResult) > 8 AndAlso Val(mAMHResult) < 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 142)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 170.5)
             Case Val(mAMHResult) = 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 148)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 178)
             Case Val(mAMHResult) > 7 AndAlso Val(mAMHResult) < 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 154)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 185.5)
             Case Val(mAMHResult) = 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 160)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 193)
             Case Val(mAMHResult) > 6 AndAlso Val(mAMHResult) < 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 166)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 200.5)
             Case Val(mAMHResult) = 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 172)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 208)
             Case Val(mAMHResult) > 5 AndAlso Val(mAMHResult) < 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 178)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 215.5)
             Case Val(mAMHResult) = 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 184)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 223)
             Case Val(mAMHResult) > 4 AndAlso Val(mAMHResult) < 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 190)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 230.5)
             Case Val(mAMHResult) = 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 196)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 238)
             Case Val(mAMHResult) > 3 AndAlso Val(mAMHResult) < 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 202)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 245.5)
             Case Val(mAMHResult) = 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 208)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 253)
             Case Val(mAMHResult) > 2 AndAlso Val(mAMHResult) < 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 214)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 260.5)
             Case Val(mAMHResult) = 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 220)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 268)
             Case Val(mAMHResult) > 1 AndAlso Val(mAMHResult) < 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 226)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 275.5)
             Case Val(mAMHResult) = 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 232)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 283)
             Case Val(mAMHResult) > 0 AndAlso Val(mAMHResult) < 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(335, 238)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 290.5)
             Case Val(mAMHResult) <= 0
-                AMHResultLine.LocationF = New System.Drawing.PointF(3355, 244)
+                AMHResultLine.LocationF = New System.Drawing.PointF(413, 298)
+        End Select
+
+        '결과
+        Select Case True
+            Case Val(mAMHResult) > 2.28
+
+            Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
+
+            Case Val(mAMHResult) < 0.69
         End Select
 
         lblPTNM.Text = mPTNM

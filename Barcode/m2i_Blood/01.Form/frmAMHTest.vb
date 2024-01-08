@@ -1,7 +1,7 @@
 ﻿Imports DevExpress.XtraBars.Docking2010
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
-
+Imports DevExpress.XtraCharts
 Imports System.Drawing.Printing
 Imports DevExpress.XtraReports.UI
 
@@ -162,15 +162,85 @@ Public Class frmAMHTest
             .mBirth = txtPtBirth.EditValue
             .mSex = sex
             .mAge = txtPtAge.EditValue
+            '.mAge = 47
             .mChartNo = txtPtChartNo.EditValue
             .mMedOffice = txtMedOffice.EditValue
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
             .mAMHResult = RESULT.Text
-            '.mComment1 = ""
-            '.mComment2 = ""
-            '.mComment3 = ""
+            '.mAMHResult = 2.5
+
+            '----------------------------------------------------------------------------------------------------------------
+            Dim series1 As Series = New Series("상위 5%", ViewType.Line)
+            Dim series2 As Series = New Series("중간값", ViewType.Line)
+            Dim series3 As Series = New Series("하위 5%", ViewType.Line)
+
+            series1.Points.Add(New SeriesPoint("20-24", 9.95))
+            series1.Points.Add(New SeriesPoint("25-29", 9.05))
+            series1.Points.Add(New SeriesPoint("30-34", 7.59))
+            series1.Points.Add(New SeriesPoint("35-39", 6.96))
+            series1.Points.Add(New SeriesPoint("40-44", 4.44))
+            series1.Points.Add(New SeriesPoint("45-50", 1.79))
+
+            series2.Points.Add(New SeriesPoint("20-24", 4.0))
+            series2.Points.Add(New SeriesPoint("25-29", 3.31))
+            series2.Points.Add(New SeriesPoint("30-34", 2.81))
+            series2.Points.Add(New SeriesPoint("35-39", 2.0))
+            series2.Points.Add(New SeriesPoint("40-44", 0.882))
+            series2.Points.Add(New SeriesPoint("45-50", 0.194))
+
+            series3.Points.Add(New SeriesPoint("20-24", 1.52))
+            series3.Points.Add(New SeriesPoint("25-29", 1.2))
+            series3.Points.Add(New SeriesPoint("30-34", 0.711))
+            series3.Points.Add(New SeriesPoint("35-39", 0.405))
+            series3.Points.Add(New SeriesPoint("40-44", 0.059))
+            series3.Points.Add(New SeriesPoint("45-50", 0.01))
+
+            CType(series1.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+            CType(series2.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+            CType(series3.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+
+            .XrChart1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside
+            .XrChart1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Top
+
+            .XrChart1.Series.Add(series1)
+            .XrChart1.Series.Add(series2)
+            .XrChart1.Series.Add(series3)
+
+            .XrChart1.Series(0).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+            .XrChart1.Series(1).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+            .XrChart1.Series(2).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+
+            '----------------------------------------------------------------------------------------------------------------
+            Dim series4 As Series = New Series("Side-by-Side Bar Series 1", ViewType.StackedBar)
+            Dim series5 As Series = New Series("Side-by-Side Bar Series 2", ViewType.StackedBar)
+            Dim series6 As Series = New Series("Side-by-Side Bar Series 3", ViewType.StackedBar)
+
+            series4.Points.Add(New SeriesPoint("0.68이하", 1))
+            series4.Points.Add(New SeriesPoint("0.68이상~2.27이하", 12))
+            series4.Points.Add(New SeriesPoint("2.28이상", 63))
+
+            series5.Points.Add(New SeriesPoint("0.68이하", 24))
+            series5.Points.Add(New SeriesPoint("0.68이상~2.27이하", 57))
+            series5.Points.Add(New SeriesPoint("2.28이상", 32))
+
+            series6.Points.Add(New SeriesPoint("0.68이하", 75))
+            series6.Points.Add(New SeriesPoint("0.68이상~2.27이하", 31))
+            series6.Points.Add(New SeriesPoint("2.28이상", 4))
+
+            .XrChart2.Series.Add(series4)
+            .XrChart2.Series.Add(series5)
+            .XrChart2.Series.Add(series6)
+
+            ' Hide the legend (if necessary).
+            .XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
+
+            CType(.XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
+
+            ' Rotate the diagram (if necessary).
+            CType(.XrChart2.Diagram, XYDiagram).Rotated = True
+
         End With
 
         'prevView (x)---------------------------------------------------------------------------------------------------------

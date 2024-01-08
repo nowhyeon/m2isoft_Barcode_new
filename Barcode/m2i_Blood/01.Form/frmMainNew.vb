@@ -7,7 +7,7 @@ Public Class frmMainNew
     Private ClsDb As New ClsDatabase
 
     Private Sub aceBarcode_Click(sender As Object, e As EventArgs) Handles aceBarcode.Click
-        PtFormShow(New frmBarcode(), sender)
+        PtFormShow(frmBarcode, sender)
     End Sub
 
     Private Sub aceAMH_Click(sender As Object, e As EventArgs) Handles aceAMH.Click
