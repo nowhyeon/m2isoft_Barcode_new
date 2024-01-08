@@ -247,11 +247,11 @@ Partial Public Class Report_IF_AMH
         Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
         Me.XrCrossBandBox2.BorderWidth = 3.0!
         Me.XrCrossBandBox2.EndBand = Me.Detail
-        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(51.0!, 477.0!)
+        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.00008!, 550.7083!)
         Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
         Me.XrCrossBandBox2.StartBand = Me.Detail
-        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(51.0!, 447.0!)
-        Me.XrCrossBandBox2.WidthF = 653.7501!
+        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.00008!, 512.7083!)
+        Me.XrCrossBandBox2.WidthF = 667.7083!
         '
         'Report_IF_AMH
         '

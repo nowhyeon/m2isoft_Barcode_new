@@ -206,8 +206,8 @@ Public Class frmAMHTest
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = RESULT.Text
-            '.mAMHResult = 2.5
+            '.mAMHResult = RESULT.Text
+            .mAMHResult = 3
 
             '----------------------------------------------------------------------------------------------------------------
             Dim series1 As Series = New Series("상위 5%", ViewType.Line)

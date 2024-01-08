@@ -110,7 +110,7 @@ Public Class Report_IF_AMH
 
         End If
 
-        '나이
+        'AMH 결과 및 분석 그래프 영역 표시
         Select Case True
             Case Val(mAge) >= 20 AndAlso Val(mAge) < 24.9
                 'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg"
@@ -184,14 +184,17 @@ Public Class Report_IF_AMH
                 AMHResultLine.LocationF = New System.Drawing.PointF(413, 298)
         End Select
 
-        '결과
+        'AFC 영역
         Select Case True
             Case Val(mAMHResult) > 2.28
-                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(51, 447)
-                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(51, 477)
+                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 434)
+                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 472)
             Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
-
+                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 473)
+                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 511)
             Case Val(mAMHResult) < 0.69
+                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 512)
+                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 550)
         End Select
 
         lblPTNM.Text = mPTNM
