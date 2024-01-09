@@ -57,67 +57,83 @@ Partial Public Class Report_IF_AMH
         '
         'lblAge
         '
-        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(491.67!, 232.0!)
+        Me.lblAge.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(491.6701!, 232.0!)
         Me.lblAge.Multiline = True
         Me.lblAge.Name = "lblAge"
         Me.lblAge.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblAge.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblAge.StylePriority.UseFont = False
         '
         'lblBirth
         '
-        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(491.67!, 206.0!)
+        Me.lblBirth.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(491.6701!, 206.0!)
         Me.lblBirth.Multiline = True
         Me.lblBirth.Name = "lblBirth"
         Me.lblBirth.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblBirth.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblBirth.StylePriority.UseFont = False
         '
         'lblReceiptDate
         '
-        Me.lblReceiptDate.LocationFloat = New DevExpress.Utils.PointFloat(491.6669!, 181.6666!)
+        Me.lblReceiptDate.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblReceiptDate.LocationFloat = New DevExpress.Utils.PointFloat(491.6702!, 181.0!)
         Me.lblReceiptDate.Multiline = True
         Me.lblReceiptDate.Name = "lblReceiptDate"
         Me.lblReceiptDate.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblReceiptDate.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblReceiptDate.StylePriority.UseFont = False
         '
         'lblAcceptDate
         '
-        Me.lblAcceptDate.LocationFloat = New DevExpress.Utils.PointFloat(491.6669!, 158.5417!)
+        Me.lblAcceptDate.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAcceptDate.LocationFloat = New DevExpress.Utils.PointFloat(491.6701!, 158.0001!)
         Me.lblAcceptDate.Multiline = True
         Me.lblAcceptDate.Name = "lblAcceptDate"
         Me.lblAcceptDate.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblAcceptDate.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblAcceptDate.StylePriority.UseFont = False
         '
         'lblChartNo
         '
-        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 232.0!)
+        Me.lblChartNo.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(127.08!, 232.0!)
         Me.lblChartNo.Multiline = True
         Me.lblChartNo.Name = "lblChartNo"
         Me.lblChartNo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblChartNo.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblChartNo.StylePriority.UseFont = False
         '
         'lblDoctor
         '
-        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 206.0!)
+        Me.lblDoctor.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(127.08!, 206.0!)
         Me.lblDoctor.Multiline = True
         Me.lblDoctor.Name = "lblDoctor"
         Me.lblDoctor.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblDoctor.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblDoctor.StylePriority.UseFont = False
         '
         'lblMedOffice
         '
-        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 181.6666!)
+        Me.lblMedOffice.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(127.08!, 181.0!)
         Me.lblMedOffice.Multiline = True
         Me.lblMedOffice.Name = "lblMedOffice"
         Me.lblMedOffice.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblMedOffice.SizeF = New System.Drawing.SizeF(150.0!, 20.0!)
+        Me.lblMedOffice.StylePriority.UseFont = False
         '
         'lblPTNM
         '
-        Me.lblPTNM.LocationFloat = New DevExpress.Utils.PointFloat(127.0833!, 158.5416!)
+        Me.lblPTNM.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblPTNM.LocationFloat = New DevExpress.Utils.PointFloat(127.08!, 158.0!)
         Me.lblPTNM.Multiline = True
         Me.lblPTNM.Name = "lblPTNM"
         Me.lblPTNM.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblPTNM.SizeF = New System.Drawing.SizeF(150.0!, 20.00006!)
+        Me.lblPTNM.StylePriority.UseFont = False
         '
         'BottomMargin
         '
@@ -185,25 +201,27 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHComment3
         '
+        Me.lblAMHComment3.Font = New System.Drawing.Font("맑은 고딕", 8.25!, System.Drawing.FontStyle.Bold)
         Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(40.41668!, 743.46!)
         Me.lblAMHComment3.Multiline = True
         Me.lblAMHComment3.Name = "lblAMHComment3"
         Me.lblAMHComment3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lblAMHComment3.SizeF = New System.Drawing.SizeF(677.7083!, 46.875!)
+        Me.lblAMHComment3.StylePriority.UseFont = False
         '
         'lblAMHComment2
         '
-        Me.lblAMHComment2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 628.1266!)
+        Me.lblAMHComment2.Font = New System.Drawing.Font("맑은 고딕", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAMHComment2.LocationFloat = New DevExpress.Utils.PointFloat(45.0!, 630.0!)
         Me.lblAMHComment2.Multiline = True
         Me.lblAMHComment2.Name = "lblAMHComment2"
         Me.lblAMHComment2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(238.5417!, 76.04163!)
+        Me.lblAMHComment2.SizeF = New System.Drawing.SizeF(243.0!, 76.04!)
         Me.lblAMHComment2.StylePriority.UseFont = False
         '
         'lblAMHComment1
         '
-        Me.lblAMHComment1.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.lblAMHComment1.Font = New System.Drawing.Font("맑은 고딕", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 147.7916!)
         Me.lblAMHComment1.Multiline = True
         Me.lblAMHComment1.Name = "lblAMHComment1"
@@ -216,9 +234,9 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHResult
         '
-        Me.lblAMHResult.Font = New System.Drawing.Font("맑은 고딕", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblAMHResult.Font = New System.Drawing.Font("맑은 고딕", 12.0!, System.Drawing.FontStyle.Bold)
         Me.lblAMHResult.ForeColor = System.Drawing.Color.Red
-        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(172.7466!, 103.0!)
+        Me.lblAMHResult.LocationFloat = New DevExpress.Utils.PointFloat(175.0!, 105.0!)
         Me.lblAMHResult.Multiline = True
         Me.lblAMHResult.Name = "lblAMHResult"
         Me.lblAMHResult.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -247,10 +265,10 @@ Partial Public Class Report_IF_AMH
         Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
         Me.XrCrossBandBox2.BorderWidth = 3.0!
         Me.XrCrossBandBox2.EndBand = Me.Detail
-        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.00008!, 550.7083!)
+        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.0!, 472.0!)
         Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
         Me.XrCrossBandBox2.StartBand = Me.Detail
-        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.00008!, 512.7083!)
+        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.0!, 434.0!)
         Me.XrCrossBandBox2.WidthF = 667.7083!
         '
         'Report_IF_AMH

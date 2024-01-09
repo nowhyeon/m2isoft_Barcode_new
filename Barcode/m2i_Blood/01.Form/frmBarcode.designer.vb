@@ -20,14 +20,14 @@ Partial Class frmBarcode
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim WindowsUIButtonImageOptions8 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions1 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBarcode))
-        Dim WindowsUIButtonImageOptions9 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions10 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions11 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions12 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions13 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions14 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions2 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions5 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions6 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions7 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.WindowsUIButtonPanel1 = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -68,12 +68,12 @@ Partial Class frmBarcode
         Me.cboSearchCond = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LayoutControlGroup5 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem34 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.gcSelect2 = New DevExpress.XtraEditors.GroupControl()
         Me.grdSelect = New DevExpress.XtraGrid.GridControl()
         Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -138,12 +138,12 @@ Partial Class frmBarcode
         CType(Me.cboSearchCond.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gcSelect2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gcSelect2.SuspendLayout()
         CType(Me.grdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,19 +184,19 @@ Partial Class frmBarcode
         '
         'WindowsUIButtonPanel1
         '
-        WindowsUIButtonImageOptions8.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions8.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions8.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions9.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions9.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions9.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions10.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions10.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions10.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions11.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions11.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions11.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions12.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions12.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions12.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions13.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions13.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions13.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.WindowsUIButtonPanel1.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("바코드표시", True, WindowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, True, Nothing, True, True, False, "BarcodeShow", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("다중출력", True, WindowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "MultiPrint", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("단일출력", True, WindowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "print", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("수동출력", True, WindowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "manualShow", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("화면비우기", True, WindowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Remove", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions13, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False)})
+        WindowsUIButtonImageOptions1.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions1.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions1.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions2.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions2.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions2.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions3.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions3.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions5.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions5.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions5.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions6.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions6.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions6.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.WindowsUIButtonPanel1.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("바코드표시", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, True, Nothing, True, True, False, "BarcodeShow", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("다중출력", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "MultiPrint", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("단일출력", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "print", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("수동출력", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "manualShow", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Remove", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "close", -1, False)})
         Me.WindowsUIButtonPanel1.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
         Me.WindowsUIButtonPanel1.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.WindowsUIButtonPanel1.Location = New System.Drawing.Point(12, 785)
@@ -389,6 +389,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem10.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.LayoutControlItem10.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem10.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem10.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem10.Control = Me.txtPtnm
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
@@ -400,6 +402,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem12.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem12.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem12.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem12.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem12.Control = Me.txtPtSex
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 32)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
@@ -411,6 +415,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem11.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 12.0!)
         Me.LayoutControlItem11.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem11.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem11.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem11.Control = Me.txtBarcodeNo
         Me.LayoutControlItem11.Location = New System.Drawing.Point(330, 0)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
@@ -422,6 +428,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem13.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem13.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem13.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem13.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem13.Control = Me.txtPtChartNo
         Me.LayoutControlItem13.Location = New System.Drawing.Point(330, 32)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
@@ -433,6 +441,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem14.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem14.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem14.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem14.Control = Me.txtPtAge
         Me.LayoutControlItem14.Location = New System.Drawing.Point(165, 32)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
@@ -444,6 +454,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem15.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem15.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem15.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem15.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem15.Control = Me.txtPtDiv
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 58)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
@@ -455,6 +467,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem38.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem38.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem38.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem38.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem38.Control = Me.txtPtBirth
         Me.LayoutControlItem38.Location = New System.Drawing.Point(330, 58)
         Me.LayoutControlItem38.Name = "LayoutControlItem38"
@@ -466,6 +480,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem39.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem39.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem39.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem39.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem39.Control = Me.txtMedOffice
         Me.LayoutControlItem39.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
@@ -477,6 +493,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem40.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem40.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem40.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem40.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem40.Control = Me.txtReceiptDate
         Me.LayoutControlItem40.Location = New System.Drawing.Point(330, 84)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
@@ -488,6 +506,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem41.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem41.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem41.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem41.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem41.Control = Me.txtDoctor
         Me.LayoutControlItem41.Location = New System.Drawing.Point(0, 110)
         Me.LayoutControlItem41.Name = "LayoutControlItem41"
@@ -499,6 +519,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem42.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem42.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem42.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem42.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem42.Control = Me.txtAcceptDate
         Me.LayoutControlItem42.Location = New System.Drawing.Point(330, 110)
         Me.LayoutControlItem42.Name = "LayoutControlItem42"
@@ -510,6 +532,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem43.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem43.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem43.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem43.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem43.Control = Me.memoComment
         Me.LayoutControlItem43.Location = New System.Drawing.Point(0, 136)
         Me.LayoutControlItem43.Name = "LayoutControlItem43"
@@ -547,13 +571,13 @@ Partial Class frmBarcode
         '
         'WindowsUIButtonPanel2
         '
-        WindowsUIButtonImageOptions14.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions14.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions14.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.WindowsUIButtonPanel2.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("조회", True, WindowsUIButtonImageOptions14, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Find", -1, False)})
-        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(258, 64)
+        WindowsUIButtonImageOptions7.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions7.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions7.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.WindowsUIButtonPanel2.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("조회", True, WindowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Find", -1, False)})
+        Me.WindowsUIButtonPanel2.Location = New System.Drawing.Point(239, 12)
         Me.WindowsUIButtonPanel2.Name = "WindowsUIButtonPanel2"
         Me.WindowsUIButtonPanel2.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.WindowsUIButtonPanel2.Size = New System.Drawing.Size(40, 106)
+        Me.WindowsUIButtonPanel2.Size = New System.Drawing.Size(59, 158)
         Me.WindowsUIButtonPanel2.TabIndex = 10
         Me.WindowsUIButtonPanel2.Text = "WindowsUIButtonPanel2"
         '
@@ -566,7 +590,7 @@ Partial Class frmBarcode
         Me.dtpTo.Properties.Appearance.Options.UseFont = True
         Me.dtpTo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpTo.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpTo.Size = New System.Drawing.Size(220, 22)
+        Me.dtpTo.Size = New System.Drawing.Size(157, 22)
         Me.dtpTo.StyleController = Me.LayoutControl6
         Me.dtpTo.TabIndex = 5
         '
@@ -576,7 +600,7 @@ Partial Class frmBarcode
         Me.txtSearchWrd.Name = "txtSearchWrd"
         Me.txtSearchWrd.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtSearchWrd.Properties.Appearance.Options.UseFont = True
-        Me.txtSearchWrd.Size = New System.Drawing.Size(176, 22)
+        Me.txtSearchWrd.Size = New System.Drawing.Size(157, 22)
         Me.txtSearchWrd.StyleController = Me.LayoutControl6
         Me.txtSearchWrd.TabIndex = 9
         '
@@ -589,7 +613,7 @@ Partial Class frmBarcode
         Me.dtpFrom.Properties.Appearance.Options.UseFont = True
         Me.dtpFrom.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFrom.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFrom.Size = New System.Drawing.Size(220, 22)
+        Me.dtpFrom.Size = New System.Drawing.Size(157, 22)
         Me.dtpFrom.StyleController = Me.LayoutControl6
         Me.dtpFrom.TabIndex = 11
         '
@@ -601,7 +625,7 @@ Partial Class frmBarcode
         Me.cboReceipt.Properties.Appearance.Options.UseFont = True
         Me.cboReceipt.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboReceipt.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboReceipt.Size = New System.Drawing.Size(176, 22)
+        Me.cboReceipt.Size = New System.Drawing.Size(157, 22)
         Me.cboReceipt.StyleController = Me.LayoutControl6
         Me.cboReceipt.TabIndex = 12
         '
@@ -613,7 +637,7 @@ Partial Class frmBarcode
         Me.cboPrintYN.Properties.Appearance.Options.UseFont = True
         Me.cboPrintYN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboPrintYN.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboPrintYN.Size = New System.Drawing.Size(176, 22)
+        Me.cboPrintYN.Size = New System.Drawing.Size(157, 22)
         Me.cboPrintYN.StyleController = Me.LayoutControl6
         Me.cboPrintYN.TabIndex = 13
         '
@@ -625,7 +649,7 @@ Partial Class frmBarcode
         Me.cboSearchCond.Properties.Appearance.Options.UseFont = True
         Me.cboSearchCond.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboSearchCond.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboSearchCond.Size = New System.Drawing.Size(176, 22)
+        Me.cboSearchCond.Size = New System.Drawing.Size(157, 22)
         Me.cboSearchCond.StyleController = Me.LayoutControl6
         Me.cboSearchCond.TabIndex = 14
         '
@@ -633,7 +657,7 @@ Partial Class frmBarcode
         '
         Me.LayoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup5.GroupBordersVisible = False
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem9, Me.LayoutControlItem2, Me.LayoutControlItem34, Me.LayoutControlItem16, Me.LayoutControlItem17, Me.LayoutControlItem18})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem34, Me.LayoutControlItem16, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.LayoutControlItem9})
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
         Me.LayoutControlGroup5.Size = New System.Drawing.Size(310, 182)
         Me.LayoutControlGroup5.TextVisible = False
@@ -642,42 +666,45 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem3.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem3.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem3.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem3.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem3.Control = Me.txtSearchWrd
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 130)
+        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(246, 32)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(227, 32)
+        Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem3.Text = " 검색어 : "
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(63, 15)
-        '
-        'LayoutControlItem9
-        '
-        Me.LayoutControlItem9.Control = Me.WindowsUIButtonPanel2
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(246, 52)
-        Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(44, 110)
-        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem9.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem2.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem2.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem2.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem2.Control = Me.dtpFrom
         Me.LayoutControlItem2.CustomizationFormText = "│ 접수상태 : "
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(290, 26)
-        Me.LayoutControlItem2.Text = " 기간 : "
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(227, 26)
+        Me.LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem2.Text = " 접수일자 : "
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(63, 15)
         '
         'LayoutControlItem34
         '
         Me.LayoutControlItem34.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem34.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem34.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem34.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem34.Control = Me.dtpTo
         Me.LayoutControlItem34.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem34.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem34.Name = "LayoutControlItem34"
-        Me.LayoutControlItem34.Size = New System.Drawing.Size(290, 26)
+        Me.LayoutControlItem34.Size = New System.Drawing.Size(227, 26)
+        Me.LayoutControlItem34.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem34.Text = "     ~"
         Me.LayoutControlItem34.TextSize = New System.Drawing.Size(63, 15)
         '
@@ -685,10 +712,14 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem16.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem16.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem16.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem16.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem16.Control = Me.cboReceipt
         Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 52)
+        Me.LayoutControlItem16.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(246, 26)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(227, 26)
+        Me.LayoutControlItem16.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem16.Text = " 접수상태 : "
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(63, 15)
         '
@@ -696,10 +727,14 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem17.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem17.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem17.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem17.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem17.Control = Me.cboPrintYN
         Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 78)
+        Me.LayoutControlItem17.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(246, 26)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(227, 26)
+        Me.LayoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem17.Text = " 출력상태 : "
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(63, 15)
         '
@@ -707,12 +742,27 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem18.AppearanceItemCaption.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.LayoutControlItem18.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem18.AppearanceItemCaption.Options.UseTextOptions = True
+        Me.LayoutControlItem18.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.LayoutControlItem18.Control = Me.cboSearchCond
         Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 104)
+        Me.LayoutControlItem18.MinSize = New System.Drawing.Size(120, 26)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(246, 26)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(227, 26)
+        Me.LayoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem18.Text = " 검색조건 : "
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(63, 15)
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.WindowsUIButtonPanel2
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(227, 0)
+        Me.LayoutControlItem9.MinSize = New System.Drawing.Size(44, 4)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(63, 162)
+        Me.LayoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem9.TextVisible = False
         '
         'gcSelect2
         '
@@ -812,8 +862,8 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem1.Control = Me.GroupControl2
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(318, 0)
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(318, 198)
+        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(318, 209)
+        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(318, 209)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(318, 209)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
@@ -824,8 +874,11 @@ Partial Class frmBarcode
         '
         Me.LayoutControlItem19.Control = Me.GroupControl1
         Me.LayoutControlItem19.Location = New System.Drawing.Point(318, 0)
+        Me.LayoutControlItem19.MaxSize = New System.Drawing.Size(629, 0)
+        Me.LayoutControlItem19.MinSize = New System.Drawing.Size(629, 209)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
         Me.LayoutControlItem19.Size = New System.Drawing.Size(629, 209)
+        Me.LayoutControlItem19.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem19.TextVisible = False
         '
@@ -944,12 +997,12 @@ Partial Class frmBarcode
         CType(Me.cboSearchCond.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gcSelect2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gcSelect2.ResumeLayout(False)
         CType(Me.grdSelect, System.ComponentModel.ISupportInitialize).EndInit()

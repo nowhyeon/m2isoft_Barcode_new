@@ -211,9 +211,8 @@ Public Class Report_IF_AMH
 
 
         ' 보고서 하단 병원 주소 입력
-        mAddress &= "                                 부산마리아의원" & vbCrLf
-        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원" & vbCrLf
-        mAddress &= "                         대표번호: 051-441-6555" & vbCrLf
+        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원"
+        mAddress &= "                         대표번호: 051-441-6555"
         'lblAddress.Text = mAddress
     End Sub
 End Class
