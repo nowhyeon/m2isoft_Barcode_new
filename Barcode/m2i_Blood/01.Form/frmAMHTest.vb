@@ -32,18 +32,16 @@ Public Class frmAMHTest
         End With
 
         ' 수진자 조회 결과 Grid
-        GfColumnSet(GridView, "차트번호", "PTID", 25, "C", , True)
         GfColumnSet(GridView, "접수일", "REQDATE", 25, "C", , True)
+        GfColumnSet(GridView, "차트번호", "PTID", 25, "C", , True)
         GfColumnSet(GridView, "이름", "PTNM", 23, "C", , True)
-        GfColumnSet(GridView, "바코드", "SPCNO", 35, "C", , True)
-        GfColumnSet(GridView, "성별", "PTSEX", 12, "C", , True)
         GfColumnSet(GridView, "나이", "PTAGE", 12, "C", , True)
 
         ' 수진자 AMH 상세 결과 Grid
+        GfColumnSet(GridView1, "차트번호", "PTNO", 23, "C", , True)
+        GfColumnSet(GridView1, "검사명", "LABNAME", 30, "C", , True)
         GfColumnSet(GridView1, "검사코드", "TESTCODE", 30, "C", , True)
-        GfColumnSet(GridView1, "수진자번호", "PTNO", 23, "C", , True)
         GfColumnSet(GridView1, "수진자명", "SNAME", 30, "C", , True)
-        GfColumnSet(GridView1, "나이", "AGE", 15, "C", , True)
         GfColumnSet(GridView1, "결과", "RESULT", 15, "C", , True)
 
         grdSearchQry.Dock = DockStyle.Fill
@@ -113,9 +111,6 @@ Public Class frmAMHTest
                 .mDoctor = GridView.GetRowCellValue(sRowCnt, "SIGNIN").ToString
                 .mAcceptDate = GridView.GetRowCellValue(sRowCnt, "RESULTDATE").ToString
                 .mAMHResult = GridView.GetRowCellValue(sRowCnt, "RESULT").ToString
-                '.mComment1 = ""
-                '.mComment2 = ""
-                '.mComment3 = ""
             End With
 
             'prevView (x)---------------------------------------------------------------------------------------------------------
@@ -139,13 +134,28 @@ Public Class frmAMHTest
             Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
             If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+                'QueryString = String.Empty
+                'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+                'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+                'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+                'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+                'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+                'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
                 QueryString = String.Empty
-                QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
-                QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
-                QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
-                QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+                QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+                QueryString &= " (                                                              " & vbNewLine
+                QueryString &= "        REQDATE                                                 " & vbNewLine
+                QueryString &= "      , SPCNO                                                   " & vbNewLine
+                QueryString &= "      , PTNM                                                    " & vbNewLine
+                QueryString &= "      , PTID                                                    " & vbNewLine
+                QueryString &= "      , PRTDATE                                                 " & vbNewLine
+                QueryString &= "  )VALUES(                                                      " & vbNewLine
+                QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+                QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+                QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+                QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+                QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+                QueryString &= "  )                                                             " & vbNewLine
             Else
                 QueryString = String.Empty
                 QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
@@ -200,14 +210,12 @@ Public Class frmAMHTest
             .mBirth = txtPtBirth.EditValue
             .mSex = sex
             .mAge = txtPtAge.EditValue
-            '.mAge = 47
             .mChartNo = txtPtChartNo.EditValue
             .mMedOffice = txtMedOffice.EditValue
             .mReceiptDate = txtReceiptDate.EditValue
             .mDoctor = txtDoctor.EditValue
             .mAcceptDate = txtAcceptDate.EditValue
             .mAMHResult = RESULT.Text
-            '.mAMHResult = 3
 
             '----------------------------------------------------------------------------------------------------------------
             Dim series1 As Series = New Series("상위 5%", ViewType.Line)
@@ -306,6 +314,59 @@ Public Class frmAMHTest
             'End If
         End With
         '---------------------------------------------------------------------------------------------------------------------
+
+        QueryString = String.Empty
+        QueryString &= " SELECT * FROM m2i_LAB201                                           " & vbNewLine
+        QueryString &= " WHERE REQDATE = '" & txtAcceptDate.Text & "'                       " & vbNewLine
+        QueryString &= " AND   PTID = '" & txtPtChartNo.Text & "'                           " & vbNewLine
+
+        Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+        If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+            'QueryString = String.Empty
+            'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+            'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+            'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+            'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+            'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+            'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+            QueryString = String.Empty
+            QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+            QueryString &= " (                                                              " & vbNewLine
+            QueryString &= "        REQDATE                                                 " & vbNewLine
+            QueryString &= "      , SPCNO                                                   " & vbNewLine
+            QueryString &= "      , PTNM                                                    " & vbNewLine
+            QueryString &= "      , PTID                                                    " & vbNewLine
+            QueryString &= "      , PRTDATE                                                 " & vbNewLine
+            QueryString &= "  )VALUES(                                                      " & vbNewLine
+            QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+            QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+            QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+            QueryString &= "  )                                                             " & vbNewLine
+        Else
+            QueryString = String.Empty
+            QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+            QueryString &= " (                                                              " & vbNewLine
+            QueryString &= "        REQDATE                                                 " & vbNewLine
+            QueryString &= "      , SPCNO                                                   " & vbNewLine
+            QueryString &= "      , PTNM                                                    " & vbNewLine
+            QueryString &= "      , PTID                                                    " & vbNewLine
+            QueryString &= "      , PRTDATE                                                 " & vbNewLine
+            QueryString &= "  )VALUES(                                                      " & vbNewLine
+            QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+            QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+            QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+            QueryString &= "  )                                                             " & vbNewLine
+        End If
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
     End Sub
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
@@ -393,8 +454,6 @@ Public Class frmAMHTest
 
         Call Get_TestCodeAMH()
 
-        'SplashScreenManager.ShowWaitForm()
-
         dtpFrom.DateTime = Now.AddDays(-PrevDay)
         dtpTo.DateTime = Now.AddDays(NextDay)
 
@@ -411,7 +470,6 @@ Public Class frmAMHTest
             .Items.Add("바코드번호")
         End With
 
-        '6SplashScreenManager.CloseWaitForm()
     End Sub
 
     'mDB에서 검사코드 가져온다
@@ -420,11 +478,10 @@ Public Class frmAMHTest
             QueryString = String.Empty
             QueryString &= " SELECT TESTCD, TESTNM  " & vbCrLf
             QueryString &= " FROM m2i_LAB002        " & vbCrLf
-            QueryString &= " WHERE TESTCD = 'AMH'   " & vbCrLf
+            QueryString &= " WHERE TESTCD = 'AMH'   " & vbCrLf                  ' 검사코드가 다를 수 있기 때문에 수정 필요
             QueryString &= " ORDER BY TESTCD        " & vbCrLf
 
-            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
-            ' mDB의 TESTCD의 정보를 가져와서 sTable이라는 테이블에 저장
+            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)         ' mDB의 TESTCD의 정보를 가져와서 sTable이라는 테이블에 저장
 
             ' sTable에 없는 검사코드가 있을 때
             If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
@@ -458,8 +515,9 @@ Public Class frmAMHTest
         txtAcceptDate.EditValue = String.Empty
 
         grdAMH.DataSource = Nothing
+        grdSearchQry.DataSource = Nothing
 
-        'PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\AMH.jpg")
+        PictureEdit1.Image = Nothing
     End Sub
 
     '프린트완료 건 backColor 변경

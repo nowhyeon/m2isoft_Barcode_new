@@ -19,11 +19,11 @@ Partial Class frmUserAdd
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim WindowsUIButtonImageOptions9 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions1 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserAdd))
-        Dim WindowsUIButtonImageOptions10 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions11 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions12 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions2 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.btnPanWork = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.grdUserInfo = New DevExpress.XtraGrid.GridControl()
@@ -81,15 +81,15 @@ Partial Class frmUserAdd
         '
         'btnPanWork
         '
-        WindowsUIButtonImageOptions9.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions9.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions9.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions10.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions10.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions10.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions11.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions11.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions11.SvgImageSize = New System.Drawing.Size(20, 20)
-        WindowsUIButtonImageOptions12.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions12.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        WindowsUIButtonImageOptions12.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("초기화", True, WindowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("삭제", True, WindowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Delete", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False)})
+        WindowsUIButtonImageOptions1.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions1.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions1.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions2.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions2.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions2.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions3.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions3.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions3.SvgImageSize = New System.Drawing.Size(20, 20)
+        WindowsUIButtonImageOptions4.SvgImage = CType(resources.GetObject("WindowsUIButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        WindowsUIButtonImageOptions4.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.btnPanWork.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("새로고침", True, WindowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Reroad", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("삭제", True, WindowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Delete", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("저장", True, WindowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Save", -1, False), New DevExpress.XtraBars.Docking2010.WindowsUIButton("닫기", True, WindowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, Nothing, True, False, True, "Close", -1, False)})
         Me.btnPanWork.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPanWork.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPanWork.Location = New System.Drawing.Point(12, 520)

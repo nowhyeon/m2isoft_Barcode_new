@@ -11,6 +11,8 @@ Public Class Report_IF_AMH
     Public mBirth As String
     Public mAge As String
     Public mSex As String
+    Public mLow As String
+    Public mHigh As String
     Public mAMHResult As String
     Public mComment1 As String
     Public mComment2 As String
@@ -27,7 +29,6 @@ Public Class Report_IF_AMH
     Private ClsDb As New ClsDatabase
 
     Private Sub VisitReport_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
-
 
         strAFC1 = String.Empty
         If Val(mAMHResult) > 2.28 Then
@@ -58,21 +59,22 @@ Public Class Report_IF_AMH
 
         QueryString = String.Empty
         QueryString &= " SELECT *                                       " & vbCrLf
-        QueryString &= "   FROM AMH_JUDGE                               " & vbCrLf
-        QueryString &= "  WHERE Val(age_f) <='" & Val(mAge) & "'        " & vbCrLf
-        QueryString &= "    AND Val(age_to) >= '" & Val(mAge) & "'      " & vbCrLf
-        QueryString &= "    AND val(low) < '" & Val(mAMHResult) & "'    " & vbCrLf
-        QueryString &= "    AND val(high)>= '" & Val(mAMHResult) & "'   " & vbCrLf
+        QueryString &= " FROM [AMH_JUDGE]                               " & vbCrLf
+        QueryString &= " WHERE Val(age_f) <='" & Val(mAge) & "'         " & vbCrLf
+        QueryString &= " AND Val(age_to) >= '" & Val(mAge) & "'         " & vbCrLf
+        QueryString &= " AND val(low) < '" & Val(mAMHResult) & "'       " & vbCrLf
+        QueryString &= " AND val(high)>= '" & Val(mAMHResult) & "'      " & vbCrLf
 
         Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
         If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
+            mLow = sTable.Rows(0)("LOW").ToString
+            mHigh = sTable.Rows(0)("HIGH").ToString
             mComment2 = sTable.Rows(0)("COMMENT").ToString
             mRemark = sTable.Rows(0)("REMARK").ToString
             mRemark1 = sTable.Rows(0)("REMARK1").ToString
         Else
-            Dim sMsg As String = "해당되는 사항이 없습니다 !", sMsgTitle As String = "오류"
-            XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(_sMsg.sMsg_NoContents, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
         mComment2 = "수검자 연령대의 [ " & mComment2 & "] 구간에 해당하며 "
@@ -84,7 +86,7 @@ Public Class Report_IF_AMH
         ElseIf Val(mAMHResult) >= 0.1 And Val(mAMHResult) < 4.45 Then
 
             If mAMHResult <> "" Then
-                '계산공식: (나이) = (정량결과          - 7.6241) / 0.155 * -1
+                '계산공식: (나이) = (정량결과 - 7.6241) / 0.155 * -1
                 mAMHConn = (Val(mAMHResult) - 7.6241) / 0.155 * -1
                 '           절대값  소수점 버림     
                 mAMHConn = Math.Abs(Fix(mAMHConn))
@@ -92,48 +94,76 @@ Public Class Report_IF_AMH
                 mAMHConn = ""
             End If
             '
-            '                          계산공식 = (정량결과          - 7.4908) / 0.1502 * -1
+            '                          계산공식 = (정량결과 - 7.4908) / 0.1502 * -1
             '                        strAMHConn = (Val(strAMHResult) - 7.6241) / 0.155  * -1
             '                        strAMHConn = Abs(Fix(strAMHConn))
             mComment3 = "만 " & mAMHConn & " 세 중앙값에 해당합니다."
 
         End If
 
-        If Val(mAge) < 20 Or Val(mAge) > 50 Then
-            mComment4 = mRemark1
-        Else
-            If mRemark <> "" Then
-                mComment4 = mComment1 & mComment2 & vbCrLf & mRemark & vbCrLf & mRemark1
-            Else
-                mComment4 = mComment1 & mComment2 & mComment3 '& vbCrLf & vbCrLf & strAMHRemark1
-            End If
 
+        ' 나이 및 결과수치별 Remark 내용 표시
+        If Val(mAge) >= 20 And Val(mAge) < 25 Then
+            If Val(mLow) >= 0 And Val(mHigh) <= 1.22 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mLow) >= 11.7 And Val(mHigh) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        ElseIf Val(mAge) >= 25 And Val(mAge) < 30 Then
+            If Val(mLow) >= 0 And Val(mHigh) <= 0.89 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mLow) >= 9.85 And Val(mHigh) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        ElseIf Val(mAge) >= 30 And Val(mAge) < 35 Then
+            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.58 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mAMHResult) >= 8.13 And Val(mAMHResult) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        ElseIf Val(mAge) >= 35 And Val(mAge) < 40 Then
+            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.15 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mAMHResult) >= 7.49 And Val(mAMHResult) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        ElseIf Val(mAge) >= 40 And Val(mAge) < 45 Then
+            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.03 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mAMHResult) >= 5.47 And Val(mAMHResult) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        ElseIf Val(mAge) >= 45 And Val(mAge) < 50 Then
+            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.01 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            ElseIf Val(mAMHResult) >= 2.71 And Val(mAMHResult) <= 100 Then
+                lblRemark.Text = mRemark & vbCrLf & mRemark1
+            End If
+        Else
+            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 100 Then
+                lblRemark.Text = mRemark1
+            End If
         End If
+
 
         'AMH 결과 및 분석 그래프 영역 표시
         Select Case True
             Case Val(mAge) >= 20 AndAlso Val(mAge) < 24.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(413, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(413, 312)
             Case Val(mAge) >= 25 AndAlso Val(mAge) < 29.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(458, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(458, 312)
             Case Val(mAge) >= 30 AndAlso Val(mAge) < 34.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(506, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(506, 312)
             Case Val(mAge) >= 35 AndAlso Val(mAge) < 39.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(553, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(553, 312)
             Case Val(mAge) >= 40 AndAlso Val(mAge) < 44.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(600, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(600, 312)
             Case Val(mAge) >= 45 AndAlso Val(mAge) < 50.9
-                'picAMHResult.ImageUrl = Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg"
                 XrCrossBandBox1.StartPointF = New System.Drawing.PointF(649, 140)
                 XrCrossBandBox1.EndPointF = New System.Drawing.PointF(649, 312)
         End Select
@@ -211,8 +241,9 @@ Public Class Report_IF_AMH
 
 
         ' 보고서 하단 병원 주소 입력
-        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원"
+        mAddress = String.Empty
+        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원" & vbCrLf
         mAddress &= "                         대표번호: 051-441-6555"
-        'lblAddress.Text = mAddress
+        lblAddress.Text = mAddress
     End Sub
 End Class

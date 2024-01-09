@@ -36,7 +36,7 @@ Partial Public Class Report_IF_AMH
         Me.AMHResultLine = New DevExpress.XtraReports.UI.XRLine()
         Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.lblAMHComment3 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lblRemark = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
@@ -138,32 +138,39 @@ Partial Public Class Report_IF_AMH
         'BottomMargin
         '
         Me.BottomMargin.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.lblAddress})
-        Me.BottomMargin.HeightF = 41.0!
+        Me.BottomMargin.HeightF = 49.04007!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'lblAddress
         '
-        Me.lblAddress.LocationFloat = New DevExpress.Utils.PointFloat(236.1665!, 0!)
+        Me.lblAddress.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblAddress.LocationFloat = New DevExpress.Utils.PointFloat(238.6664!, 0!)
         Me.lblAddress.Multiline = True
         Me.lblAddress.Name = "lblAddress"
         Me.lblAddress.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAddress.SizeF = New System.Drawing.SizeF(494.1666!, 38.20668!)
+        Me.lblAddress.SizeF = New System.Drawing.SizeF(494.1667!, 39.04007!)
+        Me.lblAddress.StylePriority.UseFont = False
+        Me.lblAddress.StylePriority.UseTextAlignment = False
+        Me.lblAddress.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.AMHResultLine, Me.XrChart1, Me.XrLabel1, Me.lblAMHComment3, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult})
-        Me.Detail.HeightF = 837.6267!
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.AMHResultLine, Me.XrChart1, Me.XrLabel1, Me.lblRemark, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult})
+        Me.Detail.HeightF = 831.6267!
         Me.Detail.Name = "Detail"
         '
         'XrChart2
         '
+        Me.XrChart2.AppearanceNameSerializable = "Pastel Kit"
         Me.XrChart2.BorderColor = System.Drawing.Color.Black
         Me.XrChart2.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrChart2.Legend.Name = "Default Legend"
-        Me.XrChart2.LocationFloat = New DevExpress.Utils.PointFloat(45.0!, 421.96!)
+        Me.XrChart2.LocationFloat = New DevExpress.Utils.PointFloat(40.41667!, 421.96!)
         Me.XrChart2.Name = "XrChart2"
+        Me.XrChart2.PaletteName = "Custom"
+        Me.XrChart2.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
         Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
-        Me.XrChart2.SizeF = New System.Drawing.SizeF(667.7084!, 159.375!)
+        Me.XrChart2.SizeF = New System.Drawing.SizeF(672.2916!, 159.375!)
         '
         'AMHResultLine
         '
@@ -185,6 +192,8 @@ Partial Public Class Report_IF_AMH
         Me.XrChart1.Legend.Name = "Default Legend"
         Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(289.5834!, 134.7059!)
         Me.XrChart1.Name = "XrChart1"
+        Me.XrChart1.PaletteName = "Custom"
+        Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
         Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
         Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 200.4167!)
         '
@@ -199,15 +208,15 @@ Partial Public Class Report_IF_AMH
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "* AMH 결과가 빨간색 선으로 표시됩니다"
         '
-        'lblAMHComment3
+        'lblRemark
         '
-        Me.lblAMHComment3.Font = New System.Drawing.Font("맑은 고딕", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.lblAMHComment3.LocationFloat = New DevExpress.Utils.PointFloat(40.41668!, 743.46!)
-        Me.lblAMHComment3.Multiline = True
-        Me.lblAMHComment3.Name = "lblAMHComment3"
-        Me.lblAMHComment3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment3.SizeF = New System.Drawing.SizeF(677.7083!, 46.875!)
-        Me.lblAMHComment3.StylePriority.UseFont = False
+        Me.lblRemark.Font = New System.Drawing.Font("맑은 고딕", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.lblRemark.LocationFloat = New DevExpress.Utils.PointFloat(40.41668!, 743.46!)
+        Me.lblRemark.Multiline = True
+        Me.lblRemark.Name = "lblRemark"
+        Me.lblRemark.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lblRemark.SizeF = New System.Drawing.SizeF(677.7083!, 46.875!)
+        Me.lblRemark.StylePriority.UseFont = False
         '
         'lblAMHComment2
         '
@@ -252,7 +261,7 @@ Partial Public Class Report_IF_AMH
         Me.XrCrossBandBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
         Me.XrCrossBandBox1.BorderWidth = 3.0!
         Me.XrCrossBandBox1.EndBand = Me.Detail
-        Me.XrCrossBandBox1.EndPointFloat = New DevExpress.Utils.PointFloat(413.0!, 307.0!)
+        Me.XrCrossBandBox1.EndPointFloat = New DevExpress.Utils.PointFloat(413.0!, 301.0!)
         Me.XrCrossBandBox1.Name = "XrCrossBandBox1"
         Me.XrCrossBandBox1.StartBand = Me.Detail
         Me.XrCrossBandBox1.StartPointFloat = New DevExpress.Utils.PointFloat(413.0!, 154.0!)
@@ -265,7 +274,7 @@ Partial Public Class Report_IF_AMH
         Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
         Me.XrCrossBandBox2.BorderWidth = 3.0!
         Me.XrCrossBandBox2.EndBand = Me.Detail
-        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.0!, 472.0!)
+        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.0!, 466.0!)
         Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
         Me.XrCrossBandBox2.StartBand = Me.Detail
         Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.0!, 434.0!)
@@ -278,7 +287,7 @@ Partial Public Class Report_IF_AMH
         Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandBox2, Me.XrCrossBandBox1})
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 41)
+        Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 49)
         Me.PageHeight = 1169
         Me.PageWidth = 827
         Me.PaperKind = System.Drawing.Printing.PaperKind.A4
@@ -302,7 +311,7 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents lblDoctor As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblMedOffice As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblPTNM As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents lblAMHComment3 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lblRemark As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblAMHComment2 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblAMHComment1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lblAMHResult As DevExpress.XtraReports.UI.XRLabel

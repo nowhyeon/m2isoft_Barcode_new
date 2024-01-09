@@ -72,6 +72,7 @@
 
         QueryString = String.Empty
         QueryString &= " SELECT b.ORDERCODE AS TESTCODE                                                      " & vbCrLf
+        QueryString &= " ,b.LABNAME                                                                          " & vbCrLf
         QueryString &= " ,a.PTNO                                                                             " & vbCrLf
         QueryString &= " ,a.SNAME                                                                            " & vbCrLf
         QueryString &= " ,a.AGE                                                                              " & vbCrLf

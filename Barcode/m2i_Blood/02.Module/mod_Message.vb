@@ -16,6 +16,7 @@
     Shared sMsg_Exit As String = " 업무가 진행중 입니다." & Chr(10) & Chr(10) &
                                  " 작업을 종료하면 진행 중인 데이터를 잃게 됩니다.   " & Chr(10) & Chr(10) &
                                  " 종료하시겠습니까?"
+    Shared sMsg_NoContents As String = "해당되는 사항이 없습니다 !"
 
 End Structure
 

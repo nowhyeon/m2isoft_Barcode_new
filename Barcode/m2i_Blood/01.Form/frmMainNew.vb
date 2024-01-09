@@ -26,6 +26,7 @@ Public Class frmMainNew
         If XtraMessageBox.Show(_sMsg.sMsg_Exit, _sMsg_Title.sMsgTitle_Exit, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             e.Cancel = True
         End If
+        End
     End Sub
 
     Private Sub aceRemote_Click(sender As Object, e As EventArgs) Handles aceRemote.Click
@@ -94,4 +95,5 @@ Public Class frmMainNew
             aceBarcode.Visible = True
         End If
     End Sub
+
 End Class
