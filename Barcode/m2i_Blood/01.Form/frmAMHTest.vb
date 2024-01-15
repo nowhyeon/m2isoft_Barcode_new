@@ -111,6 +111,165 @@ Public Class frmAMHTest
                 .mDoctor = GridView.GetRowCellValue(sRowCnt, "SIGNIN").ToString
                 .mAcceptDate = GridView.GetRowCellValue(sRowCnt, "RESULTDATE").ToString
                 .mAMHResult = GridView.GetRowCellValue(sRowCnt, "RESULT").ToString
+
+                '----------------------------------------------------------------------------------------------------------------
+                Dim series1 As Series = New Series("상위 5%", ViewType.Line)
+                Dim series2 As Series = New Series("중간값", ViewType.Line)
+                Dim series3 As Series = New Series("하위 5%", ViewType.Line)
+
+                series1.Points.Add(New SeriesPoint(1, 9.95)) '1에 9.95
+                series1.Points.Add(New SeriesPoint(3, 9.05))
+                series1.Points.Add(New SeriesPoint(5, 7.59))
+                series1.Points.Add(New SeriesPoint(7, 6.96))
+                series1.Points.Add(New SeriesPoint(9, 4.44))
+                series1.Points.Add(New SeriesPoint(11, 1.79))
+
+                series2.Points.Add(New SeriesPoint(1, 4.0))
+                series2.Points.Add(New SeriesPoint(3, 3.31))
+                series2.Points.Add(New SeriesPoint(5, 2.81))
+                series2.Points.Add(New SeriesPoint(7, 2.0))
+                series2.Points.Add(New SeriesPoint(9, 0.882))
+                series2.Points.Add(New SeriesPoint(11, 0.194))
+
+                series3.Points.Add(New SeriesPoint(1, 1.52))
+                series3.Points.Add(New SeriesPoint(3, 1.2))
+                series3.Points.Add(New SeriesPoint(5, 0.711))
+                series3.Points.Add(New SeriesPoint(7, 0.405))
+                series3.Points.Add(New SeriesPoint(9, 0.059))
+                series3.Points.Add(New SeriesPoint(11, 0.01))
+
+                '마커 제거 
+                CType(series1.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+                CType(series2.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+                CType(series3.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
+
+                .XrChart1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside
+                .XrChart1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Top
+
+                .XrChart1.Series.Add(series1)
+                .XrChart1.Series.Add(series2)
+                .XrChart1.Series.Add(series3)
+
+                .XrChart1.Series(0).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+                .XrChart1.Series(1).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+                .XrChart1.Series(2).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
+
+                Dim diagram As XYDiagram = CType(.XrChart1.Diagram, XYDiagram)
+
+                '나이에 따른 결과분석 영역
+                Select Case True
+                    Case Val(txtPtAge.EditValue) >= 20 AndAlso Val(txtPtAge.EditValue) < 24.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 0, 2))
+                    Case Val(txtPtAge.EditValue) >= 25 AndAlso Val(txtPtAge.EditValue) < 29.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 2, 4))
+                    Case Val(txtPtAge.EditValue) >= 30 AndAlso Val(txtPtAge.EditValue) < 34.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 4, 6))
+                    Case Val(txtPtAge.EditValue) >= 35 AndAlso Val(txtPtAge.EditValue) < 39.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 6, 8))
+                    Case Val(txtPtAge.EditValue) >= 40 AndAlso Val(txtPtAge.EditValue) < 44.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 8, 10))
+                    Case Val(txtPtAge.EditValue) >= 45 AndAlso Val(txtPtAge.EditValue) < 50.9
+                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 10, 12))
+                End Select
+
+                '결과값에 따른 선 
+                With diagram.AxisY.ConstantLines(diagram.AxisY.ConstantLines.Add(New ConstantLine("제조사", .mAMHResult)))
+                    .Color = Color.PaleVioletRed
+                    .LineStyle.Thickness = 2
+                    .Title.Alignment = ConstantLineTitleAlignment.Far
+                    .Title.Visible = False
+                    .ShowInLegend = True
+                End With
+
+                ' Customize the strip's behavior.(strip's설정)
+                diagram.AxisX.Strips(0).Visible = True
+                diagram.AxisX.Strips(0).ShowAxisLabel = False
+                diagram.AxisX.Strips(0).AxisLabelText = ""
+                diagram.AxisX.Strips(0).ShowInLegend = False
+                diagram.AxisX.Strips(0).LegendText = ""
+
+                ' Customize the strip's appearance.(strip's설정)
+                diagram.AxisX.Strips(0).Color = Color.SkyBlue
+                diagram.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
+
+                'x 값 이름 변경
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="20-24", value:=1))
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="25-29", value:=3))
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="30-34", value:=5))
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="35-39", value:=7))
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="40-44", value:=9))
+                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="45-50", value:=11))
+
+                '----------------------------------------------------------------------------------------------------------------
+                Dim series4 As Series = New Series("Side-by-Side Bar Series 1", ViewType.StackedBar)
+                Dim series5 As Series = New Series("Side-by-Side Bar Series 2", ViewType.StackedBar)
+                Dim series6 As Series = New Series("Side-by-Side Bar Series 3", ViewType.StackedBar)
+
+                series4.Points.Add(New SeriesPoint(0, 0))
+                series4.Points.Add(New SeriesPoint(1, 1))
+                series4.Points.Add(New SeriesPoint(2, 0))
+                series4.Points.Add(New SeriesPoint(3, 12))
+                series4.Points.Add(New SeriesPoint(4, 0))
+                series4.Points.Add(New SeriesPoint(5, 63))
+                series4.Points.Add(New SeriesPoint(6, 0))
+
+                series5.Points.Add(New SeriesPoint(0, 0))
+                series5.Points.Add(New SeriesPoint(1, 24))
+                series5.Points.Add(New SeriesPoint(2, 0))
+                series5.Points.Add(New SeriesPoint(3, 57))
+                series5.Points.Add(New SeriesPoint(4, 0))
+                series5.Points.Add(New SeriesPoint(5, 32))
+                series5.Points.Add(New SeriesPoint(6, 0))
+
+                series6.Points.Add(New SeriesPoint(0, 0))
+                series6.Points.Add(New SeriesPoint(1, 75))
+                series6.Points.Add(New SeriesPoint(2, 0))
+                series6.Points.Add(New SeriesPoint(3, 31))
+                series6.Points.Add(New SeriesPoint(4, 0))
+                series6.Points.Add(New SeriesPoint(5, 4))
+                series6.Points.Add(New SeriesPoint(6, 0))
+
+                .XrChart2.Series.Add(series4)
+                .XrChart2.Series.Add(series5)
+                .XrChart2.Series.Add(series6)
+
+                ' Hide the legend (if necessary).
+                .XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
+
+                CType(.XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
+
+                'CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
+
+                ' Rotate the diagram (if necessary).
+                CType(.XrChart2.Diagram, XYDiagram).Rotated = True
+
+                Dim diagram2 As XYDiagram = CType(.XrChart2.Diagram, XYDiagram)
+
+                Select Case True
+                    Case Val(.mAMHResult) > 2.28
+                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
+                    Case Val(.mAMHResult) >= 0.69 And Val(.mAMHResult) <= 2.28
+                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
+                    Case Val(.mAMHResult) < 0.69
+                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
+                End Select
+
+                ' Customize the strip's behavior.(다이어그램설정)
+                diagram2.AxisX.Strips(0).Visible = True
+                diagram2.AxisX.Strips(0).ShowAxisLabel = False
+                diagram2.AxisX.Strips(0).AxisLabelText = ""
+                diagram2.AxisX.Strips(0).ShowInLegend = False
+                diagram2.AxisX.Strips(0).LegendText = ""
+
+                ' Customize the strip's appearance.(다이어그램설정)
+                diagram2.AxisX.Strips(0).Color = Color.SkyBlue
+                diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
+
+                'y 값 이름 변경
+                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
+                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
+                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
+
             End With
 
             'prevView (x)---------------------------------------------------------------------------------------------------------
@@ -222,27 +381,28 @@ Public Class frmAMHTest
             Dim series2 As Series = New Series("중간값", ViewType.Line)
             Dim series3 As Series = New Series("하위 5%", ViewType.Line)
 
-            series1.Points.Add(New SeriesPoint("20-24", 9.95))
-            series1.Points.Add(New SeriesPoint("25-29", 9.05))
-            series1.Points.Add(New SeriesPoint("30-34", 7.59))
-            series1.Points.Add(New SeriesPoint("35-39", 6.96))
-            series1.Points.Add(New SeriesPoint("40-44", 4.44))
-            series1.Points.Add(New SeriesPoint("45-50", 1.79))
+            series1.Points.Add(New SeriesPoint(1, 9.95)) '1에 9.95
+            series1.Points.Add(New SeriesPoint(3, 9.05))
+            series1.Points.Add(New SeriesPoint(5, 7.59))
+            series1.Points.Add(New SeriesPoint(7, 6.96))
+            series1.Points.Add(New SeriesPoint(9, 4.44))
+            series1.Points.Add(New SeriesPoint(11, 1.79))
 
-            series2.Points.Add(New SeriesPoint("20-24", 4.0))
-            series2.Points.Add(New SeriesPoint("25-29", 3.31))
-            series2.Points.Add(New SeriesPoint("30-34", 2.81))
-            series2.Points.Add(New SeriesPoint("35-39", 2.0))
-            series2.Points.Add(New SeriesPoint("40-44", 0.882))
-            series2.Points.Add(New SeriesPoint("45-50", 0.194))
+            series2.Points.Add(New SeriesPoint(1, 4.0))
+            series2.Points.Add(New SeriesPoint(3, 3.31))
+            series2.Points.Add(New SeriesPoint(5, 2.81))
+            series2.Points.Add(New SeriesPoint(7, 2.0))
+            series2.Points.Add(New SeriesPoint(9, 0.882))
+            series2.Points.Add(New SeriesPoint(11, 0.194))
 
-            series3.Points.Add(New SeriesPoint("20-24", 1.52))
-            series3.Points.Add(New SeriesPoint("25-29", 1.2))
-            series3.Points.Add(New SeriesPoint("30-34", 0.711))
-            series3.Points.Add(New SeriesPoint("35-39", 0.405))
-            series3.Points.Add(New SeriesPoint("40-44", 0.059))
-            series3.Points.Add(New SeriesPoint("45-50", 0.01))
+            series3.Points.Add(New SeriesPoint(1, 1.52))
+            series3.Points.Add(New SeriesPoint(3, 1.2))
+            series3.Points.Add(New SeriesPoint(5, 0.711))
+            series3.Points.Add(New SeriesPoint(7, 0.405))
+            series3.Points.Add(New SeriesPoint(9, 0.059))
+            series3.Points.Add(New SeriesPoint(11, 0.01))
 
+            '마커 제거 
             CType(series1.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
             CType(series2.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
             CType(series3.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
@@ -258,22 +418,80 @@ Public Class frmAMHTest
             .XrChart1.Series(1).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
             .XrChart1.Series(2).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
 
+            Dim diagram As XYDiagram = CType(.XrChart1.Diagram, XYDiagram)
+
+            '나이에 따른 결과분석 영역
+            Select Case True
+                Case Val(txtPtAge.EditValue) >= 20 AndAlso Val(txtPtAge.EditValue) < 24.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 0, 2))
+                Case Val(txtPtAge.EditValue) >= 25 AndAlso Val(txtPtAge.EditValue) < 29.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 2, 4))
+                Case Val(txtPtAge.EditValue) >= 30 AndAlso Val(txtPtAge.EditValue) < 34.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 4, 6))
+                Case Val(txtPtAge.EditValue) >= 35 AndAlso Val(txtPtAge.EditValue) < 39.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 6, 8))
+                Case Val(txtPtAge.EditValue) >= 40 AndAlso Val(txtPtAge.EditValue) < 44.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 8, 10))
+                Case Val(txtPtAge.EditValue) >= 45 AndAlso Val(txtPtAge.EditValue) < 50.9
+                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 10, 12))
+            End Select
+
+            '결과값에 따른 선 
+            With diagram.AxisY.ConstantLines(diagram.AxisY.ConstantLines.Add(New ConstantLine("제조사", .mAMHResult)))
+                .Color = Color.PaleVioletRed
+                .LineStyle.Thickness = 2
+                .Title.Alignment = ConstantLineTitleAlignment.Far
+                .Title.Visible = False
+                .ShowInLegend = True
+            End With
+
+            ' Customize the strip's behavior.(strip's설정)
+            diagram.AxisX.Strips(0).Visible = True
+            diagram.AxisX.Strips(0).ShowAxisLabel = False
+            diagram.AxisX.Strips(0).AxisLabelText = ""
+            diagram.AxisX.Strips(0).ShowInLegend = False
+            diagram.AxisX.Strips(0).LegendText = ""
+
+            ' Customize the strip's appearance.(strip's설정)
+            diagram.AxisX.Strips(0).Color = Color.SkyBlue
+            diagram.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
+
+            'x 값 이름 변경
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="20-24", value:=1))
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="25-29", value:=3))
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="30-34", value:=5))
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="35-39", value:=7))
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="40-44", value:=9))
+            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="45-50", value:=11))
+
             '----------------------------------------------------------------------------------------------------------------
             Dim series4 As Series = New Series("Side-by-Side Bar Series 1", ViewType.StackedBar)
             Dim series5 As Series = New Series("Side-by-Side Bar Series 2", ViewType.StackedBar)
             Dim series6 As Series = New Series("Side-by-Side Bar Series 3", ViewType.StackedBar)
 
-            series4.Points.Add(New SeriesPoint("0.68이하", 1))
-            series4.Points.Add(New SeriesPoint("0.68이상~2.27이하", 12))
-            series4.Points.Add(New SeriesPoint("2.28이상", 63))
+            series4.Points.Add(New SeriesPoint(0, 0))
+            series4.Points.Add(New SeriesPoint(1, 1))
+            series4.Points.Add(New SeriesPoint(2, 0))
+            series4.Points.Add(New SeriesPoint(3, 12))
+            series4.Points.Add(New SeriesPoint(4, 0))
+            series4.Points.Add(New SeriesPoint(5, 63))
+            series4.Points.Add(New SeriesPoint(6, 0))
 
-            series5.Points.Add(New SeriesPoint("0.68이하", 24))
-            series5.Points.Add(New SeriesPoint("0.68이상~2.27이하", 57))
-            series5.Points.Add(New SeriesPoint("2.28이상", 32))
+            series5.Points.Add(New SeriesPoint(0, 0))
+            series5.Points.Add(New SeriesPoint(1, 24))
+            series5.Points.Add(New SeriesPoint(2, 0))
+            series5.Points.Add(New SeriesPoint(3, 57))
+            series5.Points.Add(New SeriesPoint(4, 0))
+            series5.Points.Add(New SeriesPoint(5, 32))
+            series5.Points.Add(New SeriesPoint(6, 0))
 
-            series6.Points.Add(New SeriesPoint("0.68이하", 75))
-            series6.Points.Add(New SeriesPoint("0.68이상~2.27이하", 31))
-            series6.Points.Add(New SeriesPoint("2.28이상", 4))
+            series6.Points.Add(New SeriesPoint(0, 0))
+            series6.Points.Add(New SeriesPoint(1, 75))
+            series6.Points.Add(New SeriesPoint(2, 0))
+            series6.Points.Add(New SeriesPoint(3, 31))
+            series6.Points.Add(New SeriesPoint(4, 0))
+            series6.Points.Add(New SeriesPoint(5, 4))
+            series6.Points.Add(New SeriesPoint(6, 0))
 
             .XrChart2.Series.Add(series4)
             .XrChart2.Series.Add(series5)
@@ -284,8 +502,37 @@ Public Class frmAMHTest
 
             CType(.XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
 
+            'CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
+
             ' Rotate the diagram (if necessary).
             CType(.XrChart2.Diagram, XYDiagram).Rotated = True
+
+            Dim diagram2 As XYDiagram = CType(.XrChart2.Diagram, XYDiagram)
+
+            Select Case True
+                Case Val(.mAMHResult) > 2.28
+                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
+                Case Val(.mAMHResult) >= 0.69 And Val(.mAMHResult) <= 2.28
+                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
+                Case Val(.mAMHResult) < 0.69
+                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
+            End Select
+
+            ' Customize the strip's behavior.(다이어그램설정)
+            diagram2.AxisX.Strips(0).Visible = True
+            diagram2.AxisX.Strips(0).ShowAxisLabel = False
+            diagram2.AxisX.Strips(0).AxisLabelText = ""
+            diagram2.AxisX.Strips(0).ShowInLegend = False
+            diagram2.AxisX.Strips(0).LegendText = ""
+
+            ' Customize the strip's appearance.(다이어그램설정)
+            diagram2.AxisX.Strips(0).Color = Color.SkyBlue
+            diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
+
+            'y 값 이름 변경
+            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
+            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
+            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
 
         End With
 
