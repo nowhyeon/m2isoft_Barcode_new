@@ -258,8 +258,8 @@ Partial Public Class Report_IF_AMH
         '
         Me.XrCrossBandBox1.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
         Me.XrCrossBandBox1.BorderColor = System.Drawing.Color.Navy
-        Me.XrCrossBandBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
-        Me.XrCrossBandBox1.BorderWidth = 3.0!
+        Me.XrCrossBandBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrCrossBandBox1.BorderWidth = 4.0!
         Me.XrCrossBandBox1.EndBand = Me.Detail
         Me.XrCrossBandBox1.EndPointFloat = New DevExpress.Utils.PointFloat(413.0!, 301.0!)
         Me.XrCrossBandBox1.Name = "XrCrossBandBox1"
@@ -271,14 +271,14 @@ Partial Public Class Report_IF_AMH
         '
         Me.XrCrossBandBox2.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
         Me.XrCrossBandBox2.BorderColor = System.Drawing.Color.Navy
-        Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
+        Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
         Me.XrCrossBandBox2.BorderWidth = 3.0!
         Me.XrCrossBandBox2.EndBand = Me.Detail
-        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.0!, 466.0!)
+        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(50.83333!, 466.0!)
         Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
         Me.XrCrossBandBox2.StartBand = Me.Detail
-        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.0!, 434.0!)
-        Me.XrCrossBandBox2.WidthF = 667.7083!
+        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(50.83333!, 433.9999!)
+        Me.XrCrossBandBox2.WidthF = 661.875!
         '
         'Report_IF_AMH
         '
