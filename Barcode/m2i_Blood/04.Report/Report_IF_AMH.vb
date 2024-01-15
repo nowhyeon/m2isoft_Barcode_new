@@ -102,130 +102,59 @@ Public Class Report_IF_AMH
         End If
 
 
-        ' 나이 및 결과수치별 Remark 내용 표시
-        If Val(mAge) >= 20 And Val(mAge) < 25 Then
-            If Val(mLow) >= 0 And Val(mHigh) <= 1.22 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mLow) >= 11.7 And Val(mHigh) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
-        ElseIf Val(mAge) >= 25 And Val(mAge) < 30 Then
-            If Val(mLow) >= 0 And Val(mHigh) <= 0.89 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mLow) >= 9.85 And Val(mHigh) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
-        ElseIf Val(mAge) >= 30 And Val(mAge) < 35 Then
-            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.58 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mAMHResult) >= 8.13 And Val(mAMHResult) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
-        ElseIf Val(mAge) >= 35 And Val(mAge) < 40 Then
-            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.15 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mAMHResult) >= 7.49 And Val(mAMHResult) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
-        ElseIf Val(mAge) >= 40 And Val(mAge) < 45 Then
-            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.03 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mAMHResult) >= 5.47 And Val(mAMHResult) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
-        ElseIf Val(mAge) >= 45 And Val(mAge) < 50 Then
-            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.01 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            ElseIf Val(mAMHResult) >= 2.71 And Val(mAMHResult) <= 100 Then
-                lblRemark.Text = mRemark & vbCrLf & mRemark1
-            End If
+        If Val(mAge) < 20 Or Val(mAge) > 50 Then
+            mComment4 = mRemark1
         Else
-            If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 100 Then
-                lblRemark.Text = mRemark1
+            If mRemark <> "" Then
+                mComment4 = mComment1 & mComment2 & vbCrLf & mRemark & vbCrLf & mRemark1
+            Else
+                mComment4 = mComment1 & mComment2 & mComment3 '& vbCrLf & vbCrLf & strAMHRemark1
             End If
+
         End If
 
-
-        'AMH 결과 및 분석 그래프 영역 표시
-        Select Case True
-            Case Val(mAge) >= 20 AndAlso Val(mAge) < 24.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(413, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(413, 312)
-            Case Val(mAge) >= 25 AndAlso Val(mAge) < 29.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(458, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(458, 312)
-            Case Val(mAge) >= 30 AndAlso Val(mAge) < 34.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(506, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(506, 312)
-            Case Val(mAge) >= 35 AndAlso Val(mAge) < 39.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(553, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(553, 312)
-            Case Val(mAge) >= 40 AndAlso Val(mAge) < 44.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(600, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(600, 312)
-            Case Val(mAge) >= 45 AndAlso Val(mAge) < 50.9
-                XrCrossBandBox1.StartPointF = New System.Drawing.PointF(649, 140)
-                XrCrossBandBox1.EndPointF = New System.Drawing.PointF(649, 312)
-        End Select
-
-        '결과값에 따른 선 
-        Select Case True
-            Case Val(mAMHResult) >= 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 148)
-            Case Val(mAMHResult) > 9 AndAlso Val(mAMHResult) < 10
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 155.5)
-            Case Val(mAMHResult) = 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 163)
-            Case Val(mAMHResult) > 8 AndAlso Val(mAMHResult) < 9
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 170.5)
-            Case Val(mAMHResult) = 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 178)
-            Case Val(mAMHResult) > 7 AndAlso Val(mAMHResult) < 8
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 185.5)
-            Case Val(mAMHResult) = 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 193)
-            Case Val(mAMHResult) > 6 AndAlso Val(mAMHResult) < 7
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 200.5)
-            Case Val(mAMHResult) = 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 208)
-            Case Val(mAMHResult) > 5 AndAlso Val(mAMHResult) < 6
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 215.5)
-            Case Val(mAMHResult) = 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 223)
-            Case Val(mAMHResult) > 4 AndAlso Val(mAMHResult) < 5
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 230.5)
-            Case Val(mAMHResult) = 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 238)
-            Case Val(mAMHResult) > 3 AndAlso Val(mAMHResult) < 4
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 245.5)
-            Case Val(mAMHResult) = 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 253)
-            Case Val(mAMHResult) > 2 AndAlso Val(mAMHResult) < 3
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 260.5)
-            Case Val(mAMHResult) = 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 268)
-            Case Val(mAMHResult) > 1 AndAlso Val(mAMHResult) < 2
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 275.5)
-            Case Val(mAMHResult) = 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 283)
-            Case Val(mAMHResult) > 0 AndAlso Val(mAMHResult) < 1
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 290.5)
-            Case Val(mAMHResult) <= 0
-                AMHResultLine.LocationF = New System.Drawing.PointF(413, 298)
-        End Select
-
-        'AFC 영역
-        Select Case True
-            Case Val(mAMHResult) > 2.28
-                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 434)
-                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 472)
-            Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
-                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 473)
-                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 511)
-            Case Val(mAMHResult) < 0.69
-                XrCrossBandBox2.StartPointF = New System.Drawing.PointF(45, 512)
-                XrCrossBandBox2.EndPointF = New System.Drawing.PointF(45, 550)
-        End Select
+        ' 나이 및 결과수치별 Remark 내용 표시 <-수정필요 
+        'If Val(mAge) >= 20 And Val(mAge) < 25 Then
+        '    If Val(mLow) >= 0 And Val(mHigh) <= 1.22 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mLow) >= 11.7 And Val(mHigh) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'ElseIf Val(mAge) >= 25 And Val(mAge) < 30 Then
+        '    If Val(mLow) >= 0 And Val(mHigh) <= 0.89 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mLow) >= 9.85 And Val(mHigh) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'ElseIf Val(mAge) >= 30 And Val(mAge) < 35 Then
+        '    If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.58 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mAMHResult) >= 8.13 And Val(mAMHResult) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'ElseIf Val(mAge) >= 35 And Val(mAge) < 40 Then
+        '    If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.15 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mAMHResult) >= 7.49 And Val(mAMHResult) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'ElseIf Val(mAge) >= 40 And Val(mAge) < 45 Then
+        '    If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.03 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mAMHResult) >= 5.47 And Val(mAMHResult) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'ElseIf Val(mAge) >= 45 And Val(mAge) < 50 Then
+        '    If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 0.01 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    ElseIf Val(mAMHResult) >= 2.71 And Val(mAMHResult) <= 100 Then
+        '        lblRemark.Text = mRemark & vbCrLf & mRemark1
+        '    End If
+        'Else
+        '    If Val(mAMHResult) >= 0 And Val(mAMHResult) <= 100 Then
+        '        lblRemark.Text = mRemark1
+        '    End If
+        'End If
 
         lblPTNM.Text = mPTNM
         lblMedOffice.Text = mMedOffice

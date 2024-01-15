@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class Report_IF_AMH
     Inherits DevExpress.XtraReports.UI.XtraReport
 
     'XtraReport overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Public Class Report_IF_AMH
     'NOTE: The following procedure is required by the Designer
     'It can be modified using the Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Report_IF_AMH))
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
@@ -33,7 +33,6 @@ Partial Public Class Report_IF_AMH
         Me.lblAddress = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrChart2 = New DevExpress.XtraReports.UI.XRChart()
-        Me.AMHResultLine = New DevExpress.XtraReports.UI.XRLine()
         Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblRemark = New DevExpress.XtraReports.UI.XRLabel()
@@ -41,8 +40,6 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.XrCrossBandBox1 = New DevExpress.XtraReports.UI.XRCrossBandBox()
-        Me.XrCrossBandBox2 = New DevExpress.XtraReports.UI.XRCrossBandBox()
         CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -155,7 +152,7 @@ Partial Public Class Report_IF_AMH
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.AMHResultLine, Me.XrChart1, Me.XrLabel1, Me.lblRemark, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult})
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.XrChart1, Me.XrLabel1, Me.lblRemark, Me.lblAMHComment2, Me.lblAMHComment1, Me.lblAMHResult})
         Me.Detail.HeightF = 831.6267!
         Me.Detail.Name = "Detail"
         '
@@ -172,19 +169,6 @@ Partial Public Class Report_IF_AMH
         Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
         Me.XrChart2.SizeF = New System.Drawing.SizeF(672.2916!, 159.375!)
         '
-        'AMHResultLine
-        '
-        Me.AMHResultLine.BorderColor = System.Drawing.Color.DarkRed
-        Me.AMHResultLine.BorderWidth = 2.0!
-        Me.AMHResultLine.ForeColor = System.Drawing.Color.Red
-        Me.AMHResultLine.LineWidth = 3.0!
-        Me.AMHResultLine.LocationFloat = New DevExpress.Utils.PointFloat(413.0!, 148.0!)
-        Me.AMHResultLine.Name = "AMHResultLine"
-        Me.AMHResultLine.SizeF = New System.Drawing.SizeF(279.1667!, 14.58334!)
-        Me.AMHResultLine.StylePriority.UseBorderColor = False
-        Me.AMHResultLine.StylePriority.UseBorderWidth = False
-        Me.AMHResultLine.StylePriority.UseForeColor = False
-        '
         'XrChart1
         '
         Me.XrChart1.BorderColor = System.Drawing.Color.Black
@@ -192,8 +176,9 @@ Partial Public Class Report_IF_AMH
         Me.XrChart1.Legend.Name = "Default Legend"
         Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(289.5834!, 134.7059!)
         Me.XrChart1.Name = "XrChart1"
-        Me.XrChart1.PaletteName = "Custom"
+        Me.XrChart1.PaletteName = "Palette 1"
         Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart1.PaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)))}))
         Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
         Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 200.4167!)
         '
@@ -230,12 +215,12 @@ Partial Public Class Report_IF_AMH
         '
         'lblAMHComment1
         '
-        Me.lblAMHComment1.Font = New System.Drawing.Font("맑은 고딕", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 147.7916!)
+        Me.lblAMHComment1.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83326!, 147.7916!)
         Me.lblAMHComment1.Multiline = True
         Me.lblAMHComment1.Name = "lblAMHComment1"
         Me.lblAMHComment1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(226.25!, 130.2084!)
+        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(226.25!, 187.331!)
         Me.lblAMHComment1.SnapLineMargin = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 10, 0, 100.0!)
         Me.lblAMHComment1.StylePriority.UseFont = False
         Me.lblAMHComment1.StylePriority.UseTextAlignment = False
@@ -254,37 +239,10 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHResult.StylePriority.UseForeColor = False
         Me.lblAMHResult.Text = "lblAMHResult"
         '
-        'XrCrossBandBox1
-        '
-        Me.XrCrossBandBox1.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
-        Me.XrCrossBandBox1.BorderColor = System.Drawing.Color.Navy
-        Me.XrCrossBandBox1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
-        Me.XrCrossBandBox1.BorderWidth = 3.0!
-        Me.XrCrossBandBox1.EndBand = Me.Detail
-        Me.XrCrossBandBox1.EndPointFloat = New DevExpress.Utils.PointFloat(413.0!, 301.0!)
-        Me.XrCrossBandBox1.Name = "XrCrossBandBox1"
-        Me.XrCrossBandBox1.StartBand = Me.Detail
-        Me.XrCrossBandBox1.StartPointFloat = New DevExpress.Utils.PointFloat(413.0!, 154.0!)
-        Me.XrCrossBandBox1.WidthF = 45.0!
-        '
-        'XrCrossBandBox2
-        '
-        Me.XrCrossBandBox2.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
-        Me.XrCrossBandBox2.BorderColor = System.Drawing.Color.Navy
-        Me.XrCrossBandBox2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot
-        Me.XrCrossBandBox2.BorderWidth = 3.0!
-        Me.XrCrossBandBox2.EndBand = Me.Detail
-        Me.XrCrossBandBox2.EndPointFloat = New DevExpress.Utils.PointFloat(45.0!, 466.0!)
-        Me.XrCrossBandBox2.Name = "XrCrossBandBox2"
-        Me.XrCrossBandBox2.StartBand = Me.Detail
-        Me.XrCrossBandBox2.StartPointFloat = New DevExpress.Utils.PointFloat(45.0!, 434.0!)
-        Me.XrCrossBandBox2.WidthF = 667.7083!
-        '
         'Report_IF_AMH
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
         Me.BorderWidth = 2.0!
-        Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandBox2, Me.XrCrossBandBox1})
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 49)
@@ -319,8 +277,5 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblAddress As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrChart1 As DevExpress.XtraReports.UI.XRChart
-    Friend WithEvents AMHResultLine As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents XrCrossBandBox1 As DevExpress.XtraReports.UI.XRCrossBandBox
     Friend WithEvents XrChart2 As DevExpress.XtraReports.UI.XRChart
-    Friend WithEvents XrCrossBandBox2 As DevExpress.XtraReports.UI.XRCrossBandBox
 End Class
