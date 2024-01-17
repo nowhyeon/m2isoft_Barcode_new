@@ -196,6 +196,12 @@
     <Compile Include="01.Form\GridVeiwTest.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="01.Form\reporttest.Designer.vb">
+      <DependentUpon>reporttest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="01.Form\reporttest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="01.Form\WaitForm.Designer.vb">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </Compile>
@@ -211,10 +217,22 @@
     <Compile Include="03.Class\ClsErrorsAndEvents.vb" />
     <Compile Include="03.Class\ClsIniFile.vb" />
     <Compile Include="03.Class\ClsOrder.vb" />
-    <Compile Include="04.Report\Report_IF_AMH.Designer.vb">
-      <DependentUpon>Report_IF_AMH.vb</DependentUpon>
+    <Compile Include="04.Report\Report_IF_AMH_1.Designer.vb">
+      <DependentUpon>Report_IF_AMH_1.vb</DependentUpon>
     </Compile>
-    <Compile Include="04.Report\Report_IF_AMH.vb">
+    <Compile Include="04.Report\Report_IF_AMH_1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="04.Report\Report_IF_AMH_2.Designer.vb">
+      <DependentUpon>Report_IF_AMH_2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="04.Report\Report_IF_AMH_2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="04.Report\Report_IF_AMH_3.Designer.vb">
+      <DependentUpon>Report_IF_AMH_3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="04.Report\Report_IF_AMH_3.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
@@ -271,11 +289,20 @@
     <EmbeddedResource Include="01.Form\GridVeiwTest.resx">
       <DependentUpon>GridVeiwTest.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="01.Form\reporttest.resx">
+      <DependentUpon>reporttest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="01.Form\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="04.Report\Report_IF_AMH.resx">
-      <DependentUpon>Report_IF_AMH.vb</DependentUpon>
+    <EmbeddedResource Include="04.Report\Report_IF_AMH_1.resx">
+      <DependentUpon>Report_IF_AMH_1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04.Report\Report_IF_AMH_2.resx">
+      <DependentUpon>Report_IF_AMH_2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04.Report\Report_IF_AMH_3.resx">
+      <DependentUpon>Report_IF_AMH_3.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
