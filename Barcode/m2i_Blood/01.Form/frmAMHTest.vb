@@ -526,7 +526,7 @@ Public Class frmAMHTest
             diagram2.AxisX.Strips(0).LegendText = ""
 
             ' Customize the strip's appearance.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Color = Color.SkyBlue
+            diagram2.AxisX.Strips(0).Color = Color.Red
             diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
 
             'y 값 이름 변경
