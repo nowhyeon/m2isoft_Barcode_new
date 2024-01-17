@@ -1,7 +1,7 @@
 ﻿Imports System.Drawing.Printing
 Imports DevExpress.XtraEditors
 
-Public Class Report_IF_AMH_1
+Public Class Report_IF_AMH
     Public mPTNM As String
     Public mMedOffice As String
     Public mDoctor As String

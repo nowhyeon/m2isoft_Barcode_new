@@ -90,7 +90,7 @@ Public Class frmAMHTest
 
         For sRowCnt = 0 To sRowHandles.Length - 1
 
-            Dim Report_IF_AMH As Report_IF_AMH_1 = New Report_IF_AMH_1
+            Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
             Dim sex As String
             If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
                 sex = "여"
@@ -354,7 +354,7 @@ Public Class frmAMHTest
     End Sub
 
     Private Sub PsPrint()
-        Dim Report_IF_AMH As Report_IF_AMH_1 = New Report_IF_AMH_1
+        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
         Dim sex As String
         If txtPtSex.EditValue = "F" Then
             sex = "여"

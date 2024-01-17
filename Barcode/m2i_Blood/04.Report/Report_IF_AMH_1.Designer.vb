@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class Report_IF_AMH
     Inherits DevExpress.XtraReports.UI.XtraReport
 
     'XtraReport overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Public Class Report_IF_AMH
     'NOTE: The following procedure is required by the Designer
     'It can be modified using the Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Report_IF_AMH))
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
@@ -33,13 +33,13 @@ Partial Public Class Report_IF_AMH
         Me.lblAddress = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrChart2 = New DevExpress.XtraReports.UI.XRChart()
+        Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblRemark = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
         CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -169,6 +169,19 @@ Partial Public Class Report_IF_AMH
         Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
         Me.XrChart2.SizeF = New System.Drawing.SizeF(672.2916!, 159.375!)
         '
+        'XrChart1
+        '
+        Me.XrChart1.BorderColor = System.Drawing.Color.Black
+        Me.XrChart1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrChart1.Legend.Name = "Default Legend"
+        Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(289.5834!, 134.7059!)
+        Me.XrChart1.Name = "XrChart1"
+        Me.XrChart1.PaletteName = "Palette 1"
+        Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart1.PaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 200.4167!)
+        '
         'XrLabel1
         '
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 7.0!)
@@ -203,11 +216,11 @@ Partial Public Class Report_IF_AMH
         'lblAMHComment1
         '
         Me.lblAMHComment1.Font = New System.Drawing.Font("맑은 고딕", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83326!, 147.7916!)
+        Me.lblAMHComment1.LocationFloat = New DevExpress.Utils.PointFloat(50.83334!, 147.7916!)
         Me.lblAMHComment1.Multiline = True
         Me.lblAMHComment1.Name = "lblAMHComment1"
         Me.lblAMHComment1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(226.25!, 187.331!)
+        Me.lblAMHComment1.SizeF = New System.Drawing.SizeF(226.25!, 130.2084!)
         Me.lblAMHComment1.SnapLineMargin = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 10, 0, 100.0!)
         Me.lblAMHComment1.StylePriority.UseFont = False
         Me.lblAMHComment1.StylePriority.UseTextAlignment = False
@@ -225,18 +238,6 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHResult.StylePriority.UseFont = False
         Me.lblAMHResult.StylePriority.UseForeColor = False
         Me.lblAMHResult.Text = "lblAMHResult"
-        '
-        'XrChart1
-        '
-        Me.XrChart1.BorderColor = System.Drawing.Color.Black
-        Me.XrChart1.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrChart1.Legend.Name = "Default Legend"
-        Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(289.5834!, 134.7059!)
-        Me.XrChart1.Name = "XrChart1"
-        Me.XrChart1.PaletteName = "Custom"
-        Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
-        Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
-        Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 200.4167!)
         '
         'Report_IF_AMH
         '
@@ -275,6 +276,6 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblAddress As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrChart2 As DevExpress.XtraReports.UI.XRChart
     Friend WithEvents XrChart1 As DevExpress.XtraReports.UI.XRChart
+    Friend WithEvents XrChart2 As DevExpress.XtraReports.UI.XRChart
 End Class
