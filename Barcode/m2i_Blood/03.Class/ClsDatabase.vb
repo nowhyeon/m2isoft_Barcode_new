@@ -15,7 +15,7 @@ Public Class ClsDatabase
     Private ConnectionString As String
 
     Public Sub New()
-        Call CommonRead()
+        'Call CommonRead()
         ConnectionString = "data source=" & Str_HOST_IP & ";" &
                            "initial catalog=" & Str_DATABASE_NAME & ";" &
                            "user id=" & Str_USER_ID & ";" &

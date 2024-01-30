@@ -1,0 +1,16 @@
+[ Title      ] : FluentDesignApp
+[ Message    ] : 값은 null일 수 없습니다.
+매개 변수 이름: source
+[ StackTrace ] : 
+   위치: System.Data.DataTableExtensions.AsEnumerable(DataTable source)
+   위치: m2i_Blood.frmLoginNew.Personal_Info_Agree_YN(String txtID)
+   위치: m2i_Blood.frmLoginNew.CmdLogin_Click(Object sender, EventArgs e)
+[ Date/Time  ] : 2024-01-23 오후 3:18:31
+-------------------------------------------------------------------------------------
+[ Title      ] : FluentDesignApp
+[ Message    ] : 개체 참조가 개체의 인스턴스로 설정되지 않았습니다.
+[ StackTrace ] : 
+   위치: m2i_Blood.frmLoginNew.Personal_Info_Agree_YN(String txtID) 파일 C:\Users\myeng\OneDrive\바탕 화면\git\m2isoft_Barcode_new\Barcode\m2i_Blood\01.Form\frmLoginNew.vb:줄 211
+   위치: m2i_Blood.frmLoginNew.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\myeng\OneDrive\바탕 화면\git\m2isoft_Barcode_new\Barcode\m2i_Blood\01.Form\frmLoginNew.vb:줄 85
+[ Date/Time  ] : 2024-01-24 오후 2:42:43
+-------------------------------------------------------------------------------------

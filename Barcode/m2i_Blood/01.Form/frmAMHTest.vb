@@ -9,9 +9,12 @@ Public Class frmAMHTest
 
     Public Hospital_DB As New ClsOrder
     Public Hospital_DB_AMH As New ClsAMH
+
     Private ClsEncrypt As New ClsEncryptDecrypt
     Private ClsErrorLog As New ClsErrorsAndEvents
+
     Private ClsDb As New ClsDatabase
+
     Private SearchEnabled As Boolean = False
 
     Public Sub New()
@@ -48,6 +51,28 @@ Public Class frmAMHTest
 
     End Sub
 
+    Private Sub frmAMHTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Call Get_TestCodeAMH()
+
+        dtpFrom.DateTime = Now.AddDays(-PrevDay)
+        dtpTo.DateTime = Now.AddDays(NextDay)
+
+        With cboPrintYN.Properties
+            .Items.Add("선택 없음")
+            .Items.Add("출력")
+            .Items.Add("미출력")
+        End With
+
+        With cboSearchCond.Properties
+            .Items.Add("선택 없음")
+            .Items.Add("이름")
+            .Items.Add("차트번호")
+            .Items.Add("바코드번호")
+        End With
+
+    End Sub
+
     '수진자조회 버튼
     Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
         Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
@@ -65,7 +90,14 @@ Public Class frmAMHTest
             Case "MultiPrint"
                 Call PsMultiPrint()
             Case "print"
-                Call PsPrint()
+                Select Case ReportIndex
+                    Case 0
+                        Call PsPrint_Default()
+                    Case 1
+                        Call PsPrint_AIN()
+                    Case 2
+                        Call PsPrint_IBF()
+                End Select
             Case "Remove"
                 Call PsClearRoutine()
             Case "SearchOn"
@@ -85,7 +117,9 @@ Public Class frmAMHTest
         End Select
     End Sub
 
+#Region "다중 출력"
     Private Sub PsMultiPrint()
+
         Dim sRowHandles As Int32() = GridView.GetSelectedRows()
 
         For sRowCnt = 0 To sRowHandles.Length - 1
@@ -97,180 +131,8 @@ Public Class frmAMHTest
             ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
                 sex = "남"
             Else
-                sex = "-"
+                sex = "공통"
             End If
-
-            With Report_IF_AMH
-                .mPTNM = GridView.GetRowCellValue(sRowCnt, "PTNM").ToString
-                .mBirth = ""
-                .mSex = sex
-                .mAge = GridView.GetRowCellValue(sRowCnt, "PTAGE").ToString
-                .mChartNo = GridView.GetRowCellValue(sRowCnt, "PTID").ToString
-                .mMedOffice = GridView.GetRowCellValue(sRowCnt, "DeptCode").ToString
-                .mReceiptDate = GridView.GetRowCellValue(sRowCnt, "REQDATE").ToString
-                .mDoctor = GridView.GetRowCellValue(sRowCnt, "SIGNIN").ToString
-                .mAcceptDate = GridView.GetRowCellValue(sRowCnt, "RESULTDATE").ToString
-                .mAMHResult = GridView.GetRowCellValue(sRowCnt, "RESULT").ToString
-
-                '----------------------------------------------------------------------------------------------------------------
-                Dim series1 As Series = New Series("상위 5%", ViewType.Line)
-                Dim series2 As Series = New Series("중간값", ViewType.Line)
-                Dim series3 As Series = New Series("하위 5%", ViewType.Line)
-
-                series1.Points.Add(New SeriesPoint(1, 9.95)) '1에 9.95
-                series1.Points.Add(New SeriesPoint(3, 9.05))
-                series1.Points.Add(New SeriesPoint(5, 7.59))
-                series1.Points.Add(New SeriesPoint(7, 6.96))
-                series1.Points.Add(New SeriesPoint(9, 4.44))
-                series1.Points.Add(New SeriesPoint(11, 1.79))
-
-                series2.Points.Add(New SeriesPoint(1, 4.0))
-                series2.Points.Add(New SeriesPoint(3, 3.31))
-                series2.Points.Add(New SeriesPoint(5, 2.81))
-                series2.Points.Add(New SeriesPoint(7, 2.0))
-                series2.Points.Add(New SeriesPoint(9, 0.882))
-                series2.Points.Add(New SeriesPoint(11, 0.194))
-
-                series3.Points.Add(New SeriesPoint(1, 1.52))
-                series3.Points.Add(New SeriesPoint(3, 1.2))
-                series3.Points.Add(New SeriesPoint(5, 0.711))
-                series3.Points.Add(New SeriesPoint(7, 0.405))
-                series3.Points.Add(New SeriesPoint(9, 0.059))
-                series3.Points.Add(New SeriesPoint(11, 0.01))
-
-                '마커 제거 
-                CType(series1.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-                CType(series2.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-                CType(series3.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-
-                .XrChart1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside
-                .XrChart1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Top
-
-                .XrChart1.Series.Add(series1)
-                .XrChart1.Series.Add(series2)
-                .XrChart1.Series.Add(series3)
-
-                .XrChart1.Series(0).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-                .XrChart1.Series(1).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-                .XrChart1.Series(2).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-
-                Dim diagram As XYDiagram = CType(.XrChart1.Diagram, XYDiagram)
-
-                '나이에 따른 결과분석 영역
-                Select Case True
-                    Case Val(txtPtAge.EditValue) >= 20 AndAlso Val(txtPtAge.EditValue) < 24.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 0, 2))
-                    Case Val(txtPtAge.EditValue) >= 25 AndAlso Val(txtPtAge.EditValue) < 29.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 2, 4))
-                    Case Val(txtPtAge.EditValue) >= 30 AndAlso Val(txtPtAge.EditValue) < 34.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 4, 6))
-                    Case Val(txtPtAge.EditValue) >= 35 AndAlso Val(txtPtAge.EditValue) < 39.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 6, 8))
-                    Case Val(txtPtAge.EditValue) >= 40 AndAlso Val(txtPtAge.EditValue) < 44.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 8, 10))
-                    Case Val(txtPtAge.EditValue) >= 45 AndAlso Val(txtPtAge.EditValue) < 50.9
-                        diagram.AxisX.Strips.Add(New Strip("Strip 1", 10, 12))
-                End Select
-
-                '결과값에 따른 선 
-                With diagram.AxisY.ConstantLines(diagram.AxisY.ConstantLines.Add(New ConstantLine("제조사", .mAMHResult)))
-                    .Color = Color.PaleVioletRed
-                    .LineStyle.Thickness = 2
-                    .Title.Alignment = ConstantLineTitleAlignment.Far
-                    .Title.Visible = False
-                    .ShowInLegend = True
-                End With
-
-                ' Customize the strip's behavior.(strip's설정)
-                diagram.AxisX.Strips(0).Visible = True
-                diagram.AxisX.Strips(0).ShowAxisLabel = False
-                diagram.AxisX.Strips(0).AxisLabelText = ""
-                diagram.AxisX.Strips(0).ShowInLegend = False
-                diagram.AxisX.Strips(0).LegendText = ""
-
-                ' Customize the strip's appearance.(strip's설정)
-                diagram.AxisX.Strips(0).Color = Color.SkyBlue
-                diagram.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
-
-                'x 값 이름 변경
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="20-24", value:=1))
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="25-29", value:=3))
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="30-34", value:=5))
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="35-39", value:=7))
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="40-44", value:=9))
-                diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="45-50", value:=11))
-
-                '----------------------------------------------------------------------------------------------------------------
-                Dim series4 As Series = New Series("Side-by-Side Bar Series 1", ViewType.StackedBar)
-                Dim series5 As Series = New Series("Side-by-Side Bar Series 2", ViewType.StackedBar)
-                Dim series6 As Series = New Series("Side-by-Side Bar Series 3", ViewType.StackedBar)
-
-                series4.Points.Add(New SeriesPoint(0, 0))
-                series4.Points.Add(New SeriesPoint(1, 1))
-                series4.Points.Add(New SeriesPoint(2, 0))
-                series4.Points.Add(New SeriesPoint(3, 12))
-                series4.Points.Add(New SeriesPoint(4, 0))
-                series4.Points.Add(New SeriesPoint(5, 63))
-                series4.Points.Add(New SeriesPoint(6, 0))
-
-                series5.Points.Add(New SeriesPoint(0, 0))
-                series5.Points.Add(New SeriesPoint(1, 24))
-                series5.Points.Add(New SeriesPoint(2, 0))
-                series5.Points.Add(New SeriesPoint(3, 57))
-                series5.Points.Add(New SeriesPoint(4, 0))
-                series5.Points.Add(New SeriesPoint(5, 32))
-                series5.Points.Add(New SeriesPoint(6, 0))
-
-                series6.Points.Add(New SeriesPoint(0, 0))
-                series6.Points.Add(New SeriesPoint(1, 75))
-                series6.Points.Add(New SeriesPoint(2, 0))
-                series6.Points.Add(New SeriesPoint(3, 31))
-                series6.Points.Add(New SeriesPoint(4, 0))
-                series6.Points.Add(New SeriesPoint(5, 4))
-                series6.Points.Add(New SeriesPoint(6, 0))
-
-                .XrChart2.Series.Add(series4)
-                .XrChart2.Series.Add(series5)
-                .XrChart2.Series.Add(series6)
-
-                ' Hide the legend (if necessary).
-                .XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
-
-                CType(.XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
-
-                'CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
-
-                ' Rotate the diagram (if necessary).
-                CType(.XrChart2.Diagram, XYDiagram).Rotated = True
-
-                Dim diagram2 As XYDiagram = CType(.XrChart2.Diagram, XYDiagram)
-
-                Select Case True
-                    Case Val(.mAMHResult) > 2.28
-                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
-                    Case Val(.mAMHResult) >= 0.69 And Val(.mAMHResult) <= 2.28
-                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
-                    Case Val(.mAMHResult) < 0.69
-                        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
-                End Select
-
-                ' Customize the strip's behavior.(다이어그램설정)
-                diagram2.AxisX.Strips(0).Visible = True
-                diagram2.AxisX.Strips(0).ShowAxisLabel = False
-                diagram2.AxisX.Strips(0).AxisLabelText = ""
-                diagram2.AxisX.Strips(0).ShowInLegend = False
-                diagram2.AxisX.Strips(0).LegendText = ""
-
-                ' Customize the strip's appearance.(다이어그램설정)
-                diagram2.AxisX.Strips(0).Color = Color.SkyBlue
-                diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
-
-                'y 값 이름 변경
-                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
-                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
-                diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
-
-            End With
 
             'prevView (x)---------------------------------------------------------------------------------------------------------
             Dim printTool As New ReportPrintTool(Report_IF_AMH)
@@ -285,22 +147,17 @@ Public Class frmAMHTest
             ' 보고서를 바로 출력
             printTool.Print()
 
+#Region "보고서 출력 시 결과를 MDB에 덮어쓰기"
+            'QueryString = String.Empty
+            'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+            'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+            'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+            'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+            'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+            'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
             QueryString = String.Empty
-            QueryString &= " SELECT * FROM m2i_LAB201                                           " & vbNewLine
-            QueryString &= " WHERE REQDATE = '" & txtAcceptDate.Text & "'                       " & vbNewLine
-            QueryString &= " AND   PTID = '" & txtPtChartNo.Text & "'                           " & vbNewLine
-
-            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
-
-            If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
-                'QueryString = String.Empty
-                'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
-                'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
-                'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
-                'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
-                QueryString = String.Empty
                 QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
                 QueryString &= " (                                                              " & vbNewLine
                 QueryString &= "        REQDATE                                                 " & vbNewLine
@@ -314,24 +171,7 @@ Public Class frmAMHTest
                 QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
                 QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
                 QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
-                QueryString &= "  )                                                             " & vbNewLine
-            Else
-                QueryString = String.Empty
-                QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
-                QueryString &= " (                                                              " & vbNewLine
-                QueryString &= "        REQDATE                                                 " & vbNewLine
-                QueryString &= "      , SPCNO                                                   " & vbNewLine
-                QueryString &= "      , PTNM                                                    " & vbNewLine
-                QueryString &= "      , PTID                                                    " & vbNewLine
-                QueryString &= "      , PRTDATE                                                 " & vbNewLine
-                QueryString &= "  )VALUES(                                                      " & vbNewLine
-                QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
-                QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
-                QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
-                QueryString &= "  )                                                             " & vbNewLine
-            End If
+            QueryString &= "  )                                                             " & vbNewLine
 
             If QueryString.Length > 0 Then
                 ClsDb.CfMExecuteQuery(QueryString)
@@ -352,191 +192,51 @@ Public Class frmAMHTest
             '---------------------------------------------------------------------------------------------------------------------
         Next
     End Sub
+#End Region
 
-    Private Sub PsPrint()
-        Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
-        Dim sex As String
-        If txtPtSex.EditValue = "F" Then
-            sex = "여"
-        ElseIf txtPtSex.EditValue = "M" Then
-            sex = "남"
-        Else
-            sex = "-"
-        End If
+#Region "기본 보고서 단일 출력"
+    Private Sub PsPrint_Default()
 
-        With Report_IF_AMH
-            .mPTNM = txtPtnm.EditValue
-            .mBirth = txtPtBirth.EditValue
-            .mSex = sex
-            .mAge = txtPtAge.EditValue
-            .mChartNo = txtPtChartNo.EditValue
-            .mMedOffice = txtMedOffice.EditValue
-            .mReceiptDate = txtReceiptDate.EditValue
-            .mDoctor = txtDoctor.EditValue
-            .mAcceptDate = txtAcceptDate.EditValue
-            .mAMHResult = RESULT.Text
+        Dim Report_AMH_IF As Report_IF_AMH = New Report_IF_AMH
 
-            '----------------------------------------------------------------------------------------------------------------
-            Dim series1 As Series = New Series("상위 5%", ViewType.Line)
-            Dim series2 As Series = New Series("중간값", ViewType.Line)
-            Dim series3 As Series = New Series("하위 5%", ViewType.Line)
-
-            series1.Points.Add(New SeriesPoint(1, 9.95)) '1에 9.95
-            series1.Points.Add(New SeriesPoint(3, 9.05))
-            series1.Points.Add(New SeriesPoint(5, 7.59))
-            series1.Points.Add(New SeriesPoint(7, 6.96))
-            series1.Points.Add(New SeriesPoint(9, 4.44))
-            series1.Points.Add(New SeriesPoint(11, 1.79))
-
-            series2.Points.Add(New SeriesPoint(1, 4.0))
-            series2.Points.Add(New SeriesPoint(3, 3.31))
-            series2.Points.Add(New SeriesPoint(5, 2.81))
-            series2.Points.Add(New SeriesPoint(7, 2.0))
-            series2.Points.Add(New SeriesPoint(9, 0.882))
-            series2.Points.Add(New SeriesPoint(11, 0.194))
-
-            series3.Points.Add(New SeriesPoint(1, 1.52))
-            series3.Points.Add(New SeriesPoint(3, 1.2))
-            series3.Points.Add(New SeriesPoint(5, 0.711))
-            series3.Points.Add(New SeriesPoint(7, 0.405))
-            series3.Points.Add(New SeriesPoint(9, 0.059))
-            series3.Points.Add(New SeriesPoint(11, 0.01))
-
-            '마커 제거 
-            CType(series1.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-            CType(series2.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-            CType(series3.View, LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True
-
-            .XrChart1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside
-            .XrChart1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Top
-
-            .XrChart1.Series.Add(series1)
-            .XrChart1.Series.Add(series2)
-            .XrChart1.Series.Add(series3)
-
-            .XrChart1.Series(0).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-            .XrChart1.Series(1).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-            .XrChart1.Series(2).LabelsVisibility = DevExpress.Utils.DefaultBoolean.False
-
-            Dim diagram As XYDiagram = CType(.XrChart1.Diagram, XYDiagram)
-
-            '나이에 따른 결과분석 영역
-            Select Case True
-                Case Val(txtPtAge.EditValue) >= 20 AndAlso Val(txtPtAge.EditValue) < 24.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 0, 2))
-                Case Val(txtPtAge.EditValue) >= 25 AndAlso Val(txtPtAge.EditValue) < 29.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 2, 4))
-                Case Val(txtPtAge.EditValue) >= 30 AndAlso Val(txtPtAge.EditValue) < 34.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 4, 6))
-                Case Val(txtPtAge.EditValue) >= 35 AndAlso Val(txtPtAge.EditValue) < 39.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 6, 8))
-                Case Val(txtPtAge.EditValue) >= 40 AndAlso Val(txtPtAge.EditValue) < 44.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 8, 10))
-                Case Val(txtPtAge.EditValue) >= 45 AndAlso Val(txtPtAge.EditValue) < 50.9
-                    diagram.AxisX.Strips.Add(New Strip("Strip 1", 10, 12))
-            End Select
-
-            '결과값에 따른 선 
-            With diagram.AxisY.ConstantLines(diagram.AxisY.ConstantLines.Add(New ConstantLine("제조사", .mAMHResult)))
-                .Color = Color.PaleVioletRed
-                .LineStyle.Thickness = 2
-                .Title.Alignment = ConstantLineTitleAlignment.Far
-                .Title.Visible = False
-                .ShowInLegend = True
-            End With
-
-            ' Customize the strip's behavior.(strip's설정)
-            diagram.AxisX.Strips(0).Visible = True
-            diagram.AxisX.Strips(0).ShowAxisLabel = False
-            diagram.AxisX.Strips(0).AxisLabelText = ""
-            diagram.AxisX.Strips(0).ShowInLegend = False
-            diagram.AxisX.Strips(0).LegendText = ""
-
-            ' Customize the strip's appearance.(strip's설정)
-            diagram.AxisX.Strips(0).Color = Color.SkyBlue
-            diagram.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
-
-            'x 값 이름 변경
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="20-24", value:=1))
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="25-29", value:=3))
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="30-34", value:=5))
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="35-39", value:=7))
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="40-44", value:=9))
-            diagram.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="45-50", value:=11))
-
-            '----------------------------------------------------------------------------------------------------------------
-            Dim series4 As Series = New Series("Side-by-Side Bar Series 1", ViewType.StackedBar)
-            Dim series5 As Series = New Series("Side-by-Side Bar Series 2", ViewType.StackedBar)
-            Dim series6 As Series = New Series("Side-by-Side Bar Series 3", ViewType.StackedBar)
-
-            series4.Points.Add(New SeriesPoint(0, 0))
-            series4.Points.Add(New SeriesPoint(1, 1))
-            series4.Points.Add(New SeriesPoint(2, 0))
-            series4.Points.Add(New SeriesPoint(3, 12))
-            series4.Points.Add(New SeriesPoint(4, 0))
-            series4.Points.Add(New SeriesPoint(5, 63))
-            series4.Points.Add(New SeriesPoint(6, 0))
-
-            series5.Points.Add(New SeriesPoint(0, 0))
-            series5.Points.Add(New SeriesPoint(1, 24))
-            series5.Points.Add(New SeriesPoint(2, 0))
-            series5.Points.Add(New SeriesPoint(3, 57))
-            series5.Points.Add(New SeriesPoint(4, 0))
-            series5.Points.Add(New SeriesPoint(5, 32))
-            series5.Points.Add(New SeriesPoint(6, 0))
-
-            series6.Points.Add(New SeriesPoint(0, 0))
-            series6.Points.Add(New SeriesPoint(1, 75))
-            series6.Points.Add(New SeriesPoint(2, 0))
-            series6.Points.Add(New SeriesPoint(3, 31))
-            series6.Points.Add(New SeriesPoint(4, 0))
-            series6.Points.Add(New SeriesPoint(5, 4))
-            series6.Points.Add(New SeriesPoint(6, 0))
-
-            .XrChart2.Series.Add(series4)
-            .XrChart2.Series.Add(series5)
-            .XrChart2.Series.Add(series6)
-
-            ' Hide the legend (if necessary).
-            .XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
-
-            CType(.XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
-
-            'CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
-
-            ' Rotate the diagram (if necessary).
-            CType(.XrChart2.Diagram, XYDiagram).Rotated = True
-
-            Dim diagram2 As XYDiagram = CType(.XrChart2.Diagram, XYDiagram)
-
-            Select Case True
-                Case Val(.mAMHResult) > 2.28
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
-                Case Val(.mAMHResult) >= 0.69 And Val(.mAMHResult) <= 2.28
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
-                Case Val(.mAMHResult) < 0.69
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
-            End Select
-
-            ' Customize the strip's behavior.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Visible = True
-            diagram2.AxisX.Strips(0).ShowAxisLabel = False
-            diagram2.AxisX.Strips(0).AxisLabelText = ""
-            diagram2.AxisX.Strips(0).ShowInLegend = False
-            diagram2.AxisX.Strips(0).LegendText = ""
-
-            ' Customize the strip's appearance.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Color = Color.Blue
-            diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
-
-            'y 값 이름 변경
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
-
+        '보고서 출력 시 미리보기 (O)--------------------
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
+            .ShowDialog()
         End With
 
-        'prevView (x)---------------------------------------------------------------------------------------------------------
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
+        QueryString = String.Empty
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
+#Region "출력 시 미리보기 없음"
         'Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
         ' PrintDocument 인스턴스 생성
@@ -548,73 +248,128 @@ Public Class frmAMHTest
 
         ' 보고서를 바로 출력
         'printTool.Print()
-        '---------------------------------------------------------------------------------------------------------------------
+#End Region
 
-        'prevView (O)---------------------------------------------------------------------------------------------------------
+    End Sub
+#End Region
+
+#Region "아인여성의원 보고서 단일 출력"
+    Private Sub PsPrint_AIN()
+
+        Dim Report_AMH_IF As Report_IF_AMH_2 = New Report_IF_AMH_2
+
+        '보고서 출력 시 미리보기 (O)--------------------
         With frmReportView
-            .dcvPrevView.DocumentSource = Report_IF_AMH
-            Report_IF_AMH.CreateDocument()
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
             .ShowDialog()
-
-            'If .DialogResult = DialogResult.OK Then
-            '    SimpleButton1_Click(sender, e)
-            'End If
         End With
-        '---------------------------------------------------------------------------------------------------------------------
+
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
 
         QueryString = String.Empty
-        QueryString &= " SELECT * FROM m2i_LAB201                                           " & vbNewLine
-        QueryString &= " WHERE REQDATE = '" & txtAcceptDate.Text & "'                       " & vbNewLine
-        QueryString &= " AND   PTID = '" & txtPtChartNo.Text & "'                           " & vbNewLine
-
-        Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
-
-        If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
-            'QueryString = String.Empty
-            'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
-            'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-            'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
-            'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
-            'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-            'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
-            QueryString = String.Empty
-            QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
-            QueryString &= " (                                                              " & vbNewLine
-            QueryString &= "        REQDATE                                                 " & vbNewLine
-            QueryString &= "      , SPCNO                                                   " & vbNewLine
-            QueryString &= "      , PTNM                                                    " & vbNewLine
-            QueryString &= "      , PTID                                                    " & vbNewLine
-            QueryString &= "      , PRTDATE                                                 " & vbNewLine
-            QueryString &= "  )VALUES(                                                      " & vbNewLine
-            QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
-            QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
-            QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
-            QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
-            QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
-            QueryString &= "  )                                                             " & vbNewLine
-        Else
-            QueryString = String.Empty
-            QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
-            QueryString &= " (                                                              " & vbNewLine
-            QueryString &= "        REQDATE                                                 " & vbNewLine
-            QueryString &= "      , SPCNO                                                   " & vbNewLine
-            QueryString &= "      , PTNM                                                    " & vbNewLine
-            QueryString &= "      , PTID                                                    " & vbNewLine
-            QueryString &= "      , PRTDATE                                                 " & vbNewLine
-            QueryString &= "  )VALUES(                                                      " & vbNewLine
-            QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
-            QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
-            QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
-            QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
-            QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
-            QueryString &= "  )                                                             " & vbNewLine
-        End If
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
 
         If QueryString.Length > 0 Then
             ClsDb.CfMExecuteQuery(QueryString)
         End If
 
+#Region "출력 시 미리보기 없음"
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+        ' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        'printTool.Print()
+#End Region
+
     End Sub
+#End Region
+
+#Region "아이비에프 보고서 단일 출력"
+    Private Sub PsPrint_IBF()
+
+        Dim Report_AMH_IF As Report_IF_AMH_3 = New Report_IF_AMH_3
+
+        '보고서 출력 시 미리보기 (O)-------------------
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
+            .ShowDialog()
+        End With
+
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
+        QueryString = String.Empty
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
+#Region "출력 시 미리보기 없음"
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+        ' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        'printTool.Print()
+#End Region
+
+    End Sub
+#End Region
 
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
 
@@ -695,28 +450,6 @@ Public Class frmAMHTest
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub frmAMHTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Call Get_TestCodeAMH()
-
-        dtpFrom.DateTime = Now.AddDays(-PrevDay)
-        dtpTo.DateTime = Now.AddDays(NextDay)
-
-        With cboPrintYN.Properties
-            .Items.Add("선택 없음")
-            .Items.Add("출력")
-            .Items.Add("미출력")
-        End With
-
-        With cboSearchCond.Properties
-            .Items.Add("선택 없음")
-            .Items.Add("이름")
-            .Items.Add("차트번호")
-            .Items.Add("바코드번호")
-        End With
-
     End Sub
 
     'mDB에서 검사코드 가져온다

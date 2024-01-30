@@ -100,12 +100,12 @@ Partial Class frmLogin
         Me.LayoutControl1.Controls.Add(Me.txtPW)
         Me.LayoutControl1.Controls.Add(Me.btnLogin)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.Location = New System.Drawing.Point(2, 29)
+        Me.LayoutControl1.Location = New System.Drawing.Point(2, 26)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(492, 0, 650, 400)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(235, 162)
+        Me.LayoutControl1.Size = New System.Drawing.Size(235, 165)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -114,7 +114,7 @@ Partial Class frmLogin
         Me.lblUser.Font = New System.Drawing.Font("돋움", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.Location = New System.Drawing.Point(83, 40)
         Me.lblUser.Name = "lblUser"
-        Me.lblUser.Size = New System.Drawing.Size(140, 51)
+        Me.lblUser.Size = New System.Drawing.Size(140, 54)
         Me.lblUser.TabIndex = 4
         Me.lblUser.Text = "사용자"
         Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -135,7 +135,7 @@ Partial Class frmLogin
         'txtPW
         '
         Me.txtPW.EditValue = ""
-        Me.txtPW.Location = New System.Drawing.Point(83, 95)
+        Me.txtPW.Location = New System.Drawing.Point(83, 98)
         Me.txtPW.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtPW.Name = "txtPW"
         Me.txtPW.Properties.Appearance.Options.UseTextOptions = True
@@ -148,7 +148,7 @@ Partial Class frmLogin
         '
         'btnLogin
         '
-        Me.btnLogin.Location = New System.Drawing.Point(12, 123)
+        Me.btnLogin.Location = New System.Drawing.Point(12, 126)
         Me.btnLogin.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(211, 27)
@@ -162,7 +162,7 @@ Partial Class frmLogin
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutcontrolitem1, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(235, 162)
+        Me.Root.Size = New System.Drawing.Size(235, 165)
         '
         'layoutcontrolitem1
         '
@@ -180,7 +180,7 @@ Partial Class frmLogin
         '
         Me.layoutControlItem2.Control = Me.txtPW
         Me.layoutControlItem2.CustomizationFormText = "layoutControlItem2"
-        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 83)
+        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 86)
         Me.layoutControlItem2.Name = "layoutControlItem2"
         Me.layoutControlItem2.Size = New System.Drawing.Size(215, 28)
         Me.layoutControlItem2.Text = "| 비밀번호 "
@@ -191,7 +191,7 @@ Partial Class frmLogin
         '
         Me.layoutControlItem4.Control = Me.btnLogin
         Me.layoutControlItem4.CustomizationFormText = "layoutControlItem4"
-        Me.layoutControlItem4.Location = New System.Drawing.Point(0, 111)
+        Me.layoutControlItem4.Location = New System.Drawing.Point(0, 114)
         Me.layoutControlItem4.Name = "layoutControlItem4"
         Me.layoutControlItem4.Size = New System.Drawing.Size(215, 31)
         Me.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Left
@@ -203,7 +203,7 @@ Partial Class frmLogin
         Me.LayoutControlItem3.Control = Me.lblUser
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 28)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(215, 55)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(215, 58)
         Me.LayoutControlItem3.Text = "    "
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(68, 18)
         '

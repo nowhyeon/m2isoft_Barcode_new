@@ -2,6 +2,7 @@
 Imports Microsoft.VisualBasic.Devices
 Imports DevExpress.XtraEditors
 
+
 Namespace My
     ' MyApplication에 대해 다음 이벤트를 사용할 수 있습니다.
     ' Startup: 응용 프로그램이 시작되고 시작 폼이 만들어지기 전에 발생합니다.
@@ -15,8 +16,9 @@ Namespace My
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
 
             WindowsFormsSettings.LoadApplicationSettings()
-            REM WindowsFormsSettings.DefaultFont = New System.Drawing.Font("Tahoma", 9)
             WindowsFormsSettings.DefaultFont = New System.Drawing.Font("맑은 고딕", 9)
+
+            clsDB.ACCESS_DBOpen()
 
             If CommonRead() = False Then
                 End

@@ -158,7 +158,7 @@ Partial Class frmLoginNew
         Me.txtUserID.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.txtUserID.Size = New System.Drawing.Size(235, 24)
         Me.txtUserID.StyleController = Me.LayoutControl1
-        Me.txtUserID.TabIndex = 1
+        Me.txtUserID.TabIndex = 0
         '
         'txtPassword
         '
@@ -313,7 +313,7 @@ Partial Class frmLoginNew
         Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.Appearance.Options.UseForeColor = True
         Me.LabelControl2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LabelControl2.Location = New System.Drawing.Point(320, 488)
+        Me.LabelControl2.Location = New System.Drawing.Point(306, 488)
         Me.LabelControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(238, 20)
@@ -326,7 +326,7 @@ Partial Class frmLoginNew
         Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.Appearance.Options.UseForeColor = True
-        Me.LabelControl1.Location = New System.Drawing.Point(383, 460)
+        Me.LabelControl1.Location = New System.Drawing.Point(366, 460)
         Me.LabelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(175, 20)

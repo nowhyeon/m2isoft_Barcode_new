@@ -112,10 +112,11 @@ Partial Class frmReportView
         '
         Me.LayoutControl1.Controls.Add(Me.dcvPrevView)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 54)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 67)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(1276, 573)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1640, 832)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -123,9 +124,10 @@ Partial Class frmReportView
         '
         Me.dcvPrevView.DocumentSource = Me.RemoteDocumentSource1
         Me.dcvPrevView.IsMetric = True
-        Me.dcvPrevView.Location = New System.Drawing.Point(11, 10)
+        Me.dcvPrevView.Location = New System.Drawing.Point(13, 13)
+        Me.dcvPrevView.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.dcvPrevView.Name = "dcvPrevView"
-        Me.dcvPrevView.Size = New System.Drawing.Size(1254, 553)
+        Me.dcvPrevView.Size = New System.Drawing.Size(1614, 806)
         Me.dcvPrevView.TabIndex = 4
         '
         'Root
@@ -134,7 +136,7 @@ Partial Class frmReportView
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1276, 573)
+        Me.Root.Size = New System.Drawing.Size(1640, 832)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -142,7 +144,7 @@ Partial Class frmReportView
         Me.LayoutControlItem1.Control = Me.dcvPrevView
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1258, 557)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1618, 810)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -602,31 +604,35 @@ Partial Class frmReportView
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.DocumentViewerBarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1276, 54)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1640, 67)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 627)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 899)
         Me.barDockControlBottom.Manager = Me.DocumentViewerBarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1276, 22)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1640, 29)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 54)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 67)
         Me.barDockControlLeft.Manager = Me.DocumentViewerBarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 573)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 832)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1276, 54)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1640, 67)
         Me.barDockControlRight.Manager = Me.DocumentViewerBarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 573)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 832)
         '
         'bbiEditPageHF
         '
@@ -833,17 +839,21 @@ Partial Class frmReportView
         '
         'frmReportView
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.Appearance.Options.UseFont = True
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1276, 649)
+        Me.ClientSize = New System.Drawing.Size(1640, 928)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
+        Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmReportView"
-        Me.Text = "ReportView"
+        Me.ShowIcon = False
+        Me.Text = "인쇄 미리보기"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)

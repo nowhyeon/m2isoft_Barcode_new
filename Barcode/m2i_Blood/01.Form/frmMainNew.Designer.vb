@@ -26,6 +26,11 @@ Partial Class frmMainNew
         Me.BarDockingMenuItem2 = New DevExpress.XtraBars.BarDockingMenuItem()
         Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
         Me.BarDockingMenuItem3 = New DevExpress.XtraBars.BarDockingMenuItem()
+        Me.BhiUserNM = New DevExpress.XtraBars.BarHeaderItem()
+        Me.BsiUserNM = New DevExpress.XtraBars.BarStaticItem()
+        Me.BsiWorkDate = New DevExpress.XtraBars.BarStaticItem()
+        Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.DockManager1 = New DevExpress.XtraBars.Docking.DockManager(Me.components)
         Me.DockPanel1 = New DevExpress.XtraBars.Docking.DockPanel()
@@ -48,6 +53,8 @@ Partial Class frmMainNew
         Me.AccordionControlElement5 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator2 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DockManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DockPanel1.SuspendLayout()
         Me.DockPanel1_Container.SuspendLayout()
@@ -59,10 +66,12 @@ Partial Class frmMainNew
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.BarDockingMenuItem1, Me.BarDockingMenuItem2, Me.BarSubItem1, Me.BarDockingMenuItem3})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.BarDockingMenuItem1, Me.BarDockingMenuItem2, Me.BarSubItem1, Me.BarDockingMenuItem3, Me.BhiUserNM, Me.BsiUserNM, Me.BsiWorkDate, Me.SkinRibbonGalleryBarItem1})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 5
+        Me.RibbonControl.MaxItemId = 6
         Me.RibbonControl.Name = "RibbonControl"
+        Me.RibbonControl.PageHeaderItemLinks.Add(Me.SkinRibbonGalleryBarItem1)
+        Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemDateEdit1})
         Me.RibbonControl.Size = New System.Drawing.Size(1224, 67)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar
         '
@@ -91,8 +100,48 @@ Partial Class frmMainNew
         Me.BarDockingMenuItem3.Id = 4
         Me.BarDockingMenuItem3.Name = "BarDockingMenuItem3"
         '
+        'BhiUserNM
+        '
+        Me.BhiUserNM.Appearance.Font = New System.Drawing.Font("맑은 고딕", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BhiUserNM.Appearance.Options.UseFont = True
+        Me.BhiUserNM.Id = 7
+        Me.BhiUserNM.Name = "BhiUserNM"
+        '
+        'BsiUserNM
+        '
+        Me.BsiUserNM.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.BsiUserNM.Caption = "사용자"
+        Me.BsiUserNM.Id = 2
+        Me.BsiUserNM.ImageOptions.Image = CType(resources.GetObject("BsiUserNM.ImageOptions.Image"), System.Drawing.Image)
+        Me.BsiUserNM.ImageOptions.LargeImage = CType(resources.GetObject("BsiUserNM.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.BsiUserNM.Name = "BsiUserNM"
+        '
+        'BsiWorkDate
+        '
+        Me.BsiWorkDate.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.BsiWorkDate.Caption = "2024-01-24"
+        Me.BsiWorkDate.Id = 3
+        Me.BsiWorkDate.ImageOptions.Image = CType(resources.GetObject("BsiWorkDate.ImageOptions.Image"), System.Drawing.Image)
+        Me.BsiWorkDate.ImageOptions.LargeImage = CType(resources.GetObject("BsiWorkDate.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.BsiWorkDate.Name = "BsiWorkDate"
+        '
+        'SkinRibbonGalleryBarItem1
+        '
+        Me.SkinRibbonGalleryBarItem1.Caption = "SkinRibbonGalleryBarItem1"
+        Me.SkinRibbonGalleryBarItem1.Id = 5
+        Me.SkinRibbonGalleryBarItem1.Name = "SkinRibbonGalleryBarItem1"
+        '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        '
         'RibbonStatusBar
         '
+        Me.RibbonStatusBar.ItemLinks.Add(Me.BsiUserNM)
+        Me.RibbonStatusBar.ItemLinks.Add(Me.BsiWorkDate, True)
         Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 972)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.RibbonControl
@@ -268,6 +317,7 @@ Partial Class frmMainNew
         '
         'frmMainNew
         '
+        Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
         Me.Appearance.Options.UseFont = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -278,12 +328,15 @@ Partial Class frmMainNew
         Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
+        Me.MaximizeBox = False
         Me.Name = "frmMainNew"
         Me.Ribbon = Me.RibbonControl
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.StatusBar = Me.RibbonStatusBar
         Me.Text = "M2ISOFT"
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DockManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.DockPanel1.ResumeLayout(False)
         Me.DockPanel1_Container.ResumeLayout(False)
@@ -321,4 +374,9 @@ Partial Class frmMainNew
     Private WithEvents AccordionControlSeparator1 As DevExpress.XtraBars.Navigation.AccordionControlSeparator
     Friend WithEvents AccordionControlElement8 As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents aceRemote As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents BhiUserNM As DevExpress.XtraBars.BarHeaderItem
+    Friend WithEvents BsiUserNM As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents BsiWorkDate As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents SkinRibbonGalleryBarItem1 As DevExpress.XtraBars.SkinRibbonGalleryBarItem
 End Class

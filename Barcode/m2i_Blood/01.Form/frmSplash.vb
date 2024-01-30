@@ -21,6 +21,7 @@
         If marqueeProgressBarControl1.Position >= 100 Then
 
             frmLoginNew.Show()
+            frmLoginNew.txtUserID.Focus()
             Me.Close()
 
         End If

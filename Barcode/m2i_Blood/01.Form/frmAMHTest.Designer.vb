@@ -477,7 +477,9 @@ Partial Class frmAMHTest
         Me.txtPtSex.Location = New System.Drawing.Point(100, 80)
         Me.txtPtSex.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtSex.Name = "txtPtSex"
+        Me.txtPtSex.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtPtSex.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtPtSex.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtSex.Properties.Appearance.Options.UseFont = True
         Me.txtPtSex.Properties.Appearance.Options.UseTextOptions = True
         Me.txtPtSex.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -491,7 +493,9 @@ Partial Class frmAMHTest
         Me.txtPtChartNo.Location = New System.Drawing.Point(453, 50)
         Me.txtPtChartNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtChartNo.Name = "txtPtChartNo"
+        Me.txtPtChartNo.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtPtChartNo.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtPtChartNo.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtChartNo.Properties.Appearance.Options.UseFont = True
         Me.txtPtChartNo.Properties.ReadOnly = True
         Me.txtPtChartNo.Size = New System.Drawing.Size(218, 26)
@@ -503,7 +507,9 @@ Partial Class frmAMHTest
         Me.txtPtAge.Location = New System.Drawing.Point(261, 80)
         Me.txtPtAge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtAge.Name = "txtPtAge"
+        Me.txtPtAge.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtPtAge.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtPtAge.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtAge.Properties.Appearance.Options.UseFont = True
         Me.txtPtAge.Properties.Appearance.Options.UseTextOptions = True
         Me.txtPtAge.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -517,7 +523,9 @@ Partial Class frmAMHTest
         Me.txtMedOffice.Location = New System.Drawing.Point(100, 140)
         Me.txtMedOffice.Margin = New System.Windows.Forms.Padding(4)
         Me.txtMedOffice.Name = "txtMedOffice"
+        Me.txtMedOffice.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtMedOffice.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtMedOffice.Properties.Appearance.Options.UseBackColor = True
         Me.txtMedOffice.Properties.Appearance.Options.UseFont = True
         Me.txtMedOffice.Properties.ReadOnly = True
         Me.txtMedOffice.Size = New System.Drawing.Size(223, 26)
@@ -529,7 +537,9 @@ Partial Class frmAMHTest
         Me.txtReceiptDate.Location = New System.Drawing.Point(453, 80)
         Me.txtReceiptDate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtReceiptDate.Name = "txtReceiptDate"
+        Me.txtReceiptDate.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtReceiptDate.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtReceiptDate.Properties.Appearance.Options.UseBackColor = True
         Me.txtReceiptDate.Properties.Appearance.Options.UseFont = True
         Me.txtReceiptDate.Properties.ReadOnly = True
         Me.txtReceiptDate.Size = New System.Drawing.Size(218, 26)
@@ -541,7 +551,9 @@ Partial Class frmAMHTest
         Me.txtDoctor.Location = New System.Drawing.Point(100, 110)
         Me.txtDoctor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDoctor.Name = "txtDoctor"
+        Me.txtDoctor.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtDoctor.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtDoctor.Properties.Appearance.Options.UseBackColor = True
         Me.txtDoctor.Properties.Appearance.Options.UseFont = True
         Me.txtDoctor.Properties.ReadOnly = True
         Me.txtDoctor.Size = New System.Drawing.Size(223, 26)
@@ -553,7 +565,9 @@ Partial Class frmAMHTest
         Me.txtAcceptDate.Location = New System.Drawing.Point(453, 110)
         Me.txtAcceptDate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAcceptDate.Name = "txtAcceptDate"
+        Me.txtAcceptDate.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtAcceptDate.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.txtAcceptDate.Properties.Appearance.Options.UseBackColor = True
         Me.txtAcceptDate.Properties.Appearance.Options.UseFont = True
         Me.txtAcceptDate.Properties.ReadOnly = True
         Me.txtAcceptDate.Size = New System.Drawing.Size(218, 26)
@@ -565,7 +579,7 @@ Partial Class frmAMHTest
         Me.txtPtBirth.Location = New System.Drawing.Point(100, 50)
         Me.txtPtBirth.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPtBirth.Name = "txtPtBirth"
-        Me.txtPtBirth.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(245, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.txtPtBirth.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.txtPtBirth.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
         Me.txtPtBirth.Properties.Appearance.Options.UseBackColor = True
         Me.txtPtBirth.Properties.Appearance.Options.UseFont = True
