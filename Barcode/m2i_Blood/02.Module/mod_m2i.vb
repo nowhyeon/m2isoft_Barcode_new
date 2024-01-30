@@ -1,16 +1,13 @@
 ﻿Imports System.Configuration
 Imports System.IO
 Imports System.Net
-Imports DevExpress.DataAccess.ConnectionParameters
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraPrinting
 Imports System.Xml
 Imports Microsoft.Win32
-Imports System.ComponentModel
+Imports DevExpress.XtraCharts
 
 Module mod_m2i
 
@@ -30,6 +27,7 @@ Module mod_m2i
     Public gProgramRunTimer As Integer = 0
     Public gProcessName As String = String.Empty
 
+#Region "XML파일용 변수"
     ' TCPIP 프린트설정
     Public gBolFlag As String = "TCPIP"             ' LAN: TCPIP, 시리얼: SERIAL
     Public gPrintIP_ZD As String                    ' "172.0.0.101"
@@ -46,19 +44,22 @@ Module mod_m2i
 
     ' mDB 설정
     Public gMDbType As String
-    Public gMDbName As String
-    Public gMDbUserNM As String
-    Public gMDbUserPW As String
+    Public gMDbName As String = Application.StartupPath & "\00.DATABASE\m2i_Local_DB.mdb"
+    Public gMDbUserNM As String = "admin"
+    Public gMDbUserPW As String = "admin"
 
     ' 날짜 설정
     Public NextDay As Integer   ' dtpTo 컨트롤에 들어갈 변수( dtpTo ) 양수가 들어가야 함
     Public PrevDay As Integer   ' dtpFrom 컨트롤에 들어갈 변수( dtpFrom ) 음수가 들어가야 함
-    Public NextMonth As Integer
-    Public PrevMonth As Integer
 
     ' 체크 Visible 설정
     Public BloodCheck As Boolean
     Public AMHCheck As Boolean
+
+    ' 보고서 선택 설정
+    Public ReportIndex As Integer
+
+#End Region
 
     ' 검사코드 받는 변수(바코드용, AMH용)
     Public gTestCode As String
@@ -534,9 +535,9 @@ Module mod_m2i
 
             Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
-            Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
             Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
             Dim mBlood5 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ProgramSelect")
+            Dim mBlood6 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ReportSelect")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -556,13 +557,6 @@ Module mod_m2i
                 gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
             Next
 
-            For Each MDB As XmlNode In mBlood3
-                gMDbType = MDB.SelectSingleNode("MDB_TYPE").InnerText
-                gMDbName = MDB.SelectSingleNode("MDB_NAME").InnerText
-                gMDbUserNM = MDB.SelectSingleNode("MDB_ID").InnerText
-                gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
-            Next
-
             For Each DateSet As XmlNode In mBlood4
                 NextDay = DateSet.SelectSingleNode("NextDay").InnerText
                 PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
@@ -571,6 +565,10 @@ Module mod_m2i
             For Each ProgramSelect As XmlNode In mBlood5
                 BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
                 AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+            Next
+
+            For Each ReportSelect As XmlNode In mBlood6
+                ReportIndex = ReportSelect.SelectSingleNode("ReportIndex").InnerText
             Next
 
             Return True
@@ -658,5 +656,22 @@ Module mod_m2i
         Return True
 
     End Function
+
+#Region "개인정보동의를 했는 지 Y or String.Empty 반환"
+    Public Function Personal_Info_Agree_YN(txtID As String) As String
+        Dim cDb As New ClsDatabase
+        Dim sTable As DataTable
+
+        QueryString = String.Empty
+        QueryString = " SELECT [CHK_YN] FROM [m2i_LAB001] WHERE [EMP_ID] = '" & txtID & "' " & vbCrLf
+        'QueryString = " WHERE [EMP_ID] = '" & txtID & "'      "
+
+        Debug.Print(QueryString)
+
+        sTable = ClsDb.CfMSelectQuery(QueryString)
+
+        Return Trim(sTable(0)("CHK_YN").ToString)
+    End Function
+#End Region
 
 End Module

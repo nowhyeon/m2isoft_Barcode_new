@@ -15,18 +15,15 @@
     <PRINTER_IP>172.0.0.101</PRINTER_IP>
     <PRINTER_PORT>9100</PRINTER_PORT>
   </Communication>
-  <MDB>
-    <MDB_TYPE>ACCESS</MDB_TYPE>
-    <MDB_NAME>C:\Users\M2I_SOFT\Desktop\Git\m2isoft_Barcode_new\Barcode\m2i_Blood\00.DATABASE\m2i_Local_DB.mdb</MDB_NAME>
-    <MDB_ID>admin</MDB_ID>
-    <MDB_PW>admin</MDB_PW>
-  </MDB>
   <DateSet>
     <NextDay>0</NextDay>
-    <PrevDay>12</PrevDay>
+    <PrevDay>1</PrevDay>
   </DateSet>
   <ProgramSelect>
     <Blood>False</Blood>
-    <AMH>False</AMH>
+    <AMH>True</AMH>
   </ProgramSelect>
+  <ReportSelect>
+    <ReportIndex>1</ReportIndex>
+  </ReportSelect>
 </mBlood>

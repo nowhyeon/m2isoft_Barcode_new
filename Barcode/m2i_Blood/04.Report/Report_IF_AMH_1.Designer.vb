@@ -40,6 +40,7 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHComment1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
         CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -278,4 +279,5 @@ Partial Public Class Report_IF_AMH
     Friend WithEvents lblAddress As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrChart1 As DevExpress.XtraReports.UI.XRChart
     Friend WithEvents XrChart2 As DevExpress.XtraReports.UI.XRChart
+    Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
 End Class

@@ -1,10 +1,30 @@
 ﻿Imports DevExpress.XtraEditors
-Imports System.ComponentModel
 
 Public Class frmMainNew
     Private ClsEncrypt As New ClsEncryptDecrypt
     Private ClsErrorLog As New ClsErrorsAndEvents
     Private ClsDb As New ClsDatabase
+
+    Private Sub frmMainNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If BloodCheck = True Then
+            aceAMH.Visible = False
+            frmConfig.TabReport.PageVisible = False
+        Else
+            aceAMH.Visible = True
+        End If
+
+        If AMHCheck = True Then
+            aceBarcode.Visible = False
+            frmConfig.TabComm.PageVisible = False
+        Else
+            aceBarcode.Visible = True
+        End If
+
+        BsiWorkDate.Caption = Format(Now, "yyyy-MM-dd")
+        BsiUserNM.Caption = frmLoginNew.lblUsernm.Text
+
+    End Sub
 
     Private Sub aceBarcode_Click(sender As Object, e As EventArgs) Handles aceBarcode.Click
         PtFormShow(frmBarcode, sender)
@@ -22,11 +42,12 @@ Public Class frmMainNew
         frmConfig.Show()
     End Sub
 
-    Private Sub frmMainNew_FormClosing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub frmMainNew_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.Closing
         If XtraMessageBox.Show(_sMsg.sMsg_Exit, _sMsg_Title.sMsgTitle_Exit, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             e.Cancel = True
+        Else
+            End
         End If
-        End
     End Sub
 
     Private Sub aceRemote_Click(sender As Object, e As EventArgs) Handles aceRemote.Click
@@ -79,21 +100,6 @@ Public Class frmMainNew
         End Try
 
         Me.Cursor = Cursors.Default
-    End Sub
-
-    Private Sub frmMainNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        If BloodCheck = True Then
-            aceAMH.Visible = False
-        Else
-            aceAMH.Visible = True
-        End If
-
-        If AMHCheck = True Then
-            aceBarcode.Visible = False
-        Else
-            aceBarcode.Visible = True
-        End If
     End Sub
 
 End Class

@@ -22,10 +22,6 @@ Public Class frmConfig
             .Properties.Items.Add("ACCESS")
         End With
 
-        With cboMDBType
-            .Properties.Items.Add("ACCESS")
-        End With
-
     End Sub
 
     Private Sub btnPanWork_Click(sender As Object, e As ButtonEventArgs) Handles btnPanWork.ButtonClick
@@ -48,7 +44,7 @@ Public Class frmConfig
 
     End Sub
 
-    Private Sub btnFileDic_Click(sender As Object, e As EventArgs) Handles btnFileDic.Click
+    Private Sub btnFileDic_Click(sender As Object, e As EventArgs) 
         Dim dlgOFD As New OpenFileDialog()
         Dim sfilePath As String
 
@@ -60,7 +56,6 @@ Public Class frmConfig
 
         If dlgOFD.ShowDialog = DialogResult.OK Then
             sfilePath = dlgOFD.FileName
-            txtMDBName.Text = sfilePath
 
             '-[ 텍스트 파일을 읽으려면
             'txtFileMemo.Text = My.Computer.FileSystem.ReadAllText(sfilePath)
@@ -90,16 +85,16 @@ Public Class frmConfig
         Dim ClsEncryption As New ClsEncryptDecrypt
         Dim xmlDoc As New XmlDocument()
         Try
-            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_ServerSave, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            If XtraMessageBox.Show(_sMsg_Question.sMsgQst_Save, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
 
                 Dim rootNode As XmlNode = xmlDoc.CreateElement("mBlood")
                 xmlDoc.AppendChild(rootNode)
 
                 Dim childNode As XmlNode = xmlDoc.CreateElement("SERVER")
                 Dim childNode2 As XmlNode = xmlDoc.CreateElement("Communication")
-                Dim childNode3 As XmlNode = xmlDoc.CreateElement("MDB")
                 Dim childNode4 As XmlNode = xmlDoc.CreateElement("DateSet")
                 Dim childNode5 As XmlNode = xmlDoc.CreateElement("ProgramSelect")
+                Dim childNode6 As XmlNode = xmlDoc.CreateElement("ReportSelect")
 
                 ' XML 파일에 NODE를 추가해주는 부분 
                 ' - SERVER 부분에 들어가는 노드들 -
@@ -116,12 +111,6 @@ Public Class frmConfig
                 Dim PRINTER_IP_Node As XmlNode = xmlDoc.CreateElement("PRINTER_IP")
                 Dim PRINTER_PORT_Node As XmlNode = xmlDoc.CreateElement("PRINTER_PORT")
 
-                ' - MDB설정 부분에 들어가는 노드들 -
-                Dim MDB_TYPE_Node As XmlNode = xmlDoc.CreateElement("MDB_TYPE")
-                Dim MDB_NM_Node As XmlNode = xmlDoc.CreateElement("MDB_NAME")
-                Dim MDB_ID_Node As XmlNode = xmlDoc.CreateElement("MDB_ID")
-                Dim MDB_PW_Node As XmlNode = xmlDoc.CreateElement("MDB_PW")
-
                 ' - 날짜설정 부분에 들어가는 노드들 -
                 Dim NextDay_Node As XmlNode = xmlDoc.CreateElement("NextDay")
                 Dim PrevDay_Node As XmlNode = xmlDoc.CreateElement("PrevDay")
@@ -130,6 +119,10 @@ Public Class frmConfig
                 Dim Blood_Node As XmlNode = xmlDoc.CreateElement("Blood")
                 Dim AMH_Node As XmlNode = xmlDoc.CreateElement("AMH")
 
+                ' - 보고서 선택 부분에 들어가는 노드들 -
+                Dim ReportIndex_Node As XmlNode = xmlDoc.CreateElement("ReportIndex")
+
+#Region "병원 전산 서버 연결"
                 DATABASE_TYPE_Node.InnerText = cboDBType.Text                       ' DB 타입 노드에 들어갈 입력값
                 childNode.AppendChild(DATABASE_TYPE_Node)
 
@@ -147,9 +140,9 @@ Public Class frmConfig
 
                 PASSWORD_Node.InnerText = ClsEncryption.Encrypt(txtConnPW.Text)     ' 접속 PW 노드에 들어갈 입력값
                 childNode.AppendChild(PASSWORD_Node)
+#End Region
 
-
-
+#Region "바코드프린터기 시리얼, LAN 연결 선택"
                 COMM_PORT_Node.InnerText = txtCommPort.Text                         ' 시리얼통신 포트 노드에 들어갈 입력값
                 childNode2.AppendChild(COMM_PORT_Node)
 
@@ -161,45 +154,41 @@ Public Class frmConfig
 
                 PRINTER_PORT_Node.InnerText = txtPrtPort.Text                       ' 바코드 프린터 포트 번호에 들어갈 입력값
                 childNode2.AppendChild(PRINTER_PORT_Node)
+#End Region
 
-
-
-                MDB_TYPE_Node.InnerText = cboMDBType.Text                           ' MDB타입에 들어갈 입력값
-                childNode3.AppendChild(MDB_TYPE_Node)
-
-                MDB_NM_Node.InnerText = txtMDBName.Text                             ' 현재 PC의 IP에 들어갈 입력값
-                childNode3.AppendChild(MDB_NM_Node)
-
-                MDB_ID_Node.InnerText = txtMDBID.Text                               ' 바코드 프린터의 IP에 들어갈 입력값
-                childNode3.AppendChild(MDB_ID_Node)
-
-                MDB_PW_Node.InnerText = txtMDBPW.Text                               ' 바코드 프린터 포트 번호에 들어갈 입력값
-                childNode3.AppendChild(MDB_PW_Node)
-
-
+#Region "날짜 선택"
                 NextDay_Node.InnerText = txtNextDay.Text
                 childNode4.AppendChild(NextDay_Node)
 
                 PrevDay_Node.InnerText = txtPrevDay.Text
                 childNode4.AppendChild(PrevDay_Node)
+#End Region
 
+#Region "바코드, AMH 선택"
                 Blood_Node.InnerText = chkBlood.Checked.ToString
                 childNode5.AppendChild(Blood_Node)
 
                 AMH_Node.InnerText = chkAMH.Checked.ToString
                 childNode5.AppendChild(AMH_Node)
+#End Region
+
+#Region "보고서 선택"
+                ReportIndex_Node.InnerText = RdgReport.SelectedIndex
+                childNode6.AppendChild(ReportIndex_Node)
+#End Region
 
                 rootNode.AppendChild(childNode)
                 rootNode.AppendChild(childNode2)
-                rootNode.AppendChild(childNode3)
                 rootNode.AppendChild(childNode4)
                 rootNode.AppendChild(childNode5)
+                rootNode.AppendChild(childNode6)
 
                 xmlDoc.Save(Application.StartupPath & "\Common.xml")
 
+                XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                ' 저장을 안함
             End If
-
-            XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_SaveError, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -215,16 +204,12 @@ Public Class frmConfig
         txtPrtIP.Text = String.Empty
         txtPrtPort.Text = String.Empty
         cboDBType.Text = String.Empty
-        cboMDBType.Text = String.Empty
-        txtMDBID.Text = String.Empty
-        txtMDBPW.Text = String.Empty
         txtDBIP.Text = String.Empty
         txtDataBaseNM.Text = String.Empty
         txtDBPort.Text = String.Empty
         txtDataBaseNM.Text = String.Empty
         txtConnID.Text = String.Empty
         txtConnPW.Text = String.Empty
-        txtMDBName.Text = String.Empty
 
     End Sub
 
@@ -241,9 +226,9 @@ Public Class frmConfig
 
             Dim mBlood As XmlNodeList = xmlDoc.SelectNodes("/mBlood/SERVER")
             Dim mBlood2 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/Communication")
-            Dim mBlood3 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/MDB")
             Dim mBlood4 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/DateSet")
             Dim mBlood5 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ProgramSelect")
+            Dim mBlood6 As XmlNodeList = xmlDoc.SelectNodes("/mBlood/ReportSelect")
 
             For Each SERVER As XmlNode In mBlood
                 Str_DATABASE_TYPE = SERVER.SelectSingleNode("DATABASE_TYPE").InnerText
@@ -262,13 +247,6 @@ Public Class frmConfig
                 gPrintPort = Communication.SelectSingleNode("PRINTER_PORT").InnerText
             Next
 
-            For Each MDB As XmlNode In mBlood3
-                gMDbType = MDB.SelectSingleNode("MDB_TYPE").InnerText
-                gMDbName = MDB.SelectSingleNode("MDB_NAME").InnerText
-                gMDbUserNM = MDB.SelectSingleNode("MDB_ID").InnerText
-                gMDbUserPW = MDB.SelectSingleNode("MDB_PW").InnerText
-            Next
-
             For Each DateSet As XmlNode In mBlood4
                 NextDay = DateSet.SelectSingleNode("NextDay").InnerText
                 PrevDay = DateSet.SelectSingleNode("PrevDay").InnerText
@@ -277,6 +255,10 @@ Public Class frmConfig
             For Each ProgramSelect As XmlNode In mBlood5
                 BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
                 AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+            Next
+
+            For Each ReportSelect As XmlNode In mBlood6
+                ReportIndex = ReportSelect.SelectSingleNode("ReportIndex").InnerText
             Next
 
             cboDBType.Text = Str_DATABASE_TYPE
@@ -289,16 +271,13 @@ Public Class frmConfig
             txtPrtIP.Text = gPrintIP_ZD
             txtPrtPort.Text = gPrintPort
 
-            cboMDBType.Text = gMDbType
-            txtMDBName.Text = gMDbName
-            txtMDBID.Text = gMDbUserNM
-            txtMDBPW.Text = gMDbUserPW
-
             txtNextDay.Text = NextDay
             txtPrevDay.Text = PrevDay
 
             chkBlood.Checked = BloodCheck
             chkAMH.Checked = AMHCheck
+
+            RdgReport.SelectedIndex = ReportIndex
 
         Catch ex As Exception
 
