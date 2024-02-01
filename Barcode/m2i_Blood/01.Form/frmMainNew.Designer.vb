@@ -52,6 +52,8 @@ Partial Class frmMainNew
         Me.AccordionControlElement4 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlElement5 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator2 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
+        Me.aceUser = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlElement2 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -234,7 +236,7 @@ Partial Class frmMainNew
         '
         'aceSetup
         '
-        Me.aceSetup.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.aceTestCode, Me.aceComm})
+        Me.aceSetup.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.aceTestCode, Me.aceComm, Me.aceUser})
         Me.aceSetup.Expanded = True
         Me.aceSetup.ImageOptions.SvgImage = CType(resources.GetObject("aceSetup.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.aceSetup.ImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
@@ -315,6 +317,24 @@ Partial Class frmMainNew
         '
         Me.AccordionControlSeparator2.Name = "AccordionControlSeparator2"
         '
+        'aceUser
+        '
+        Me.aceUser.Appearance.Normal.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.aceUser.Appearance.Normal.Options.UseFont = True
+        Me.aceUser.Name = "aceUser"
+        Me.aceUser.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.aceUser.Text = "      사용자 관리"
+        '
+        'AccordionControlElement2
+        '
+        Me.AccordionControlElement2.Appearance.Disabled.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AccordionControlElement2.Appearance.Disabled.Options.UseFont = True
+        Me.AccordionControlElement2.Appearance.Normal.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AccordionControlElement2.Appearance.Normal.Options.UseFont = True
+        Me.AccordionControlElement2.Name = "AccordionControlElement2"
+        Me.AccordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.AccordionControlElement2.Text = "      검사항목"
+        '
         'frmMainNew
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -379,4 +399,6 @@ Partial Class frmMainNew
     Friend WithEvents BsiWorkDate As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
     Friend WithEvents SkinRibbonGalleryBarItem1 As DevExpress.XtraBars.SkinRibbonGalleryBarItem
+    Friend WithEvents aceUser As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents AccordionControlElement2 As DevExpress.XtraBars.Navigation.AccordionControlElement
 End Class

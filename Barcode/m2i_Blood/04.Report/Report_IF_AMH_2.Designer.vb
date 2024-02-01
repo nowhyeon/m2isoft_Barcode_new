@@ -39,6 +39,8 @@ Partial Public Class Report_IF_AMH_2
         Me.lblPTNM = New DevExpress.XtraReports.UI.XRLabel()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrChart2 = New DevExpress.XtraReports.UI.XRChart()
+        Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
         Me.lblRemark = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHComment2 = New DevExpress.XtraReports.UI.XRLabel()
@@ -46,10 +48,8 @@ Partial Public Class Report_IF_AMH_2
         Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblAMHResult = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrChart1 = New DevExpress.XtraReports.UI.XRChart()
-        Me.XrChart2 = New DevExpress.XtraReports.UI.XRChart()
-        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -79,7 +79,7 @@ Partial Public Class Report_IF_AMH_2
         'lblReceiptDate
         '
         Me.lblReceiptDate.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReceiptDate.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 207.0!)
+        Me.lblReceiptDate.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 208.6667!)
         Me.lblReceiptDate.Multiline = True
         Me.lblReceiptDate.Name = "lblReceiptDate"
         Me.lblReceiptDate.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -127,7 +127,7 @@ Partial Public Class Report_IF_AMH_2
         'lblChartNo
         '
         Me.lblChartNo.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 140.0!)
+        Me.lblChartNo.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 143.33!)
         Me.lblChartNo.Multiline = True
         Me.lblChartNo.Name = "lblChartNo"
         Me.lblChartNo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -139,7 +139,7 @@ Partial Public Class Report_IF_AMH_2
         'lblAcceptDate
         '
         Me.lblAcceptDate.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcceptDate.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 173.0!)
+        Me.lblAcceptDate.LocationFloat = New DevExpress.Utils.PointFloat(629.1667!, 177.0!)
         Me.lblAcceptDate.Multiline = True
         Me.lblAcceptDate.Name = "lblAcceptDate"
         Me.lblAcceptDate.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -151,7 +151,7 @@ Partial Public Class Report_IF_AMH_2
         'lblBirth
         '
         Me.lblBirth.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(417.5!, 140.0!)
+        Me.lblBirth.LocationFloat = New DevExpress.Utils.PointFloat(417.5!, 143.33!)
         Me.lblBirth.Multiline = True
         Me.lblBirth.Name = "lblBirth"
         Me.lblBirth.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -199,7 +199,7 @@ Partial Public Class Report_IF_AMH_2
         'lblAge
         '
         Me.lblAge.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(417.5!, 181.0!)
+        Me.lblAge.LocationFloat = New DevExpress.Utils.PointFloat(417.5!, 177.0!)
         Me.lblAge.Multiline = True
         Me.lblAge.Name = "lblAge"
         Me.lblAge.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -211,7 +211,7 @@ Partial Public Class Report_IF_AMH_2
         'lblMedOffice
         '
         Me.lblMedOffice.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(171.6667!, 178.5!)
+        Me.lblMedOffice.LocationFloat = New DevExpress.Utils.PointFloat(171.6667!, 177.0!)
         Me.lblMedOffice.Multiline = True
         Me.lblMedOffice.Name = "lblMedOffice"
         Me.lblMedOffice.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -223,7 +223,7 @@ Partial Public Class Report_IF_AMH_2
         'lblDoctor
         '
         Me.lblDoctor.Font = New System.Drawing.Font("KaiGen Gothic K Regular", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(171.6667!, 216.0!)
+        Me.lblDoctor.LocationFloat = New DevExpress.Utils.PointFloat(171.6667!, 217.0!)
         Me.lblDoctor.Multiline = True
         Me.lblDoctor.Name = "lblDoctor"
         Me.lblDoctor.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -306,6 +306,32 @@ Partial Public Class Report_IF_AMH_2
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrChart2, Me.XrChart1, Me.lblRemark, Me.XrLabel22, Me.lblAMHComment2, Me.lblAMHComment1, Me.XrLabel19, Me.lblAMHResult, Me.XrLabel1})
         Me.Detail.HeightF = 913.3333!
         Me.Detail.Name = "Detail"
+        '
+        'XrChart2
+        '
+        Me.XrChart2.AppearanceNameSerializable = "Pastel Kit"
+        Me.XrChart2.BorderColor = System.Drawing.Color.Black
+        Me.XrChart2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrChart2.Legend.Name = "Default Legend"
+        Me.XrChart2.LocationFloat = New DevExpress.Utils.PointFloat(63.16671!, 456.4582!)
+        Me.XrChart2.Name = "XrChart2"
+        Me.XrChart2.PaletteName = "Custom"
+        Me.XrChart2.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.XrChart2.SizeF = New System.Drawing.SizeF(690.625!, 133.5417!)
+        '
+        'XrChart1
+        '
+        Me.XrChart1.BorderColor = System.Drawing.Color.Black
+        Me.XrChart1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrChart1.Legend.Name = "Default Legend"
+        Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(342.5!, 172.5!)
+        Me.XrChart1.Name = "XrChart1"
+        Me.XrChart1.PaletteName = "Palette 1"
+        Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart1.PaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)))}))
+        Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 193.3333!)
         '
         'lblRemark
         '
@@ -396,46 +422,23 @@ Partial Public Class Report_IF_AMH_2
         Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrLabel1.TextTrimming = System.Drawing.StringTrimming.None
         '
-        'XrChart1
-        '
-        Me.XrChart1.BorderColor = System.Drawing.Color.Black
-        Me.XrChart1.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrChart1.Legend.Name = "Default Legend"
-        Me.XrChart1.LocationFloat = New DevExpress.Utils.PointFloat(342.5!, 172.5!)
-        Me.XrChart1.Name = "XrChart1"
-        Me.XrChart1.PaletteName = "Palette 1"
-        Me.XrChart1.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
-        Me.XrChart1.PaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer)))}))
-        Me.XrChart1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
-        Me.XrChart1.SizeF = New System.Drawing.SizeF(415.0!, 193.3333!)
-        '
-        'XrChart2
-        '
-        Me.XrChart2.AppearanceNameSerializable = "Pastel Kit"
-        Me.XrChart2.BorderColor = System.Drawing.Color.Black
-        Me.XrChart2.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrChart2.Legend.Name = "Default Legend"
-        Me.XrChart2.LocationFloat = New DevExpress.Utils.PointFloat(63.16671!, 508.9582!)
-        Me.XrChart2.Name = "XrChart2"
-        Me.XrChart2.PaletteName = "Custom"
-        Me.XrChart2.PaletteRepository.Add("Custom", New DevExpress.XtraCharts.Palette("Custom", DevExpress.XtraCharts.PaletteScaleMode.Extrapolate, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(255, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(153, Byte), Integer), CType(CType(0, Byte), Integer)))}))
-        Me.XrChart2.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
-        Me.XrChart2.SizeF = New System.Drawing.SizeF(690.625!, 81.04172!)
-        '
         'Report_IF_AMH_2
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
+        Me.DesignerOptions.ShowExportWarnings = False
+        Me.DesignerOptions.ShowPrintingWarnings = False
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(0, 1, 262, 0)
         Me.PageHeight = 1169
         Me.PageWidth = 827
         Me.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.ShowPrintMarginsWarning = False
         Me.Version = "18.2"
         Me.Watermark.Image = CType(resources.GetObject("Report_IF_AMH_2.Watermark.Image"), System.Drawing.Image)
         Me.Watermark.ImageViewMode = DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch
-        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrChart2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrChart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub

@@ -158,6 +158,7 @@ Public Class frmLoginNew
             End If
 
         Catch ex As Exception
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
     End Sub
@@ -175,11 +176,7 @@ Public Class frmLoginNew
         End If
     End Sub
 
-    Private Sub LabelControl2_Click(sender As Object, e As EventArgs) Handles LabelControl2.Click
-        Process.Start("IExplore.exe", "http://m2isoft.com/")
-    End Sub
-
-    Private Sub CmdNewUser_Click(sender As Object, e As EventArgs) Handles CmdNewUser.Click
+    Private Sub CmdNewUser_Click(sender As Object, e As EventArgs)
         frmUserAdd.Show()
     End Sub
 

@@ -22,6 +22,8 @@ Public Class frmConfig
             .Properties.Items.Add("ACCESS")
         End With
 
+        Call ReportLookUpSet(LueReport)
+
     End Sub
 
     Private Sub btnPanWork_Click(sender As Object, e As ButtonEventArgs) Handles btnPanWork.ButtonClick
@@ -72,13 +74,11 @@ Public Class frmConfig
         End If
     End Sub
 
-    Private Sub DateSetupTextEdit_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
-
-
+    'Private Sub DateSetupTextEdit_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+    '        e.Handled = True
+    '    End If
+    'End Sub
 
     Private Sub PsAddRoutine()          ' XML파일에 서브 노드들을 추가해주는 코드
 
@@ -116,8 +116,7 @@ Public Class frmConfig
                 Dim PrevDay_Node As XmlNode = xmlDoc.CreateElement("PrevDay")
 
                 ' - 프로그램 선택 부분에 들어가는 노드들 -
-                Dim Blood_Node As XmlNode = xmlDoc.CreateElement("Blood")
-                Dim AMH_Node As XmlNode = xmlDoc.CreateElement("AMH")
+                Dim ProgramIndex_Node As XmlNode = xmlDoc.CreateElement("ProgramIndex")
 
                 ' - 보고서 선택 부분에 들어가는 노드들 -
                 Dim ReportIndex_Node As XmlNode = xmlDoc.CreateElement("ReportIndex")
@@ -165,15 +164,12 @@ Public Class frmConfig
 #End Region
 
 #Region "바코드, AMH 선택"
-                Blood_Node.InnerText = chkBlood.Checked.ToString
-                childNode5.AppendChild(Blood_Node)
-
-                AMH_Node.InnerText = chkAMH.Checked.ToString
-                childNode5.AppendChild(AMH_Node)
+                ProgramIndex_Node.InnerText = RdgProgram.SelectedIndex
+                childNode5.AppendChild(ProgramIndex_Node)
 #End Region
 
 #Region "보고서 선택"
-                ReportIndex_Node.InnerText = RdgReport.SelectedIndex
+                ReportIndex_Node.InnerText = LueReport.EditValue
                 childNode6.AppendChild(ReportIndex_Node)
 #End Region
 
@@ -186,12 +182,23 @@ Public Class frmConfig
                 xmlDoc.Save(Application.StartupPath & "\Common.xml")
 
                 XtraMessageBox.Show(_sMsg.sMsg_Save, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.OK, MessageBoxIcon.Information)
+#Region "프로그램 재시작"
+                'If XtraMessageBox.Show(_sMsg_Question.sMsgQst_RebootOn, _sMsg_Title.sMsgTitle_Reboot, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                '    Application.Exit()
+                '    System.Threading.Thread.Sleep(2000)
+                '    Application.Restart()
+                'Else
+
+                'End If
+#End Region
+
             Else
                 ' 저장을 안함
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_SaveError, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
 
 
@@ -253,8 +260,7 @@ Public Class frmConfig
             Next
 
             For Each ProgramSelect As XmlNode In mBlood5
-                BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
-                AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+                ProgramIndex = ProgramSelect.SelectSingleNode("ProgramIndex").InnerText
             Next
 
             For Each ReportSelect As XmlNode In mBlood6
@@ -274,15 +280,13 @@ Public Class frmConfig
             txtNextDay.Text = NextDay
             txtPrevDay.Text = PrevDay
 
-            chkBlood.Checked = BloodCheck
-            chkAMH.Checked = AMHCheck
+            RdgProgram.SelectedIndex = ProgramIndex
 
-            RdgReport.SelectedIndex = ReportIndex
+            LueReport.EditValue = ReportIndex
 
         Catch ex As Exception
-
-            XtraMessageBox.Show(_sMsg.sMsg_NoLoad, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
 
     End Sub

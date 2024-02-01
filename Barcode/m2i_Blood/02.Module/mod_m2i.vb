@@ -52,9 +52,8 @@ Module mod_m2i
     Public NextDay As Integer   ' dtpTo 컨트롤에 들어갈 변수( dtpTo ) 양수가 들어가야 함
     Public PrevDay As Integer   ' dtpFrom 컨트롤에 들어갈 변수( dtpFrom ) 음수가 들어가야 함
 
-    ' 체크 Visible 설정
-    Public BloodCheck As Boolean
-    Public AMHCheck As Boolean
+    ' 프로그램 선택 설정
+    Public ProgramIndex As Integer
 
     ' 보고서 선택 설정
     Public ReportIndex As Integer
@@ -251,37 +250,35 @@ Module mod_m2i
         End If
     End Sub
 
-    Public Sub LookUpSubSet(lueObj As LookUpEdit, Optional CodeString As String = "")
-        ' WorkArea 룩업에딧 정의
+    Public Sub ReportLookUpSet(lueObj As LookUpEdit)
+        ' AMH 결과보고서 양식 룩업에딧 정의
         Try
-            QueryString = ""
-            QueryString &= "     SELECT DISTINCT [WorkArea] FROM [m2i_LAB002]                 " & vbCrLf
+            QueryString = String.Empty
+            QueryString &= "     SELECT DISTINCT [ID],[ReportNM] FROM [m2i_Report]            " & vbCrLf
             QueryString &= "     WHERE 1=1                                                    " & vbCrLf
-            If Not IsNothing(CodeString) AndAlso CodeString.Length > 0 Then
-                QueryString &= " AND [BloodTube] = '" & CodeString & "'                       " & vbCrLf
-            End If
 
             With lueObj.Properties
                 .Columns.Clear()
                 .TextEditStyle = Controls.TextEditStyles.DisableTextEditor                             ' 텍스트 입력 비활성화
                 .DataSource = ClsDb.CfMSelectQuery(QueryString)
-                .Columns.Add(New Controls.LookUpColumnInfo("WorkArea", "WorkArea", 100))
-                .ValueMember = "WorkArea"
-                .DisplayMember = "WorkArea"
+                .Columns.Add(New Controls.LookUpColumnInfo("ID", "번호", 100))
+                .Columns.Add(New Controls.LookUpColumnInfo("ReportNM", "보고서양식", 100))
+                .ValueMember = "ID"
+                .DisplayMember = "ReportNM"
                 .BestFitMode = Controls.BestFitMode.BestFitResizePopup
             End With
 
         Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Public Sub LookUpSet(lueObj As LookUpEdit)
         Try
-            QueryString = ""
+            QueryString = String.Empty
             ' BloodTube 룩업에딧 정의
             QueryString &= "SELECT BloodTube FROM m2i_LAB002                                  " & vbCrLf
-            QueryString &= " GROUP BY BloodTube                                               "
+            QueryString &= "GROUP BY BloodTube                                                "
 
             With lueObj.Properties
                 .Columns.Clear()
@@ -563,8 +560,7 @@ Module mod_m2i
             Next
 
             For Each ProgramSelect As XmlNode In mBlood5
-                BloodCheck = ProgramSelect.SelectSingleNode("Blood").InnerText
-                AMHCheck = ProgramSelect.SelectSingleNode("AMH").InnerText
+                ProgramIndex = ProgramSelect.SelectSingleNode("ProgramIndex").InnerText
             Next
 
             For Each ReportSelect As XmlNode In mBlood6

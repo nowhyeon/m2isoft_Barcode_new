@@ -45,34 +45,85 @@ Public Class frmBarcode
 
     End Sub
 
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Call Get_TestCode()
+
+        dtpFrom.DateTime = Now.AddDays(-PrevDay)
+        dtpTo.DateTime = Now.AddDays(NextDay)
+
+        With cboReceipt.Properties
+            .Items.Clear()
+            .Items.Add("선택없음")
+            .Items.Add("접수")
+            .Items.Add("결과")
+        End With
+
+        With cboPrintYN.Properties
+            .Items.Clear()
+            .Items.Add("선택없음")
+            .Items.Add("출력")
+            .Items.Add("미출력")
+        End With
+
+        With cboSearchCond.Properties
+            .Items.Clear()
+            .Items.Add("선택없음")
+            .Items.Add("이름")
+            .Items.Add("차트번호")
+        End With
+
+    End Sub
+
+#Region "수진자조회 버튼"
+    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
+
+        Select Case sTag
+            Case "Find"
+                Call PsFindRoutine()
+        End Select
+    End Sub
+#End Region
+
+#Region "하단 버튼"
+    Private Sub CommandButton2_ButtonClick(sender As Object, e As ButtonEventArgs) Handles WindowsUIButtonPanel1.ButtonClick
+        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
+
+        Select Case sTag
+            Case "print"
+                Call PsPrintRoutine()
+            Case "manualShow"
+                Call frmManual.Show()
+            Case "Remove"
+                Call PsClearRoutine()
+
+            Case "SearchOn"
+                ' 토글 상태 업데이트
+                SearchEnabled = Not SearchEnabled
+
+                If SearchEnabled Then
+                    ' 검색 켜기
+                    GridView.OptionsView.ShowAutoFilterRow = True
+                    GridView.OptionsFind.AlwaysVisible = True
+                Else
+                    ' 검색 끄기
+                    GridView.OptionsView.ShowAutoFilterRow = False
+                    GridView.OptionsFind.AlwaysVisible = False
+                End If
+
+            Case "close"
+                Me.DialogResult = DialogResult.Cancel
+                Me.Close()
+        End Select
+    End Sub
+#End Region
+
     Private Sub btnManual_Click(sender As Object, e As EventArgs)
         frmManual.Show()
     End Sub
 
-    '수진자 조회
-    Private Sub PsFindRoutine()
-        Try
-            'SplashScreenManager.ShowWaitForm()
-
-            Dim sWorkLog As String = " Customer List Searching."
-
-            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
-
-            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(dtpFrom.Text,             '시작일
-                                                                          dtpTo.Text,               '종료일
-                                                                          cboReceipt.EditValue,     '접수타입
-                                                                          cboSearchCond.EditValue,  '검색타입
-                                                                          txtSearchWrd.Text)        '검색어
-            grdSearchQry.DataSource = sTable
-
-            'SplashScreenManager.CloseWaitForm()
-
-        Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    '프린트완료 건 backColor 변경
+#Region "프린트완료 건 backColor 변경"
     Private Sub GridView_RowStyle(ByVal sender As Object,
                                   ByVal e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView.RowStyle
         Try
@@ -105,88 +156,92 @@ Public Class frmBarcode
 
         End Try
     End Sub
+#End Region
 
+#Region "수진자 조회 결과 Grid 클릭 이벤트"
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
         Dim TESTCD As String = String.Empty
 
         Try
-            SplashScreenManager.ShowWaitForm()
+            If GridView.RowCount = 0 Then
 
-            With GridView
-                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
-                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
-                txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
-                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
-                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
-                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
-                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
-                txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
-                txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
-                memoComment.Text = .GetRowCellValue(sSelectRow, "REMARK").ToString()       '메모
-            End With
-
-            Dim TestCode As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
-                                                                               GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
-                                                                               GridView.GetRowCellValue(sSelectRow, "STATUS").ToString)
-
-            If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
-                For Each row As DataRow In TestCode.Rows
-                    TESTCD &= "'" & row(0).ToString & "',"
-                Next
-                TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
             Else
-                Dim sMsg As String = "등록된 검사코드가 없습니다 !", sMsgTitle As String = "검사코드 오류"
-                XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                SplashScreenManager.ShowWaitForm()
+
+                With GridView
+                    txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
+                    txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
+                    txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
+                    txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
+                    txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
+                    txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
+                    txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
+                    txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
+                    txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
+                    memoComment.Text = .GetRowCellValue(sSelectRow, "REMARK").ToString()       '메모
+                End With
+
+                Dim TestCode As DataTable = Hospital_DB.HOSPITAL_ORDER_PATIENT_GET(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
+                                                                                   GridView.GetRowCellValue(sSelectRow, "PTID").ToString,
+                                                                                   GridView.GetRowCellValue(sSelectRow, "STATUS").ToString)
+
+                If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
+                    For Each row As DataRow In TestCode.Rows
+                        TESTCD &= "'" & row(0).ToString & "',"
+                    Next
+                    TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
+                Else
+                    Dim sMsg As String = "등록된 검사코드가 없습니다 !", sMsgTitle As String = "검사코드 오류"
+                    XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
+                QueryString = String.Empty
+                QueryString &= " SELECT [TESTNM],  [TESTCD], [WORKAREA], [BLOODTUBE], [TESTNM_10], [Remark],  [PrintAdd] " & vbCrLf
+                QueryString &= " FROM [m2i_LAB004]                                                                       " & vbCrLf
+                QueryString &= " WHERE 1 = 1                                                                             " & vbCrLf
+                QueryString &= " AND [TESTCD] in (" & TESTCD & ")                                                        " & vbCrLf
+                QueryString &= " ORDER BY [WORKAREA],[BLOODTUBE]                                                         " & vbCrLf
+
+                Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
+
+                grdSelect.DataSource = sTable
+
+                SplashScreenManager.CloseWaitForm()
             End If
 
-            QueryString = String.Empty
-            QueryString &= " SELECT [TESTNM],  [TESTCD], [WORKAREA], [BLOODTUBE], [TESTNM_10], [Remark],  [PrintAdd] " & vbCrLf
-            QueryString &= " FROM [m2i_LAB004]                                                                       " & vbCrLf
-            QueryString &= " WHERE 1 = 1                                                                             " & vbCrLf
-            QueryString &= " AND [TESTCD] in (" & TESTCD & ")                                                        " & vbCrLf
-            QueryString &= " ORDER BY [WORKAREA],[BLOODTUBE]                                                         " & vbCrLf
-
-            Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
-
-            grdSelect.DataSource = sTable
-
-            SplashScreenManager.CloseWaitForm()
         Catch ex As Exception
-
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
 
     End Sub
+#End Region
 
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+#Region "수진자 조회"
+    Private Sub PsFindRoutine()
+        Try
+            SplashScreenManager.ShowWaitForm()
 
-        Call Get_TestCode()
+            Dim sWorkLog As String = " Customer List Searching."
 
-        dtpFrom.DateTime = Now.AddDays(-PrevDay)
-        dtpTo.DateTime = Now.AddDays(NextDay)
+            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
-        With cboReceipt.Properties
-            .Items.Clear()
-            .Items.Add("선택없음")
-            .Items.Add("접수")
-            .Items.Add("결과")
-        End With
+            Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(dtpFrom.Text,             '시작일
+                                                                          dtpTo.Text,               '종료일
+                                                                          cboReceipt.EditValue,     '접수타입
+                                                                          cboSearchCond.EditValue,  '검색타입
+                                                                          txtSearchWrd.Text)        '검색어
+            grdSearchQry.DataSource = sTable
 
-        With cboPrintYN.Properties
-            .Items.Clear()
-            .Items.Add("선택없음")
-            .Items.Add("출력")
-            .Items.Add("미출력")
-        End With
+            SplashScreenManager.CloseWaitForm()
 
-        With cboSearchCond.Properties
-            .Items.Clear()
-            .Items.Add("선택없음")
-            .Items.Add("이름")
-            .Items.Add("차트번호")
-        End With
-
+        Catch ex As Exception
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+        End Try
     End Sub
+#End Region
 
     Private Sub PsPrintRoutine()
         Dim strOldDivision As String = String.Empty
@@ -208,62 +263,25 @@ Public Class frmBarcode
         Dim sACCEPTDATE As String = txtAcceptDate.EditValue
         Dim sMEMO As String = memoComment.EditValue
 
-        For intRowCount = 0 To GridView3.RowCount - 1
-            With GridView3
+        Try
+            For intRowCount = 0 To GridView3.RowCount - 1
+                With GridView3
 
-                strNewDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
+                    strNewDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
 
-                If strNewDivision <> strOldDivision Or printBool = False Then
-                    Print_Barcode(sPTNM, sBARCODE, sCHARTNO, sSEX, sAGE, sMEDOFFICE, sRECEIPTDATE, sDOCTOR, sACCEPTDATE, sMEMO)
-                End If
+                    If strNewDivision <> strOldDivision Or printBool = False Then
+                        Print_Barcode(sPTNM, sBARCODE, sCHARTNO, sSEX, sAGE, sMEDOFFICE, sRECEIPTDATE, sDOCTOR, sACCEPTDATE, sMEMO)
+                    End If
 
-                strOldDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
-                printBool = True
-            End With
-        Next
+                    strOldDivision = .GetRowCellValue(intRowCount, "WORKAREA").ToString()
+                    printBool = True
+                End With
+            Next
+        Catch ex As Exception
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+        End Try
 
-    End Sub
-
-    '수진자조회 버튼
-    Private Sub CommandButton_ButtonClick(sender As Object, e As DevExpress.XtraBars.Docking2010.ButtonEventArgs) Handles WindowsUIButtonPanel2.ButtonClick
-        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
-
-        Select Case sTag
-            Case "Find"
-                Call PsFindRoutine()
-        End Select
-    End Sub
-
-    '하단 버튼
-    Private Sub CommandButton2_ButtonClick(sender As Object, e As ButtonEventArgs) Handles WindowsUIButtonPanel1.ButtonClick
-        Dim sTag As String = CType(e.Button, WindowsUIButton).Tag.ToString()
-
-        Select Case sTag
-            Case "print"
-                Call PsPrintRoutine()
-            Case "manualShow"
-                Call frmManual.Show()
-            Case "Remove"
-                Call PsClearRoutine()
-
-            Case "SearchOn"
-                ' 토글 상태 업데이트
-                SearchEnabled = Not SearchEnabled
-
-                If SearchEnabled Then
-                    ' 검색 켜기
-                    GridView.OptionsView.ShowAutoFilterRow = True
-                    GridView.OptionsFind.AlwaysVisible = True
-                Else
-                    ' 검색 끄기
-                    GridView.OptionsView.ShowAutoFilterRow = False
-                    GridView.OptionsFind.AlwaysVisible = False
-                End If
-
-            Case "close"
-                Me.DialogResult = DialogResult.Cancel
-                Me.Close()
-        End Select
     End Sub
 
     Private Sub PsClearRoutine()
@@ -290,7 +308,7 @@ Public Class frmBarcode
         grdSelect.DataSource = Nothing
     End Sub
 
-    'mDB에서 검사코드 가져온다
+#Region "mDB에서 검사코드 가져온다 - AMH 검사코드 확인 필요"
     Public Sub Get_TestCode()
         Try
             QueryString = String.Empty
@@ -313,8 +331,11 @@ Public Class frmBarcode
             End If
 
         Catch ex As Exception
-
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
+
     End Sub
+#End Region
 
 End Class

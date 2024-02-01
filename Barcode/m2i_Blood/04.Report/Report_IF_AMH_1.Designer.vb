@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Public Class Report_IF_AMH
+Partial Public Class Report_IF_AMH_1
     Inherits DevExpress.XtraReports.UI.XtraReport
 
     'XtraReport overrides dispose to clean up the component list.
@@ -19,7 +19,7 @@ Partial Public Class Report_IF_AMH
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Report_IF_AMH))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Report_IF_AMH_1))
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.lblAge = New DevExpress.XtraReports.UI.XRLabel()
         Me.lblBirth = New DevExpress.XtraReports.UI.XRLabel()
@@ -240,13 +240,14 @@ Partial Public Class Report_IF_AMH
         Me.lblAMHResult.StylePriority.UseForeColor = False
         Me.lblAMHResult.Text = "lblAMHResult"
         '
-        'Report_IF_AMH
+        'Report_IF_AMH_1
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
         Me.BorderWidth = 2.0!
         Me.DrawWatermark = True
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(33, 40, 277, 49)
+        Me.Name = "Report_IF_AMH_1"
         Me.PageHeight = 1169
         Me.PageWidth = 827
         Me.PaperKind = System.Drawing.Printing.PaperKind.A4

@@ -481,6 +481,7 @@ Partial Class frmSetup
         Me.Controls.Add(Me.LayoutControl1)
         Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmSetup"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

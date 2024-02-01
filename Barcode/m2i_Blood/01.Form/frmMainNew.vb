@@ -7,19 +7,16 @@ Public Class frmMainNew
 
     Private Sub frmMainNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If BloodCheck = True Then
-            aceAMH.Visible = False
-            frmConfig.TabReport.PageVisible = False
-        Else
-            aceAMH.Visible = True
+        If CommonRead() = False Then
+            End
         End If
 
-        If AMHCheck = True Then
-            aceBarcode.Visible = False
-            frmConfig.TabComm.PageVisible = False
-        Else
-            aceBarcode.Visible = True
-        End If
+        Select Case ProgramIndex
+            Case 0
+                aceAMH.Visible = False
+            Case 1
+                aceBarcode.Visible = False
+        End Select
 
         BsiWorkDate.Caption = Format(Now, "yyyy-MM-dd")
         BsiUserNM.Caption = frmLoginNew.lblUsernm.Text
@@ -54,6 +51,9 @@ Public Class frmMainNew
         frmRemote.Show()
     End Sub
 
+    Private Sub aceUser_Click(sender As Object, e As EventArgs) Handles aceUser.Click
+        frmUserAdd.Show()
+    End Sub
 
     'mDB에서 검사코드 가져온다
     Public Sub Get_TestCode()
@@ -79,7 +79,7 @@ Public Class frmMainNew
             End If
 
         Catch ex As Exception
-
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
     End Sub
 

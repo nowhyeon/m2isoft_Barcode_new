@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLoginNew
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmLoginNew
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoginNew))
         Me.picLogin = New System.Windows.Forms.PictureBox()
@@ -36,14 +36,10 @@ Partial Class frmLoginNew
         Me.layoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.CmdNewUser = New DevExpress.XtraEditors.SimpleButton()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.cboSkin = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.picLogin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,10 +55,9 @@ Partial Class frmLoginNew
         CType(Me.layoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboSkin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picLogin
@@ -127,12 +122,12 @@ Partial Class frmLoginNew
         'chkSaveYN
         '
         Me.chkSaveYN.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSaveYN.Location = New System.Drawing.Point(70, 40)
+        Me.chkSaveYN.Location = New System.Drawing.Point(75, 119)
         Me.chkSaveYN.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.chkSaveYN.Name = "chkSaveYN"
-        Me.chkSaveYN.Size = New System.Drawing.Size(116, 25)
+        Me.chkSaveYN.Size = New System.Drawing.Size(172, 25)
         Me.chkSaveYN.TabIndex = 5
-        Me.chkSaveYN.Text = "아이디 저장"
+        Me.chkSaveYN.Text = "로그인 저장"
         Me.chkSaveYN.UseVisualStyleBackColor = True
         '
         'lblUsernm
@@ -140,9 +135,9 @@ Partial Class frmLoginNew
         Me.lblUsernm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblUsernm.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.lblUsernm.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
-        Me.lblUsernm.Location = New System.Drawing.Point(12, 69)
+        Me.lblUsernm.Location = New System.Drawing.Point(12, 45)
         Me.lblUsernm.Name = "lblUsernm"
-        Me.lblUsernm.Size = New System.Drawing.Size(235, 47)
+        Me.lblUsernm.Size = New System.Drawing.Size(235, 37)
         Me.lblUsernm.TabIndex = 4
         Me.lblUsernm.Text = "사용자"
         Me.lblUsernm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -156,21 +151,25 @@ Partial Class frmLoginNew
         Me.txtUserID.Properties.Appearance.Options.UseTextOptions = True
         Me.txtUserID.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.txtUserID.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.txtUserID.Size = New System.Drawing.Size(235, 24)
+        Me.txtUserID.Properties.ContextImageOptions.SvgImage = CType(resources.GetObject("txtUserID.Properties.ContextImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.txtUserID.Properties.ContextImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.txtUserID.Size = New System.Drawing.Size(235, 29)
         Me.txtUserID.StyleController = Me.LayoutControl1
         Me.txtUserID.TabIndex = 0
         '
         'txtPassword
         '
         Me.txtPassword.EditValue = ""
-        Me.txtPassword.Location = New System.Drawing.Point(12, 120)
+        Me.txtPassword.Location = New System.Drawing.Point(12, 86)
         Me.txtPassword.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Properties.Appearance.Options.UseTextOptions = True
         Me.txtPassword.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.txtPassword.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.txtPassword.Properties.ContextImageOptions.SvgImage = CType(resources.GetObject("txtPassword.Properties.ContextImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.txtPassword.Properties.ContextImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
         Me.txtPassword.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(235, 24)
+        Me.txtPassword.Size = New System.Drawing.Size(235, 29)
         Me.txtPassword.StyleController = Me.LayoutControl1
         Me.txtPassword.TabIndex = 2
         '
@@ -191,7 +190,7 @@ Partial Class frmLoginNew
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutControlItem1, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutControlItem1, Me.layoutControlItem2, Me.layoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.EmptySpaceItem3})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(259, 187)
         '
@@ -206,7 +205,7 @@ Partial Class frmLoginNew
         Me.layoutControlItem1.CustomizationFormText = "layoutControlItem1"
         Me.layoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.layoutControlItem1.Name = "layoutControlItem1"
-        Me.layoutControlItem1.Size = New System.Drawing.Size(239, 28)
+        Me.layoutControlItem1.Size = New System.Drawing.Size(239, 33)
         Me.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Left
         Me.layoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.layoutControlItem1.TextVisible = False
@@ -219,9 +218,9 @@ Partial Class frmLoginNew
         Me.layoutControlItem2.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.layoutControlItem2.Control = Me.txtPassword
         Me.layoutControlItem2.CustomizationFormText = "layoutControlItem2"
-        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 108)
+        Me.layoutControlItem2.Location = New System.Drawing.Point(0, 74)
         Me.layoutControlItem2.Name = "layoutControlItem2"
-        Me.layoutControlItem2.Size = New System.Drawing.Size(239, 28)
+        Me.layoutControlItem2.Size = New System.Drawing.Size(239, 33)
         Me.layoutControlItem2.Text = "암호 : "
         Me.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left
         Me.layoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
@@ -241,36 +240,20 @@ Partial Class frmLoginNew
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.lblUsernm
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 57)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 33)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 51)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 41)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.chkSaveYN
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(58, 28)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(63, 107)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(120, 29)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(176, 29)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 28)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(58, 29)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(178, 28)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(61, 29)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'SeparatorControl1
         '
@@ -281,44 +264,28 @@ Partial Class frmLoginNew
         Me.SeparatorControl1.Size = New System.Drawing.Size(263, 30)
         Me.SeparatorControl1.TabIndex = 11
         '
-        'CmdNewUser
+        'cboSkin
         '
-        Me.CmdNewUser.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdNewUser.Appearance.Options.UseFont = True
-        Me.CmdNewUser.ImageOptions.Image = CType(resources.GetObject("CmdNewUser.ImageOptions.Image"), System.Drawing.Image)
-        Me.CmdNewUser.Location = New System.Drawing.Point(320, 381)
-        Me.CmdNewUser.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.CmdNewUser.Name = "CmdNewUser"
-        Me.CmdNewUser.Size = New System.Drawing.Size(211, 30)
-        Me.CmdNewUser.TabIndex = 18
-        Me.CmdNewUser.Text = "새사용자관리"
+        Me.cboSkin.Location = New System.Drawing.Point(394, 479)
+        Me.cboSkin.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.cboSkin.Name = "cboSkin"
+        Me.cboSkin.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
+        Me.cboSkin.Properties.Appearance.Options.UseFont = True
+        Me.cboSkin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboSkin.Properties.ContextImageOptions.SvgImage = CType(resources.GetObject("cboSkin.Properties.ContextImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.cboSkin.Properties.ContextImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
+        Me.cboSkin.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboSkin.Size = New System.Drawing.Size(186, 29)
+        Me.cboSkin.TabIndex = 14
+        Me.cboSkin.TabStop = False
         '
-        'LabelControl4
+        'EmptySpaceItem3
         '
-        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.LabelControl4.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.LabelControl4.Appearance.Options.UseFont = True
-        Me.LabelControl4.Appearance.Options.UseForeColor = True
-        Me.LabelControl4.Location = New System.Drawing.Point(304, 430)
-        Me.LabelControl4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(106, 20)
-        Me.LabelControl4.TabIndex = 17
-        Me.LabelControl4.Text = "> 화면테마선택"
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.Blue
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Appearance.Options.UseForeColor = True
-        Me.LabelControl2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LabelControl2.Location = New System.Drawing.Point(306, 488)
-        Me.LabelControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(238, 20)
-        Me.LabelControl2.TabIndex = 16
-        Me.LabelControl2.Text = "개발사 홈페이지(www.m2isoft.com)"
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 107)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(63, 29)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LabelControl1
         '
@@ -326,25 +293,12 @@ Partial Class frmLoginNew
         Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.Appearance.Options.UseForeColor = True
-        Me.LabelControl1.Location = New System.Drawing.Point(366, 460)
+        Me.LabelControl1.Location = New System.Drawing.Point(338, 394)
         Me.LabelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(175, 20)
         Me.LabelControl1.TabIndex = 15
         Me.LabelControl1.Text = "Help Desk 0505-707-1515"
-        '
-        'cboSkin
-        '
-        Me.cboSkin.Location = New System.Drawing.Point(421, 426)
-        Me.cboSkin.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.cboSkin.Name = "cboSkin"
-        Me.cboSkin.Properties.Appearance.Font = New System.Drawing.Font("맑은 고딕", 9.0!)
-        Me.cboSkin.Properties.Appearance.Options.UseFont = True
-        Me.cboSkin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboSkin.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboSkin.Size = New System.Drawing.Size(120, 26)
-        Me.cboSkin.TabIndex = 14
-        Me.cboSkin.TabStop = False
         '
         'frmLoginNew
         '
@@ -352,9 +306,6 @@ Partial Class frmLoginNew
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(579, 508)
-        Me.Controls.Add(Me.CmdNewUser)
-        Me.Controls.Add(Me.LabelControl4)
-        Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.cboSkin)
         Me.Controls.Add(Me.SeparatorControl1)
@@ -363,10 +314,13 @@ Partial Class frmLoginNew
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.picLogin)
         Me.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmLoginNew"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmLoginNew"
+        Me.Text = "Login"
         CType(Me.picLogin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -382,10 +336,9 @@ Partial Class frmLoginNew
         CType(Me.layoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboSkin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -407,12 +360,8 @@ Partial Class frmLoginNew
     Friend WithEvents layoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents SeparatorControl1 As DevExpress.XtraEditors.SeparatorControl
-    Friend WithEvents CmdNewUser As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboSkin As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
 End Class

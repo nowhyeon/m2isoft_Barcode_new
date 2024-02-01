@@ -151,9 +151,7 @@
     <Compile Include="01.Form\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="01.Form\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="01.Form\frmLogin.vb" />
     <Compile Include="01.Form\frmManual.Designer.vb">
       <DependentUpon>frmManual.vb</DependentUpon>
     </Compile>
@@ -194,18 +192,6 @@
       <DependentUpon>frmUserAdd.vb</DependentUpon>
     </Compile>
     <Compile Include="01.Form\frmUserAdd.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="01.Form\GridVeiwTest.Designer.vb">
-      <DependentUpon>GridVeiwTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="01.Form\GridVeiwTest.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="01.Form\reporttest.Designer.vb">
-      <DependentUpon>reporttest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="01.Form\reporttest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="01.Form\WaitForm.Designer.vb">
@@ -294,12 +280,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\frmUserAdd.resx">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="01.Form\GridVeiwTest.resx">
-      <DependentUpon>GridVeiwTest.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="01.Form\reporttest.resx">
-      <DependentUpon>reporttest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="01.Form\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>

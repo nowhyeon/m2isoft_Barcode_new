@@ -4,7 +4,7 @@ Imports System.Drawing.Printing
 
 
 
-Public Class Report_IF_AMH
+Public Class Report_IF_AMH_1
     Public mPTNM As String
     Public mMedOffice As String
     Public mDoctor As String

@@ -20,10 +20,9 @@
     <PrevDay>1</PrevDay>
   </DateSet>
   <ProgramSelect>
-    <Blood>False</Blood>
-    <AMH>True</AMH>
+    <ProgramIndex>1</ProgramIndex>
   </ProgramSelect>
   <ReportSelect>
-    <ReportIndex>1</ReportIndex>
+    <ReportIndex>3</ReportIndex>
   </ReportSelect>
 </mBlood>

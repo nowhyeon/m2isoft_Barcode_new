@@ -106,9 +106,11 @@ Public Class frmUserAdd
     Private Sub UserSaveRoutine()
         Dim sReturn As Boolean = False
 
-        If txtID.Text.Length = 0 Then
+        If txtID.Text.Length = 0 Or txtPW.Text.Length = 0 Or txtNM.Text.Length = 0 Then
+            XtraMessageBox.Show(_sMsg.sMsg_InputInfo, _sMsg_Title.sMsgTitle_Info, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
+
 
         QueryString = String.Empty
         QueryString &= "SELECT EMP_ID FROM m2i_LAB001 WHERE EMP_ID = '" & txtID.Text & "'"
