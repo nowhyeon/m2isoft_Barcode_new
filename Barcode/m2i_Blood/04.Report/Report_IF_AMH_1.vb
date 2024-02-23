@@ -209,7 +209,7 @@ Public Class Report_IF_AMH_1
             diagram2.AxisX.Strips(0).LegendText = ""
 
             ' Customize the strip's appearance.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Color = Color.Red
+            diagram2.AxisX.Strips(0).Color = Color.SkyBlue
             diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
 
             'y 값 이름 변경
@@ -359,8 +359,8 @@ Public Class Report_IF_AMH_1
 
         ' 보고서 하단 병원 주소 입력
         mAddress = String.Empty
-        mAddress &= "부산광역시 연제구 월드컵대로 125 7층 마리아의원" & vbCrLf
-        mAddress &= mSpace & "대표번호: 051-441-6555"
+        mAddress &= "부산광역시 북구 덕천동 금곡대로 15 미래로병원" & vbCrLf
+        mAddress &= mSpace & "대표번호: 051-330-5000"
         lblAddress.Text = mAddress
     End Sub
 

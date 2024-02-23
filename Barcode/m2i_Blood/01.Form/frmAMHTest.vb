@@ -1,6 +1,7 @@
 ﻿Imports DevExpress.XtraBars.Docking2010
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraCharts
 Imports System.Drawing.Printing
 Imports DevExpress.XtraReports.UI
 
@@ -52,10 +53,6 @@ Public Class frmAMHTest
 
     Private Sub frmAMHTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If CommonRead() = False Then
-            End
-        End If
-
         Call Get_TestCodeAMH()
 
         dtpFrom.DateTime = Now.AddDays(-PrevDay)
@@ -91,23 +88,15 @@ Public Class frmAMHTest
 
         Select Case sTag
             Case "MultiPrint"
-                Select Case ReportIndex
-                    Case 1
-                        Call PsMultiPrint(1)
-                    Case 2
-                        Call PsMultiPrint(2)
-                    Case 3
-                        Call PsMultiPrint(3)
-                End Select
-
+                Call PsMultiPrint()
             Case "print"
                 Select Case ReportIndex
+                    Case 0
+                        Call PsPrint_Default()
                     Case 1
-                        Call PsPrint(1)
+                        Call PsPrint_AIN()
                     Case 2
-                        Call PsPrint(2)
-                    Case 3
-                        Call PsPrint(3)
+                        Call PsPrint_IBF()
                 End Select
             Case "Remove"
                 Call PsClearRoutine()
@@ -129,140 +118,54 @@ Public Class frmAMHTest
     End Sub
 
 #Region "다중 출력"
-    Private Sub PsMultiPrint(SelectIndex As Integer)
-
-        Dim sex As String
-        Dim e As EventArgs
+    Private Sub PsMultiPrint()
+        SplashScreenManager.ShowWaitForm()
         Dim sRowHandles As Int32() = GridView.GetSelectedRows()
 
-        Try
-            For sRowCnt = 0 To sRowHandles.Length - 1
+        For sRowCnt = 0 To sRowHandles.Length - 1
 
-                GridView.FocusedRowHandle = sRowCnt
+            Dim sRowHandle As Int32 = sRowHandles(sRowCnt)
 
-                Call grdSearchQry_Click(GridView, e)
+            Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
 
-                If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
-                    sex = "여"
-                ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
-                    sex = "남"
-                Else
-                    sex = "공통"
-                End If
+            'Debug.Print(GridView.GetRowCellValue(sRowHandle, "PTNM").ToString())
 
-                Select Case SelectIndex
-                    Case 1
-                        Dim Report_IF_AMH As Report_IF_AMH_1 = New Report_IF_AMH_1
-                        Dim printTool As New ReportPrintTool(Report_IF_AMH)
-                        Dim printDocument As New PrintDocument()
+            With GridView
+                txtPtChartNo.Text = .GetRowCellValue(sRowHandle, "PTID").ToString()        '차트번호
+                txtPtnm.Text = .GetRowCellValue(sRowHandle, "PTNM").ToString()             '수진자이름
+                txtReceiptDate.Text = .GetRowCellValue(sRowHandle, "REQDATE").ToString()   '접수일
+                txtPtSex.Text = .GetRowCellValue(sRowHandle, "PTSEX").ToString()           '성별
+                txtBarcodeNo.Text = .GetRowCellValue(sRowHandle, "SPCNO").ToString()       '바코드번호
+                txtPtAge.Text = .GetRowCellValue(sRowHandle, "PTAGE").ToString()           '나이
+                txtAcceptDate.Text = .GetRowCellValue(sRowHandle, "RESULTDATE").ToString() '결과일
+                txtDoctor.Text = .GetRowCellValue(sRowHandle, "SIGNIN").ToString()         '의사
+                txtMedOffice.Text = .GetRowCellValue(sRowHandle, "DeptCode").ToString()    '진료과
+                RESULT.Text = .GetRowCellValue(sRowHandle, "RESULT").ToString()
+            End With
 
-                        printTool.PrintingSystem.PageSettings.PaperKind = PaperKind.A4 ' 용지 종류 설정
+            'Dim sex As String
+            'If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
+            '    sex = "여"
+            'ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
+            '    sex = "남"
+            'Else
+            '    sex = "공통"
+            'End If
 
-                        ' 보고서를 바로 출력
-                        printTool.Print()
-                    Case 2
-                        Dim Report_IF_AMH As Report_IF_AMH_2 = New Report_IF_AMH_2
-                        Dim printTool As New ReportPrintTool(Report_IF_AMH)
-                        Dim printDocument As New PrintDocument()
+            'prevView (x)---------------------------------------------------------------------------------------------------------
+            Dim printTool As New ReportPrintTool(Report_IF_AMH)
 
-                        printTool.PrintingSystem.PageSettings.PaperKind = PaperKind.A4 ' 용지 종류 설정
+            ' PrintDocument 인스턴스 생성
+            Dim printDocument As New PrintDocument()
 
-                        ' 보고서를 바로 출력
-                        printTool.Print()
-                    Case 3
-                        Dim Report_IF_AMH As Report_IF_AMH_3 = New Report_IF_AMH_3
-                        Dim printTool As New ReportPrintTool(Report_IF_AMH)
-                        Dim printDocument As New PrintDocument()
+            ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+            ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+            printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
 
-                        printTool.PrintingSystem.PageSettings.PaperKind = PaperKind.A4 ' 용지 종류 설정
-
-                        ' 보고서를 바로 출력
-                        printTool.Print()
-                End Select
+            ' 보고서를 바로 출력
+            printTool.Print()
 
 #Region "보고서 출력 시 결과를 MDB에 덮어쓰기"
-                'QueryString = String.Empty
-                'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
-                'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
-                'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
-                'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
-                'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
-#End Region
-
-                QueryString = String.Empty
-                QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
-                QueryString &= " (                                                              " & vbNewLine
-                QueryString &= "        REQDATE                                                 " & vbNewLine
-                QueryString &= "      , SPCNO                                                   " & vbNewLine
-                QueryString &= "      , PTNM                                                    " & vbNewLine
-                QueryString &= "      , PTID                                                    " & vbNewLine
-                QueryString &= "      , PRTDATE                                                 " & vbNewLine
-                QueryString &= "  )VALUES(                                                      " & vbNewLine
-                QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
-                QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
-                QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
-                QueryString &= "  )                                                             " & vbNewLine
-
-                If QueryString.Length > 0 Then
-                    ClsDb.CfMExecuteQuery(QueryString)
-                End If
-
-                'prevView (O)---------------------------------------------------------------------------------------------------------
-                'With frmReportView
-                '    .dcvPrevView.DocumentSource = Report_IF_AMH
-                '    Report_IF_AMH.CreateDocument()
-                '    .ShowDialog()
-
-                '    'If .DialogResult = DialogResult.OK Then
-                '    '    SimpleButton1_Click(sender, e)
-                '    'End If
-                'End With
-                '---------------------------------------------------------------------------------------------------------------------
-            Next
-        Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
-        End Try
-
-
-    End Sub
-#End Region
-
-#Region "AMH 결과보고서 단일 출력"
-    Private Sub PsPrint(SelectIndex As Integer)
-
-        Try
-            Select Case SelectIndex
-                Case 1
-                    Dim Report_AMH_IF As Report_IF_AMH_1 = New Report_IF_AMH_1
-                    '보고서 출력 시 미리보기 (O)--------------------
-                    With frmReportView
-                        .dcvPrevView.DocumentSource = Report_AMH_IF
-                        Report_AMH_IF.CreateDocument()
-                        .ShowDialog()
-                    End With
-                Case 2
-                    Dim Report_AMH_IF As Report_IF_AMH_2 = New Report_IF_AMH_2
-                    '보고서 출력 시 미리보기 (O)--------------------
-                    With frmReportView
-                        .dcvPrevView.DocumentSource = Report_AMH_IF
-                        Report_AMH_IF.CreateDocument()
-                        .ShowDialog()
-                    End With
-                Case 3
-                    Dim Report_AMH_IF As Report_IF_AMH_3 = New Report_IF_AMH_3
-                    '보고서 출력 시 미리보기 (O)--------------------
-                    With frmReportView
-                        .dcvPrevView.DocumentSource = Report_AMH_IF
-                        Report_AMH_IF.CreateDocument()
-                        .ShowDialog()
-                    End With
-            End Select
-
-#Region "출력한 수진자 덮어쓰기 형식"
             'QueryString = String.Empty
             'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
             'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
@@ -292,101 +195,256 @@ Public Class frmAMHTest
                 ClsDb.CfMExecuteQuery(QueryString)
             End If
 
-#Region "출력 시 미리보기 없음"
-            'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+            '---------------------------------------------------------------------------------------------------------------------
 
-            ' PrintDocument 인스턴스 생성
-            'Dim printDocument As New PrintDocument()
+            'prevView (O)---------------------------------------------------------------------------------------------------------
+            'With frmReportView
+            '    .dcvPrevView.DocumentSource = Report_IF_AMH
+            '    Report_IF_AMH.CreateDocument()
+            '    .ShowDialog()
 
-            ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
-            ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
-            'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
-
-            ' 보고서를 바로 출력
-            'printTool.Print()
+            '    'If .DialogResult = DialogResult.OK Then
+            '    '    SimpleButton1_Click(sender, e)
+            '    'End If
+            'End With
+            '---------------------------------------------------------------------------------------------------------------------
+        Next
+        SplashScreenManager.CloseWaitForm()
+    End Sub
 #End Region
-        Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
-        End Try
+
+#Region "기본 보고서 단일 출력"
+    Private Sub PsPrint_Default()
+
+        Dim Report_AMH_IF As Report_IF_AMH = New Report_IF_AMH
+
+        '보고서 출력 시 미리보기 (O)--------------------
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
+            .ShowDialog()
+        End With
+
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
+        QueryString = String.Empty
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
+#Region "출력 시 미리보기 없음"
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+        ' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        'printTool.Print()
+#End Region
 
     End Sub
-
 #End Region
 
-#Region "수진자 조회 결과 Grid 클릭 이벤트"
+#Region "아인여성의원 보고서 단일 출력"
+    Private Sub PsPrint_AIN()
+
+        Dim Report_AMH_IF As Report_IF_AMH_2 = New Report_IF_AMH_2
+
+        '보고서 출력 시 미리보기 (O)--------------------
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
+            .ShowDialog()
+        End With
+
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
+        QueryString = String.Empty
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
+#Region "출력 시 미리보기 없음"
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+        ' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        'printTool.Print()
+#End Region
+
+    End Sub
+#End Region
+
+#Region "아이비에프 보고서 단일 출력"
+    Private Sub PsPrint_IBF()
+
+        Dim Report_AMH_IF As Report_IF_AMH_3 = New Report_IF_AMH_3
+
+        '보고서 출력 시 미리보기 (O)-------------------
+        With frmReportView
+            .dcvPrevView.DocumentSource = Report_AMH_IF
+            Report_AMH_IF.CreateDocument()
+            .ShowDialog()
+        End With
+
+#Region "출력한 수진자 덮어쓰기 형식"
+        'QueryString = String.Empty
+        'QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
+        'QueryString &= "    SET REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "      , SPCNO = '" & txtBarcodeNo.Text & "'                     " & vbNewLine
+        'QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
+        'QueryString &= "  WHERE REQDATE = '" & txtAcceptDate.Text & "'                  " & vbNewLine
+        'QueryString &= "  AND   PTID = '" & txtPtChartNo.Text & "'                      " & vbNewLine
+#End Region
+
+        QueryString = String.Empty
+        QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+        QueryString &= " (                                                              " & vbNewLine
+        QueryString &= "        REQDATE                                                 " & vbNewLine
+        QueryString &= "      , SPCNO                                                   " & vbNewLine
+        QueryString &= "      , PTNM                                                    " & vbNewLine
+        QueryString &= "      , PTID                                                    " & vbNewLine
+        QueryString &= "      , PRTDATE                                                 " & vbNewLine
+        QueryString &= "  )VALUES(                                                      " & vbNewLine
+        QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+        QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+        QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+        QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+        QueryString &= "  )                                                             " & vbNewLine
+
+        If QueryString.Length > 0 Then
+            ClsDb.CfMExecuteQuery(QueryString)
+        End If
+
+#Region "출력 시 미리보기 없음"
+        'Dim printTool As New ReportPrintTool(Report_IF_AMH)
+
+        ' PrintDocument 인스턴스 생성
+        'Dim printDocument As New PrintDocument()
+
+        ' printTool.PrintingSystem.PageMargins = New Margins(50, 50, 50, 50) ' 여백 설정
+        ' printTool.PrintingSystem.Landscape = True ' 가로 방향으로 출력 설정
+        'printTool.PrintingSystem.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4 ' 용지 종류 설정
+
+        ' 보고서를 바로 출력
+        'printTool.Print()
+#End Region
+
+    End Sub
+#End Region
+
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
 
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
-        Dim TESTCD As String = String.Empty
+        'Dim TESTCD As String = String.Empty
         Dim PTAGE As Integer = GridView.GetRowCellValue(sSelectRow, "PTAGE")
 
         Try
-            If GridView.RowCount = 0 Then
-                ' 
-            Else
-                SplashScreenManager.ShowWaitForm()
+            SplashScreenManager.ShowWaitForm()
 
-                With GridView
-                    txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
-                    txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
-                    txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
-                    txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
-                    txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
-                    txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
-                    txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
-                    txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
-                    txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
-                    RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
-                End With
+            With GridView
+                txtPtChartNo.Text = .GetRowCellValue(sSelectRow, "PTID").ToString()        '차트번호
+                txtPtnm.Text = .GetRowCellValue(sSelectRow, "PTNM").ToString()             '수진자이름
+                txtReceiptDate.Text = .GetRowCellValue(sSelectRow, "REQDATE").ToString()   '접수일
+                txtPtSex.Text = .GetRowCellValue(sSelectRow, "PTSEX").ToString()           '성별
+                txtBarcodeNo.Text = .GetRowCellValue(sSelectRow, "SPCNO").ToString()       '바코드번호
+                txtPtAge.Text = .GetRowCellValue(sSelectRow, "PTAGE").ToString()           '나이
+                txtAcceptDate.Text = .GetRowCellValue(sSelectRow, "RESULTDATE").ToString() '결과일
+                txtDoctor.Text = .GetRowCellValue(sSelectRow, "SIGNIN").ToString()         '의사
+                txtMedOffice.Text = .GetRowCellValue(sSelectRow, "DeptCode").ToString()    '진료과
+                RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
+            End With
 
-                Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
-                                                                                   GridView.GetRowCellValue(sSelectRow, "PTID").ToString)
+            Dim sTable As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
+                                                                                GridView.GetRowCellValue(sSelectRow, "PTID").ToString)
+            grdAMH.DataSource = sTable
 
-                If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
-                    For Each row As DataRow In TestCode.Rows
-                        TESTCD &= "'" & row(0).ToString & "',"
-                    Next
-                    TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
-                Else
-                    XtraMessageBox.Show(_sMsg.sMsg_NoTestCode, _sMsg_Title.sMsgTitle_TestCode, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
+            Select Case True
+                Case PTAGE >= 20 AndAlso PTAGE <= 24
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg")
+                Case PTAGE >= 25 AndAlso PTAGE <= 29
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg")
+                Case PTAGE >= 30 AndAlso PTAGE <= 34
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg")
+                Case PTAGE >= 35 AndAlso PTAGE <= 39
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg")
+                Case PTAGE >= 40 AndAlso PTAGE <= 44
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg")
+                Case PTAGE >= 45 AndAlso PTAGE <= 50
+                    PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg")
+            End Select
 
-                Dim sTable As DataTable = ClsDb.CfSelectQuery(QueryString)
-
-                grdAMH.DataSource = sTable
-
-                Select Case True
-                    Case PTAGE >= 20 AndAlso PTAGE <= 24
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_06.jpg")
-                    Case PTAGE >= 25 AndAlso PTAGE <= 29
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_05.jpg")
-                    Case PTAGE >= 30 AndAlso PTAGE <= 34
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_04.jpg")
-                    Case PTAGE >= 35 AndAlso PTAGE <= 39
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_03.jpg")
-                    Case PTAGE >= 40 AndAlso PTAGE <= 44
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_02.jpg")
-                    Case PTAGE >= 45 AndAlso PTAGE <= 50
-                        PictureEdit1.Image = Image.FromFile(Application.StartupPath & "\05.Rpt\AMH_Form_01\00.AMH_BACK_01.jpg")
-                End Select
-
-                SplashScreenManager.CloseWaitForm()
-            End If
+            SplashScreenManager.CloseWaitForm()
 
         Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+
         End Try
     End Sub
-#End Region
 
-#Region "수진자 조회에서 <조회> 버튼의 기능"
     Private Sub PsFindRoutine()
         Try
             SplashScreenManager.ShowWaitForm()
 
             Dim sWorkLog As String = " Customer List Searching."
+
+            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
 
             Dim sTable As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_LIST_GET(dtpFrom.Text,             '시작일
                                                                                   dtpTo.Text,               '종료일
@@ -397,13 +455,11 @@ Public Class frmAMHTest
             SplashScreenManager.CloseWaitForm()
 
         Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+            XtraMessageBox.Show(ex.Message, "수진자 조회 에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-#End Region
 
-#Region "AMH용 검사코드를 불러올 때 사용 - 검사코드가 다를 수 있으니 수정이 필요할 수 있음"
+    'mDB에서 검사코드 가져온다
     Public Sub Get_TestCodeAMH()
         Try
             QueryString = String.Empty
@@ -425,11 +481,9 @@ Public Class frmAMHTest
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+
         End Try
     End Sub
-#End Region
 
     Private Sub PsClearRoutine()
 
@@ -453,7 +507,7 @@ Public Class frmAMHTest
         PictureEdit1.Image = Nothing
     End Sub
 
-#Region "프린트완료 건 backColor 변경"
+    '프린트완료 건 backColor 변경
     Private Sub GridView_RowStyle(ByVal sender As Object,
                                   ByVal e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView.RowStyle
         Try
@@ -483,10 +537,8 @@ Public Class frmAMHTest
 
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+
         End Try
     End Sub
-#End Region
 
 End Class

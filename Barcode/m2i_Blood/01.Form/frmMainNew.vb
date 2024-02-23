@@ -18,6 +18,8 @@ Public Class frmMainNew
                 aceBarcode.Visible = False
         End Select
 
+        aceTestCode.Visible = False '임시로 작성 , AMH프로그램만 사용할 경우 필요없는 form임
+
         BsiWorkDate.Caption = Format(Now, "yyyy-MM-dd")
         BsiUserNM.Caption = frmLoginNew.lblUsernm.Text
 
