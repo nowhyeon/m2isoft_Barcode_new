@@ -85,19 +85,25 @@ Public Class frmSetup
     Private Sub PtDeleteRoutine()
 
         Dim sReturn As Boolean = False
+        Try
 
-        QueryString = String.Empty
-        QueryString &= "DELETE FROM m2i_LAB004 WHERE TESTCD = '" & txtTestCd.Text & "' "
+            QueryString = String.Empty
+            QueryString &= "DELETE FROM m2i_LAB004 WHERE TESTCD = '" & txtTestCd.Text & "' "
 
-        If QueryString.Length > 0 Then
-            sReturn = ClsDb.CfMExecuteQuery(QueryString)
-        End If
+            If QueryString.Length > 0 Then
+                sReturn = ClsDb.CfMExecuteQuery(QueryString)
+            End If
 
-        If sReturn Then
-            XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Call PtReroadRoutine()
-            Call PtScreenClear()
-        End If
+            If sReturn Then
+                XtraMessageBox.Show(_sMsg.sMsg_Delete, _sMsg_Title.sMsgTitle_Delete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Call PtReroadRoutine()
+                Call PtScreenClear()
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
+        End Try
     End Sub
 
     Private Sub PtSaveRoutine()
@@ -172,7 +178,7 @@ Public Class frmSetup
 
     Private Sub PtReroadRoutine()
         Try
-            SplashWaitForm.ShowWaitForm()
+            'SplashWaitForm.ShowWaitForm()
 
             QueryString = String.Empty
             QueryString &= "SELECT * FROM m2i_LAB004 " & vbNewLine
@@ -180,7 +186,7 @@ Public Class frmSetup
 
             grdTestList.DataSource = ClsDb.CfMSelectQuery(QueryString)
 
-            SplashWaitForm.CloseWaitForm()
+            'SplashWaitForm.CloseWaitForm()
 
             Call PtScreenClear()
 

@@ -118,6 +118,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="01.Form\Form1.Designer.vb" />
+    <Compile Include="01.Form\Form1.vb" />
     <Compile Include="01.Form\frmConfig.Designer.vb">
       <DependentUpon>frmConfig.vb</DependentUpon>
     </Compile>
@@ -239,6 +241,7 @@
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <EmbeddedResource Include="01.Form\Form1.resx" />
     <EmbeddedResource Include="01.Form\frmAMHTest.resx">
       <DependentUpon>frmAMHTest.vb</DependentUpon>
     </EmbeddedResource>

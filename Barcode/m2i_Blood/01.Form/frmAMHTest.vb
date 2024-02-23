@@ -388,8 +388,6 @@ Public Class frmAMHTest
 
             Dim sWorkLog As String = " Customer List Searching."
 
-            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
-
             Dim sTable As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_LIST_GET(dtpFrom.Text,             '시작일
                                                                                   dtpTo.Text,               '종료일
                                                                                   cboSearchCond.EditValue,  '검색타입

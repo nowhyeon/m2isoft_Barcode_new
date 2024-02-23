@@ -225,8 +225,6 @@ Public Class frmBarcode
 
             Dim sWorkLog As String = " Customer List Searching."
 
-            Call GsWorkLog(Me.Name.ToString, LogEvent._search, sWorkLog)
-
             Dim sTable As DataTable = Hospital_DB.HOSPITAL_ORDER_LIST_GET(dtpFrom.Text,             '시작일
                                                                           dtpTo.Text,               '종료일
                                                                           cboReceipt.EditValue,     '접수타입

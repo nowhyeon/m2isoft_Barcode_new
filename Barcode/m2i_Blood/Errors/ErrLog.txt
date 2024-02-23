@@ -14,3 +14,12 @@
    위치: m2i_Blood.frmLoginNew.CmdLogin_Click(Object sender, EventArgs e) 파일 C:\Users\myeng\OneDrive\바탕 화면\git\m2isoft_Barcode_new\Barcode\m2i_Blood\01.Form\frmLoginNew.vb:줄 85
 [ Date/Time  ] : 2024-01-24 오후 2:42:43
 -------------------------------------------------------------------------------------
+[ Title      ] : FluentDesignApp
+[ Message    ] : Wait Form wasn't created
+[ StackTrace ] : 
+   위치: DevExpress.XtraSplashScreen.ThreadManagerBase.DoDestroy(Int32 closingDelay, Form parent, Boolean throwExceptionIfAlreadyClosed)
+   위치: DevExpress.XtraSplashScreen.SplashScreenManager.CloseCore(Boolean throwExceptionIfAlreadyClosed, Int32 closingDelay, Form parent)
+   위치: DevExpress.XtraSplashScreen.SplashScreenManager.CloseWaitForm()
+   위치: m2i_Blood.frmSetup.PtReroadRoutine() 파일 C:\Users\myeng\OneDrive\바탕 화면\git\m2isoft_Barcode_new\Barcode\m2i_Blood\01.Form\frmSetup.vb:줄 183
+[ Date/Time  ] : 2024-02-02 오전 10:37:45
+-------------------------------------------------------------------------------------

@@ -96,7 +96,7 @@ Public Class frmLoginNew
 #End Region
 
 #Region "로그인 버튼 클릭 후 패스워드 오기입 시 이벤트"
-    Private Sub CmdLogin_Click(sender As Object, e As EventArgs) Handles CmdLogin.Click
+    Private Sub CmdLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         invalidPswdCount += 1
 
@@ -189,7 +189,7 @@ Public Class frmLoginNew
 
     Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
         If e.KeyCode = Keys.Enter And txtPassword.Text <> "" Then
-            CmdLogin.PerformClick()
+            btnLogin.PerformClick()
         End If
     End Sub
 #End Region
@@ -198,4 +198,7 @@ Public Class frmLoginNew
         Me.DialogResult = DialogResult.Cancel
     End Sub
 
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Application.Exit()
+    End Sub
 End Class

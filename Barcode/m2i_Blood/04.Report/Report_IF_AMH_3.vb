@@ -165,46 +165,46 @@ Public Class Report_IF_AMH_3
             series6.Points.Add(New SeriesPoint(5, 4))
             series6.Points.Add(New SeriesPoint(6, 0))
 
-            XrChart2.Series.Add(series4)
-            XrChart2.Series.Add(series5)
-            XrChart2.Series.Add(series6)
+            'XrChart2.Series.Add(series4)
+            'XrChart2.Series.Add(series5)
+            'XrChart2.Series.Add(series6)
 
-            ' Hide the legend (if necessary).
-            XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
+            '' Hide the legend (if necessary).
+            'XrChart2.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False
 
-            CType(XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
+            'CType(XrChart2.Diagram, XYDiagram).AxisY.WholeRange.MaxValue = 90
 
-            'CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
+            ''CType(.XrChart2.Diagram, XYDiagram).AxisX.WholeRange.MaxValue = 12
 
-            ' Rotate the diagram (if necessary).
-            CType(XrChart2.Diagram, XYDiagram).Rotated = True
+            '' Rotate the diagram (if necessary).
+            'CType(XrChart2.Diagram, XYDiagram).Rotated = True
 
-            Dim diagram2 As XYDiagram = CType(XrChart2.Diagram, XYDiagram)
+            'Dim diagram2 As XYDiagram = CType(XrChart2.Diagram, XYDiagram)
 
-            Select Case True
-                Case Val(mAMHResult) > 2.28
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
-                Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
-                Case Val(mAMHResult) < 0.69
-                    diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
-            End Select
+            'Select Case True
+            '    Case Val(mAMHResult) > 2.28
+            '        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 0, 2))
+            '    Case Val(mAMHResult) >= 0.69 And Val(mAMHResult) <= 2.28
+            '        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 2, 4))
+            '    Case Val(mAMHResult) < 0.69
+            '        diagram2.AxisX.Strips.Add(New Strip("Strip 2", 4, 6))
+            'End Select
 
-            ' Customize the strip's behavior.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Visible = True
-            diagram2.AxisX.Strips(0).ShowAxisLabel = False
-            diagram2.AxisX.Strips(0).AxisLabelText = ""
-            diagram2.AxisX.Strips(0).ShowInLegend = False
-            diagram2.AxisX.Strips(0).LegendText = ""
+            '' Customize the strip's behavior.(다이어그램설정)
+            'diagram2.AxisX.Strips(0).Visible = True
+            'diagram2.AxisX.Strips(0).ShowAxisLabel = False
+            'diagram2.AxisX.Strips(0).AxisLabelText = ""
+            'diagram2.AxisX.Strips(0).ShowInLegend = False
+            'diagram2.AxisX.Strips(0).LegendText = ""
 
-            ' Customize the strip's appearance.(다이어그램설정)
-            diagram2.AxisX.Strips(0).Color = Color.Red
-            diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
+            '' Customize the strip's appearance.(다이어그램설정)
+            'diagram2.AxisX.Strips(0).Color = Color.Red
+            'diagram2.AxisX.Strips(0).FillStyle.FillMode = FillMode.Empty
 
-            'y 값 이름 변경
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
-            diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
+            ''y 값 이름 변경
+            'diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="2.28이상", value:=1))
+            'diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.69이상 ~ 2.27이하", value:=3))
+            'diagram2.AxisX.CustomLabels.Add(New CustomAxisLabel(name:="0.68이하", value:=5))
         End With
 
         strAFC1 = String.Empty

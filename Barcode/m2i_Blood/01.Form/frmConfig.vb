@@ -46,7 +46,7 @@ Public Class frmConfig
 
     End Sub
 
-    Private Sub btnFileDic_Click(sender As Object, e As EventArgs) 
+    Private Sub btnFileDic_Click(sender As Object, e As EventArgs)
         Dim dlgOFD As New OpenFileDialog()
         Dim sfilePath As String
 
@@ -73,12 +73,6 @@ Public Class frmConfig
             Return
         End If
     End Sub
-
-    'Private Sub DateSetupTextEdit_KeyPress(sender As Object, e As KeyPressEventArgs)
-    '    If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-    '        e.Handled = True
-    '    End If
-    'End Sub
 
     Private Sub PsAddRoutine()          ' XML파일에 서브 노드들을 추가해주는 코드
 
@@ -291,4 +285,10 @@ Public Class frmConfig
 
     End Sub
 
+    Private Sub frmConfig_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.DialogResult = DialogResult.Cancel
+            Me.Close()
+        End If
+    End Sub
 End Class

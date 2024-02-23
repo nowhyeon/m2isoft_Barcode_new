@@ -28,8 +28,8 @@ Public Class ClsErrorsAndEvents
         Try
             Using fs1 As FileStream = New FileStream(Application.StartupPath & "\Errors\ErrLog.txt", FileMode.Append, FileAccess.Write)
                 Dim s1 As StreamWriter = New StreamWriter(fs1)
-                s1.Write("[ Title      ] : " & title & vbCrLf)
-                s1.Write("[ Message    ] : " & msg & vbCrLf)
+                s1.Write("[ Title         ] : " & title & vbCrLf)
+                s1.Write("[ Message   ] : " & msg & vbCrLf)
                 s1.Write("[ StackTrace ] : " & vbCrLf & stkTrace & vbCrLf)
                 s1.Write("[ Date/Time  ] : " & DateTime.Now.ToString() & vbCrLf)
                 s1.Write("-------------------------------------------------------------------------------------" & vbCrLf)

@@ -1,5 +1,4 @@
-﻿Imports System.Configuration
-Imports System.IO
+﻿Imports System.IO
 Imports System.Net
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Repository
@@ -7,7 +6,7 @@ Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports System.Xml
 Imports Microsoft.Win32
-Imports DevExpress.XtraCharts
+
 
 Module mod_m2i
 
@@ -19,13 +18,8 @@ Module mod_m2i
     Public gUserPASSWD As String = String.Empty
     Public gUserLEV As String = String.Empty
 
+    ' 비밀번호 오기입 카운트(5회 오기입 시 프로그램 Exit)
     Public validPswdCount As Integer = 4
-
-    Public gQcSampleHeadID As String = "QC"
-    Public gRetestStr As String = "RETEST"
-    Public gDevUserId As String = "DEV"
-    Public gProgramRunTimer As Integer = 0
-    Public gProcessName As String = String.Empty
 
 #Region "XML파일용 변수"
     ' TCPIP 프린트설정
@@ -73,6 +67,7 @@ Module mod_m2i
     Public gLocalDBFile As String = "\00.DATABASE\m2i_Local_DB.mdb"
 
     Dim ClsDb As New ClsDatabase
+    Dim ClsErrorLog As New ClsErrorsAndEvents
 
     Public Structure LogEvent
         Shared _insert As String = "Data Insert"          ' 데이터 삽입 작업 시 나타내는 로그 이벤트
@@ -84,7 +79,7 @@ Module mod_m2i
         Shared _MenuWork As String = "Menu Work"          ' 메뉴 작업 시
     End Structure
 
-    '자식폼 열기
+#Region "자식폼 열기"
     Public Sub OpenChildForm(childForm As XtraForm)
 
         childForm.TopLevel = False                                   ' 자식 폼 설정
@@ -96,8 +91,9 @@ Module mod_m2i
         childForm.Show()                                             ' 자식 폼 표시
 
     End Sub
+#End Region
 
-    ' Grid Column 설정
+#Region "Grid Column 설정"
     Public Sub GfColumnSet(gridNm As GridView,                     ' 그리드의 이름                             
                            textNm As String,                       ' 입력/수정할 때 기입하는 항목들의 헤드이름
                            columnNm As String,                     ' 그리드의 열이름
@@ -210,48 +206,15 @@ Module mod_m2i
                 End Select
             End With
         Catch ex As Exception
-            Return
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
     End Sub
 
-    Public Sub GsWorkLog(scrcd As String, eventnm As String, workstr As String)
+#End Region
 
-        If eventnm = LogEvent._MenuWork OrElse eventnm = LogEvent._search Then
-            Exit Sub
-        End If
-
-        Dim sPcName As String = Environment.MachineName     ' 현재 실행 중인 컴퓨터이름
-        Dim sDate As String = Format(Now, "yyyy-MM-dd")
-
-        QueryString = ""
-        QueryString &= "INSERT INTO hstWORKLOG (                            " & vbNewLine
-        QueryString &= "       workdt                                       " & vbNewLine
-        QueryString &= "     , workseq                                      " & vbNewLine
-        QueryString &= "     , scrcd                                        " & vbNewLine
-        QueryString &= "     , eventnm                                      " & vbNewLine
-        QueryString &= "     , usercd                                       " & vbNewLine
-        QueryString &= "     , workpc                                       " & vbNewLine
-        QueryString &= "     , describe                                     " & vbNewLine
-        QueryString &= "     , wrtdt                                        " & vbNewLine
-        QueryString &= ") VALUES (                                          " & vbNewLine
-        QueryString &= "       '" & sDate & "'                              " & vbNewLine
-        QueryString &= "     , ISNULL((SELECT MAX(workseq) FROM hstWORKLOG  " & vbNewLine
-        QueryString &= "                WHERE workdt = '" & sDate & "'      " & vbNewLine
-        QueryString &= "                GROUP BY workdt),0) + 1             " & vbNewLine
-        QueryString &= "     , '" & scrcd & "'                              " & vbNewLine
-        QueryString &= "     , '" & eventnm & "'                            " & vbNewLine
-        QueryString &= "     , '" & gUserID & "'                            " & vbNewLine
-        QueryString &= "     , '" & sPcName & "'                            " & vbNewLine
-        QueryString &= "     , '" & workstr & "'                            " & vbNewLine
-        QueryString &= "     , getdate()                                    " & vbNewLine
-        QueryString &= ")"
-        If gUserID.ToUpper <> gDevUserId Then
-            Call ClsDb.CfExecuteQuery(QueryString)
-        End If
-    End Sub
-
+#Region "AMH 결과보고서 양식 룩업에딧 정의"
     Public Sub ReportLookUpSet(lueObj As LookUpEdit)
-        ' AMH 결과보고서 양식 룩업에딧 정의
         Try
             QueryString = String.Empty
             QueryString &= "     SELECT DISTINCT [ID],[ReportNM] FROM [m2i_Report]            " & vbCrLf
@@ -269,10 +232,13 @@ Module mod_m2i
             End With
 
         Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
     End Sub
+#End Region
 
+#Region "frmSetup - BloodTube 룩업에딧 정의"
     Public Sub LookUpSet(lueObj As LookUpEdit)
         Try
             QueryString = String.Empty
@@ -290,11 +256,13 @@ Module mod_m2i
                 .BestFitMode = Controls.BestFitMode.BestFitResizePopup
             End With
         Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
         End Try
     End Sub
+#End Region
 
-    '단일출력
+#Region "바코드 프린터 단일출력"
     Public Sub Print_Barcode(ByVal sPTNM As String,          '이름
                              ByVal sBARCODE As String,       '바코드
                              ByVal sCHARTNO As String,       '차트번호
@@ -305,6 +273,7 @@ Module mod_m2i
                              ByVal sDOCTOR As String,        '담당의
                              ByVal sACCEPTDATE As String,    '처방일
                              ByVal sMEMO As String)          '메모
+
         Dim sIpPing As New Net.NetworkInformation.Ping()
         Dim sPingReply As Net.NetworkInformation.PingReply = sIpPing.Send(gPrintIP_ZD, gPrintTimeOut)
         Dim BarcodeString As String = String.Empty
@@ -317,7 +286,7 @@ Module mod_m2i
         ElseIf sSEX = "M" Then
             sSEX = "남"
         Else
-            sSEX = "-"
+            sSEX = "공통"
         End If
 
         BarcodeString = "^XA" & vbCrLf
@@ -375,19 +344,19 @@ Module mod_m2i
                     End Using
 
                     QueryString = String.Empty
-                    QueryString &= " SELECT * FROM m2i_LAB201                                       " & vbNewLine
-                    QueryString &= "  WHERE REQDATE = '" & sRECEIPTDATE & "'                        " & vbNewLine
-                    QueryString &= "  AND   PTID = '" & sCHARTNO & "'                               " & vbNewLine
+                    QueryString &= " SELECT * FROM m2i_LAB201                                           " & vbNewLine
+                    QueryString &= " WHERE REQDATE = '" & sRECEIPTDATE & "'                             " & vbNewLine
+                    QueryString &= " AND   PTID = '" & sCHARTNO & "'                                    " & vbNewLine
                     Dim sTable As DataTable = ClsDb.CfMSelectQuery(QueryString)
 
                     If Not IsNothing(sTable) AndAlso sTable.Rows.Count > 0 Then
                         QueryString = String.Empty
                         QueryString &= " UPDATE m2i_LAB201                                              " & vbNewLine
-                        QueryString &= "    SET REQDATE = '" & sRECEIPTDATE & "'                        " & vbNewLine
-                        QueryString &= "      , SPCNO = '" & sBARCODE & "'                              " & vbNewLine
-                        QueryString &= "      , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'           " & vbNewLine
-                        QueryString &= "  WHERE REQDATE = '" & sRECEIPTDATE & "'                        " & vbNewLine
-                        QueryString &= "  AND   PTID = '" & sCHARTNO & "'                               " & vbNewLine
+                        QueryString &= " SET REQDATE = '" & sRECEIPTDATE & "'                           " & vbNewLine
+                        QueryString &= "     , SPCNO = '" & sBARCODE & "'                               " & vbNewLine
+                        QueryString &= "     , PRTDATE = '" & Format(Now, "yyyy-MM-dd") & "'            " & vbNewLine
+                        QueryString &= " WHERE REQDATE = '" & sRECEIPTDATE & "'                         " & vbNewLine
+                        QueryString &= " AND   PTID = '" & sCHARTNO & "'                                " & vbNewLine
                     Else
                         QueryString = String.Empty
                         QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
@@ -410,20 +379,17 @@ Module mod_m2i
                         sReturn = ClsDb.CfMExecuteQuery(QueryString)
                     End If
 
-                    'If sReturn Then
-                    '    Dim sMsg As String = "저장되었습니다.", sMsgTitle As String = "저장 완료", sQst As String = "저장 하시겠습니까?"
-                    '    XtraMessageBox.Show(sMsg, sMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    'End If
-
                 Catch ex As Exception
-                    XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
                 End Try
             End If
         End If
 
     End Sub
+#End Region
 
-    '메뉴얼출력
+#Region "바코드프린터 메뉴얼(수기로) 출력"
     Public Sub Print_Manual_Print(strBarcodeNo As String,   '바코드번호
                                   strMemoComment As String) '코멘트
 
@@ -513,12 +479,15 @@ Module mod_m2i
                         End Using
                     End Using
                 Catch ex As Exception
-                    XtraMessageBox.Show(ex.Message, "Print 오류", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
                 End Try
             End If
         End If
     End Sub
+#End Region
 
+#Region "XML파일에 저장된 내용 읽어오기"
     Public Function CommonRead() As Boolean
         Dim ClsEncryption As New ClsEncryptDecrypt
 
@@ -570,13 +539,16 @@ Module mod_m2i
             Return True
 
         Catch ex As Exception
-            XtraMessageBox.Show(ex.Message, _sMsg_Title.sMsgTitle_File, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(_sMsg.sMsg_Error, _sMsg_Title.sMsgTitle_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClsErrorLog.WriteToErrorLog(ex.Message, ex.StackTrace, Application.ProductName)
             Return False
         End Try
 
 
     End Function
+#End Region
 
+#Region "레지스트리에 저장된 내용 읽어오기"
     Public Function ReadReg(strRegKey As String) As String
 
         ' HKEY_CURRENT_USER 아래 "Software\YourApplication" 경로
@@ -597,7 +569,9 @@ Module mod_m2i
         Return ""
 
     End Function
+#End Region
 
+#Region "레지스트리에 내용 저장하기"
     Public Function SaveReg(strRegKey As String, strValue As String) As Boolean
 
         Dim RegistryKey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\m2isoft\ProgramSelect")
@@ -609,8 +583,9 @@ Module mod_m2i
 
         SaveReg = True
     End Function
+#End Region
 
-    ' 현재 PC의 IP주소 가져오기
+#Region "현재 PC의 IP주소 가져오기"
     Public Function GetIPAddress() As String
         Dim hostName As String = Dns.GetHostName()
         Dim ipHostEntry As IPHostEntry = Dns.GetHostEntry(hostName)
@@ -628,14 +603,16 @@ Module mod_m2i
         Return Ipv4Address
 
     End Function
+#End Region
 
-    ' 현재 PC의 이름 가져오기
+#Region "현재 PC의 이름 가져오기"
     Public Function GetComputerName() As String
         Dim ComputerName As String = Environment.MachineName
         GetComputerName = ComputerName
     End Function
+#End Region
 
-    ' 파일 삭제
+#Region "백업파일 삭제"
     Public Function FileDelete(BackupFileName As String) As Boolean
         Try
             If File.Exists(BackupFileName) Then
@@ -652,8 +629,10 @@ Module mod_m2i
         Return True
 
     End Function
+#End Region
 
-#Region "개인정보동의를 했는 지 Y or String.Empty 반환"
+
+#Region "개인정보동의 여부 반환"
     Public Function Personal_Info_Agree_YN(txtID As String) As String
         Dim cDb As New ClsDatabase
         Dim sTable As DataTable
