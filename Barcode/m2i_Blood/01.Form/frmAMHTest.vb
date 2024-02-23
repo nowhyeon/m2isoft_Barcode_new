@@ -119,20 +119,38 @@ Public Class frmAMHTest
 
 #Region "다중 출력"
     Private Sub PsMultiPrint()
-
+        SplashScreenManager.ShowWaitForm()
         Dim sRowHandles As Int32() = GridView.GetSelectedRows()
 
         For sRowCnt = 0 To sRowHandles.Length - 1
 
+            Dim sRowHandle As Int32 = sRowHandles(sRowCnt)
+
             Dim Report_IF_AMH As Report_IF_AMH = New Report_IF_AMH
-            Dim sex As String
-            If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
-                sex = "여"
-            ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
-                sex = "남"
-            Else
-                sex = "공통"
-            End If
+
+            'Debug.Print(GridView.GetRowCellValue(sRowHandle, "PTNM").ToString())
+
+            With GridView
+                txtPtChartNo.Text = .GetRowCellValue(sRowHandle, "PTID").ToString()        '차트번호
+                txtPtnm.Text = .GetRowCellValue(sRowHandle, "PTNM").ToString()             '수진자이름
+                txtReceiptDate.Text = .GetRowCellValue(sRowHandle, "REQDATE").ToString()   '접수일
+                txtPtSex.Text = .GetRowCellValue(sRowHandle, "PTSEX").ToString()           '성별
+                txtBarcodeNo.Text = .GetRowCellValue(sRowHandle, "SPCNO").ToString()       '바코드번호
+                txtPtAge.Text = .GetRowCellValue(sRowHandle, "PTAGE").ToString()           '나이
+                txtAcceptDate.Text = .GetRowCellValue(sRowHandle, "RESULTDATE").ToString() '결과일
+                txtDoctor.Text = .GetRowCellValue(sRowHandle, "SIGNIN").ToString()         '의사
+                txtMedOffice.Text = .GetRowCellValue(sRowHandle, "DeptCode").ToString()    '진료과
+                RESULT.Text = .GetRowCellValue(sRowHandle, "RESULT").ToString()
+            End With
+
+            'Dim sex As String
+            'If GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "F" Then
+            '    sex = "여"
+            'ElseIf GridView.GetRowCellValue(sRowCnt, "PTSEX").ToString = "M" Then
+            '    sex = "남"
+            'Else
+            '    sex = "공통"
+            'End If
 
             'prevView (x)---------------------------------------------------------------------------------------------------------
             Dim printTool As New ReportPrintTool(Report_IF_AMH)
@@ -158,19 +176,19 @@ Public Class frmAMHTest
 #End Region
 
             QueryString = String.Empty
-                QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
-                QueryString &= " (                                                              " & vbNewLine
-                QueryString &= "        REQDATE                                                 " & vbNewLine
-                QueryString &= "      , SPCNO                                                   " & vbNewLine
-                QueryString &= "      , PTNM                                                    " & vbNewLine
-                QueryString &= "      , PTID                                                    " & vbNewLine
-                QueryString &= "      , PRTDATE                                                 " & vbNewLine
-                QueryString &= "  )VALUES(                                                      " & vbNewLine
-                QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
-                QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
-                QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
-                QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
+            QueryString &= " INSERT INTO m2i_LAB201                                         " & vbNewLine
+            QueryString &= " (                                                              " & vbNewLine
+            QueryString &= "        REQDATE                                                 " & vbNewLine
+            QueryString &= "      , SPCNO                                                   " & vbNewLine
+            QueryString &= "      , PTNM                                                    " & vbNewLine
+            QueryString &= "      , PTID                                                    " & vbNewLine
+            QueryString &= "      , PRTDATE                                                 " & vbNewLine
+            QueryString &= "  )VALUES(                                                      " & vbNewLine
+            QueryString &= "   '" & txtAcceptDate.Text & "'                                 " & vbNewLine
+            QueryString &= "  ,'" & txtBarcodeNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & txtPtnm.Text & "'                                       " & vbNewLine
+            QueryString &= "  ,'" & txtPtChartNo.Text & "'                                  " & vbNewLine
+            QueryString &= "  ,'" & Format(Now, "yyyy-MM-dd") & "'                          " & vbNewLine
             QueryString &= "  )                                                             " & vbNewLine
 
             If QueryString.Length > 0 Then
@@ -191,6 +209,7 @@ Public Class frmAMHTest
             'End With
             '---------------------------------------------------------------------------------------------------------------------
         Next
+        SplashScreenManager.CloseWaitForm()
     End Sub
 #End Region
 
@@ -374,7 +393,7 @@ Public Class frmAMHTest
     Private Sub grdSearchQry_Click(sender As Object, e As EventArgs) Handles grdSearchQry.Click
 
         Dim sSelectRow As Integer = GridView.FocusedRowHandle
-        Dim TESTCD As String = String.Empty
+        'Dim TESTCD As String = String.Empty
         Dim PTAGE As Integer = GridView.GetRowCellValue(sSelectRow, "PTAGE")
 
         Try
@@ -393,20 +412,8 @@ Public Class frmAMHTest
                 RESULT.Text = .GetRowCellValue(sSelectRow, "RESULT").ToString()
             End With
 
-            Dim TestCode As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
-                                                                               GridView.GetRowCellValue(sSelectRow, "PTID").ToString)
-
-            If Not IsNothing(TestCode) AndAlso TestCode.Rows.Count > 0 Then
-                For Each row As DataRow In TestCode.Rows
-                    TESTCD &= "'" & row(0).ToString & "',"
-                Next
-                TESTCD = Mid(TESTCD, 1, Len(TESTCD) - 1)
-            Else
-                XtraMessageBox.Show(_sMsg.sMsg_NoTestCode, _sMsg_Title.sMsgTitle_TestCode, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-
-            Dim sTable As DataTable = ClsDb.CfSelectQuery(QueryString)
-
+            Dim sTable As DataTable = Hospital_DB_AMH.HOSPITAL_ORDER_AMH_RESULT(GridView.GetRowCellValue(sSelectRow, "REQDATE").ToString,
+                                                                                GridView.GetRowCellValue(sSelectRow, "PTID").ToString)
             grdAMH.DataSource = sTable
 
             Select Case True
